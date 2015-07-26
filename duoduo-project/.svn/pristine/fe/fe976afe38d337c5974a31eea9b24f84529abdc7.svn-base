@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="DianCardStocksTemplate">
+        <Grid DataContext="{Binding FunctionVM}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Foreground="Red" FontSize="20" Text="我的点卡库存"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock  VerticalAlignment="Center" 
+                       Foreground="Red" FontSize="14" Text="未用点卡金额："/>
+                <TextBlock Background="Transparent" VerticalAlignment="Center" Text="0"/>
+            </StackPanel>
+            <DataGrid Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn CanUserResize="False" Header="卡号" IsReadOnly="True" Width="100"/>
+                    <DataGridTextColumn CanUserResize="False" Header="密码" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="类型" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="金额" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="生成人" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="生成时间" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="预留" IsReadOnly="True" Width="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="11.6.1" version="11.6.1" Modules="update" RootPath="." Language="zh" Id="{F302FA0F-3496-4135-8EDC-1B2A45F8F287}">
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;aiu-ue.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.UpdaterEditorComponent">
+    <ROW Section="Update" Key="Name" Value="9258多人视频聊天室客户端"/>
+    <ROW Section="Update" Key="ProductVersion" Value="1.0.2.0"/>
+    <ROW Section="Update" Key="URL" Value="http://www.9258.tv/downloads/9258Setup.exe"/>
+    <ROW Section="Update" Key="Size" Value="Setup Files\zh\9258Setup.exe"/>
+    <ROW Section="Update" Key="ReleaseDate" Value="18017"/>
+    <ROW Section="Update" Key="MD5" Value="Setup Files\zh\9258Setup.exe"/>
+    <ROW Section="Update" Key="ServerFileName" Value="9258Setup.exe"/>
+    <ROW Section="Update" Key="Flags" Value="NoCache"/>
+    <ROW Section="Update" Key="RegistryKey" Value="HKUD\Software\YoYoStudio\9258多人视频聊天室客户端\Version"/>
+    <ROW Section="Update" Key="Version" Value="1.0.2.0"/>
+    <ROW Section="Update" Key="Description" Value=" 功能及维护性升级"/>
+    <ROW Section="Update" Key="Feature" Value="大厅广告&#13;&#10;房间组人气排名及广告&#13;&#10;房间广告&#13;&#10;房间搜索功能"/>
+    <ATTRIBUTE name="OutputFileName" value=".txt"/>
+  </COMPONENT>
+</DOCUMENT>

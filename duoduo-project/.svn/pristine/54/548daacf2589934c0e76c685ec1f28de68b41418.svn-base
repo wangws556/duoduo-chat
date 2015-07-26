@@ -1,0 +1,221 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using YoYoStudio.Client.ViewModel;
+using YoYoStudio.Common;
+using YoYoStudio.Model.Core;
+using YoYoStudio.Resource;
+
+namespace YoYoStudio.Client.Chat
+{
+    /// <summary>
+    /// Interaction logic for LoginWindow.xaml
+    /// </summary>
+    public partial class LoginWindow
+    {
+        private HallWindowViewModel hallVM;
+        private RegisterWindow registerWnd;
+        private string DefaultHeaderIcon = System.IO.Path.Combine(Environment.CurrentDirectory, @"Images\10\Default\2561.png");
+        private User currentUser;
+
+        public LoginWindow()
+            : base(Singleton<ApplicationViewModel>.Instance.HallWindowVM)
+        {
+            ShowInTaskbar = true;
+            hallVM = Singleton<ApplicationViewModel>.Instance.HallWindowVM;
+            hallVM.ApplicationVM.ProfileVM.LoadLoginInfo();
+            if (hallVM.ApplicationVM.ProfileVM.LastLoginVM == null)
+            {
+                hallVM.ApplicationVM.ProfileVM.LastLoginVM = new LoginEntryViewModel(new Model.Configuration.LoginEntry());
+            }
+            DataContext = hallVM.ApplicationVM.ProfileVM;
+            MinHeight = ActualHeight;
+            MaximizeButtonState = YoYoStudio.Controls.CustomWindow.WindowButtonState.None;
+            InitializeComponent();
+            AccountListBox.SelectionChanged += AccountListBox_SelectionChanged;
+           
+        }
+
+        void AccountListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoginEntryViewModel loginVM = ((ListBox)sender).SelectedItem as LoginEntryViewModel;
+            if (loginVM != null)
+            {
+                hallVM.ApplicationVM.ProfileVM.LastLoginVM = loginVM;
+                AccountToggleButton.IsChecked = false;
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (registerWnd != null)
+                registerWnd.Close();
+            base.OnClosing(e);
+        }
+
+        protected override void ProcessMessage(Common.Notification.EnumNotificationMessage<object, LoginWindowAction> message)
+        {
+            switch (message.Action)
+            {
+                case LoginWindowAction.LoginSuccess:
+                    break;
+                case LoginWindowAction.InvalidToken:
+                    MessageBox.Show(Messages.InvalidToken, Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                case LoginWindowAction.UserBlocked:
+                    string blockName = message.Content as string;
+                    MessageBox.Show(string.Format(Messages.UserBlocked, blockName), Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+                case LoginWindowAction.CacheLoaded:
+                    initUserInfo();
+                    HallWindow hallWnd = new HallWindow();
+                    hallWnd.Show();
+                    this.Close();
+                    break;
+                case LoginWindowAction.Register:
+                    RegisterWindowViewModel vm = message.Content as RegisterWindowViewModel;
+                    if (vm != null)
+                    { 
+                        registerWnd  = new RegisterWindow(vm){Owner = this};
+                        registerWnd.ShowDialog();
+                    }
+                    break;
+                case LoginWindowAction.RegisterSuccess:
+                    if (registerWnd != null)
+                    {
+                        registerWnd.Close();
+                    }
+                    User user = message.Content as User;
+                    if (user != null)
+                    {
+                        hallVM.ApplicationVM.ProfileVM.LastLoginVM.UserId = user.Id.ToString();
+                        hallVM.ApplicationVM.ProfileVM.LastLoginVM.Password = user.Password;
+                        hallVM.ApplicationVM.ProfileVM.LastLoginVM.IconPath = DefaultHeaderIcon;
+                    }
+                    break;
+                case LoginWindowAction.RegisterUserIdNotAvailable:
+                    MessageBox.Show(Messages.NoRegisterUserIdAvailable);
+                    break;
+                case LoginWindowAction.RegisterCancel:
+                    if (registerWnd != null)
+                        registerWnd.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void LogonButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(AccountTextBox.Text) || string.IsNullOrEmpty(PwdPasswordBox.Password))
+            {
+                MessageBox.Show("用户名和密码不能为空！", Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            bool rememberPwd = RememberPwdCheckBox.IsChecked.HasValue?RememberPwdCheckBox.IsChecked.Value:false;
+            bool autoLogin = AutoLogonCheckBox.IsChecked.HasValue?AutoLogonCheckBox.IsChecked.Value:false;
+
+            this.TopGrid.Cursor = Cursors.Wait;
+            User usr = null;
+            try
+            {
+                Login(AccountTextBox.Text.Trim(), PwdPasswordBox.Password.Trim(), ref usr);
+            }
+            catch
+            {
+                MessageBox.Show(Messages.LoginFailed, Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                this.TopGrid.Cursor = Cursors.Arrow;
+            }
+
+            if (usr != null)
+            {
+                PART_Busy.Visibility = System.Windows.Visibility.Visible;
+                PART_Login.Visibility = System.Windows.Visibility.Collapsed;
+                hallVM.ApplicationVM.StartUp();
+                currentUser = usr;
+                hallVM.ApplicationVM.HallWindowVM.Notify<UserViewModel>(() => hallVM.Me);
+                hallVM.ApplicationVM.IsAuthenticated = true;
+                hallVM.UpdateLoginInfo(AccountTextBox.Text.Trim(), PwdPasswordBox.Password.Trim(), rememberPwd, HeaderImage.Source==null?string.Empty:HeaderImage.Source.ToString(), autoLogin);
+                hallVM.Notify<bool>(() => hallVM.IsAuthenticated);
+            }
+            else
+            {
+                this.TopGrid.Cursor = Cursors.Arrow;
+            }
+        }
+
+        private void Login(string userId, string pwd, ref User usr)
+        {
+            try
+            {
+                var mac = Utility.GetMacAddress();
+                int r = hallVM.ApplicationVM.ChatClient.CanUserLogin(int.Parse(userId), mac);
+                if (r == 0)
+                {
+                    usr = hallVM.ApplicationVM.ChatClient.Login(int.Parse(userId), pwd, mac);
+                    if (usr == null)
+                    {
+                        MessageBox.Show(Messages.InvalidToken, Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    usr = null;
+                    List<BlockType> types = hallVM.ApplicationVM.ChatClient.GetBlockTypes().ToList();
+                    string blockName = types.FirstOrDefault<BlockType>(t => t.Id == r).Name;
+                    MessageBox.Show(string.Format(Messages.UserBlocked, blockName), Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch
+            {
+                usr = null;
+                MessageBox.Show(Messages.InvalidToken, Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void initUserInfo()
+        {
+            UserViewModel uvm = new UserViewModel(currentUser);
+            uvm.Initialize();
+            hallVM.ApplicationVM.LocalCache.AllUserVMs.Add(currentUser.Id, uvm);
+            hallVM.ApplicationVM.LocalCache.CurrentUserVM = uvm;
+            
+        }
+
+        private void RegisterHyperlink_Click(object sender, RoutedEventArgs e)
+        {
+             hallVM.Register();   
+        }
+
+        private void DeleteAccount_Click(object sender, RoutedEventArgs e)
+        {
+            var data = (e.Source as Button).DataContext;
+            if (data != null)
+            {
+                LoginEntryViewModel loginVM = data as LoginEntryViewModel;
+                if (loginVM != null)
+                {
+                    hallVM.ApplicationVM.ProfileVM.LoginEntryVMs.Remove(loginVM);
+                    if (hallVM.ApplicationVM.ProfileVM.LastLoginVM != null)
+                    {
+                        if (hallVM.ApplicationVM.ProfileVM.LastLoginVM.UserId == loginVM.UserId)
+                        {
+                            hallVM.ApplicationVM.ProfileVM.LastLoginVM = null;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

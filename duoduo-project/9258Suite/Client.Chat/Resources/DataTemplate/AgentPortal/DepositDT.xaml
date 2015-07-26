@@ -1,0 +1,65 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="DepositTemplate">
+        <Grid DataContext="{Binding FunctionVM}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Foreground="Red" FontSize="20" Text="代会员充值"/>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Foreground="Red" FontSize="14" Text="1.正确填写充值对象的注册用户名（用户id 例： playboy)"/>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <TextBlock Width="150" HorizontalAlignment="Right" Margin="2" Text="充值账号：" VerticalAlignment="Center"/>
+                    <TextBox Margin="2" Width="150"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <TextBlock Width="150" HorizontalAlignment="Right" Margin="2" Text="推荐人：" VerticalAlignment="Center"/>
+                    <TextBox Margin="2" Width="150"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="2">
+                    <TextBlock Width="150" HorizontalAlignment="Right" Margin="2,0" Text="充值成人气区金：" VerticalAlignment="Center"/>
+                    <TextBox Margin="2" Width="150"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="2,0" Text="主持人" Width="150" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button Grid.Row="3" Content="确定" Width="75" Height="25" Foreground="Red" />
+                <Grid Grid.Row="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Foreground="Red" FontSize="14" Text="2.从你已有的库存卡中选择用于充值的卡"/>
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn CanUserResize="False" Header="选择" Width="50"/>
+                            <DataGridTextColumn CanUserResize="False" Header="卡号" IsReadOnly="True" Width="100"/>
+                            <DataGridTextColumn CanUserResize="False" Header="类型" IsReadOnly="True" Width="100" />
+                            <DataGridTextColumn CanUserResize="False" Header="金额" IsReadOnly="True" Width="100" />
+                            <DataGridTextColumn CanUserResize="False" Header="生成人" IsReadOnly="True" Width="100" />
+                            <DataGridTextColumn CanUserResize="False" Header="生成时间" IsReadOnly="True" Width="100" />
+                            <DataGridTextColumn CanUserResize="False" Header="充值人气区" IsReadOnly="True" Width="100" />
+                            <DataGridTextColumn CanUserResize="False" Header="某某某" IsReadOnly="True" Width="100" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <CheckBox Content="全选" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="2"/>
+                        <Button Content="确认所选用户支付" Width="100" Margin="2"/>
+                    </StackPanel>
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

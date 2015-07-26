@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="UserCashTemplate">
+        <Grid DataContext="{Binding FunctionVM}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Foreground="Red" FontSize="20" Text="用户自充提成查询"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
+                <ComboBox VerticalAlignment="Center" Width="60" Margin="2" Height="25" SelectedIndex="0">
+                    <ComboBoxItem Content="卡号"></ComboBoxItem>
+                </ComboBox>
+                <TextBlock  VerticalAlignment="Center" 
+                       Foreground="Red" FontSize="14" Text="关键字" Margin="2" Height="25"/>
+                <TextBox Background="Transparent" VerticalAlignment="Center" Margin="2" Height="25" Width="120"/>
+                <TextBlock  VerticalAlignment="Center" 
+                       Foreground="Red" FontSize="14" Text="开始时间：" Margin="2" Height="25"/>
+                <TextBox Background="Transparent" VerticalAlignment="Center" Margin="2" Height="25" Width="120"/>
+                <TextBlock  VerticalAlignment="Center" 
+                       Foreground="Red" FontSize="14" Text="结束时间：" Margin="2" Height="25"/>
+                <TextBox Background="Transparent" VerticalAlignment="Center" Margin="2" Height="25" Width="120"/>
+                <Button Content="查询" FontSize="14" Foreground="Red" Margin="2" Height="25" Width="75"/>
+            </StackPanel>
+            <DataGrid Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn CanUserResize="False" Header="充值人IDX" IsReadOnly="True" Width="80"/>
+                    <DataGridTextColumn CanUserResize="False" Header="充值人ID" IsReadOnly="True" Width="80" />
+                    <DataGridTextColumn CanUserResize="False" Header="类型" IsReadOnly="True" Width="80" />
+                    <DataGridTextColumn CanUserResize="False" Header="付费" IsReadOnly="True" Width="80" />
+                    <DataGridTextColumn CanUserResize="False" Header="时间" IsReadOnly="True" Width="80" />
+                    <DataGridTextColumn CanUserResize="False" Header="是否支付" IsReadOnly="True" Width="80" />
+                    <DataGridTextColumn CanUserResize="False" Header="提成" IsReadOnly="True" Width="80" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

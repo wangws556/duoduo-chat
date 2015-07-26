@@ -1,0 +1,19 @@
+﻿<ResourceDictionary x:Class="AgentPortalTemplate1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:YoYoStudio.Client.Chat.TemplateSelector">
+    <local:AgentPortalTemplateSelector x:Key="agentPortalTemplateSelector"
+                                       AgentCommissionTemplate="{StaticResource AgentCommissionTemplate}"
+                                       AgentPaymentTemplate="{StaticResource AgentPaymentTemplate}"
+                                       BankAccountTemplate="{StaticResource BankAccountTemplate}"
+                                       BuyDianCardTemplate="{StaticResource BuyDianCardTemplate}"
+                                       BuyGuanHaoTemplate="{StaticResource BuyGuanHaoTemplate}"
+                                       BuyMembershipTemplate="{StaticResource BuyMembershipTemplate}"
+                                       DepositTemplate="{StaticResource DepositTemplate}"
+                                       DianCardSaleTemplate="{StaticResource DianCardSaleTemplate}"
+                                       DianCardStocksTemplate="{StaticResource DianCardStocksTemplate}"
+                                       HosterTemplate="{StaticResource HosterTemplate}"
+                                       LogoffTemplate="{StaticResource LogoffTemplate}"
+                                       PasswordTemplate="{StaticResource PasswordTemplate}"
+                                       UserCashTemplate="{StaticResource UserCashTemplate}"/>
+</ResourceDictionary>

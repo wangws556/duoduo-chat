@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="BuyDianCardTemplate">
+        <Grid DataContext="{Binding FunctionVM}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"
+                       Foreground="Red" FontSize="20" Text="{Binding BuyDianCardLabel}"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
+                <TextBlock  VerticalAlignment="Center" 
+                       Foreground="Red" FontSize="14" Text="{Binding AccountBalanceLabel}"/>
+                <TextBlock Background="Transparent" VerticalAlignment="Center" Text="{Binding AccountBalance}"/>
+            </StackPanel>
+            <DataGrid Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn CanUserResize="False" Header="选择" Width="50"/>
+                    <DataGridTextColumn CanUserResize="False" Header="点卡名称" IsReadOnly="True" Width="100"/>
+                    <DataGridTextColumn CanUserResize="False" Header="点卡价格（单位 元）" IsReadOnly="True" Width="120" />
+                    <DataGridTextColumn CanUserResize="False" Header="购买数量" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="所属区" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="主持人" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn CanUserResize="False" Header="推荐人" IsReadOnly="True" Width="100" />                            
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>

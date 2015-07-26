@@ -1,0 +1,55 @@
+﻿<cw:ChildWindow x:Class="YoYoStudio.Client.Chat.VideoWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:ctls="clr-namespace:YoYoStudio.Controls;assembly=YoYoStudio.Controls"
+                xmlns:ctls1="clr-namespace:YoYoStudio.Client.Chat.Controls"
+                xmlns:cw="clr-namespace:YoYoStudio.Controls.CustomWindow;assembly=YoYoStudio.Controls"
+                xmlns:local="clr-namespace:YoYoStudio.Client.Chat"
+                xmlns:vm="clr-namespace:YoYoStudio.Client.ViewModel;assembly=YoYoStudio.Client.ViewModel"
+                xmlns:svl="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
+                Width="320"
+                Height="240"
+                x:TypeArguments="vm:VideoWindowAction">
+    <Grid>
+        <ctls1:VideoControl x:Name="vc"
+                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                           AncestorType=Grid},
+                                            Path=ActualWidth}"
+                            Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                            AncestorType=Grid},
+                                             Path=ActualHeight}"
+                            BottomVisibility="{Binding Converter={StaticResource videoControlVisibilityConverter},
+                                                       Path=MicStatus}"
+                            DataContext="{Binding UserVM}"
+                            MicStatus="{Binding MicStatus}">
+            <ctls1:VideoControl.VideoBorderStyle>
+                <Style TargetType="Border">
+                    <Setter Property="Margin" Value="5,5,10,5" />
+                    <Setter Property="Background" Value="#deebff" />
+                </Style>
+            </ctls1:VideoControl.VideoBorderStyle>
+            <ctls1:VideoControl.BottomTemplate>
+                <ControlTemplate>
+                    <Grid x:Name="VideoBottomGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <svl:SpectrumAnalyzer Name="mySpectrumAnalyzer"
+                                              Grid.Column="0"
+                                              BarCount="4" />
+                        <Button Margin="2" Command="{Binding  SelectUserCommand}" 
+                                Grid.Column="1" HorizontalAlignment="Center"
+                                Content="{Binding NickName}"
+                                BorderThickness="0" 
+                                Foreground="Blue"
+                                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                        </Button>
+                        <Label HorizontalAlignment="Center" Grid.Column="2" Content="粉:" Width="50" Height="25" Background="Yellow"/>
+                    </Grid>
+                </ControlTemplate>
+            </ctls1:VideoControl.BottomTemplate>
+        </ctls1:VideoControl>
+    </Grid>
+</cw:ChildWindow>
