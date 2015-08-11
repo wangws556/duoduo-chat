@@ -5,16 +5,17 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.UpdaterEditorComponent">
     <ROW Section="Update" Key="Name" Value="9258多人视频聊天室客户端"/>
-    <ROW Section="Update" Key="ProductVersion" Value="1.1.2.0"/>
+    <ROW Section="Update" Key="ProductVersion" Value="1.1.3.0"/>
     <ROW Section="Update" Key="URL" Value="http://www.9258.tv/downloads/9258Setup.exe"/>
     <ROW Section="Update" Key="Size" Value="Setup Files\zh\9258Setup.exe"/>
-    <ROW Section="Update" Key="ReleaseDate" Value="18163"/>
+    <ROW Section="Update" Key="ReleaseDate" Value="18184"/>
     <ROW Section="Update" Key="MD5" Value="Setup Files\zh\9258Setup.exe"/>
     <ROW Section="Update" Key="ServerFileName" Value="9258Setup.exe"/>
     <ROW Section="Update" Key="Flags" Value="NoCache"/>
     <ROW Section="Update" Key="RegistryKey" Value="HKUD\Software\YoYoStudio\9258多人视频聊天室客户端\Version"/>
-    <ROW Section="Update" Key="Version" Value="1.1.2.0"/>
+    <ROW Section="Update" Key="Version" Value="1.1.3.0"/>
     <ROW Section="Update" Key="Description" Value=" 功能及维护性升级"/>
+    <ROW Section="Update" Key="Feature" Value="视频弹出功能改进"/>
     <ATTRIBUTE name="OutputFileName" value=".txt"/>
   </COMPONENT>
 </DOCUMENT>

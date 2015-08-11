@@ -1,10 +1,10 @@
 ﻿<cw:ChildWindow x:Class="YoYoStudio.Client.Chat.Controls.WebWindow"
+                xmlns:vm="clr-namespace:YoYoStudio.Client.ViewModel;assembly=YoYoStudio.Client.ViewModel"
                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:ctls="clr-namespace:YoYoStudio.Controls;assembly=YoYoStudio.Controls"
                 xmlns:cw="clr-namespace:YoYoStudio.Controls.CustomWindow;assembly=YoYoStudio.Controls"
                 xmlns:local="clr-namespace:YoYoStudio.Client.Chat"
-                xmlns:vm="clr-namespace:YoYoStudio.Client.ViewModel;assembly=YoYoStudio.Client.ViewModel"
                 Loaded="ChildWindow_Loaded"
                 x:TypeArguments="vm:WebWindowAction">
     <Grid>

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using YoYoStudio.Client.ViewModel;
 using YoYoStudio.Common.Notification;
 using WPFSoundVisualizationLib;
+using YoYoStudio.Client.Chat.Controls;
 
 namespace YoYoStudio.Client.Chat
 {
@@ -25,9 +26,9 @@ namespace YoYoStudio.Client.Chat
     {
         private bool embeded = true;
         private VideoWindowViewModel videoWindowVM;
-        
+        private VideoControl videoControl = null;
 
-        public VideoWindow(VideoWindowViewModel vm, bool isEmbedded)
+        public VideoWindow(VideoWindowViewModel vm, bool isEmbedded, VideoControl vControl)
         {
             DataContext = vm;
             videoWindowVM = vm;
@@ -40,6 +41,16 @@ namespace YoYoStudio.Client.Chat
             vc.BottomTemplate = FindResource("VideoControlBottomTemplate") as ControlTemplate;
             vc.VideoBorderStyle = FindResource("VideoControlBorderStyle") as Style;
             vc.ApplyTemplate();
+            videoControl = vControl;
+
+            if (!isEmbedded)
+            {
+                vc.IsZoom = true;
+            }
+        }
+        public VideoWindow(VideoWindowViewModel vm, bool isEmbedded)
+            :this(vm,isEmbedded,null)
+        {
         }
 
         //private void NAudioEngine_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -137,6 +148,16 @@ namespace YoYoStudio.Client.Chat
         {
             vc.Dispose();
             base.Dispose();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            if (videoControl != null && !embeded)
+            {
+                videoControl.CallFlash(YoYoStudio.Controls.Winform.FlexCommand.ResumeVideo);
+                videoControl.HasZoomed = false;
+            }
+            base.OnClosed(e);
         }
     }
 }

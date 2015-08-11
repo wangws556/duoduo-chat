@@ -150,12 +150,13 @@ namespace YoYoStudio.Client.Chat.Controls
         private RealTimePlayback playBack;
         private SpectrumAnalyzer spectrumAnalyzer;
         public event FlashCallbackEventHandler FlashCallback;
+        public bool HasZoomed { get; set; }
 
         public VideoControl()
         {
             InitializeComponent();
             IsEnabled = false;
-            IsZoom = true;
+            IsZoom = false;
         }
 
         public void Dispose()
@@ -305,11 +306,16 @@ namespace YoYoStudio.Client.Chat.Controls
                     case FlexCallbackCommand.TakePicture:                        
                         break;
                     case FlexCallbackCommand.ExtendVideo:
-						VideoWindowViewModel vm = new VideoWindowViewModel(uvm);
-						vm.Initialize();
-						VideoWindow window = new VideoWindow(vm,false);
-                        window.Topmost = true;
-                        window.Show();
+                        if (!HasZoomed)
+                        {
+                            VideoWindowViewModel vm = new VideoWindowViewModel(uvm);
+                            vm.Initialize();
+                            VideoWindow window = new VideoWindow(vm, false, this);
+                            window.Topmost = true;
+                            window.Show();
+                            CallFlash(FlexCommand.PauseVideo);
+                            HasZoomed = true;
+                        }
                         break;
                 }
             if (FlashCallback != null)
@@ -401,7 +407,8 @@ namespace YoYoStudio.Client.Chat.Controls
                 playBack = new RealTimePlayback();
             }
             
-            spectrumAnalyzer.RegisterSoundPlayer(playBack);
+            if(spectrumAnalyzer != null)
+                spectrumAnalyzer.RegisterSoundPlayer(playBack);
             
         }
 

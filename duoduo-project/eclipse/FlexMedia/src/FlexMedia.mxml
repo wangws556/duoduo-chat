@@ -291,6 +291,7 @@
 					videoDisplay.addChild(video);
 					ShowBackground(false);
 					VideoEnabled(true);
+					zoom = false;
 				}
 			}
 			private function pauseAudio():void
@@ -475,7 +476,10 @@
 					}
 					else
 					{
-						headerPanel.visible = true;
+						if(!zoom)
+						{
+							headerPanel.visible = true;
+						}
 					}
 				}
 			}
@@ -501,6 +505,8 @@
 			
 			protected function zoomVideoHandler(event:MouseEvent):void
 			{
+				headerPanel.visible = false;
+				zoom = true;
 				callCSharp("extendVideo");				
 			}
 			
