@@ -20,10 +20,10 @@
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="MSIFASTINSTALL" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="YoYoStudio"/>
-    <ROW Property="ProductCode" Value="1033:{4071179F-B43F-44A9-81B8-688EDE6FC24C} 2052:{30AE87F2-C1EA-43B4-889E-6F0C65B3805E} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{F17C7BB7-3387-4377-8986-BFCDBF976EE4} 2052:{FB24462B-F66C-4384-B7C3-FBFDBB77850A} " Type="16"/>
     <ROW Property="ProductLanguage" Value="2052"/>
     <ROW Property="ProductName" Value="9258多人视频聊天室客户端"/>
-    <ROW Property="ProductVersion" Value="1.1.3" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.1.5" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{3CFB1C9A-15EC-40B1-B9A2-874131563F32}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -182,7 +182,7 @@
     <ROW File="System.Windows.Interactivity.dll" Component_="System.Windows.Interactivity.dll" FileName="SYSTEM~4.DLL|System.Windows.Interactivity.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\System.Windows.Interactivity.dll" SelfReg="false" NextFile="WpfAnimatedGif.dll"/>
     <ROW File="Temporary.jpg" Component_="advertise.jpg" FileName="TEMPOR~1.JPG|Temporary.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Temporary.jpg" SelfReg="false" NextFile="tip.png"/>
     <ROW File="ToFLV32.bat" Component_="ToFLV32.bat" FileName="ToFLV32.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\ToFLV32.bat" SelfReg="false" NextFile="ToFLV64.bat"/>
-    <ROW File="ToFLV64.bat" Component_="ToFLV32.bat" FileName="ToFLV64.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\ToFLV64.bat" SelfReg="false" NextFile="FlexMusic.swf"/>
+    <ROW File="ToFLV64.bat" Component_="ToFLV32.bat" FileName="ToFLV64.bat" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\ToFLV64.bat" SelfReg="false" NextFile="WPFSoundVisualizationLib.pdb"/>
     <ROW File="Underline.jpg" Component_="advertise.jpg" FileName="UNDERL~1.JPG|Underline.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Underline.jpg" SelfReg="false" NextFile="Underline_Select.jpg"/>
     <ROW File="Underline_Select.jpg" Component_="advertise.jpg" FileName="UNDERL~2.JPG|Underline_Select.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Underline_Select.jpg" SelfReg="false" NextFile="Up.png"/>
     <ROW File="Up.png" Component_="advertise.jpg" FileName="Up.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Up.png" SelfReg="false" NextFile="veryperfect.gif"/>
@@ -341,7 +341,7 @@
     <ROW File="bmp_97" Component_="bmp" FileName="1926.bmp" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\11\Default\1926.bmp" SelfReg="false" NextFile="bmp_98"/>
     <ROW File="bmp_98" Component_="bmp" FileName="1927.bmp" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\11\Default\1927.bmp" SelfReg="false" NextFile="png_121"/>
     <ROW File="bmp_99" Component_="bmp" FileName="1929.bmp" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\11\Default\1929.bmp" SelfReg="false" NextFile="png_122"/>
-    <ROW File="client.cache" Component_="ToFLV32.bat" FileName="CLIENT~1.CAC|client.cache" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\client.cache" SelfReg="false" NextFile="WPFSoundVisualizationLib.pdb"/>
+    <ROW File="client.cache" Component_="ToFLV32.bat" FileName="CLIENT~1.CAC|client.cache" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\client.cache" SelfReg="false" NextFile="ToFLV32.bat"/>
     <ROW File="close.gif" Component_="advertise.jpg" FileName="close.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\close.gif" SelfReg="false" NextFile="Color.jpg"/>
     <ROW File="cool.gif" Component_="advertise.jpg" FileName="cool.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\cool.gif" SelfReg="false" NextFile="Cross.png"/>
     <ROW File="delicious.png" Component_="advertise.jpg" FileName="DELICI~1.PNG|delicious.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\delicious.png" SelfReg="false" NextFile="deposit.gif"/>
@@ -959,7 +959,7 @@
     <ROW File="jpg_61" Component_="jpg" FileName="5677.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\6\Default\5677.jpg" SelfReg="false" NextFile="jpg_62"/>
     <ROW File="jpg_62" Component_="jpg" FileName="5678.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\6\Default\5678.jpg" SelfReg="false" NextFile="png_222"/>
     <ROW File="kiss.gif" Component_="advertise.jpg" FileName="kiss.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\kiss.gif" SelfReg="false" NextFile="logo.gif"/>
-    <ROW File="license.txt" Component_="ToFLV32.bat" FileName="license.txt" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\license.txt" SelfReg="false" NextFile="ToFLV32.bat"/>
+    <ROW File="license.txt" Component_="ToFLV32.bat" FileName="license.txt" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\license.txt" SelfReg="false" NextFile="FlexMusic.swf"/>
     <ROW File="log4net.dll" Component_="log4net.dll" FileName="log4net.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\log4net.dll" SelfReg="false" NextFile="Microsoft.Expression.Interactions.dll"/>
     <ROW File="logo.gif" Component_="advertise.jpg" FileName="logo.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\logo.gif" SelfReg="false" NextFile="logo.ico"/>
     <ROW File="logo.ico" Component_="advertise.jpg" FileName="logo.ico" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\logo.ico" SelfReg="false" NextFile="Logo128.ico"/>
