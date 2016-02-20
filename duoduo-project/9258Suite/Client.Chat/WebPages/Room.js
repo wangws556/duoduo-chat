@@ -349,7 +349,8 @@ function InitMe(user) {
     else {
         scoreLabel.text('0');
     }
-    document.getElementById('giftInput').value=0;
+    document.getElementById('giftInput').value = 0;
+    document.getElementById('giftSelect').selectedIndex = 0;
 }
 
 function GetUserHtml(usr, index) {
