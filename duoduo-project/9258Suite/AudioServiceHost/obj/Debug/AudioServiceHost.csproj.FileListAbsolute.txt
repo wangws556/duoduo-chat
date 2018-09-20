@@ -1,0 +1,7 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\AudioServiceHost\YoYoStudio.AudioServiceHost.exe.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\AudioServiceHost\YoYoStudio.AudioServiceHost.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\AudioServiceHost\YoYoStudio.AudioServiceHost.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\AudioServiceHost.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\AudioServiceHost.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\YoYoStudio.AudioServiceHost.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\YoYoStudio.AudioServiceHost.pdb

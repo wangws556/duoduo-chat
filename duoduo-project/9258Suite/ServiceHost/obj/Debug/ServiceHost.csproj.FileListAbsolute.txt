@@ -1,0 +1,7 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ServiceHost.exe.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ServiceHost.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ServiceHost.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Debug\ServiceHost.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Debug\ServiceHost.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Debug\YoYoStudio.ServiceHost.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Debug\YoYoStudio.ServiceHost.pdb

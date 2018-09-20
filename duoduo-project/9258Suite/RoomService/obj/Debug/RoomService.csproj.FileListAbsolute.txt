@@ -1,0 +1,15 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\RoomService.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.ProjectInstaller.resources
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\RoomService.csproj.GenerateResource.Cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\RoomService.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\Install.bat
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\Uninstall.bat
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomService.exe.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomService.exe.manifest
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomService.application
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomService.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomService.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.exe.manifest
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.application

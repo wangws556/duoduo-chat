@@ -48,10 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>6F292B2537AD80F4DC87411A5974EACE9156B569</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3E72CB77356ACF9E06C51063FEFB035D10F352F2</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>RoomService_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>RoomService_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -100,6 +100,7 @@
     <None Include="Install.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="RoomService_1_TemporaryKey.pfx" />
     <None Include="RoomService_TemporaryKey.pfx" />
     <None Include="Uninstall.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

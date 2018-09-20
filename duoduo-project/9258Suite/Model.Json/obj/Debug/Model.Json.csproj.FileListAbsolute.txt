@@ -1,0 +1,6 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Model.Json.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Model.Json.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model.Json\obj\Debug\Model.Json.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model.Json\obj\Debug\Model.Json.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model.Json\obj\Debug\YoYoStudio.Model.Json.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model.Json\obj\Debug\YoYoStudio.Model.Json.pdb

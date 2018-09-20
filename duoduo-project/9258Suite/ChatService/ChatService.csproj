@@ -50,10 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>F7CC341FAE2990F1FD708B676B8AD2431DC2A917</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>9BCC6BC83178A75131A4F8A50B707A60A5D7B2A9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>ChatService_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>ChatService_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -107,6 +107,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ChatService_1_TemporaryKey.pfx" />
     <None Include="ChatService_TemporaryKey.pfx" />
     <None Include="Install.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

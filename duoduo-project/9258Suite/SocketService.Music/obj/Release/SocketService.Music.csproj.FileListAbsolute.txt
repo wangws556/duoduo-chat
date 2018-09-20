@@ -1,0 +1,5 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.SocketService.Music.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.SocketService.Music.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Release\SocketService.Music.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Release\YoYoStudio.SocketService.Music.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Release\YoYoStudio.SocketService.Music.pdb

@@ -1,0 +1,5 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.SocketService.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.SocketService.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Release\SocketService.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Release\YoYoStudio.SocketService.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Release\YoYoStudio.SocketService.pdb

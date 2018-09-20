@@ -1,0 +1,10 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\CaptureScreen.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\CaptureScreen.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\CaptureScreen_MarkupCompile.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\CaptureScreen_MarkupCompile.lref
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\Themes\generic.baml
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\CaptureScreen.g.resources
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\CaptureScreen.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\CaptureScreen.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Release\CaptureScreen.pdb

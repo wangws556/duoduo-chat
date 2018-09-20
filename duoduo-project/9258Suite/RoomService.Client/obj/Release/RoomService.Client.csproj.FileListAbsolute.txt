@@ -1,0 +1,7 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.RoomService.Client.dll.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.RoomService.Client.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.RoomService.Client.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService.Client\obj\Release\RoomService.Client.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService.Client\obj\Release\RoomService.Client.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService.Client\obj\Release\YoYoStudio.RoomService.Client.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService.Client\obj\Release\YoYoStudio.RoomService.Client.pdb

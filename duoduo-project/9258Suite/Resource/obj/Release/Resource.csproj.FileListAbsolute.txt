@@ -1,0 +1,8 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Resource.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Resource.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.Messages.resources
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.Text.resources
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\Resource.csproj.GenerateResource.Cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\Resource.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.pdb

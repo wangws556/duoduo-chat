@@ -1,0 +1,6 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Debug\SocketService.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Debug\SocketService.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Debug\YoYoStudio.SocketService.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Debug\YoYoStudio.SocketService.pdb

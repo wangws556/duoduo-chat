@@ -1,0 +1,16 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\bin\Debug\TestMusicUpload.exe.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\bin\Debug\TestMusicUpload.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\bin\Debug\TestMusicUpload.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\bin\Debug\YoYoStudio.SocketService.Music.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\bin\Debug\YoYoStudio.SocketService.Music.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\MainWindow.baml
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\MainWindow.g.cs
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\App.g.cs
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload_MarkupCompile.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload.g.resources
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload.Properties.Resources.resources
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload.csproj.GenerateResource.Cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\TestMusicUpload\obj\Debug\TestMusicUpload.pdb

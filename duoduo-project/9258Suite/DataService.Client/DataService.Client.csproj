@@ -42,7 +42,12 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
     <Reference Include="YoYoStudio.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="YoYoStudio.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
@@ -65,6 +70,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\YoYoStudio.Model.Chat.Gift.datasource" />
     <None Include="Properties\DataSources\YoYoStudio.Model.Chat.GiftGroup.datasource" />
     <None Include="Properties\DataSources\YoYoStudio.Model.Chat.Room.datasource" />
@@ -126,6 +132,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{5baa4efc-0186-45fe-aec7-144f30f0a993}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistent\Persistent.csproj">
+      <Project>{c4712eba-24bc-4ff5-9f69-f659a1527f29}</Project>
+      <Name>Persistent</Name>
     </ProjectReference>
     <ProjectReference Include="..\Resource\Resource.csproj">
       <Project>{72cd2aa2-1ee7-47fd-837c-b430a452b7dd}</Project>

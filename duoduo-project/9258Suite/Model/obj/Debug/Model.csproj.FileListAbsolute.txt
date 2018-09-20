@@ -1,0 +1,6 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Model.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Model.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\YoYoStudio.Model.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\YoYoStudio.Model.pdb

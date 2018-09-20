@@ -1,0 +1,6 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.ChatService.Library.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.ChatService.Library.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService.Library\obj\Debug\ChatService.Library.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService.Library\obj\Debug\ChatService.Library.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService.Library\obj\Debug\YoYoStudio.ChatService.Library.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService.Library\obj\Debug\YoYoStudio.ChatService.Library.pdb

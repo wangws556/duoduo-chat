@@ -1,0 +1,7 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Client.ViewModel.dll.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Client.ViewModel.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Client.ViewModel.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Client.ViewModel\obj\Debug\Client.ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Client.ViewModel\obj\Debug\Client.ViewModel.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Client.ViewModel\obj\Debug\YoYoStudio.Client.ViewModel.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Client.ViewModel\obj\Debug\YoYoStudio.Client.ViewModel.pdb

@@ -1,0 +1,6 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Common.Wpf.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Common.Wpf.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.WPF\obj\Release\Common.Wpf.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.WPF\obj\Release\Common.Wpf.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.WPF\obj\Release\YoYoStudio.Common.Wpf.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.WPF\obj\Release\YoYoStudio.Common.Wpf.pdb

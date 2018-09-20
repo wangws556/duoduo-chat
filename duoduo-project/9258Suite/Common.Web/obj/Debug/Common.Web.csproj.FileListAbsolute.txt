@@ -1,0 +1,6 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.Web.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.Web.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.Web\obj\Debug\Common.Web.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.Web\obj\Debug\Common.Web.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.Web\obj\Debug\YoYoStudio.Common.Web.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.Web\obj\Debug\YoYoStudio.Common.Web.pdb

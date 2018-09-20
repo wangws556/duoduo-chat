@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using YoYoStudio.Common;
-using YoYoStudio.Model.Chat;
 using YoYoStudio.Model.Core;
 using YoYoStudio.Resource;
 
 namespace YoYoStudio.Model
 {
-	public class BuiltIns
+    public class BuiltIns
 	{
         static BuiltIns()
         {

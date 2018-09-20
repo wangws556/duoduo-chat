@@ -1,0 +1,7 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.DataService.Client.dll.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.DataService.Client.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.DataService.Client.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Client\obj\Debug\DataService.Client.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Client\obj\Debug\DataService.Client.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Client\obj\Debug\YoYoStudio.DataService.Client.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Client\obj\Debug\YoYoStudio.DataService.Client.pdb

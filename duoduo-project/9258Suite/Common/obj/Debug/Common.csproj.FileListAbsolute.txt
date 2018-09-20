@@ -1,0 +1,5 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.dll
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.pdb

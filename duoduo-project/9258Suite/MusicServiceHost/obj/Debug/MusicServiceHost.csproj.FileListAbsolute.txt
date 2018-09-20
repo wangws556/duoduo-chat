@@ -1,0 +1,7 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\MusicServiceHost\MusicServiceHost.exe.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\MusicServiceHost\MusicServiceHost.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\MusicServiceHost\MusicServiceHost.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.pdb

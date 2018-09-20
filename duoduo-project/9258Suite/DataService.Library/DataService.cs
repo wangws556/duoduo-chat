@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.Serialization;
+using System.IO;
 using System.ServiceModel;
-using YoYoStudio.Model.Core;
-using YoYoStudio.Persistent;
-using YoYoStudio.Common;
-using System.Configuration;
 using System.ServiceModel.Channels;
+using System.ServiceModel.Description;
+using System.ServiceModel.Dispatcher;
+using System.Transactions;
+using YoYoStudio.Common;
+using YoYoStudio.Common.ORM;
+using YoYoStudio.Common.Wcf;
+using YoYoStudio.Exceptions;
 using YoYoStudio.Model;
 using YoYoStudio.Model.Chat;
-using YoYoStudio.Common.ORM;
-using System.Transactions;
-using YoYoStudio.Exceptions;
-using System.ServiceModel.Dispatcher;
-using System.ServiceModel.Description;
-using YoYoStudio.Common.Wcf;
+using YoYoStudio.Model.Core;
 using YoYoStudio.Model.Media;
-using System.IO;
 
 namespace YoYoStudio.DataService.Library
 {

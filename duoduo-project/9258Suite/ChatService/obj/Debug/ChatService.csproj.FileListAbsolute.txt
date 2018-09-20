@@ -1,0 +1,13 @@
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Debug\ChatService.csprojResolveAssemblyReference.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Debug\ChatService.csproj.CoreCompileInputs.cache
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Debug\YoYoStudio.ChatService.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Debug\YoYoStudio.ChatService.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\Install.bat
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\Uninstall.bat
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ChatService.exe.config
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ChatService.exe.manifest
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ChatService.application
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ChatService.exe
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ChatService.pdb
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Debug\YoYoStudio.ChatService.exe.manifest
+C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Debug\YoYoStudio.ChatService.application
