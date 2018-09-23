@@ -4,3 +4,10 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.A
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.Audio.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.Audio.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.pdb

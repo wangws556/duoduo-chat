@@ -5,3 +5,11 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHos
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.exe
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\MusicServiceHost\MusicServiceHost.exe.config
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\MusicServiceHost\MusicServiceHost.exe
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\MusicServiceHost\MusicServiceHost.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.exe
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Release\MusicServiceHost.pdb

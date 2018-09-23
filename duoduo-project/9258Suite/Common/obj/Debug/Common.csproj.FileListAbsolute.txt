@@ -3,3 +3,10 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\Common.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.pdb

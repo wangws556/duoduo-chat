@@ -4,3 +4,10 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\YoYoStudio.Model.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\YoYoStudio.Model.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Model.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Model.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\YoYoStudio.Model.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model\obj\Debug\YoYoStudio.Model.pdb

@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\
 YoYoStudio.Controls
 none
 false
@@ -13,8 +13,8 @@ TRACE
 42107089589
 
 25673648875
-20361387519
+18-2115418962
 CustomWindow\WindowButton.xaml;ImageExt.xaml;WpfFlexControl.xaml;WebPage.xaml;
 
-False
+True
 

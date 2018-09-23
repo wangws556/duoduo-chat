@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Client.Chat\obj\Release\
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Client.Chat\obj\Release\
 YoYoStudio.Client.Chat
 none
 false
 TRACE
-C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Client.Chat\App.xaml
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Client.Chat\App.xaml
 32-2096973363
 2449539884
 33-1971638046
-37-1728061399
+37712172481
 AgentLoginWindow.xaml;AgentPortalWindow.xaml;CameraWindow.xaml;ConfigurationWindow.xaml;Controls\MusicControl.xaml;Controls\VideoControl.xaml;Controls\WebWindow.xaml;HallWindow.xaml;LoginWindow.xaml;PlayMusicWindow.xaml;RegisterWindow.xaml;Resources\ConfigurationResourceDic.xaml;Resources\DataTemplate\AgentPortal\AgentCommissionDT.xaml;Resources\DataTemplate\AgentPortal\AgentPaymentDT.xaml;Resources\DataTemplate\AgentPortal\BankAccountDT.xaml;Resources\DataTemplate\AgentPortal\BuyDianCardDT.xaml;Resources\DataTemplate\AgentPortal\BuyGuanHaoDT.xaml;Resources\DataTemplate\AgentPortal\BuyMembershipDT.xaml;Resources\DataTemplate\AgentPortal\DepositDT.xaml;Resources\DataTemplate\AgentPortal\DianCardSaleDT.xaml;Resources\DataTemplate\AgentPortal\DianCardStocksDT.xaml;Resources\DataTemplate\AgentPortal\HosterDT.xaml;Resources\DataTemplate\AgentPortal\LogoffDT.xaml;Resources\DataTemplate\AgentPortal\PasswordDT.xaml;Resources\DataTemplate\AgentPortal\UserCashDT.xaml;Resources\Selector\AgentPortalSelector.xaml;Resources\Styles.xaml;RoomWindow.xaml;Resources\ControlTemplates.xaml;ManageMusicWindow.xaml;ValueConverters\Converters.xaml;VideoWindow.xaml;
 
 False

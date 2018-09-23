@@ -4,3 +4,9 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug\Media.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug\YoYoStudio.Media.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug\YoYoStudio.Media.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Media.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Media.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug\Media.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug\Media.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug\YoYoStudio.Media.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Media\obj\Debug\YoYoStudio.Media.pdb

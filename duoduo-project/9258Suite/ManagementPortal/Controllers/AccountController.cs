@@ -78,7 +78,7 @@ namespace YoYoStudio.ManagementPortal.Controllers
                 }
             }
             WebSecurity.Logout();
-			return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home");
 		}
 
 		//

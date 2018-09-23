@@ -12,3 +12,16 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisuali
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.pdb
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.csprojResolveAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\license.txt
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\WPFSoundVisualizationLib.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\WPFSoundVisualizationLib.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib_MarkupCompile.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib_MarkupCompile.lref
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\Themes\Generic.baml
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.g.resources
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.Properties.Resources.resources
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.csproj.GenerateResource.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.pdb

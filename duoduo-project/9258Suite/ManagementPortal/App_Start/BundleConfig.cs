@@ -30,7 +30,7 @@ namespace YoYoStudio.ManagementPortal
 			bundles.Add(new ScriptBundle(ModernizrBundle).Include(
 						"~/Scripts/modernizr-*"));
 
-			bundles.Add(new StyleBundle(SiteCssBundle).Include("~/Content/site.css"));			
+			bundles.Add(new StyleBundle(SiteCssBundle).Include("~/Content/Site.css"));			
 
 			
 		}

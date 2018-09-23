@@ -13,3 +13,8 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomS
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomService.pdb
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.exe.manifest
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.application
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\RoomService.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.ProjectInstaller.resources
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\RoomService.csproj.GenerateResource.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.exe
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Debug\YoYoStudio.RoomService.pdb

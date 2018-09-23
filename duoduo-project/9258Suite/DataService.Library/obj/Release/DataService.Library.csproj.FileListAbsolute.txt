@@ -6,3 +6,12 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Lib
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\DataService.Library.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\YoYoStudio.DataService.Library.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\YoYoStudio.DataService.Library.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.DataService.Library.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.DataService.Library.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\DataService.Library.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\YoYoStudio.DataService.Library.Properties.Resources.resources
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\DataService.Library.csproj.GenerateResource.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\DataService.Library.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\DataService.Library.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\YoYoStudio.DataService.Library.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Library\obj\Release\YoYoStudio.DataService.Library.pdb

@@ -4,3 +4,10 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\Persistent.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\YoYoStudio.Persistent.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\YoYoStudio.Persistent.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Persistent.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Persistent.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\Persistent.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\Persistent.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\Persistent.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\YoYoStudio.Persistent.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Debug\YoYoStudio.Persistent.pdb

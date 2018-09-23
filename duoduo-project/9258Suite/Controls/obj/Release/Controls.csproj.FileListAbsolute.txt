@@ -21,3 +21,17 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Re
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\Controls.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\YoYoStudio.Controls.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\YoYoStudio.Controls.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\Controls.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\Controls.csproj.ResolveComReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\CustomWindow\WindowButton.baml
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\ImageExt.baml
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\WebPage.baml
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\CustomWindow\WindowButton.g.cs
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\ImageExt.g.cs
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\WpfFlexControl.g.cs
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\WebPage.g.cs
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\YoYoStudio.Controls_MarkupCompile.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\YoYoStudio.Controls_MarkupCompile.lref
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\YoYoStudio.Controls.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Controls\obj\Release\YoYoStudio.Controls.pdb

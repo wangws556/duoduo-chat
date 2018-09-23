@@ -9,3 +9,13 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\o
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\CaptureScreen.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\CaptureScreen.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen_MarkupCompile.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen_MarkupCompile.lref
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\Themes\generic.baml
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.g.resources
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.pdb

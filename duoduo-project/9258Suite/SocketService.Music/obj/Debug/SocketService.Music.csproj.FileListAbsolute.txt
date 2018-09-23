@@ -4,3 +4,10 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.M
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\SocketService.Music.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\YoYoStudio.SocketService.Music.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\YoYoStudio.SocketService.Music.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.Music.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.Music.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\SocketService.Music.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\SocketService.Music.csproj.CopyComplete
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\YoYoStudio.SocketService.Music.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\YoYoStudio.SocketService.Music.pdb
+C:\Users\ServerAdmin\Source\Repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Debug\SocketService.Music.csprojAssemblyReference.cache

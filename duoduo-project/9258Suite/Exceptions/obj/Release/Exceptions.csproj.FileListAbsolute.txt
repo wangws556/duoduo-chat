@@ -3,3 +3,8 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Tem
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\Exceptions.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.dll
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Exceptions.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Exceptions.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\Exceptions.csproj.CoreCompileInputs.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.dll
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.pdb

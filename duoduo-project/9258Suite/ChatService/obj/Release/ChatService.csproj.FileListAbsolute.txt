@@ -2,3 +2,6 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\ChatService.csproj.CoreCompileInputs.cache
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\YoYoStudio.ChatService.exe
 C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\YoYoStudio.ChatService.pdb
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\ChatService.csprojAssemblyReference.cache
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\YoYoStudio.ChatService.exe
+C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\YoYoStudio.ChatService.pdb
