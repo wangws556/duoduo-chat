@@ -89,3 +89,5 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHo
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Release\ServiceHost.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Release\YoYoStudio.ServiceHost.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Release\YoYoStudio.ServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\ServiceHost\obj\Release\ServiceHost.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\ServiceHost\obj\Release\ServiceHost.csproj.CoreCompileInputs.cache

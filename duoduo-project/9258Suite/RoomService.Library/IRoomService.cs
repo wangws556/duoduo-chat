@@ -95,19 +95,19 @@ namespace YoYoStudio.RoomService.Library
         [OperationContract(IsOneWay = true)]
         void CommandMessageReceived(int roomId, int cmdId, int sourceUserId, int targetUserId);
         [OperationContract(IsOneWay = true)]
-        void VideoStateChanged(int roomId, int senderId, int state);
+        void VideoStateChangedCallback(int roomId, int senderId, int state);
         [OperationContract(IsOneWay = true)]
-        void AudioStateChanged(int roomId, int senderId, int state);
+        void AudioStateChangedCallback(int roomId, int senderId, int state);
         [OperationContract(IsOneWay = true)]
-        void StartMusic(int roomId, int userId, string fileName);
+        void StartMusicCallback(int roomId, int userId, string fileName);
         [OperationContract(IsOneWay = true)]
-        void StopMusic(int roomId, int userId);
+        void StopMusicCallback(int roomId, int userId);
         [OperationContract(IsOneWay = true)]
-        void TogglePauseMusic(int roomId, int userId,bool paused);
+        void TogglePauseMusicCallback(int roomId, int userId,bool paused);
         [OperationContract(IsOneWay = true)]
-        void SetPlayPosition(int roomId, int userId, int pos);
+        void SetPlayPositionCallback(int roomId, int userId, int pos);
         [OperationContract(IsOneWay = true)]
-        void SetMusicVolume(int roomId, int userId, int volume);
+        void SetMusicVolumeCallback(int roomId, int userId, int volume);
         [OperationContract(IsOneWay = true)]
         void ReportMusicStatus(int roomId, int requireUserId);
         [OperationContract(IsOneWay = true)]

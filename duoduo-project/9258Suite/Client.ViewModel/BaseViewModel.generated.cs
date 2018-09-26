@@ -18,7 +18,7 @@ using YoYoStudio.Model.Core;
 using YoYoStudio.Model.Chat;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using YoYoStudio.Model.Media;
 
 namespace YoYoStudio.Client.ViewModel
 {
@@ -29,7 +29,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the Busy property
 		/// </summary>
-		protected HistoryableProperty<bool> busy = new HistoryableProperty<bool>(false);
+		public HistoryableProperty<bool> busy = new HistoryableProperty<bool>(false);
 
 		/// <summary>
 		/// Gets / sets the Busy value
@@ -61,7 +61,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the WelcomeMessage property
 		/// </summary>
-		protected HistoryableProperty<string> welcomeMessage = new HistoryableProperty<string>(string.Empty);
+		public HistoryableProperty<string> welcomeMessage = new HistoryableProperty<string>(string.Empty);
 
 		/// <summary>
 		/// Gets / sets the WelcomeMessage value
@@ -77,7 +77,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the BusyMessage property
 		/// </summary>
-		protected HistoryableProperty<string> busyMessage = new HistoryableProperty<string>(string.Empty);
+		public HistoryableProperty<string> busyMessage = new HistoryableProperty<string>(string.Empty);
 
 		/// <summary>
 		/// Gets / sets the BusyMessage value

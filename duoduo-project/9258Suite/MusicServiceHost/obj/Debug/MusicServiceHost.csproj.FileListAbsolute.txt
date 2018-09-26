@@ -13,3 +13,11 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServ
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.pdb
 C:\Users\ServerAdmin\Source\Repos\duoduo-chat\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\bin\Debug\MusicServiceHost\MusicServiceHost.exe.config
+F:\repo\duoduo-project\9258Suite\bin\Debug\MusicServiceHost\MusicServiceHost.exe
+F:\repo\duoduo-project\9258Suite\bin\Debug\MusicServiceHost\MusicServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.exe
+F:\repo\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\MusicServiceHost\obj\Debug\MusicServiceHost.csprojAssemblyReference.cache

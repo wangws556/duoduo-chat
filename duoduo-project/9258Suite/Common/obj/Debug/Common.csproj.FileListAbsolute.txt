@@ -10,3 +10,10 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\ob
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\Common.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.dll
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.pdb
+F:\repo\duoduo-project\9258Suite\Common\obj\Debug\Common.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\Common\obj\Debug\Common.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.dll
+F:\repo\duoduo-project\9258Suite\Common\obj\Debug\YoYoStudio.Common.pdb

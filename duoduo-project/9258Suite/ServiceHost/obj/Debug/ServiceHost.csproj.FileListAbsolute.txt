@@ -13,3 +13,11 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHo
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Debug\ServiceHost.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Debug\YoYoStudio.ServiceHost.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ServiceHost\obj\Debug\YoYoStudio.ServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ServiceHost.exe.config
+F:\repo\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ServiceHost.exe
+F:\repo\duoduo-project\9258Suite\bin\Debug\ChatService\YoYoStudio.ServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\ServiceHost\obj\Debug\ServiceHost.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\ServiceHost\obj\Debug\ServiceHost.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\ServiceHost\obj\Debug\YoYoStudio.ServiceHost.exe
+F:\repo\duoduo-project\9258Suite\ServiceHost\obj\Debug\YoYoStudio.ServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\ServiceHost\obj\Debug\ServiceHost.csprojAssemblyReference.cache

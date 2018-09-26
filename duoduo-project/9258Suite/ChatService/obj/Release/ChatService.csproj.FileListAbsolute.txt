@@ -5,3 +5,4 @@ C:\Users\wangw\Source\Repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\ChatService.csprojAssemblyReference.cache
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\YoYoStudio.ChatService.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\ChatService\obj\Release\YoYoStudio.ChatService.pdb
+F:\repo\duoduo-project\9258Suite\ChatService\obj\Release\ChatService.csprojAssemblyReference.cache

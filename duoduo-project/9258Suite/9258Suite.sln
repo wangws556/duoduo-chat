@@ -108,6 +108,52 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicPlay", "TestMusicP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFSoundVisualizationLib", "WPFSoundVisualizationLibrary\WPFSoundVisualizationLib.csproj", "{90F96222-1C39-4A19-ABE8-1B00FB330985}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ChatServiceHost", "ChatServiceHost\", "{90D85B9A-85EB-4DCB-9732-C0C9A979922A}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{4F1E6D13-715A-4655-9CF7-3F180915C0E3}|YoYoStudio.Common.dll;{72CD2AA2-1EE7-47FD-837C-B430A452B7DD}|YoYoStudio.Resource.dll;{290AB714-F9C2-40C6-8A35-7E22DB340949}|YoYoStudio.Common.Wcf.dll;{B7782B04-81DB-4AF0-949D-B676B16F593A}|YoYoStudio.DataService.Client.dll;{D97D3D85-C069-4D54-B206-98B7709F4E4B}|YoYoStudio.Common.Web.dll;{C4712EBA-24BC-4FF5-9F69-F659A1527F29}|YoYoStudio.Persistent.dll;{5BAA4EFC-0186-45FE-AEC7-144F30F0A993}|YoYoStudio.Model.dll;{15b3e0d2-6217-493a-a690-158c497f5318}|YoYoStudio.ChatService.Library.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49804"
+		Debug.AspNetCompiler.PhysicalPath = "ChatServiceHost\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49804\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49804"
+		Release.AspNetCompiler.PhysicalPath = "ChatServiceHost\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49804\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49804"
+		SlnRelativePath = "ChatServiceHost\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RoomServiceIISHost", "RoomServiceIISHost\", "{2B84D65A-A8DF-4AB6-B70C-D1A0E71F7C21}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{6b3cfec2-2d88-482a-a812-0f890e6b3afd}|YoYoStudio.RoomService.Library.dll;{DB250ED9-7E60-408B-91C4-D840F8DDFB8B}|YoYoStudio.ChatService.Client.dll;{4F1E6D13-715A-4655-9CF7-3F180915C0E3}|YoYoStudio.Common.dll;{72CD2AA2-1EE7-47FD-837C-B430A452B7DD}|YoYoStudio.Resource.dll;{5BAA4EFC-0186-45FE-AEC7-144F30F0A993}|YoYoStudio.Model.dll;{C4712EBA-24BC-4FF5-9F69-F659A1527F29}|YoYoStudio.Persistent.dll;{290AB714-F9C2-40C6-8A35-7E22DB340949}|YoYoStudio.Common.Wcf.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50666"
+		Debug.AspNetCompiler.PhysicalPath = "RoomServiceIISHost\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50666\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50666"
+		Release.AspNetCompiler.PhysicalPath = "RoomServiceIISHost\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50666\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50666"
+		SlnRelativePath = "RoomServiceIISHost\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -274,6 +320,14 @@ Global
 		{90F96222-1C39-4A19-ABE8-1B00FB330985}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90F96222-1C39-4A19-ABE8-1B00FB330985}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90F96222-1C39-4A19-ABE8-1B00FB330985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D85B9A-85EB-4DCB-9732-C0C9A979922A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D85B9A-85EB-4DCB-9732-C0C9A979922A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D85B9A-85EB-4DCB-9732-C0C9A979922A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D85B9A-85EB-4DCB-9732-C0C9A979922A}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2B84D65A-A8DF-4AB6-B70C-D1A0E71F7C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B84D65A-A8DF-4AB6-B70C-D1A0E71F7C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B84D65A-A8DF-4AB6-B70C-D1A0E71F7C21}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B84D65A-A8DF-4AB6-B70C-D1A0E71F7C21}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -312,6 +366,8 @@ Global
 		{3D8B4011-D55E-4DFA-B189-EBEAEFA564DF} = {7A9042B1-2CD2-4455-B117-9964F6028F33}
 		{47BDB07D-2AEF-4EDB-809B-2FB9BD9C7113} = {7A9042B1-2CD2-4455-B117-9964F6028F33}
 		{8A6C858E-3795-4EC5-ADB6-668841771F60} = {7A9042B1-2CD2-4455-B117-9964F6028F33}
+		{90D85B9A-85EB-4DCB-9732-C0C9A979922A} = {7A9042B1-2CD2-4455-B117-9964F6028F33}
+		{2B84D65A-A8DF-4AB6-B70C-D1A0E71F7C21} = {7A9042B1-2CD2-4455-B117-9964F6028F33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B217A7B1-B51D-44A8-8A5A-920041A13719}

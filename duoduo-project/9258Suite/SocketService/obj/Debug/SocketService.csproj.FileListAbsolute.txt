@@ -10,3 +10,10 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketSer
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Debug\SocketService.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Debug\YoYoStudio.SocketService.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService\obj\Debug\YoYoStudio.SocketService.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.dll
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.pdb
+F:\repo\duoduo-project\9258Suite\SocketService\obj\Debug\SocketService.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\SocketService\obj\Debug\SocketService.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\SocketService\obj\Debug\YoYoStudio.SocketService.dll
+F:\repo\duoduo-project\9258Suite\SocketService\obj\Debug\YoYoStudio.SocketService.pdb
+F:\repo\duoduo-project\9258Suite\SocketService\obj\Debug\SocketService.csprojAssemblyReference.cache

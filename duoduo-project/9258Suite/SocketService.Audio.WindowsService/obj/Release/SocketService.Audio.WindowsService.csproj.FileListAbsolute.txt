@@ -17,3 +17,13 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketSer
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\SocketService.Audio.WindowsService.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\YoYoStudio.AudioService.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\YoYoStudio.AudioService.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\AudioService\Install.bat
+F:\repo\duoduo-project\9258Suite\bin\Release\AudioService\Uninstall.bat
+F:\repo\duoduo-project\9258Suite\bin\Release\AudioService\YoYoStudio.AudioService.exe.config
+F:\repo\duoduo-project\9258Suite\bin\Release\AudioService\YoYoStudio.AudioService.exe
+F:\repo\duoduo-project\9258Suite\bin\Release\AudioService\YoYoStudio.AudioService.pdb
+F:\repo\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\SocketService.Audio.WindowsService.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\SocketService.Audio.WindowsService.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\SocketService.Audio.WindowsService.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\YoYoStudio.AudioService.exe
+F:\repo\duoduo-project\9258Suite\SocketService.Audio.WindowsService\obj\Release\YoYoStudio.AudioService.pdb

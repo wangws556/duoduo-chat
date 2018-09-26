@@ -13,3 +13,11 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomServi
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService.Client\obj\Release\RoomService.Client.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService.Client\obj\Release\YoYoStudio.RoomService.Client.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService.Client\obj\Release\YoYoStudio.RoomService.Client.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.RoomService.Client.dll.config
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.RoomService.Client.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.RoomService.Client.pdb
+F:\repo\duoduo-project\9258Suite\RoomService.Client\obj\Release\RoomService.Client.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\RoomService.Client\obj\Release\RoomService.Client.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\RoomService.Client\obj\Release\RoomService.Client.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\RoomService.Client\obj\Release\YoYoStudio.RoomService.Client.dll
+F:\repo\duoduo-project\9258Suite\RoomService.Client\obj\Release\YoYoStudio.RoomService.Client.pdb

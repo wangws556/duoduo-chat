@@ -11,3 +11,10 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common.WP
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common.WPF\obj\Debug\YoYoStudio.Common.Wpf.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common.WPF\obj\Debug\YoYoStudio.Common.Wpf.pdb
 C:\Users\ServerAdmin\Source\Repos\duoduo-chat\duoduo-project\9258Suite\Common.WPF\obj\Debug\Common.Wpf.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.Wpf.dll
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.Wpf.pdb
+F:\repo\duoduo-project\9258Suite\Common.WPF\obj\Debug\Common.Wpf.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\Common.WPF\obj\Debug\Common.Wpf.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\Common.WPF\obj\Debug\Common.Wpf.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\Common.WPF\obj\Debug\YoYoStudio.Common.Wpf.dll
+F:\repo\duoduo-project\9258Suite\Common.WPF\obj\Debug\YoYoStudio.Common.Wpf.pdb

@@ -13,3 +13,11 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomServi
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\RoomServiceHost.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\YoYoStudio.RoomServiceHost.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\YoYoStudio.RoomServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\RoomServiceHost.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\RoomServiceHost.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\YoYoStudio.RoomServiceHost.exe
+F:\repo\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\YoYoStudio.RoomServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomServiceHost.exe.config
+F:\repo\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomServiceHost.exe
+F:\repo\duoduo-project\9258Suite\bin\Debug\RoomService\YoYoStudio.RoomServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\RoomServiceHost\obj\Debug\RoomServiceHost.csproj.CopyComplete

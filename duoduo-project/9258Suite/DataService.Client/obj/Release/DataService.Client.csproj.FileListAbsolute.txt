@@ -13,3 +13,11 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataServi
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Client\obj\Release\DataService.Client.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Client\obj\Release\YoYoStudio.DataService.Client.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\DataService.Client\obj\Release\YoYoStudio.DataService.Client.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.DataService.Client.dll.config
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.DataService.Client.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.DataService.Client.pdb
+F:\repo\duoduo-project\9258Suite\DataService.Client\obj\Release\DataService.Client.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\DataService.Client\obj\Release\DataService.Client.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\DataService.Client\obj\Release\DataService.Client.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\DataService.Client\obj\Release\YoYoStudio.DataService.Client.dll
+F:\repo\duoduo-project\9258Suite\DataService.Client\obj\Release\YoYoStudio.DataService.Client.pdb

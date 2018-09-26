@@ -14,3 +14,12 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Resource\
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\Resource.csproj.CoreCompileInputs.cache
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Resource.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Resource.pdb
+F:\repo\duoduo-project\9258Suite\Resource\obj\Release\Resource.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.Messages.resources
+F:\repo\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.Text.resources
+F:\repo\duoduo-project\9258Suite\Resource\obj\Release\Resource.csproj.GenerateResource.cache
+F:\repo\duoduo-project\9258Suite\Resource\obj\Release\Resource.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.dll
+F:\repo\duoduo-project\9258Suite\Resource\obj\Release\YoYoStudio.Resource.pdb

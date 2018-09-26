@@ -28,7 +28,14 @@ namespace YoYoStudio.ChatService.Client
         public override void RefreshCache(params object[] args)
         {
             Application = BuiltIns._9258ChatApplication;
-            Task.WaitAll(new Task[] { LoadExchangeRates(), LoadRoomGroupTask(), LoadGiftTask(), LoadRoleCommandTask(), LoadImageTask(), LoadRoomRoleTask(), LoadTask() });
+            Task.WaitAll(new Task[] { LoadExchangeRates()
+                , LoadRoomGroupTask()
+                , LoadGiftTask()
+                , LoadRoleCommandTask()
+                , LoadImageTask()
+                , LoadRoomRoleTask()
+                , LoadTask()
+            });
             client.Close();
             base.RefreshCache(args);
         }

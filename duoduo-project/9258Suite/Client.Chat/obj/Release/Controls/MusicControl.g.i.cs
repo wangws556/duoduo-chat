@@ -29,7 +29,11 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
+using YoYoStudio.Client.Chat;
+using YoYoStudio.Client.Chat.Controls;
+using YoYoStudio.Client.ViewModel;
 using YoYoStudio.Controls;
+using YoYoStudio.Controls.CustomWindow;
 
 
 namespace YoYoStudio.Client.Chat.Controls {

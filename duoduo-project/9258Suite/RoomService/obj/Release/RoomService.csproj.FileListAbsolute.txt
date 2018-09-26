@@ -9,3 +9,6 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomServi
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Release\RoomService.csproj.GenerateResource.cache
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Release\YoYoStudio.RoomService.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\RoomService\obj\Release\YoYoStudio.RoomService.pdb
+F:\repo\duoduo-project\9258Suite\RoomService\obj\Release\RoomService.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\RoomService\obj\Release\YoYoStudio.RoomService.ProjectInstaller.resources
+F:\repo\duoduo-project\9258Suite\RoomService\obj\Release\RoomService.csproj.GenerateResource.cache

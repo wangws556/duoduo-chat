@@ -11,3 +11,10 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model.Jso
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model.Json\obj\Release\Model.Json.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model.Json\obj\Release\YoYoStudio.Model.Json.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Model.Json\obj\Release\YoYoStudio.Model.Json.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Model.Json.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Model.Json.pdb
+F:\repo\duoduo-project\9258Suite\Model.Json\obj\Release\Model.Json.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\Model.Json\obj\Release\Model.Json.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\Model.Json\obj\Release\Model.Json.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\Model.Json\obj\Release\YoYoStudio.Model.Json.dll
+F:\repo\duoduo-project\9258Suite\Model.Json\obj\Release\YoYoStudio.Model.Json.pdb

@@ -25,3 +25,17 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundV
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.csproj.CoreCompileInputs.cache
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\license.txt
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\WPFSoundVisualizationLib.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\WPFSoundVisualizationLib.pdb
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\GeneratedInternalTypeHelper.g.cs
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib_MarkupCompile.cache
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib_MarkupCompile.lref
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\Themes\Generic.baml
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.g.resources
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.Properties.Resources.resources
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.csproj.GenerateResource.cache
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.dll
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.pdb
+F:\repo\duoduo-project\9258Suite\WPFSoundVisualizationLibrary\obj\Release\WPFSoundVisualizationLib.csprojAssemblyReference.cache

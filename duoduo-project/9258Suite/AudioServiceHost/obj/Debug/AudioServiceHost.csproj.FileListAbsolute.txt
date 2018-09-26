@@ -13,3 +13,11 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\AudioServ
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\AudioServiceHost.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\YoYoStudio.AudioServiceHost.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\YoYoStudio.AudioServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\AudioServiceHost\YoYoStudio.AudioServiceHost.exe.config
+F:\repo\duoduo-project\9258Suite\bin\Debug\AudioServiceHost\YoYoStudio.AudioServiceHost.exe
+F:\repo\duoduo-project\9258Suite\bin\Debug\AudioServiceHost\YoYoStudio.AudioServiceHost.pdb
+F:\repo\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\AudioServiceHost.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\AudioServiceHost.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\AudioServiceHost.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\YoYoStudio.AudioServiceHost.exe
+F:\repo\duoduo-project\9258Suite\AudioServiceHost\obj\Debug\YoYoStudio.AudioServiceHost.pdb

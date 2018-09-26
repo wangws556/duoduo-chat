@@ -11,3 +11,10 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketSer
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.Audio.dll
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.SocketService.Audio.pdb
+F:\repo\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\SocketService.Audio.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.dll
+F:\repo\duoduo-project\9258Suite\SocketService.Audio\obj\Debug\YoYoStudio.SocketService.Audio.pdb

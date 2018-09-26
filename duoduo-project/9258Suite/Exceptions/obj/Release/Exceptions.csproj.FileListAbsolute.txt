@@ -8,3 +8,9 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Relea
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\Exceptions.csproj.CoreCompileInputs.cache
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Exceptions.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Exceptions.pdb
+F:\repo\duoduo-project\9258Suite\Exceptions\obj\Release\Exceptions.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\Exceptions\obj\Release\Exceptions.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.dll
+F:\repo\duoduo-project\9258Suite\Exceptions\obj\Release\YoYoStudio.Exceptions.pdb

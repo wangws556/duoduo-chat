@@ -18,14 +18,13 @@ namespace YoYoStudio.RoomService.Library
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, ConfigurationName = Const.RoomServiceName, InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public partial class RoomService : WcfService, IRoomService, IDisposable
     {
+        public RoomService()
+        {
+            Initialize();
+        }
         #region Private Members
 
         private UserNCallback unc;
-
-        public RoomService()
-        {
-
-        }
 
         void Channel_Faulted(object sender, EventArgs e)
         {
@@ -566,12 +565,12 @@ namespace YoYoStudio.RoomService.Library
 
         public void VideoStateChanged(int roomId, int state)
         {
-            BroadCast(roomId, u => u.Callback.VideoStateChanged(roomId,unc.User.Id, state), unc.User.Id);
+            BroadCast(roomId, u => u.Callback.VideoStateChangedCallback(roomId,unc.User.Id, state), unc.User.Id);
         }
 
         public void AudioStateChanged(int roomId, int state)
         {
-            BroadCast(roomId, u => u.Callback.AudioStateChanged(roomId, unc.User.Id, state), unc.User.Id);
+            BroadCast(roomId, u => u.Callback.AudioStateChangedCallback(roomId, unc.User.Id, state), unc.User.Id);
         }
 
         public void AudioServiceLogin(string ip, int port)
@@ -630,30 +629,30 @@ namespace YoYoStudio.RoomService.Library
         public void StartMusic(int roomId, int userId, string fileName)
         {
             musicCache[roomId].Name = fileName;
-            BroadCast(roomId, u => u.Callback.StartMusic(roomId, userId, fileName), userId);
+            BroadCast(roomId, u => u.Callback.StartMusicCallback(roomId, userId, fileName), userId);
         }
 
         public void StopMusic(int roomId, int userId)
         {
             musicCache[roomId].Status = PlayStatus.Stoped;
-            BroadCast(roomId, u => u.Callback.StopMusic(roomId, userId), userId);
+            BroadCast(roomId, u => u.Callback.StopMusicCallback(roomId, userId), userId);
         }
 
         public void TogglePauseMusic(int roomId, int userId,bool paused)
         {
             musicCache[roomId].Status = paused ? PlayStatus.Paused : PlayStatus.Playing;
-            BroadCast(roomId, u => u.Callback.TogglePauseMusic(roomId, userId,paused), userId);
+            BroadCast(roomId, u => u.Callback.TogglePauseMusicCallback(roomId, userId,paused), userId);
         }
 
         public void SetPlayPosition(int roomId, int userId, int pos)
         {
             musicCache[roomId].Position = pos;
-            BroadCast(roomId, u => u.Callback.SetPlayPosition(roomId, userId, pos), userId);
+            BroadCast(roomId, u => u.Callback.SetPlayPositionCallback(roomId, userId, pos), userId);
         }
 
         public void SetMusicVolume(int roomId, int userId, int volume)
         {
-            BroadCast(roomId, u => u.Callback.SetMusicVolume(roomId, userId, volume), userId);
+            BroadCast(roomId, u => u.Callback.SetMusicVolumeCallback(roomId, userId, volume), userId);
         }
 
         public MusicStatus GetMusicStatus(int roomId)

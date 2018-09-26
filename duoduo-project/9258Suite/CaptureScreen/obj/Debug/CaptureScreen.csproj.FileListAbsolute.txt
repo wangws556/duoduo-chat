@@ -19,3 +19,13 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureSc
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.csproj.CoreCompileInputs.cache
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\CaptureScreen.dll
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\CaptureScreen.pdb
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\GeneratedInternalTypeHelper.g.cs
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen_MarkupCompile.cache
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen_MarkupCompile.lref
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\Themes\generic.baml
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.g.resources
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.dll
+F:\repo\duoduo-project\9258Suite\CaptureScreen\obj\Debug\CaptureScreen.pdb

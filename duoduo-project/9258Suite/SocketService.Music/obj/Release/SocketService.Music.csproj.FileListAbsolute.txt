@@ -10,3 +10,10 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketSer
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Release\SocketService.Music.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Release\YoYoStudio.SocketService.Music.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\SocketService.Music\obj\Release\YoYoStudio.SocketService.Music.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.SocketService.Music.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.SocketService.Music.pdb
+F:\repo\duoduo-project\9258Suite\SocketService.Music\obj\Release\SocketService.Music.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\SocketService.Music\obj\Release\SocketService.Music.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\SocketService.Music\obj\Release\SocketService.Music.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\SocketService.Music\obj\Release\YoYoStudio.SocketService.Music.dll
+F:\repo\duoduo-project\9258Suite\SocketService.Music\obj\Release\YoYoStudio.SocketService.Music.pdb

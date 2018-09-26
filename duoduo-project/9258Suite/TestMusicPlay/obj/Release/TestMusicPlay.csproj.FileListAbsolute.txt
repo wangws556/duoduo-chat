@@ -101,3 +101,13 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\TestMusic
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\TestMusicPlay\obj\Release\TestMusicPlay.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\TestMusicPlay\obj\Release\TestMusicPlay.exe
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\TestMusicPlay\obj\Release\TestMusicPlay.pdb
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\TestMusicPlay.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\MusicFlexControl.baml
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\VideoFlexControl.baml
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\MainWindow.g.cs
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\MusicFlexControl.g.cs
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\VideoFlexControl.g.cs
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\App.g.cs
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\GeneratedInternalTypeHelper.g.cs
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\TestMusicPlay_MarkupCompile.cache
+F:\repo\duoduo-project\9258Suite\TestMusicPlay\obj\Release\TestMusicPlay_MarkupCompile.lref

@@ -9,3 +9,9 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\bin\Debug
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common.Wcf\obj\Debug\Common.Wcf.csproj.CoreCompileInputs.cache
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common.Wcf\obj\Debug\YoYoStudio.Common.Wcf.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Common.Wcf\obj\Debug\YoYoStudio.Common.Wcf.pdb
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.Wcf.dll
+F:\repo\duoduo-project\9258Suite\bin\Debug\Temp\YoYoStudio.Common.Wcf.pdb
+F:\repo\duoduo-project\9258Suite\Common.Wcf\obj\Debug\Common.Wcf.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\Common.Wcf\obj\Debug\YoYoStudio.Common.Wcf.dll
+F:\repo\duoduo-project\9258Suite\Common.Wcf\obj\Debug\YoYoStudio.Common.Wcf.pdb
+F:\repo\duoduo-project\9258Suite\Common.Wcf\obj\Debug\Common.Wcf.csprojAssemblyReference.cache

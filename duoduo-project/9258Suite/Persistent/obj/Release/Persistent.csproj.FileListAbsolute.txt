@@ -11,3 +11,10 @@ C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persisten
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Release\Persistent.csproj.CopyComplete
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Release\YoYoStudio.Persistent.dll
 C:\Users\ServerAdmin\source\repos\duoduo-chat\duoduo-project\9258Suite\Persistent\obj\Release\YoYoStudio.Persistent.pdb
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Persistent.dll
+F:\repo\duoduo-project\9258Suite\bin\Release\Temp\YoYoStudio.Persistent.pdb
+F:\repo\duoduo-project\9258Suite\Persistent\obj\Release\Persistent.csprojAssemblyReference.cache
+F:\repo\duoduo-project\9258Suite\Persistent\obj\Release\Persistent.csproj.CoreCompileInputs.cache
+F:\repo\duoduo-project\9258Suite\Persistent\obj\Release\Persistent.csproj.CopyComplete
+F:\repo\duoduo-project\9258Suite\Persistent\obj\Release\YoYoStudio.Persistent.dll
+F:\repo\duoduo-project\9258Suite\Persistent\obj\Release\YoYoStudio.Persistent.pdb
