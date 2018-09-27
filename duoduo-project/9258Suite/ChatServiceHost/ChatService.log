@@ -1,0 +1,5 @@
+[Header]%n20180927-05:07:34 [7] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - CanUserLogin : 1
+20180927-05:07:37 [7] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Enter Login : UserId - 1
+20180927-05:07:37 [7] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login
+20180927-05:07:37 [7] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Succeed
+20180927-05:07:37 [7] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Exit
