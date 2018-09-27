@@ -92,7 +92,7 @@ namespace YoYoStudio.SocketService.Udp
             if (shutdownFlag)
             {
                 // create and bind the socket
-                IPEndPoint ipep = new IPEndPoint(IPAddress.Parse(ip), port);
+                IPEndPoint ipep = new IPEndPoint(IPAddress.Any, port);
                 udpSocket = new UdpClient();
                 udpSocket.Client.Bind(ipep);
                 // we're not shutting down, we're starting up
