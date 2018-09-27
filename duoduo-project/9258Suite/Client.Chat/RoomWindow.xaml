@@ -104,8 +104,7 @@
                 </Grid.ColumnDefinitions>
                 <xctk:SplitButton Grid.Column="0"
                                       Content="{Binding ConfigLabel}"
-                                      PopupEnabled="True"
-                                      PopupPlacement="Top"
+                                  DropDownPosition="Top"    
                                       Style="{StaticResource SplitButtonStyle}">
                     <xctk:SplitButton.DropDownContent>
                         <ListBox ItemContainerStyle="{StaticResource ListBoxItemStyle}">
@@ -161,9 +160,9 @@
 
                     <xctk:SplitButton Grid.Column="1"
                                       Command="{Binding OnMicCommandVM.SecureCommand}"
-                                      PopupEnabled="{Binding Me.MicStatus,
+                                      IsEnabled="{Binding Me.MicStatus,
                                                              Converter={StaticResource onMicPopupConverter}}"
-                                      PopupPlacement="Top"
+                                      DropDownPosition="Top"
                                       Style="{StaticResource SplitButtonStyle}">
                     <xctk:SplitButton.Content>
                         <MultiBinding Converter="{StaticResource onMicLabelConverter}">
