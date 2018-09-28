@@ -115,9 +115,14 @@ namespace YoYoStudio.Client.ViewModel
             EnsureImageExist(vm);
             lock (LocalCache.AllImages)
             {
-                if (!LocalCache.AllImages.ContainsKey(img.ImageType_Id)
-                    || !LocalCache.AllImages[img.ImageType_Id].ContainsKey(img.Id))
-                    LocalCache.AllImages[img.ImageType_Id][img.Id] = vm;
+                if (!LocalCache.AllImages.ContainsKey(img.ImageType_Id))
+                {
+                    LocalCache.AllImages[img.ImageType_Id] = new Dictionary<int, ImageViewModel>();
+                }
+                if (!LocalCache.AllImages[img.ImageType_Id].ContainsKey(img.Id))
+                {
+                    LocalCache.AllImages[img.ImageType_Id].Add(img.Id, vm);
+                }
             }            
             return vm;
         }
