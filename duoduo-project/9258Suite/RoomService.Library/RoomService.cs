@@ -22,11 +22,22 @@ namespace YoYoStudio.RoomService.Library
     {
         public static void Configure(ServiceConfiguration config)
         {
-            Initialize();
-            ExeConfigurationFileMap cfMap;
-            cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
-            var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
-            config.LoadFromConfiguration(cf);
+            try
+            {
+                log4net.Config.XmlConfigurator.Configure();
+                logger.Debug($"Room Service start loading configuration {DateTime.Now}");
+                Initialize();
+                ExeConfigurationFileMap cfMap;
+                cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
+                var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
+                config.LoadFromConfiguration(cf);
+                logger.Debug($"Room Service load configuration successfully {DateTime.Now}");
+            }
+            catch(Exception ex)
+            {
+                logger.Error($"Room Service load configuration failed: {ex.Message}");
+                throw;
+            }
         }
         public RoomService()
         {

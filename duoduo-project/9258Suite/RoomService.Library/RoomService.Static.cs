@@ -48,11 +48,9 @@ namespace YoYoStudio.RoomService.Library
         static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         static Timer timer = new Timer(TimeSpan.FromSeconds(40).TotalMilliseconds);
-        private static bool initialized = false;
 
         public static void Initialize()
         {
-            log4net.Config.XmlConfigurator.Configure();
             cache.RefreshCache(null);
             cache.BuildRelationship();
             if (client.RoomLogin())
@@ -85,7 +83,6 @@ namespace YoYoStudio.RoomService.Library
             {
                 throw new Exception("Room Initialize Failed");
             }
-            initialized = true;
 		}
 
         static void InitMicCache(int roomId, MicType micType, int count)

@@ -17,6 +17,7 @@ namespace YoYoStudio.Client.ViewModel
 
         public static ClientCache LoadCache()
         {
+            ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
             long ver = client.GetCacheVersion();
             ClientCache cache = null;
             if (File.Exists(cacheFile))

@@ -1,1 +1,3 @@
-[Header]%n[Footer]%n
+[Header]%n20180929-13:22:12 [10] DEBUG YoYoStudio.RoomService.Library.RoomService [(null)] <(null)> - Room Service start loading configuration 9/29/2018 1:22:12 PM
+20180929-13:22:15 [10] ERROR YoYoStudio.ChatService.Client.ChatServiceCache [(null)] <(null)> - Refresh chat service succeed
+20180929-13:22:15 [10] DEBUG YoYoStudio.RoomService.Library.RoomService [(null)] <(null)> - Room Service load configuration successfully 9/29/2018 1:22:15 PM

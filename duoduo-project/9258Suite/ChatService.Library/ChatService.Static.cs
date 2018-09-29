@@ -27,11 +27,10 @@ namespace YoYoStudio.ChatService.Library
         private static long cacheVersion = 1;
         private const string cacheVersionFile = "Cache.Ver";
         private static Timer timer = new Timer();
-        private static bool initialized = false;
 
 		public static void Initialize()
 		{
-            log4net.Config.XmlConfigurator.Configure();
+            
 			dataServiceClient = new DSClient(ApplicationId);
 			serviceToken = dataServiceClient.Login(BuiltIns._9258Administrator.Id, BuiltIns._9258Administrator.Password);
 			cache = new DataServiceCache(ApplicationId);
@@ -47,7 +46,6 @@ namespace YoYoStudio.ChatService.Library
             }
             File.Delete(cacheVersionFile);
             File.WriteAllText(cacheVersionFile, cacheVersion.ToString());
-            initialized = true;
 		}
 
         static void timer_Elapsed(object sender, ElapsedEventArgs e)

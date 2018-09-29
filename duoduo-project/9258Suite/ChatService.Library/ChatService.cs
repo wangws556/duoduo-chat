@@ -193,11 +193,22 @@ namespace YoYoStudio.ChatService.Library
 
         public static void Configure(ServiceConfiguration config)
         {
-            Initialize();
-            ExeConfigurationFileMap cfMap;
-            cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
-            var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
-            config.LoadFromConfiguration(cf);
+            try
+            {
+                log4net.Config.XmlConfigurator.Configure();
+                logger.Debug($"Chat Service start loading configuration {DateTime.Now}");
+                Initialize();
+                ExeConfigurationFileMap cfMap;
+                cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
+                var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
+                config.LoadFromConfiguration(cf);
+                logger.Debug($"Chat Service load configuration successfully {DateTime.Now}");
+            }
+            catch(Exception ex)
+            {
+                logger.Error($"Chat Service load configuration failed: {ex.Message}");
+                throw;
+            }
         }
 
         [OperationBehavior]
