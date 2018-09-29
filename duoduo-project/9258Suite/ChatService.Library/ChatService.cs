@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -37,10 +39,6 @@ namespace YoYoStudio.ChatService.Library
 	[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.PerSession, ConfigurationName = Const.ChatServiceName)]
 	public partial class ChatService : WcfService, IChatService, IDisposable
 	{
-        public ChatService()
-        {
-            Initialize();
-        }
 		#region Private Members
 
         private UserNCallback unc = null;
@@ -189,9 +187,18 @@ namespace YoYoStudio.ChatService.Library
 			Dispose(false);
 		}
 
-		#endregion
+        #endregion
 
-		#region Service Implementation
+        #region Service Implementation
+
+        public static void Configure(ServiceConfiguration config)
+        {
+            Initialize();
+            ExeConfigurationFileMap cfMap;
+            cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
+            var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
+            config.LoadFromConfiguration(cf);
+        }
 
         [OperationBehavior]
         public bool ScoreExchange(int userId,int scoreToExchange, int moneyToGet)

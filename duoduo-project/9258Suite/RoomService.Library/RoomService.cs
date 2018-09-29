@@ -12,15 +12,24 @@ using YoYoStudio.Model.Chat;
 using YoYoStudio.Model;
 using System.Globalization;
 using YoYoStudio.Model.Media;
+using System.Configuration;
+using System.IO;
 
 namespace YoYoStudio.RoomService.Library
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, ConfigurationName = Const.RoomServiceName, InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public partial class RoomService : WcfService, IRoomService, IDisposable
     {
-        public RoomService()
+        public static void Configure(ServiceConfiguration config)
         {
             Initialize();
+            ExeConfigurationFileMap cfMap;
+            cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
+            var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
+            config.LoadFromConfiguration(cf);
+        }
+        public RoomService()
+        {
         }
         #region Private Members
 

@@ -1,10 +1,11 @@
-[Header]%n20180928-06:14:12 [6] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - CanUserLogin : 1
-20180928-06:14:12 [6] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Enter Login : UserId - 1
-20180928-06:14:12 [6] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login
-20180928-06:14:12 [6] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Succeed
-20180928-06:14:12 [6] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Exit
-20180928-06:34:53 [40] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - CanUserLogin : 1
-20180928-06:34:53 [40] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Enter Login : UserId - 1
-20180928-06:34:54 [40] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login
-20180928-06:34:54 [40] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Succeed
-20180928-06:34:54 [40] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Exit
+[Header]%n20180928-14:45:28 [9] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - CanUserLogin : 1
+20180928-14:45:28 [16] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Enter Login : UserId - 1
+20180928-14:45:28 [16] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login
+20180928-14:45:28 [16] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Succeed
+20180928-14:45:28 [16] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Exit
+20180928-14:55:56 [25] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - CanUserLogin : 1
+20180928-14:55:57 [25] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Enter Login : UserId - 1
+20180928-14:55:57 [25] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login
+20180928-14:55:57 [25] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Succeed
+20180928-14:55:57 [25] DEBUG YoYoStudio.ChatService.Library.ChatService [(null)] <(null)> - Normal Login Exit
+[Footer]%n

@@ -31,8 +31,6 @@ namespace YoYoStudio.ChatService.Library
 
 		public static void Initialize()
 		{
-            if (initialized)
-                return;
             log4net.Config.XmlConfigurator.Configure();
 			dataServiceClient = new DSClient(ApplicationId);
 			serviceToken = dataServiceClient.Login(BuiltIns._9258Administrator.Id, BuiltIns._9258Administrator.Password);

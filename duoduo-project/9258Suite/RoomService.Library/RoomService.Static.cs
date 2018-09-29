@@ -52,8 +52,6 @@ namespace YoYoStudio.RoomService.Library
 
         public static void Initialize()
         {
-            if (initialized)
-                return;
             log4net.Config.XmlConfigurator.Configure();
             cache.RefreshCache(null);
             cache.BuildRelationship();
