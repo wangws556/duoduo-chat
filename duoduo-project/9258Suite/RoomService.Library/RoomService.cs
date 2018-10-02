@@ -160,11 +160,24 @@ namespace YoYoStudio.RoomService.Library
         {
             if (userCache.ContainsKey(roomId))
             {
-				var info = client.GetUserInfo(user.Id);
-                OperationContext.Current.Channel.Faulted += Channel_Faulted;
-                this.unc = new UserNCallback { User = user, RoomId = roomId, Callback = OperationContext.Current.GetCallbackChannel<IRoomServiceCallback>(), UserInfo = info };
-				userCache[roomId][user.Id] = unc;
-                BroadCast(roomId, (u) => u.Callback.UserEnteredRoom(roomId, unc.User),user.Id);
+                ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
+                try
+                {
+                    var info = client.GetUserInfo(user.Id);
+                    OperationContext.Current.Channel.Faulted += Channel_Faulted;
+                    this.unc = new UserNCallback { User = user, RoomId = roomId, Callback = OperationContext.Current.GetCallbackChannel<IRoomServiceCallback>(), UserInfo = info };
+                    userCache[roomId][user.Id] = unc;
+                    BroadCast(roomId, (u) => u.Callback.UserEnteredRoom(roomId, unc.User), user.Id);
+                }
+                catch(Exception ex)
+                {
+                    logger.Error("RoomServer enter room failed: " + ex.Message);
+                    throw;
+                }
+                finally
+                {
+                    client.Close();
+                }
                 return true;
             }
             return false;
@@ -179,17 +192,30 @@ namespace YoYoStudio.RoomService.Library
                 {
                     if (cache.HasCommand(roomId, cmdId, unc.User.Id, unc.UserInfo.Role_Id, other.UserInfo.Role_Id))
                     {
-                        if (client.ExecuteCommand(roomId, cmdId, unc.User.Id, targetUserId))
+                        ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
+                        try
                         {
-                            if (Applications._9258App.CommandNeedsBroadcast(cmdId))
+                            if (client.ExecuteCommand(roomId, cmdId, unc.User.Id, targetUserId))
                             {
-                                BroadCast(roomId, u => u.Callback.CommandMessageReceived(roomId, cmdId, unc.User.Id, targetUserId), unc.User.Id);
+                                if (Applications._9258App.CommandNeedsBroadcast(cmdId))
+                                {
+                                    BroadCast(roomId, u => u.Callback.CommandMessageReceived(roomId, cmdId, unc.User.Id, targetUserId), unc.User.Id);
+                                }
+                                else
+                                {
+                                    other.Callback.CommandMessageReceived(roomId, cmdId, unc.User.Id, targetUserId);
+                                }
+                                return true;
                             }
-                            else
-                            {
-                                other.Callback.CommandMessageReceived(roomId, cmdId, unc.User.Id, targetUserId);
-                            }
-                            return true;
+                        }
+                        catch(Exception ex)
+                        {
+                            logger.Error($"RoomServer room {roomId} execute command {roomId} targetUserId {targetUserId} failed: {ex.Message}");
+                            throw;
+                        }
+                        finally
+                        {
+                            client.Close();
                         }
                     }
                 }
@@ -259,7 +285,20 @@ namespace YoYoStudio.RoomService.Library
                     }
                         break;
                 case RoomMessageType.HornMessage:
-                    result = client.SendHornMessage(roomId, unc.User.Id, Applications._9258App.FrontendCommands.HornCommandId);
+                    ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
+                    try
+                    {
+                        result = client.SendHornMessage(roomId, unc.User.Id, Applications._9258App.FrontendCommands.HornCommandId);
+                    }
+                    catch(Exception ex)
+                    {
+                        logger.Error($"HornMessage failed: {ex.Message}");
+                        throw;
+                    }
+                    finally
+                    {
+                        client.Close();
+                    }
                     message.MsgResult = result;
                       if (result == MessageResult.Succeed)
                     {
@@ -285,7 +324,20 @@ namespace YoYoStudio.RoomService.Library
                         unc.Callback.RoomMessageReceived(roomId, message);
                     break;
                 case RoomMessageType.HallHornMessage:
-                    result = client.SendHornMessage(roomId, unc.User.Id, Applications._9258App.FrontendCommands.HallHornCommandId);
+                    ChatServiceClient client2 = new ChatServiceClient(new ChatServiceCallback());
+                    try
+                    {
+                        result = client2.SendHornMessage(roomId, unc.User.Id, Applications._9258App.FrontendCommands.HallHornCommandId);
+                    }
+                    catch(Exception ex)
+                    {
+                        logger.Error($"HallHornMessage failed: {ex.Message}");
+                        throw;
+                    }
+                    finally
+                    {
+                        client2.Close();
+                    }
                     message.MsgResult = result;
                     if (result == MessageResult.Succeed)
                     {
@@ -319,7 +371,20 @@ namespace YoYoStudio.RoomService.Library
                         unc.Callback.RoomMessageReceived(roomId, message);
                     break;
                 case RoomMessageType.GlobalHornMessage:
-                    result = client.SendHornMessage(roomId, unc.User.Id, Applications._9258App.FrontendCommands.GlobalHornCommandId);
+                    ChatServiceClient client3 = new ChatServiceClient(new ChatServiceCallback());
+                    try
+                    {
+                        result = client3.SendHornMessage(roomId, unc.User.Id, Applications._9258App.FrontendCommands.GlobalHornCommandId);
+                    }
+                    catch(Exception ex)
+                    {
+                        logger.Error($"GlobalHornMessage failed: {ex.Message}");
+                        throw;
+                    }
+                    finally
+                    {
+                        client3.Close();
+                    }
                     message.MsgResult = result;
                     if (result == MessageResult.Succeed)
                     {
@@ -467,13 +532,26 @@ namespace YoYoStudio.RoomService.Library
         {
             if (!unc.UserInfo.Score.HasValue || unc.UserInfo.Score < scoreToExchange)
                 return false;
-            if (client.ScoreExchange(userId, scoreToExchange, moneyToGet))
+            ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
+            try
             {
-                unc.UserInfo.Score -= scoreToExchange;
-                if (!unc.UserInfo.Money.HasValue)
-                    unc.UserInfo.Money = 0;
-                unc.UserInfo.Money += moneyToGet;
-                return true;
+                if (client.ScoreExchange(userId, scoreToExchange, moneyToGet))
+                {
+                    unc.UserInfo.Score -= scoreToExchange;
+                    if (!unc.UserInfo.Money.HasValue)
+                        unc.UserInfo.Money = 0;
+                    unc.UserInfo.Money += moneyToGet;
+                    return true;
+                }
+            }
+            catch(Exception ex)
+            {
+                logger.Error($"ScoreExchange failed: {ex.Message}");
+                throw;
+            }
+            finally
+            {
+                client.Close();
             }
             return false;
         }
@@ -501,7 +579,20 @@ namespace YoYoStudio.RoomService.Library
 					}
 					else
 					{
-						result = client.SendGift(roomId, unc.User.Id, receiverId, giftId, count);
+                        ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
+                        try
+                        {
+                            result = client.SendGift(roomId, unc.User.Id, receiverId, giftId, count);
+                        }
+                        catch(Exception ex)
+                        {
+                            logger.Error($"SendGift failed: {ex.Message}");
+                            throw;
+                        }
+                        finally
+                        {
+                            client.Close();
+                        }
 						if (result == SendGiftResult.Succeed)
 						{
 							unc.UserInfo.Money -= gift.Price * count;
