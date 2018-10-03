@@ -29,7 +29,7 @@ namespace YoYoStudio.RoomService.Library
 		static int applicationId = BuiltIns._9258ChatApplication.Id;
         static ChatServiceCache cache = new ChatServiceCache();
         static ChatServiceCallback callback = new ChatServiceCallback();
-        static ChatServiceClient client = new ChatServiceClient(callback);
+        //static ChatServiceClient client = new ChatServiceClient(callback);
         //roomId, userId, 
         static SafeDictionary<int, SafeDictionary<int, UserNCallback>> userCache = new SafeDictionary<int, SafeDictionary<int, UserNCallback>>();
         static SafeDictionary<int, SafeDictionary<MicType, SafeDictionary<int, MicStatusMessage>>> micCache = new SafeDictionary<int, SafeDictionary<MicType, SafeDictionary<int, MicStatusMessage>>>();
@@ -53,6 +53,8 @@ namespace YoYoStudio.RoomService.Library
         {
             cache.RefreshCache(null);
             cache.BuildRelationship();
+            ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
+
             if (client.RoomLogin())
             {
                 var rooms = cache.Rooms;
@@ -81,9 +83,11 @@ namespace YoYoStudio.RoomService.Library
             }
             else
             {
+                logger.Error("Room Initialize Failed because RoomLogin return false ");
                 throw new Exception("Room Initialize Failed");
             }
-		}
+            client.Close();
+        }
 
         static void InitMicCache(int roomId, MicType micType, int count)
         {
@@ -105,7 +109,20 @@ namespace YoYoStudio.RoomService.Library
 			{
 				roomUserCount.Add(pair.Key,pair.Value.Count);
 			}
-			client.UpdateRoomOnlineUserCount(roomUserCount);
+            ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
+            try
+            {
+                client.UpdateRoomOnlineUserCount(roomUserCount);
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Update room online user count failed: " + ex.Message);
+                throw;
+            }
+            finally
+            {
+                client.Close();
+            }
         }
 
 		static MicStatusMessage GetUserMicStatus(int roomId, int userId, MicType micType)
