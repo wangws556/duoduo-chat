@@ -643,7 +643,18 @@ namespace YoYoStudio.Client.ViewModel
 
         private void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            RoomClient.KeepAlive();
+            try
+            {
+                RoomClient.KeepAlive();
+            }
+            catch (Exception ex)
+            {
+                if(RoomClient.State == CommunicationState.Faulted)
+                {
+                    RoomClient.Close();
+                    RoomClient = new RoomServiceClient(RoomCallback, RoomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
+                }
+            }
         }
 
         protected override void ReleaseManagedResource()
