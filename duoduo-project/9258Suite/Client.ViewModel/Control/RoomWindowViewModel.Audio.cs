@@ -211,7 +211,8 @@ namespace YoYoStudio.Client.ViewModel
                     try
                     {
                         audioClient.Send(loginBytes, loginBytes.Length);
-                        IPEndPoint serverEndPoint = null;
+                        //IPEndPoint serverEndPoint = null;
+                        IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Any, 0);
                         var bytes = audioClient.Receive(ref serverEndPoint);
                         UdpPacket p = UdpPacket.FromBytes(bytes);
                         if (p.PacketType == UdpPacketType.LoginSucceed)

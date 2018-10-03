@@ -71,17 +71,14 @@ namespace YoYoStudio.Client.ViewModel
                             }
                         }
                     }
-                    catch (TimeoutException exception)
+                    catch (Exception exception)
                     {
-                        Logger.Debug("Enter room fail: " + exception.Message);
-                    }
-                    catch (FaultException exception)
-                    {
-                        Logger.Debug("Enter room fail: " + exception.Message);
-                    }
-                    catch (CommunicationException exception)
-                    {
-                        Logger.Debug("Enter room fail: " + exception.Message);
+                        Logger.Debug("UpdateOnlineUserCount failed: " + exception.Message);
+                        if(ChatClient.State == CommunicationState.Faulted)
+                        {
+                            ChatClient.Close();
+                            ChatClient = new ChatServiceClient(new ChatServiceCallback());
+                        }
                     }
                 }
             }
