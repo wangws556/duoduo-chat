@@ -20,25 +20,25 @@ namespace YoYoStudio.RoomService.Library
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, ConfigurationName = Const.RoomServiceName, InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
     public partial class RoomService : WcfService, IRoomService, IDisposable
     {
-        public static void Configure(ServiceConfiguration config)
-        {
-            try
-            {
-                log4net.Config.XmlConfigurator.Configure();
-                logger.Debug($"Room Service start loading configuration {DateTime.Now}");
-                Initialize();
-                ExeConfigurationFileMap cfMap;
-                cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
-                var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
-                config.LoadFromConfiguration(cf);
-                logger.Debug($"Room Service load configuration successfully {DateTime.Now}");
-            }
-            catch(Exception ex)
-            {
-                logger.Error($"Room Service load configuration failed: {ex.Message}");
-                throw;
-            }
-        }
+        //public static void Configure(ServiceConfiguration config)
+        //{
+        //    try
+        //    {
+        //        log4net.Config.XmlConfigurator.Configure();
+        //        logger.Debug($"Room Service start loading configuration {DateTime.Now}");
+        //        Initialize();
+        //        ExeConfigurationFileMap cfMap;
+        //        cfMap = new ExeConfigurationFileMap() { ExeConfigFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "web.config") };
+        //        var cf = ConfigurationManager.OpenMappedExeConfiguration(cfMap, ConfigurationUserLevel.None);
+        //        config.LoadFromConfiguration(cf);
+        //        logger.Debug($"Room Service load configuration successfully {DateTime.Now}");
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        logger.Error($"Room Service load configuration failed: {ex.Message}");
+        //        throw;
+        //    }
+        //}
         public RoomService()
         {
         }
