@@ -11,8 +11,9 @@ namespace YoYoStudio.RoomService.Client
 	{
 		public static string GetServiceAddress(string ip, int port)
 		{
-			return "net.tcp://" + ip+ ":" + port + "/Service.svc";
-		}
+            //return "net.tcp://" + ip+ ":" + port + "/Service.svc";
+            return "net.tcp://" + ip + ":" + port + "/RoomService";
+        }
 
 		public RoomServiceClient(IRoomServiceCallback callback, string serviceIp, int port)
 			:this(new System.ServiceModel.InstanceContext(callback),Const.RoomServiceName,
