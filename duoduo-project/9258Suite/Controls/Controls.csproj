@@ -38,7 +38,7 @@
     </Reference>
     <Reference Include="Interop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
       <HintPath>.\Interop.ShockwaveFlashObjects.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
