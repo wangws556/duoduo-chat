@@ -29,7 +29,7 @@ namespace YoYoStudio.RoomService.Library
 		static int applicationId = BuiltIns._9258ChatApplication.Id;
         static ChatServiceCache cache = new ChatServiceCache();
         static ChatServiceCallback callback = new ChatServiceCallback();
-        //static ChatServiceClient client = new ChatServiceClient(callback);
+        static ChatServiceClient client = new ChatServiceClient(callback);
         //roomId, userId, 
         static SafeDictionary<int, SafeDictionary<int, UserNCallback>> userCache = new SafeDictionary<int, SafeDictionary<int, UserNCallback>>();
         static SafeDictionary<int, SafeDictionary<MicType, SafeDictionary<int, MicStatusMessage>>> micCache = new SafeDictionary<int, SafeDictionary<MicType, SafeDictionary<int, MicStatusMessage>>>();
@@ -53,7 +53,6 @@ namespace YoYoStudio.RoomService.Library
         {
             cache.RefreshCache(null);
             cache.BuildRelationship();
-            ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
 
             if (client.RoomLogin())
             {
@@ -84,6 +83,7 @@ namespace YoYoStudio.RoomService.Library
             else
             {
                 logger.Error("Room Initialize Failed because RoomLogin return false ");
+                client.Close();
                 throw new Exception("Room Initialize Failed");
             }
             client.Close();
@@ -103,13 +103,12 @@ namespace YoYoStudio.RoomService.Library
 
         static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            //client.KeepAlive();
+            client.KeepAlive();
 			Dictionary<int, int> roomUserCount = new Dictionary<int,int>();
 			foreach(var pair in userCache)
 			{
 				roomUserCount.Add(pair.Key,pair.Value.Count);
 			}
-            ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
             try
             {
                 client.UpdateRoomOnlineUserCount(roomUserCount);
@@ -117,11 +116,9 @@ namespace YoYoStudio.RoomService.Library
             catch (Exception ex)
             {
                 logger.Error("Update room online user count failed: " + ex.Message);
-                throw;
             }
             finally
             {
-                client.Close();
             }
         }
 

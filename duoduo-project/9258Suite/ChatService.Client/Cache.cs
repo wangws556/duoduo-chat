@@ -14,9 +14,10 @@ namespace YoYoStudio.ChatService.Client
     public class ChatServiceCache : Cache
     {
         private static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        protected static ChatServiceClient client;
         static ChatServiceCache()
         {
-            //client = new ChatServiceClient(new ChatServiceCallback());
+            client = new ChatServiceClient(new ChatServiceCallback());
         }
 
         public ChatServiceCache()
@@ -43,9 +44,7 @@ namespace YoYoStudio.ChatService.Client
         {
             return Task.Factory.StartNew(() =>
                 {
-                    ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                     ExchangeRates = client.GetExchangeRates().ToList();
-                    client.Close();
                 });
         }
 
@@ -53,10 +52,8 @@ namespace YoYoStudio.ChatService.Client
         {
             return Task.Factory.StartNew(() =>
                 {
-                    ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                     RoomGroups = client.GetRoomGroups().ToList();
                     Rooms = client.GetRooms().Where(r=>r.RoomGroup_Id.HasValue && r.RoomGroup_Id.Value >0).ToList();
-                    client.Close();
                 });
         }
 
@@ -64,10 +61,8 @@ namespace YoYoStudio.ChatService.Client
         {
             return Task.Factory.StartNew(() =>
                 {
-                    ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                     GiftGroups = client.GetGiftGroups().ToList();
                     Gifts = client.GetGifts().ToList();
-                    client.Close();
                 });
         }
 
@@ -75,10 +70,8 @@ namespace YoYoStudio.ChatService.Client
         {
             return Task.Factory.StartNew(() =>
             {
-                ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                 Roles = client.GetRoles().ToList();
                 RoleCommands = client.GetRoleCommands().ToList();
-                client.Close();
             });
         }
 
@@ -86,7 +79,6 @@ namespace YoYoStudio.ChatService.Client
         {
             return Task.Factory.StartNew(() =>
                 {
-                    ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                     int imgCount = client.GetImageCount();
 					Images = new List<Model.Core.ImageWithoutBody>();
                     if (imgCount > 0)
@@ -105,7 +97,6 @@ namespace YoYoStudio.ChatService.Client
                             Images.AddRange(client.GetImages(start, left));
                         }
                     }
-                    client.Close();
                 });
         }
 
@@ -113,7 +104,6 @@ namespace YoYoStudio.ChatService.Client
         {
             return Task.Factory.StartNew(() =>
                 {
-                    ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                     int roomRoleCount = client.GetRoomRoleCount();
 					RoomRoles = new List<Model.Chat.RoomRole>();
                     if (roomRoleCount > 0)
@@ -132,7 +122,6 @@ namespace YoYoStudio.ChatService.Client
                             RoomRoles.AddRange(client.GetRoomRoles(start, left));
                         }
                     }
-                    client.Close();
                 });
         }
 
@@ -140,10 +129,8 @@ namespace YoYoStudio.ChatService.Client
         {
             return Task.Factory.StartNew(() =>
             {
-                ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                 Commands = client.GetCommands().ToList();
                 BlockTypes = client.GetBlockTypes().ToList();
-                client.Close();
             });
         }
 
