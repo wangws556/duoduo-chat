@@ -37,7 +37,7 @@ namespace YoYoStudio.Client.ViewModel
 
             timer = new System.Windows.Threading.DispatcherTimer(System.Windows.Threading.DispatcherPriority.Background);
             timer.Tick += new EventHandler(timer_Elapsed);
-            timer.Interval = TimeSpan.FromSeconds(10);
+            timer.Interval = TimeSpan.FromSeconds(30);
             worker.RunWorkerAsync();
 		}
 
