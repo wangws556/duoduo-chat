@@ -103,7 +103,7 @@ namespace YoYoStudio.Client.ViewModel
                     RegisterEvents();
                     timer = new Timer(TimeSpan.FromSeconds(20).TotalMilliseconds);
                     timer.Elapsed += timer_Elapsed;
-                    //timer.Start();
+                    timer.Start();
                     Messenger.Default.Send<EnumNotificationMessage<object, HallWindowAction>>(new EnumNotificationMessage<object, HallWindowAction>(HallWindowAction.EnterRoomSucceeded, this));
                 }
                 else
