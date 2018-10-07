@@ -1,0 +1,9 @@
+{
+	"compilerOptions": {
+		"output": "bin/FlexMedia.swf"
+	},
+	"files":
+	[
+		"src/FlexMedia.mxml"
+	]
+}

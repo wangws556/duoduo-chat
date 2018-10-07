@@ -47,7 +47,7 @@ namespace YoYoStudio.RoomService.Library
 
         static ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        static Timer timer = new Timer(TimeSpan.FromSeconds(40).TotalMilliseconds);
+        static Timer timer = new Timer(TimeSpan.FromSeconds(120).TotalMilliseconds);
 
         public static void Initialize()
         {
@@ -78,7 +78,7 @@ namespace YoYoStudio.RoomService.Library
                     }
                 }
                 timer.Elapsed += timer_Elapsed;
-                timer.Start();
+                //timer.Start();
             }
             else
             {
@@ -103,7 +103,7 @@ namespace YoYoStudio.RoomService.Library
 
         static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            client.KeepAlive();
+            //updateClient.KeepAlive();
 			Dictionary<int, int> roomUserCount = new Dictionary<int,int>();
 			foreach(var pair in userCache)
 			{
@@ -119,6 +119,7 @@ namespace YoYoStudio.RoomService.Library
             }
             finally
             {
+         
             }
         }
 
