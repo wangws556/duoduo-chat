@@ -100,6 +100,7 @@ namespace YoYoStudio.Client.Chat
         {
             AudioWindowViewModel audioVM = new AudioWindowViewModel();
             AudioWindow aw = new AudioWindow(audioVM);
+            aw.Show();
             aw.Visibility = Visibility.Hidden;
             aw.ShowInTaskbar = false;
         }

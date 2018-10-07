@@ -51,6 +51,19 @@ namespace YoYoStudio.Client.Chat
 
         }
 
+        protected override void OnClosed(EventArgs e)
+        {
+            ac.FlashCallback -= audioControl_FlashCallback;
+            ac.Dispose();
+            base.OnClosed(e);
+        }
+
+        public override void Dispose()
+        {
+            ac.Dispose();
+            base.Dispose();
+        }
+
         protected override void ProcessMessage(EnumNotificationMessage<object, AudioWindowAction> message)
         {
             switch (message.Action)

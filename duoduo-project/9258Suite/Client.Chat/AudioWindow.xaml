@@ -7,6 +7,6 @@
         Height="300" Width="300"
         x:TypeArguments="vm:AudioWindowAction">
     <Grid>
-        <ctls:AudioControl x:Name="ac" DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=Window}}"></ctls:AudioControl>
+        <ctls:AudioControl x:Name="ac"></ctls:AudioControl>
     </Grid>
 </local:WindowBase>
