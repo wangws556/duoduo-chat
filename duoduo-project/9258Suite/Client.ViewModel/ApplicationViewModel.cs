@@ -40,6 +40,7 @@ namespace YoYoStudio.Client.ViewModel
 		public string Root { get; private set; }
 		public string FlexFile { get; private set; }
         public string MusicFlexFile { get; private set; }
+        public string AudioFlexFile { get; private set; }
 
         public event Action<List<RoomViewModel>> OnlineUserCountChangedEvent;
 
@@ -52,6 +53,7 @@ namespace YoYoStudio.Client.ViewModel
 			Root = Environment.CurrentDirectory;
 			FlexFile = Path.Combine(Root, Const.FlexFile);
             MusicFlexFile = Path.Combine(Root, Const.MusicFlexFile);
+            AudioFlexFile = Path.Combine(Root, Const.AudioFlexFile);
             ApplicationName = "9258";
             ProfileVM = Singleton<ProfileViewModel>.Instance;
             LocalCache = Singleton<LocalCache>.Instance;

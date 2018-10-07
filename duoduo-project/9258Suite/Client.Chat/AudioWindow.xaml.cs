@@ -31,7 +31,7 @@ namespace YoYoStudio.Client.Chat
             }
             DataContext = audioVM;
             InitializeComponent();
-            ac.MoviePath = audioVM.MusicFlexPath;
+            ac.MoviePath = audioVM.AudioFlexPath;
             ac.FlashCallback += audioControl_FlashCallback;
         }
 
