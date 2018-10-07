@@ -160,7 +160,6 @@ namespace YoYoStudio.RoomService.Library
         {
             if (userCache.ContainsKey(roomId))
             {
-                ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
                 try
                 {
                     var info = client.GetUserInfo(user.Id);
@@ -172,11 +171,7 @@ namespace YoYoStudio.RoomService.Library
                 catch(Exception ex)
                 {
                     logger.Error("RoomServer enter room failed: " + ex.Message);
-                    throw;
-                }
-                finally
-                {
-                    client.Close();
+                    return false;
                 }
                 return true;
             }

@@ -78,15 +78,13 @@ namespace YoYoStudio.RoomService.Library
                     }
                 }
                 timer.Elapsed += timer_Elapsed;
-                //timer.Start();
+                timer.Start();
             }
             else
             {
                 logger.Error("Room Initialize Failed because RoomLogin return false ");
-                client.Close();
                 throw new Exception("Room Initialize Failed");
             }
-            client.Close();
         }
 
         static void InitMicCache(int roomId, MicType micType, int count)
@@ -103,7 +101,7 @@ namespace YoYoStudio.RoomService.Library
 
         static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            //updateClient.KeepAlive();
+            //client.KeepAlive();
 			Dictionary<int, int> roomUserCount = new Dictionary<int,int>();
 			foreach(var pair in userCache)
 			{
