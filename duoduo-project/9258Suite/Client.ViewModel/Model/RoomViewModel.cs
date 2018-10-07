@@ -34,7 +34,7 @@ namespace YoYoStudio.Client.ViewModel
             name.SetValue(room.Name);
             RoomGroupId = room.RoomGroup_Id.HasValue ? room.RoomGroup_Id.Value : -1;
             serviceIp.SetValue(room.ServiceIp);
-            rtmpUrl.SetValue("rtmp://" + ServiceIp + "/live");
+            rtmpUrl.SetValue("rtmp://" + ServiceIp + "/oflaDemo");
             MaxUserCount = room.MaxUserCount.Value;
             Enabled = room.Enabled.HasValue ? room.Enabled.Value : false;
         }
