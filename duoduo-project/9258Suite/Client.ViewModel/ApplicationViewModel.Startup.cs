@@ -30,7 +30,7 @@ namespace YoYoStudio.Client.ViewModel
                 };
             worker.RunWorkerCompleted += (s, e) =>
                 {
-                    timer.Start();
+                    //timer.Start();
                     Messenger.Default.Send<EnumNotificationMessage<object, LoginWindowAction>>(
                         new EnumNotificationMessage<object, LoginWindowAction>(LoginWindowAction.CacheLoaded));
                 };

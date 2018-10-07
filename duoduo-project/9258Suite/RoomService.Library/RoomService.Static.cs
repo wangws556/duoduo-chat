@@ -78,7 +78,7 @@ namespace YoYoStudio.RoomService.Library
                     }
                 }
                 timer.Elapsed += timer_Elapsed;
-                timer.Start();
+                //timer.Start();
             }
             else
             {
@@ -103,7 +103,6 @@ namespace YoYoStudio.RoomService.Library
 
         static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            ChatServiceClient updateClient = new ChatServiceClient(new ChatServiceCallback());
             //updateClient.KeepAlive();
 			Dictionary<int, int> roomUserCount = new Dictionary<int,int>();
 			foreach(var pair in userCache)
@@ -112,7 +111,7 @@ namespace YoYoStudio.RoomService.Library
 			}
             try
             {
-                updateClient.UpdateRoomOnlineUserCount(roomUserCount);
+                client.UpdateRoomOnlineUserCount(roomUserCount);
             }
             catch (Exception ex)
             {
@@ -120,11 +119,7 @@ namespace YoYoStudio.RoomService.Library
             }
             finally
             {
-                if(updateClient.State != System.ServiceModel.CommunicationState.Faulted
-                    || updateClient.State != System.ServiceModel.CommunicationState.Closed)
-                {
-                    updateClient.Close();
-                }
+         
             }
         }
 
