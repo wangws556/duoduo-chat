@@ -87,11 +87,11 @@ namespace YoYoStudio.Client.Chat
             CreateVideoWindow(videoBorder2, roomWindowVM.SecondVideoWindowVM);
             CreateVideoWindow(videoBorder3, roomWindowVM.ThirdVideoWindowVM);
             webWindow = CreateWebWindow() as WebWindow;
-            Task.Factory.StartNew(() =>
-                {
-                    roomWindowVM.InitializeAudio();
+            //Task.Factory.StartNew(() =>
+            //    {
+            //        roomWindowVM.InitializeAudio();
                     
-                });
+            //    });
             //InitMusicWindow();
         }
 
