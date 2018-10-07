@@ -370,6 +370,7 @@
 		<![CDATA[
 			private function init():void
 			{
+				
 				takePictureButton.setStyle("icon", takePictureImage);
 				zoomVideoButton.setStyle("icon",zoomVideoImage);
 				/*zoomInButton.setStyle("icon",zoomInImage);
@@ -563,7 +564,7 @@
 			
 			protected function playHandler(event:MouseEvent):void
 			{
-				connectRtmp("rtmp://61.147.119.252/oflaDemo");
+				connectRtmp(rtmpServerUri);
 			}
 			
 			protected function publishHandler(event:MouseEvent):void
