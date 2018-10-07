@@ -90,9 +90,18 @@ namespace YoYoStudio.Client.Chat
             //Task.Factory.StartNew(() =>
             //    {
             //        roomWindowVM.InitializeAudio();
-                    
+
             //    });
             //InitMusicWindow();
+            ConnectLiveRtmp();
+        }
+
+        private void ConnectLiveRtmp()
+        {
+            AudioWindowViewModel audioVM = new AudioWindowViewModel();
+            AudioWindow aw = new AudioWindow(audioVM);
+            aw.Visibility = Visibility.Hidden;
+            aw.ShowInTaskbar = false;
         }
 
         private Window CreateWebWindow()

@@ -94,6 +94,8 @@
     <Compile Include="ClientCache.cs" />
     <Compile Include="Configuration\SecurityConfigurationViewModel.generated.cs" />
     <Compile Include="Control\AgentPortalWindowViewModel.generated.cs" />
+    <Compile Include="Control\AudioWindowViewModel.cs" />
+    <Compile Include="Control\AudioWindowViewModel.generated.cs" />
     <Compile Include="Control\CameraWindowViewModel.cs" />
     <Compile Include="CodeGen\EnvDTE.cs" />
     <Compile Include="CodeGen\EnvDTE1.cs">

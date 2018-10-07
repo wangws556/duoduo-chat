@@ -26,7 +26,7 @@ namespace YoYoStudio.Client.ViewModel
     [SnippetPropertyINPC(field = "reserveRoom", property = "ReserveRoom", type = "string", defaultValue = "string.Empty")]
     [SnippetPropertyINPC(field = "recommendRoom", property = "RecommendRoom", type = "string", defaultValue = "string.Empty")]
     [SnippetPropertyINPC(field = "roomHeader", property = "RoomHeader", type = "string", defaultValue = "string.Empty")]
-	public partial class RoomViewModel : ImagedEntityViewModel
+    public partial class RoomViewModel : ImagedEntityViewModel
 	{
         public RoomViewModel(Room room)
             : base(room)
