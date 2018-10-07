@@ -59,6 +59,7 @@ namespace YoYoStudio.Client.Chat.Controls
                     {
                         if (args[0] == FlexStatusStrings.ConnectSucceed)
                         {
+                            RtmpConnectSuccessful();
                             //the connection has been setup with Red5
                             if (vm != null)
                             {
@@ -110,6 +111,13 @@ namespace YoYoStudio.Client.Chat.Controls
             {
                 FlashCallback(cmd, args);
             }
+        }
+
+        private void RtmpConnectSuccessful()
+        {
+            AudioWindowViewModel vm = DataContext as AudioWindowViewModel;
+            CallFlash(FlexCommand.Connect,
+                vm.RoomWindowVM.RoomVM.RoomAudioStreamId);
         }
 
         public string[] CallFlash(FlexCommand cmd, params string[] args)
