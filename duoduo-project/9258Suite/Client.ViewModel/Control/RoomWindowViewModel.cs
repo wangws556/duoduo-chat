@@ -778,7 +778,11 @@ namespace YoYoStudio.Client.ViewModel
 
         private void SetVideoSize()
         {
-            if (SystemParameters.FullPrimaryScreenWidth == 1920)
+            if (SystemParameters.FullPrimaryScreenWidth == 2048)
+            {
+                VideoWidth = SystemParameters.FullPrimaryScreenWidth / 5;
+            }
+            else if (SystemParameters.FullPrimaryScreenWidth == 1920)
             {
                 VideoWidth = SystemParameters.FullPrimaryScreenWidth / 5;
                 
