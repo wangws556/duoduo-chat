@@ -398,6 +398,14 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="PlayAudio32.bat" />
+    <None Include="PlayAudio64.bat" />
+    <None Include="PublishAudio32.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="PublishAudio64.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ToFLV32.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,1 @@
+ffmpeg\system32\ffmpeg -f dshow -i audio="%1" -b 600k  -ab 128k -f flv "%2"

@@ -516,3 +516,4 @@ D:\TFS\duoduo-chat\duoduo-project\9258Suite\WpfToolkit\Xceed.Wpf.Toolkit\obj\Deb
 D:\TFS\duoduo-chat\duoduo-project\9258Suite\WpfToolkit\Xceed.Wpf.Toolkit\obj\Debug\Xceed.Wpf.Toolkit.csproj.CoreCompileInputs.cache
 D:\TFS\duoduo-chat\duoduo-project\9258Suite\WpfToolkit\Xceed.Wpf.Toolkit\obj\Debug\Xceed.Wpf.Toolkit.dll
 D:\TFS\duoduo-chat\duoduo-project\9258Suite\WpfToolkit\Xceed.Wpf.Toolkit\obj\Debug\Xceed.Wpf.Toolkit.pdb
+D:\TFS\duoduo-chat\duoduo-project\9258Suite\WpfToolkit\Xceed.Wpf.Toolkit\obj\Debug\Xceed.Wpf.Toolkit.csprojAssemblyReference.cache

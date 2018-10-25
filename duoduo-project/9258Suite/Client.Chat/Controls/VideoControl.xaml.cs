@@ -263,11 +263,13 @@ namespace YoYoStudio.Client.Chat.Controls
                                     case FlexCallbackCommandNames.AV_State_Normal:
                                         if (uvm.IsMe())
                                         {
-                                            uvm.RoomWindowVM.StartAudioRecording();
+                                            //uvm.RoomWindowVM.StartAudioRecording();
+                                            uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName,uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         }
                                         else
                                         {
-                                            uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                            //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         }
                                          playBack.Start();
                                         spectrumAnalyzer.Visibility = System.Windows.Visibility.Visible;
@@ -275,11 +277,13 @@ namespace YoYoStudio.Client.Chat.Controls
                                     case FlexCallbackCommandNames.AV_State_Paused:
                                         if (uvm.IsMe())
                                         {
-                                            uvm.RoomWindowVM.PauseAudioRecording();
+                                            //uvm.RoomWindowVM.PauseAudioRecording();
+                                            uvm.RoomWindowVM.StopAudioPublish();
                                         }
                                         else
                                         {
-                                            uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
+                                            //uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
+                                            uvm.RoomWindowVM.StopAudioPlay();
                                         }
                                         playBack.Stop();
                                         spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
@@ -287,11 +291,13 @@ namespace YoYoStudio.Client.Chat.Controls
                                     case FlexCallbackCommandNames.AV_State_Resumed:
                                         if (uvm.IsMe())
                                         {
-                                            uvm.RoomWindowVM.StartAudioRecording();
+                                            //uvm.RoomWindowVM.StartAudioRecording();
+                                            uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         }
                                         else
                                         {
-                                            uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                            //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         }
                                         playBack.Start();
                                         spectrumAnalyzer.Visibility = System.Windows.Visibility.Visible;
@@ -346,6 +352,7 @@ namespace YoYoStudio.Client.Chat.Controls
                 {
                     if (oldS != MicStatusMessage.MicStatus_Off)
                     {
+                        Utility.StopPublishAudio();
                         playBack.Stop();
                         spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
                         if (uvm != null)
@@ -438,18 +445,20 @@ namespace YoYoStudio.Client.Chat.Controls
                                 {
                                     case FlexCallbackCommandNames.AV_State_Normal:
                                         CallFlash(FlexCommand.PublishAudio);
-                                        uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                        
+                                        //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                        uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
+
                                         break;
                                     case FlexCallbackCommandNames.AV_State_Paused:
                                         CallFlash(FlexCommand.PauseAudio);
-                                        uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
+                                        //uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
+                                        uvm.RoomWindowVM.StopAudioPlay();
                                         
                                         break;
                                     case FlexCallbackCommandNames.AV_State_Resumed:
                                         CallFlash(FlexCommand.ResumeAudio);
-                                        uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                          
+                                        //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                        uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         break;
                                     default:
                                         break;

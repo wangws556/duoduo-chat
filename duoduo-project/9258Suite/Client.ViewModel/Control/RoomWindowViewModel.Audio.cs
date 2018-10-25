@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using YoYoStudio.Common;
 using YoYoStudio.Common.Net;
 using YoYoStudio.Media.NAudio;
 using YoYoStudio.Model.Chat;
@@ -71,6 +72,12 @@ namespace YoYoStudio.Client.ViewModel
             soundPlayers.Clear();
         }
 
+        public void StopAudioFFmpeg()
+        {
+            Utility.StopPublishAudio();
+            Utility.StopPlayAudio();
+        }
+
         public void StopAudioPlaying(int userId)
         {
             if (soundPlayers.ContainsKey(userId))
@@ -83,6 +90,7 @@ namespace YoYoStudio.Client.ViewModel
 
         public void StartAudioRecording(string file = "")
         {
+            //using udp recording
             try
             {
                 if (ApplicationVM.ProfileVM.AudioConfigurationVM.LoopbackRecording)
@@ -99,6 +107,59 @@ namespace YoYoStudio.Client.ViewModel
             {
             }
 
+        }
+
+        public void StartAudioPublish(string audioDeviceName, string rtmpPath)
+        {
+            //using ffmpeg publish
+            try
+            {
+                if (ApplicationVM.ProfileVM.AudioConfigurationVM.LoopbackRecording)
+                {
+                    Utility.StartPublishAudio(audioDeviceName, rtmpPath);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void StopAudioPublish()
+        {
+            //using ffmpeg publish
+            try
+            {
+                Utility.StopPublishAudio();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void StartAudioPlay(string rtmpPath)
+        {
+            try
+            {
+                Utility.StartPlayAudio(rtmpPath);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void StopAudioPlay()
+        {
+            try
+            {
+                Utility.StopPlayAudio();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void PauseAudioRecording()
@@ -147,6 +208,7 @@ namespace YoYoStudio.Client.ViewModel
             StopAudioRecording();
             StopAllAudioPlaying();
             DisconnectAudio();
+            StopAudioFFmpeg();
         }
 
         private void DisconnectAudio()
