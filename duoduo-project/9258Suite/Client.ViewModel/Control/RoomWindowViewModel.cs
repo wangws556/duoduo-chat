@@ -85,7 +85,6 @@ namespace YoYoStudio.Client.ViewModel
 
             RoomCallback = new RoomServiceCallback();
             RoomClient = new RoomServiceClient(RoomCallback, roomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
-
             SetVideoSize();
         }
 
@@ -650,6 +649,10 @@ namespace YoYoStudio.Client.ViewModel
         {
             try
             {
+                if(RoomClient.State == CommunicationState.Closed)
+                {
+                    RoomClient.Open();
+                }
                 RoomClient.KeepAlive();
             }
             catch (Exception ex)
