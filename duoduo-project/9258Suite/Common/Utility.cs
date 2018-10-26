@@ -354,7 +354,6 @@ namespace YoYoStudio.Common
                 SetConsoleCtrlHandler(IntPtr.Zero, false);
                 // 剥离已附加的控制台
                 FreeConsole();
-                ffmpegPublishProcessId = 0;
             }
         }
 
@@ -376,7 +375,6 @@ namespace YoYoStudio.Common
                 SetConsoleCtrlHandler(IntPtr.Zero, false);
                 // 剥离已附加的控制台
                 FreeConsole();
-                ffmpegPlayProcessId = 0;
             }
         }
 
