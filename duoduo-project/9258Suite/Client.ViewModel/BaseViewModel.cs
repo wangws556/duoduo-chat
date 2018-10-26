@@ -43,6 +43,14 @@ namespace YoYoStudio.Client.ViewModel
             }
         }
 
+        public string AudioFlexPath
+        {
+            get
+            {
+                return ApplicationVM.AudioFlexFile; 
+            }
+        }
+
         public bool IsAuthenticated
         {
             get { return ApplicationVM.IsAuthenticated; }

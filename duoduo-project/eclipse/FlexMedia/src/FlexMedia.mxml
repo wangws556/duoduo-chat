@@ -596,7 +596,7 @@
 			<s:Button id="videoButton" left="10" top="1" width="18" height="18"
 					  click="toggleCameraHandler(event)" enabled="true" toolTip="(开/关)视频"/>
 			<s:Button id="audioButton" left="38" top="1" width="18" height="18"
-					  click="toggleMicHandler(event)" enabled="true" toolTip="(开/关)麦克风"/>
+					  click="toggleMicHandler(event)" enabled="true" toolTip="(开/关)音频"/>
 			<s:Button id="takePictureButton" toolTip="拍照" left="66" top="1" width="18" height="18" click="takePictureHandler(event)" />
 			<s:Button id="zoomVideoButton" toolTip="弹出视频窗口" left="94" top="1" width="18" height="18" click="zoomVideoHandler(event)" />
 			<!--<s:Button id="zoomInButton" toolTip="放大" width="18" height="18" top="1" right="10" click="zoomInHandler(event)" />

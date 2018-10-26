@@ -106,6 +106,7 @@ namespace YoYoStudio.Client.Chat
                     //ShowWebWindow(webWindow, false);
                     break;
                 case HallWindowAction.EnterRoomFailed:
+                    hallVM.ApplicationVM.RoomWindowVM = null;
                     MessageBox.Show(Messages.EnterRoomFailed);
                     break;
                 //case HallWindowAction.Register:

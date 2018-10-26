@@ -1,0 +1,12 @@
+﻿<local:WindowBase x:Class="YoYoStudio.Client.Chat.AudioWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:YoYoStudio.Client.Chat"
+        xmlns:ctls="clr-namespace:YoYoStudio.Client.Chat.Controls"
+        xmlns:vm="clr-namespace:YoYoStudio.Client.ViewModel;assembly=YoYoStudio.Client.ViewModel"
+        Height="300" Width="300"
+        x:TypeArguments="vm:AudioWindowAction">
+    <Grid>
+        <ctls:AudioControl x:Name="ac"></ctls:AudioControl>
+    </Grid>
+</local:WindowBase>

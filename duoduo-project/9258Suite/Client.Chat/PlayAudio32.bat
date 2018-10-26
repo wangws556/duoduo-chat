@@ -1,0 +1,1 @@
+ffmpeg\system32\ffplay.exe "%1" -nodisp

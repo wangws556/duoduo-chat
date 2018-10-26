@@ -152,6 +152,22 @@ namespace YoYoStudio.Client.ViewModel
 			get { return roomHeader.GetValue(); }
 			set { ChangeAndNotifyHistory<string>(roomHeader, value, () => RoomHeader ); }
 		}
+
+
+		/// <summary>
+		/// Field which backs the RoomAudioStreamId property
+		/// </summary>
+		private HistoryableProperty<string> roomAudioStreamId = new HistoryableProperty<string>(string.Empty);
+
+		/// <summary>
+		/// Gets / sets the RoomAudioStreamId value
+		/// </summary>
+		[Browsable(false)]
+		public  string RoomAudioStreamId
+		{
+			get { return roomAudioStreamId.GetValue(); }
+			set { ChangeAndNotifyHistory<string>(roomAudioStreamId, value, () => RoomAudioStreamId ); }
+		}
 	}
 }
 	

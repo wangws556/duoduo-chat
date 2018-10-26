@@ -13,3 +13,9 @@ makecert -n "CN=_9258ChatService" -ic c:\_9258ChatService.cer -iv C:\_9258ChatSe
 RoomService
 makecert -n "CN=_9258RoomService" -sv c:\_9258RoomService.pvk c:\_9258RoomService.cer
 makecert -n "CN=_9258RoomService" -ic c:\_9258RoomService.cer -iv C:\_9258RoomService.pvk -sr LocalMachine -ss My -pe -sky exchange
+
+ffmpeg publish
+ffmpeg -r 25 -f dshow -s 640*480 -i audio="Stereo Mix (Realtek High Definition Audio)" -vcodec lib*264 -b 600k  -ab 128k -f flv rtmp://222.189.228.146:1935/live/testlive
+
+ffmpeg play
+ffplay.exe rtmp://222.189.228.146:1935/live/testlive -nodisp

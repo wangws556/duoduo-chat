@@ -45,6 +45,11 @@
         LoadMusicComplete
     }
 
+    public enum AudioWindowAction
+    {
+        
+    }
+
     public enum ManageMusicWindowAction
     {
         UploadMusic,

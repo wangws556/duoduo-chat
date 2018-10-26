@@ -14,6 +14,7 @@ namespace YoYoStudio.Model
         public const string DefaultImageGroup = "Default";
 		public const string FlexFile = @"Flex\FlexMedia.swf";
         public const string MusicFlexFile = @"Flex\FlexMusic.swf";
+        public const string AudioFlexFile = @"Flex\FlexAudio.swf";
         public const string PathDelimiter = ">>";
 	}
 }

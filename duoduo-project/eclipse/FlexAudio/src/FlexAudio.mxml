@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" 
+			   initialize="appInit(event)"
+			   applicationComplete="app_Complete(event)">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import flash.utils.setInterval;
+			
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+		]]>
+	</fx:Script>
+	<fx:Script>
+		<![CDATA[
+			private var rtmpUrl:String = "";
+			private var netConnection:NetConnection = null;
+			private var isConnectSuccess:Boolean=false;
+			private var netStream:NetStream = null;
+			private var session:Session = null;
+			
+			
+			protected function app_Complete(event:FlexEvent):void
+			{
+				callCSharp("loadComplete");
+			}
+			
+			protected function appInit(event:FlexEvent):void{
+				publishExternalCallbacks();			
+			}
+			
+			private function callCSharp(methodName:String, ...params):void{
+				ExternalInterface.call(methodName,params);
+			}
+			
+			private function publishExternalCallbacks():void{
+				ExternalInterface.addCallback("connect",connect);
+				ExternalInterface.addCallback("connectRtmp",connectRtmp);
+				ExternalInterface.addCallback("disconnectRtmp",disconnectRtmp);
+				ExternalInterface.addCallback("playMusic",playMusic);
+				ExternalInterface.addCallback("stopPlay",stopPlay);
+			}
+		
+			
+			private function connectRtmp(rtmp:String):void{
+				rtmpUrl = rtmp;
+				netConnection = new NetConnection();
+				netConnection.addEventListener(AsyncErrorEvent.ASYNC_ERROR,netASYNError);
+				netConnection.addEventListener(NetStatusEvent.NET_STATUS,netStatus);
+				netConnection.addEventListener(SecurityErrorEvent.SECURITY_ERROR,netSecurityError);
+				netConnection.addEventListener(IOErrorEvent.IO_ERROR,netIOError);
+				netConnection.connect(rtmpUrl);
+				if(netConnection != null && netConnection.connected){
+					netStream = new NetStream(netConnection);
+				}
+			}
+			
+			private function disconnectRtmp():void{
+				if(netConnection != null && netConnection.connected){
+					netConnection.close();	
+				}
+				netConnection = null;
+			}
+			private function playMusic():void{
+				
+				try
+				{
+					session.PublishAudio(-1);
+				}
+				catch(e:Error){
+					trace(e.message);
+				}
+				
+			}
+			
+			private function stopPlay():void{
+				
+				try
+				{
+					session.PauseAudio()();
+				}
+				catch(e:Error){
+					trace(e.message);
+				}
+				
+			}
+			
+			private function netStatus(e:NetStatusEvent):void{
+				
+				var statusCode:String = e.info.code;
+				if(statusCode == "NetConnection.Connect.Success"){
+					//isConnectSuccess = true;
+					//netStream.addEventListener(NetStatusEvent.NET_STATUS,netStatus);
+					//netStream.attach(
+					//netStream.client = new StreamClient();
+					//loadMusics();
+					
+					//netStream.attachAudio(Microphone.getMicrophone());
+					//netStream.attachCamera(Camera.getCamera());
+					//netStream.play("mp3:streams/abc");
+					
+					//video.attachNetStream(netStream);
+					//netStream.close();
+					//netStream.play(flvPath);
+				}
+			
+				callCSharp("reportStatus",statusCode);
+			}
+						
+			private function connect(streamName:String):String
+			{				
+				var result:String = "";
+				try
+				{
+					if(checkConnection())
+					{	
+					 	session = new Receiver();	
+						session.Initialize(netConnection,streamName);
+					}
+				}
+				catch(e:Error){
+					result += e.message;
+				}
+				return result;
+			}
+			
+			private function checkConnection():Boolean
+			{
+				if(netConnection == null || !netConnection.connected)
+				{
+					callCSharp("reportStatus","NotConnected");
+					return false;
+				}
+				return true;				
+			}
+			
+			protected function netSecurityError( event : SecurityErrorEvent ) : void 
+			{
+				
+			}
+			
+			protected function netIOError( event : IOErrorEvent ) : void 
+			{
+				
+			}
+			
+			protected function netASYNError( event : AsyncErrorEvent ) : void 
+			{
+				
+			}		
+		]]>
+	</fx:Script>
+	
+	<s:Label width="100%" height="100%" text="Dumy flex control for audio publish">
+	</s:Label>
+	
+</s:Application>

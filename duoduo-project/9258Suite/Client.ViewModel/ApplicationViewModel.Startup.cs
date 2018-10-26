@@ -76,7 +76,7 @@ namespace YoYoStudio.Client.ViewModel
                         Logger.Debug("UpdateOnlineUserCount failed: " + exception.Message);
                         if(ChatClient.State == CommunicationState.Faulted)
                         {
-                            ChatClient.Close();
+                            //ChatClient.Close();
                             ChatClient = new ChatServiceClient(new ChatServiceCallback());
                         }
                     }

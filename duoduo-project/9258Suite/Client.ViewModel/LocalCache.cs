@@ -19,6 +19,8 @@ namespace YoYoStudio.Client.ViewModel
             AllSecureCommandVMs = new List<SecureCommandViewModel>();
 			AllRoomGroupVMs = new List<RoomGroupViewModel>();
 			AllRoomVMs = new List<RoomViewModel>();
+            AudioDeviceName = ConfigurationManager.AppSettings["AudioDeviceName"];
+            AudioRtmpPath = ConfigurationManager.AppSettings["AudioRtmpPath"];
 			RoomServicePort = int.Parse(ConfigurationManager.AppSettings["RoomServicePort"]);
             RoomAudioServicePort = int.Parse(ConfigurationManager.AppSettings["RoomAudioServicePort"]);
             VideoFps = int.Parse(ConfigurationManager.AppSettings["VideoFps"]);
@@ -57,8 +59,10 @@ namespace YoYoStudio.Client.ViewModel
             AllRoomRoleVMs.Clear();
             AllExchangeRateVMs.Clear();
         }
+        public string AudioDeviceName { get; private set; }
+        public string AudioRtmpPath { get; private set; }
 
-		public int RoomServicePort { get; private set; }
+        public int RoomServicePort { get; private set; }
         public int RoomAudioServicePort { get; private set; }
         public int VideoFps { get; private set; }
         public int VideoQuality { get; private set; }

@@ -12,13 +12,26 @@ using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using System.Threading;
 using System.Net.NetworkInformation;
+using System.Collections;
 
 namespace YoYoStudio.Common
 {
     public class Utility
     {
+        [DllImport("kernel32.dll")]
+        static extern bool GenerateConsoleCtrlEvent(int dwCtrlEvent, int dwProcessGroupId);
+        [DllImport("kernel32.dll")]
+        static extern bool SetConsoleCtrlHandler(IntPtr handlerRoutine, bool add);
+        [DllImport("kernel32.dll")]
+        static extern bool AttachConsole(int dwProcessId);
+        [DllImport("kernel32.dll")]
+        static extern bool FreeConsole();
+
         public enum ImageExtension { PNG, GIF, JPG }
         public const string  Red5MusicDirectory = @"D:\Red5\webapps\oflaDemo\streams";
+
+        public static int ffmpegPublishProcessId = 0;
+        public static int ffmpegPlayProcessId = 0;
 
         public static string GetMD5String(string str)
         {
@@ -243,6 +256,128 @@ namespace YoYoStudio.Common
                 return AppDomain.CurrentDomain.BaseDirectory + "ToFLV64.bat";
             else
                 return AppDomain.CurrentDomain.BaseDirectory + "ToFLV32.bat";
+        }
+
+        public static void StartPublishAudio(string audioDeviceName, string rtmpPath)
+        {
+            // 存在的publish process
+            if (ffmpegPublishProcessId != 0)
+            {
+                Process goDie = Process.GetProcessById(ffmpegPublishProcessId);
+                if (goDie != null)
+                {
+                    goDie.Kill();
+                }
+            }
+            using (Process pro = new Process())
+            {
+                pro.StartInfo.FileName = getPublishAudioBat();
+                pro.StartInfo.UseShellExecute = true;
+                pro.StartInfo.CreateNoWindow = true;
+                pro.StartInfo.Verb = "runas";
+                pro.StartInfo.Arguments = string.Format("{0} {1}", audioDeviceName, rtmpPath);
+                try
+                {
+                    pro.Start();
+                    ffmpegPublishProcessId = pro.Id;
+                }
+                catch (Exception ex)
+                {
+                    //System.Windows.MessageBox.Show(e.Message);
+                }
+
+            }
+        }
+
+        private static string getPublishAudioBat()
+        {
+            if (Is64System())
+                return AppDomain.CurrentDomain.BaseDirectory + "PublishAudio64.bat";
+            else
+                return AppDomain.CurrentDomain.BaseDirectory + "PublishAudio32.bat";
+        }
+
+        public static void StartPlayAudio(string rtmpPath)
+        {
+            // 杀死已有的ffmpeg进程，不要加.exe后缀
+            if (ffmpegPlayProcessId != 0)
+            {
+                Process goDie = Process.GetProcessById(ffmpegPlayProcessId);
+                if (goDie != null)
+                {
+                    goDie.Kill();
+                }
+            }
+            using (Process pro = new Process())
+            {
+                pro.StartInfo.FileName = getPlayAudioBat();
+                pro.StartInfo.UseShellExecute = true;
+                pro.StartInfo.CreateNoWindow = true;
+                pro.StartInfo.Verb = "runas";
+                pro.StartInfo.Arguments = string.Format("{0}", rtmpPath);
+                try
+                {
+                    pro.Start();
+                    ffmpegPlayProcessId = pro.Id;
+                }
+                catch (Exception ex)
+                {
+                    //System.Windows.MessageBox.Show(e.Message);
+                }
+
+            }
+        }
+
+        private static string getPlayAudioBat()
+        {
+            if (Is64System())
+                return AppDomain.CurrentDomain.BaseDirectory + "PlayAudio64.bat";
+            else
+                return AppDomain.CurrentDomain.BaseDirectory + "PlayAudio32.bat";
+        }
+
+        public static void StopPublishAudio()
+        {
+            if (ffmpegPublishProcessId != 0)
+            {
+                AttachConsole(ffmpegPublishProcessId);
+                // 将控制台事件的处理句柄设为Zero，即当前进程不响应控制台事件
+                // 避免在向控制台发送【Ctrl C】指令时连带当前进程一起结束
+                SetConsoleCtrlHandler(IntPtr.Zero, true);
+                // 向控制台发送 【Ctrl C】结束指令
+                // ffmpeg会收到该指令停止录制
+                GenerateConsoleCtrlEvent(0, 0);
+                
+                Thread.Sleep(3000);
+
+                // 卸载控制台事件的处理句柄，不然之后的ffmpeg调用无法正常停止
+                SetConsoleCtrlHandler(IntPtr.Zero, false);
+                // 剥离已附加的控制台
+                FreeConsole();
+                ffmpegPublishProcessId = 0;
+            }
+        }
+
+        public static void StopPlayAudio()
+        {
+            if (ffmpegPlayProcessId != 0)
+            {
+                AttachConsole(ffmpegPlayProcessId);
+                // 将控制台事件的处理句柄设为Zero，即当前进程不响应控制台事件
+                // 避免在向控制台发送【Ctrl C】指令时连带当前进程一起结束
+                SetConsoleCtrlHandler(IntPtr.Zero, true);
+                // 向控制台发送 【Ctrl C】结束指令
+                // ffmpeg会收到该指令停止录制
+                GenerateConsoleCtrlEvent(0, 0);
+                
+                Thread.Sleep(3000);
+
+                // 卸载控制台事件的处理句柄，不然之后的ffmpeg调用无法正常停止
+                SetConsoleCtrlHandler(IntPtr.Zero, false);
+                // 剥离已附加的控制台
+                FreeConsole();
+                ffmpegPlayProcessId = 0;
+            }
         }
 
         public static List<FileInfo> GetMusicsOnRed5Locally()

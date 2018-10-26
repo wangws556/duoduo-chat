@@ -26,7 +26,8 @@ namespace YoYoStudio.Client.ViewModel
     [SnippetPropertyINPC(field = "reserveRoom", property = "ReserveRoom", type = "string", defaultValue = "string.Empty")]
     [SnippetPropertyINPC(field = "recommendRoom", property = "RecommendRoom", type = "string", defaultValue = "string.Empty")]
     [SnippetPropertyINPC(field = "roomHeader", property = "RoomHeader", type = "string", defaultValue = "string.Empty")]
-	public partial class RoomViewModel : ImagedEntityViewModel
+    [SnippetPropertyINPC(field = "roomAudioStreamId", property = "RoomAudioStreamId", type = "string", defaultValue = "string.Empty")]
+    public partial class RoomViewModel : ImagedEntityViewModel
 	{
         public RoomViewModel(Room room)
             : base(room)
@@ -35,6 +36,7 @@ namespace YoYoStudio.Client.ViewModel
             RoomGroupId = room.RoomGroup_Id.HasValue ? room.RoomGroup_Id.Value : -1;
             serviceIp.SetValue(room.ServiceIp);
             rtmpUrl.SetValue("rtmp://" + ServiceIp + "/oflaDemo");
+            RoomAudioStreamId = room.Id.ToString();
             MaxUserCount = room.MaxUserCount.Value;
             Enabled = room.Enabled.HasValue ? room.Enabled.Value : false;
         }

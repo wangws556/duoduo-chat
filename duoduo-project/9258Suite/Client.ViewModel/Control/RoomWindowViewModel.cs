@@ -190,7 +190,8 @@ namespace YoYoStudio.Client.ViewModel
                             FirstMicUserVM.OnMic(MicType.Public, 0, micUsers[0].StreamGuid, micUsers[0].MicStatus);
                             if ((FirstMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
-                                StartAudioPlaying(FirstMicUserVM.Id);
+                                //StartAudioPlaying(FirstMicUserVM.Id);
+                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
                             }
                         }
                         if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
@@ -199,7 +200,8 @@ namespace YoYoStudio.Client.ViewModel
                             SecondMicUserVM.OnMic(MicType.Public, 1, micUsers[1].StreamGuid, micUsers[1].MicStatus);
                             if ((SecondMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
-                                StartAudioPlaying(SecondMicUserVM.Id);
+                                //StartAudioPlaying(SecondMicUserVM.Id);
+                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
                             }
                         }
                         if (micUsers.ContainsKey(2) && micUsers[2].MicStatus != MicStatusMessage.MicStatus_Off)
@@ -208,7 +210,8 @@ namespace YoYoStudio.Client.ViewModel
                             ThirdMicUserVM.OnMic(MicType.Public, 2, micUsers[2].StreamGuid, micUsers[2].MicStatus);
                             if ((ThirdMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
-                                StartAudioPlaying(ThirdMicUserVM.Id);
+                                //StartAudioPlaying(ThirdMicUserVM.Id);
+                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
                             }
                         }
                     }
@@ -228,7 +231,8 @@ namespace YoYoStudio.Client.ViewModel
                                     uvm.OnMic(MicType.Private, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
                                     if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                                     {
-                                        StartAudioPlaying(uvm.Id);
+                                        //StartAudioPlaying(uvm.Id);
+                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
                                     }
                                 }
                             }
@@ -249,7 +253,8 @@ namespace YoYoStudio.Client.ViewModel
                                     uvm.OnMic(MicType.Secret, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
                                     if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                                     {
-                                        StartAudioPlaying(uvm.Id);
+                                        //StartAudioPlaying(uvm.Id);
+                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
                                     }
                                 }
                             }
@@ -649,11 +654,6 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-                if(RoomClient.State == CommunicationState.Faulted)
-                {
-                    RoomClient.Close();
-                    RoomClient = new RoomServiceClient(RoomCallback, RoomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
-                }
             }
         }
 
