@@ -101,7 +101,7 @@ namespace YoYoStudio.RoomService.Library
 
         static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            //client.KeepAlive();
+            client.KeepAlive();
 			Dictionary<int, int> roomUserCount = new Dictionary<int,int>();
 			foreach(var pair in userCache)
 			{
