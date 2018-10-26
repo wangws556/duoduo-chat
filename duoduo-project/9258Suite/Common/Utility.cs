@@ -336,7 +336,7 @@ namespace YoYoStudio.Common
                 // 向控制台发送 【Ctrl C】结束指令
                 // ffmpeg会收到该指令停止录制
                 GenerateConsoleCtrlEvent(0, 0);
-
+                GenerateConsoleCtrlEvent(0, 0);
                 Thread.Sleep(3000);
 
                 // 卸载控制台事件的处理句柄，不然之后的ffmpeg调用无法正常停止
@@ -358,7 +358,7 @@ namespace YoYoStudio.Common
                 // 向控制台发送 【Ctrl C】结束指令
                 // ffmpeg会收到该指令停止录制
                 GenerateConsoleCtrlEvent(0, 0);
-
+                GenerateConsoleCtrlEvent(0, 0);
                 Thread.Sleep(3000);
 
                 // 卸载控制台事件的处理句柄，不然之后的ffmpeg调用无法正常停止
