@@ -261,12 +261,14 @@ namespace YoYoStudio.Common
         public static void StartPublishAudio(string audioDeviceName, string rtmpPath)
         {
             // 存在的publish process
-            Process goDie = Process.GetProcessById(ffmpegPublishProcessId);
-            if(goDie != null)
+            if (ffmpegPublishProcessId != 0)
             {
-                goDie.Kill();
+                Process goDie = Process.GetProcessById(ffmpegPublishProcessId);
+                if (goDie != null)
+                {
+                    goDie.Kill();
+                }
             }
-
             using (Process pro = new Process())
             {
                 pro.StartInfo.FileName = getPublishAudioBat();
@@ -298,10 +300,13 @@ namespace YoYoStudio.Common
         public static void StartPlayAudio(string rtmpPath)
         {
             // 杀死已有的ffmpeg进程，不要加.exe后缀
-            Process goDie = Process.GetProcessById(ffmpegPlayProcessId);
-            if (goDie != null)
+            if (ffmpegPlayProcessId != 0)
             {
-                goDie.Kill();
+                Process goDie = Process.GetProcessById(ffmpegPlayProcessId);
+                if (goDie != null)
+                {
+                    goDie.Kill();
+                }
             }
             using (Process pro = new Process())
             {
