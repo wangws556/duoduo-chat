@@ -650,11 +650,6 @@ namespace YoYoStudio.Client.ViewModel
         {
             try
             {
-                if(RoomClient.State == CommunicationState.Closed)
-                {
-                    RoomCallback = new RoomServiceCallback();
-                    RoomClient = new RoomServiceClient(RoomCallback, RoomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
-                }
                 RoomClient.KeepAlive();
             }
             catch (Exception ex)
