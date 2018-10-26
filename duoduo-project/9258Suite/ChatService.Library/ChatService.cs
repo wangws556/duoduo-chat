@@ -351,6 +351,7 @@ namespace YoYoStudio.ChatService.Library
 		[OperationBehavior]
 		public void KeepAlive()
 		{
+            dataServiceClient.KeepAlive();
 		}
         [OperationBehavior]
         public bool RoomLogin()

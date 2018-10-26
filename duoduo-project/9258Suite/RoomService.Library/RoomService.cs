@@ -154,6 +154,7 @@ namespace YoYoStudio.RoomService.Library
 
         public void KeepAlive()
         {
+            client.KeepAlive();
         }
 
         public bool EnterRoom(int roomId, User user)
