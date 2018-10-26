@@ -670,7 +670,7 @@ namespace YoYoStudio.Client.ViewModel
         {
             try
             {
-                if (RoomClient != null && RoomClient.State == System.ServiceModel.CommunicationState.Opened)
+                if (RoomClient != null && RoomClient.State != System.ServiceModel.CommunicationState.Faulted)
                 {
                     RoomClient.LeaveRoom(RoomVM.Id);
                     RoomClient.Close();
