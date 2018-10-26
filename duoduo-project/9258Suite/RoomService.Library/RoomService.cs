@@ -91,27 +91,34 @@ namespace YoYoStudio.RoomService.Library
         {
             Task.Factory.StartNew(() =>
                 {
-                    if (roomGroupId == -1)
+                    try
                     {
-                        foreach (var room in userCache)
+                        if (roomGroupId == -1)
                         {
-                            BroadCast(-1, act, -1);
+                            foreach (var room in userCache)
+                            {
+                                BroadCast(-1, act, -1);
+                            }
+                        }
+                        else
+                        {
+                            var roomGroup = cache.RoomGroups.FirstOrDefault(r => r.Id == roomGroupId);
+                            if (roomGroup != null)
+                            {
+                                roomGroup.SubRoomGroups.ForEach((subGroup) =>
+                                    {
+                                        BroadCastHornMsg(subGroup.Id, act, senderId);
+                                    });
+                                roomGroup.Rooms.ForEach((room) =>
+                                    {
+                                        BroadCast(room.Id, act, -1);
+                                    });
+                            }
                         }
                     }
-                    else
+                    catch(Exception ex)
                     {
-                        var roomGroup = cache.RoomGroups.FirstOrDefault(r => r.Id == roomGroupId);
-                        if (roomGroup != null)
-                        {
-                            roomGroup.SubRoomGroups.ForEach((subGroup)=>
-                                {
-                                    BroadCastHornMsg(subGroup.Id, act, senderId);
-                                });
-                            roomGroup.Rooms.ForEach((room) =>
-                                {
-                                    BroadCast(room.Id, act, -1);
-                                });
-                        }
+
                     }
                 });
         }
@@ -120,30 +127,37 @@ namespace YoYoStudio.RoomService.Library
         {
             Task.Factory.StartNew(() =>
                 {
-                    if (roomId == -1) //broadcase the message to all the rooms
+                    try
                     {
-                        foreach (var room in userCache)
+                        if (roomId == -1) //broadcase the message to all the rooms
                         {
-                            BroadCast(room.Key, act, senderId);
-                        }
-                    }
-                    else
-                    {
-                        var users = userCache[roomId].Values;
-                        foreach (var u in users)
-                        {
-                            if (u.User.Id != senderId)
+                            foreach (var room in userCache)
                             {
-                                try
+                                BroadCast(room.Key, act, senderId);
+                            }
+                        }
+                        else
+                        {
+                            var users = userCache[roomId].Values;
+                            foreach (var u in users)
+                            {
+                                if (u.User.Id != senderId)
                                 {
-                                    act(u);
-                                }
-                                catch
-                                {
-                                    LeaveRoom(roomId, u.User.Id);
+                                    try
+                                    {
+                                        act(u);
+                                    }
+                                    catch
+                                    {
+                                        LeaveRoom(roomId, u.User.Id);
+                                    }
                                 }
                             }
                         }
+                    }
+                    catch(Exception ex)
+                    {
+
                     }
                 });
         }
