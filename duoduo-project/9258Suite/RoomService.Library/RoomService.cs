@@ -41,6 +41,30 @@ namespace YoYoStudio.RoomService.Library
         //}
         public RoomService()
         {
+            client.InnerChannel.Closed += InnerChannel_Closed;
+            client.InnerDuplexChannel.Closed += InnerDuplexChannel_Closed;
+            client.InnerChannel.Closing += InnerChannel_Closing;
+            client.InnerDuplexChannel.Closing += InnerDuplexChannel_Closing;
+        }
+
+        private void InnerDuplexChannel_Closing(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void InnerChannel_Closing(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void InnerDuplexChannel_Closed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void InnerChannel_Closed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
         #region Private Members
 
