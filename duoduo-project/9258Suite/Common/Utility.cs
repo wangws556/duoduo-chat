@@ -263,10 +263,16 @@ namespace YoYoStudio.Common
             // 存在的publish process
             if (ffmpegPublishProcessId != 0)
             {
-                Process goDie = Process.GetProcessById(ffmpegPublishProcessId);
-                if (goDie != null)
+                try
                 {
-                    goDie.Kill();
+                    Process goDie = Process.GetProcessById(ffmpegPublishProcessId);
+                    if (goDie != null)
+                    {
+                        goDie.Kill();
+                    }
+                }
+                catch (Exception ex)
+                {
                 }
             }
             using (Process pro = new Process())
@@ -302,10 +308,17 @@ namespace YoYoStudio.Common
             // 杀死已有的ffmpeg进程，不要加.exe后缀
             if (ffmpegPlayProcessId != 0)
             {
-                Process goDie = Process.GetProcessById(ffmpegPlayProcessId);
-                if (goDie != null)
+                try
                 {
-                    goDie.Kill();
+                    Process goDie = Process.GetProcessById(ffmpegPlayProcessId);
+                    if (goDie != null)
+                    {
+                        goDie.Kill();
+                    }
+                }
+                catch(Exception ex)
+                {
+
                 }
             }
             using (Process pro = new Process())
