@@ -48,6 +48,7 @@ namespace YoYoStudio.Client.ViewModel
     public partial class RoomWindowViewModel : WindowViewModel
     {
         public RoomServiceClient RoomClient { get; private set; }
+
         public RoomServiceCallback RoomCallback { get; private set; }
 
         #region Video
@@ -85,7 +86,31 @@ namespace YoYoStudio.Client.ViewModel
 
             RoomCallback = new RoomServiceCallback();
             RoomClient = new RoomServiceClient(RoomCallback, roomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
+            RoomClient.InnerChannel.Closed += InnerChannel_Closed;
+            RoomClient.InnerDuplexChannel.Closed += InnerDuplexChannel_Closed;
+            RoomClient.InnerChannel.Closing += InnerChannel_Closing;
+            RoomClient.InnerDuplexChannel.Closing += InnerDuplexChannel_Closing;
             SetVideoSize();
+        }
+
+        private void InnerDuplexChannel_Closing(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void InnerChannel_Closing(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void InnerDuplexChannel_Closed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void InnerChannel_Closed(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         public void GetHtml(string htm)
