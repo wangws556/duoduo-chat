@@ -277,11 +277,13 @@ namespace YoYoStudio.Common
             }
             using (Process pro = new Process())
             {
+                string arg1 = "\"" + audioDeviceName + "\"";
+                string arg2 = "\"" + rtmpPath + "\"";
                 pro.StartInfo.FileName = getPublishAudioBat();
                 pro.StartInfo.UseShellExecute = true;
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
-                pro.StartInfo.Arguments = string.Format("{0} {1}", audioDeviceName, rtmpPath);
+                pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b 600k -ab 128k -f flv " + arg2;
                 try
                 {
                     pro.Start();
@@ -298,9 +300,9 @@ namespace YoYoStudio.Common
         private static string getPublishAudioBat()
         {
             if (Is64System())
-                return AppDomain.CurrentDomain.BaseDirectory + "PublishAudio64.bat";
+                return AppDomain.CurrentDomain.BaseDirectory + "ffmpeg\\system64\\ffmpeg.exe";
             else
-                return AppDomain.CurrentDomain.BaseDirectory + "PublishAudio32.bat";
+                return AppDomain.CurrentDomain.BaseDirectory + "ffmpeg\\system32\\ffmpeg.exe";
         }
 
         public static void StartPlayAudio(string rtmpPath)
@@ -323,11 +325,12 @@ namespace YoYoStudio.Common
             }
             using (Process pro = new Process())
             {
+                string arg1 = "\"" + rtmpPath + "\"";
                 pro.StartInfo.FileName = getPlayAudioBat();
                 pro.StartInfo.UseShellExecute = true;
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
-                pro.StartInfo.Arguments = string.Format("{0}", rtmpPath);
+                pro.StartInfo.Arguments = " " + arg1 + " -nodisp";
                 try
                 {
                     pro.Start();
@@ -344,9 +347,9 @@ namespace YoYoStudio.Common
         private static string getPlayAudioBat()
         {
             if (Is64System())
-                return AppDomain.CurrentDomain.BaseDirectory + "PlayAudio64.bat";
+                return AppDomain.CurrentDomain.BaseDirectory + "ffmpeg\\system64\\ffplay.exe";
             else
-                return AppDomain.CurrentDomain.BaseDirectory + "PlayAudio32.bat";
+                return AppDomain.CurrentDomain.BaseDirectory + "ffmpeg\\system32\\ffplay.exe";
         }
 
         public static void StopPublishAudio()

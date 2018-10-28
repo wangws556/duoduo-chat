@@ -17,7 +17,7 @@ using YoYoStudio.Model.Media;
 
 namespace YoYoStudio.DataService.Library
 {
-    [ServiceBehavior(AutomaticSessionShutdown = true, IncludeExceptionDetailInFaults = true, ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.PerCall, ConfigurationName = Const.DataServiceName)]
+    [ServiceBehavior(AutomaticSessionShutdown = true, IncludeExceptionDetailInFaults = true, ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.PerSession, ConfigurationName = Const.DataServiceName)]
     public partial class DataService : WcfService, IDataService, IErrorHandler, IServiceBehavior
     {
         private IModelAccesser modelAccesser = new DirectModelAccesser();
