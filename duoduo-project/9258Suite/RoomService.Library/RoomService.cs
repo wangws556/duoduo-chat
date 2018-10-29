@@ -17,7 +17,7 @@ using System.IO;
 
 namespace YoYoStudio.RoomService.Library
 {
-    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, ConfigurationName = Const.RoomServiceName, InstanceContextMode = InstanceContextMode.PerSession, IncludeExceptionDetailInFaults = true)]
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, ConfigurationName = Const.RoomServiceName, InstanceContextMode = InstanceContextMode.PerCall, IncludeExceptionDetailInFaults = true)]
     public partial class RoomService : WcfService, IRoomService, IDisposable
     {
         //public static void Configure(ServiceConfiguration config)

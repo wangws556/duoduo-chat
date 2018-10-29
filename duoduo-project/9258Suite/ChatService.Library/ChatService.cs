@@ -36,7 +36,7 @@ namespace YoYoStudio.ChatService.Library
         public ChatService ServiceInstance { get; set; }
     }
 
-	[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.PerSession, ConfigurationName = Const.ChatServiceName)]
+	[ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single, InstanceContextMode = InstanceContextMode.PerCall, ConfigurationName = Const.ChatServiceName)]
 	public partial class ChatService : WcfService, IChatService, IDisposable
 	{
 		#region Private Members
