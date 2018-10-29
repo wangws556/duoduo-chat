@@ -95,22 +95,22 @@ namespace YoYoStudio.Client.ViewModel
 
         private void InnerDuplexChannel_Closing(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void InnerChannel_Closing(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void InnerDuplexChannel_Closed(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void InnerChannel_Closed(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void GetHtml(string htm)
