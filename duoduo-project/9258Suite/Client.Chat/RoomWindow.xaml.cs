@@ -93,7 +93,7 @@ namespace YoYoStudio.Client.Chat
 
             //    });
             //InitMusicWindow();
-            ConnectLiveRtmp();
+            //ConnectLiveRtmp();
         }
 
         private void ConnectLiveRtmp()
