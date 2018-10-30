@@ -42,9 +42,9 @@ namespace YoYoStudio.RoomService.Library
         void SendGift(int roomId, int receiverId, int giftId, int count);
         [OperationContract(IsInitiating = false, IsOneWay = false)]
         bool ExecuteCommand(int roomId, int cmdId, int targetUserId);
-        [OperationContract(IsInitiating = false, IsOneWay = true)]
+        [OperationContract(IsInitiating = false, IsOneWay = false)]
         void VideoStateChanged(int roomId, int state);
-        [OperationContract(IsInitiating = false, IsOneWay = true)]
+        [OperationContract(IsInitiating = false, IsOneWay = false)]
         void AudioStateChanged(int roomId, int state);
         [OperationContract(IsInitiating = true, IsOneWay = true)]
         void AudioServiceLogin(string ip, int port);
