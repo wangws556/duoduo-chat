@@ -676,7 +676,10 @@ namespace YoYoStudio.Client.ViewModel
             {
                 if(RoomClient.State == CommunicationState.Closed)
                 {
-                    RoomClient.Open();
+                    RoomCallback = new RoomServiceCallback();
+                    RoomClient = new RoomServiceClient(RoomCallback, RoomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
+                    RoomClient.EnterRoom(RoomVM.Id, ApplicationVM.LocalCache.CurrentUserVM.GetConcretEntity<User>());
+                    RegisterEvents();
                 }
                 RoomClient.KeepAlive();
             }
