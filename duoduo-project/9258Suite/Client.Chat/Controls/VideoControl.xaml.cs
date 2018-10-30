@@ -256,7 +256,7 @@ namespace YoYoStudio.Client.Chat.Controls
                         {
                             if (int.TryParse(args[0], out aState))
                             {
-                                //uvm.RoomWindowVM.RoomClient.AudioStateChanged(uvm.RoomWindowVM.RoomVM.Id,aState);
+                                uvm.RoomWindowVM.RoomClient.AudioStateChanged(uvm.RoomWindowVM.RoomVM.Id,aState);
                                 //SpectrumAnalyzer spectrumAnalyzer = UIHelper.FindChild<SpectrumAnalyzer>(this, "mySpectrumAnalyzer");
                                 switch (aState)
                                 {
