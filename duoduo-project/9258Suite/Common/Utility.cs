@@ -280,7 +280,7 @@ namespace YoYoStudio.Common
                 string arg1 = "\"" + audioDeviceName + "\"";
                 string arg2 = "\"" + rtmpPath + "\"";
                 pro.StartInfo.FileName = getPublishAudioBat();
-                pro.StartInfo.UseShellExecute = true;
+                pro.StartInfo.UseShellExecute = false;
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
                 pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b 600k -ab 128k -f flv " + arg2;
@@ -327,7 +327,7 @@ namespace YoYoStudio.Common
             {
                 string arg1 = "\"" + rtmpPath + "\"";
                 pro.StartInfo.FileName = getPlayAudioBat();
-                pro.StartInfo.UseShellExecute = true;
+                pro.StartInfo.UseShellExecute = false;
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
                 pro.StartInfo.Arguments = " " + arg1 + " -nodisp";
