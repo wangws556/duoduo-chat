@@ -774,30 +774,30 @@ namespace YoYoStudio.RoomService.Library
         public void StartMusic(int roomId, int userId, string fileName)
         {
             musicCache[roomId].Name = fileName;
-            BroadCast(roomId, u => u.Callback.StartMusicCallback(roomId, userId, fileName), userId);
+            BroadCast(roomId, u => u.Callback.StartMusic(roomId, userId, fileName), userId);
         }
 
         public void StopMusic(int roomId, int userId)
         {
             musicCache[roomId].Status = PlayStatus.Stoped;
-            BroadCast(roomId, u => u.Callback.StopMusicCallback(roomId, userId), userId);
+            BroadCast(roomId, u => u.Callback.StopMusic(roomId, userId), userId);
         }
 
         public void TogglePauseMusic(int roomId, int userId,bool paused)
         {
             musicCache[roomId].Status = paused ? PlayStatus.Paused : PlayStatus.Playing;
-            BroadCast(roomId, u => u.Callback.TogglePauseMusicCallback(roomId, userId,paused), userId);
+            BroadCast(roomId, u => u.Callback.TogglePauseMusic(roomId, userId,paused), userId);
         }
 
         public void SetPlayPosition(int roomId, int userId, int pos)
         {
             musicCache[roomId].Position = pos;
-            BroadCast(roomId, u => u.Callback.SetPlayPositionCallback(roomId, userId, pos), userId);
+            BroadCast(roomId, u => u.Callback.SetPlayPosition(roomId, userId, pos), userId);
         }
 
         public void SetMusicVolume(int roomId, int userId, int volume)
         {
-            BroadCast(roomId, u => u.Callback.SetMusicVolumeCallback(roomId, userId, volume), userId);
+            BroadCast(roomId, u => u.Callback.SetMusicVolume(roomId, userId, volume), userId);
         }
 
         public MusicStatus GetMusicStatus(int roomId)

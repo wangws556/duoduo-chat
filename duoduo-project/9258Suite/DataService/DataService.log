@@ -1,0 +1,54 @@
+[Header]%n20181031-13:34:12 [29] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:34:12 [29] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:35:14 [35] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:35:14 [35] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:36:14 [35] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:36:14 [35] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:37:14 [35] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:37:14 [35] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:37:18 [45] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 1 , Token - MTYxLjE0Ny4xMTkuMjUyOTI1ODIyNzI2Njg0LTViMzMtNGI5ZS04OWU2LTBiODFmNDE0YmQ3Zg==
+20181031-13:37:18 [45] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 1
+20181031-13:38:14 [45] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:38:14 [45] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:40:41 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:40:41 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:41:28 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 1 , Token - MTYxLjE0Ny4xMTkuMjUyOTI1ODIyNzI2Njg0LTViMzMtNGI5ZS04OWU2LTBiODFmNDE0YmQ3Zg==
+20181031-13:41:28 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 1
+20181031-13:41:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:41:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:42:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:42:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:43:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:43:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:44:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:44:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:45:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:45:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:46:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:46:40 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:47:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:47:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:48:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:48:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:49:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:49:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:50:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:50:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:51:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:51:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:52:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:52:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:53:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:53:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:54:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:54:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:55:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:55:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:56:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:56:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:57:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:57:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:58:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:58:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
+20181031-13:59:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Login OK : AppId - 2 , UserId - 20 , Token - MjA2MS4xNDcuMTE5LjI1MjE4NjhmMTdjMmMxNWI1ZWFmZGMzY2NlMmY1YWM5N2Q1MWQyZDVlMzEtN2UxNi00NWU5LWJkYjctOTAxNmI1YWUwM2Uz
+20181031-13:59:46 [1] DEBUG YoYoStudio.DataService.Library.DataService [(null)] <(null)> - Exit Login : AppId - 2 , UserId - 20
