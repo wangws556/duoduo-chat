@@ -54,10 +54,10 @@ namespace YoYoStudio.RoomService.Client
         [System.ServiceModel.OperationContractAttribute(IsInitiating = false, IsOneWay = false, Action = "http://tempuri.org/IRoomService/ExecuteCommand", ReplyAction = "http://tempuri.org/IRoomService/ExecuteCommandResponse")]
         bool ExecuteCommand(int roomId, int cmdId, int targetUserId);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = false, IsInitiating = false, Action = "http://tempuri.org/IRoomService/VideoStateChanged")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/VideoStateChanged")]
         void VideoStateChanged(int roomId, int state);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = false, IsInitiating = false, Action = "http://tempuri.org/IRoomService/AudioStateChanged")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/AudioStateChanged")]
         void AudioStateChanged(int roomId, int state);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/SendGift")]
@@ -119,10 +119,10 @@ namespace YoYoStudio.RoomService.Client
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://tempuri.org/IRoomService/CommandMessageReceived")]
         void CommandMessageReceived(int roomId, int cmdId, int sourceUserId, int targetUserId);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = false, Action = "http://tempuri.org/IRoomService/VideoStateChanged")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://tempuri.org/IRoomService/VideoStateChanged")]
         void VideoStateChanged(int roomId, int senderId, int state);
 
-        [System.ServiceModel.OperationContractAttribute(IsOneWay = false, Action = "http://tempuri.org/IRoomService/AudioStateChanged")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://tempuri.org/IRoomService/AudioStateChanged")]
         void AudioStateChanged(int roomId, int senderId, int state);
 
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true,  Action = "http://tempuri.org/IRoomService/StartMusic")]

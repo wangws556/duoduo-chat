@@ -42,9 +42,9 @@ namespace YoYoStudio.RoomService.Library
         void SendGift(int roomId, int receiverId, int giftId, int count);
         [OperationContract(IsInitiating = false, IsOneWay = false)]
         bool ExecuteCommand(int roomId, int cmdId, int targetUserId);
-        [OperationContract(IsInitiating = false, IsOneWay = false)]
+        [OperationContract(IsInitiating = false, IsOneWay = true)]
         void VideoStateChanged(int roomId, int state);
-        [OperationContract(IsInitiating = false, IsOneWay = false)]
+        [OperationContract(IsInitiating = false, IsOneWay = true)]
         void AudioStateChanged(int roomId, int state);
         [OperationContract(IsInitiating = true, IsOneWay = true)]
         void AudioServiceLogin(string ip, int port);
@@ -95,19 +95,19 @@ namespace YoYoStudio.RoomService.Library
         [OperationContract(IsOneWay = true)]
         void CommandMessageReceived(int roomId, int cmdId, int sourceUserId, int targetUserId);
         [OperationContract(IsOneWay = true)]
-        void VideoStateChangedCallback(int roomId, int senderId, int state);
+        void VideoStateChanged(int roomId, int senderId, int state);
         [OperationContract(IsOneWay = true)]
-        void AudioStateChangedCallback(int roomId, int senderId, int state);
+        void AudioStateChanged(int roomId, int senderId, int state);
         [OperationContract(IsOneWay = true)]
-        void StartMusicCallback(int roomId, int userId, string fileName);
+        void StartMusic(int roomId, int userId, string fileName);
         [OperationContract(IsOneWay = true)]
-        void StopMusicCallback(int roomId, int userId);
+        void StopMusic(int roomId, int userId);
         [OperationContract(IsOneWay = true)]
-        void TogglePauseMusicCallback(int roomId, int userId,bool paused);
+        void TogglePauseMusic(int roomId, int userId,bool paused);
         [OperationContract(IsOneWay = true)]
-        void SetPlayPositionCallback(int roomId, int userId, int pos);
+        void SetPlayPosition(int roomId, int userId, int pos);
         [OperationContract(IsOneWay = true)]
-        void SetMusicVolumeCallback(int roomId, int userId, int volume);
+        void SetMusicVolume(int roomId, int userId, int volume);
         [OperationContract(IsOneWay = true)]
         void ReportMusicStatus(int roomId, int requireUserId);
         [OperationContract(IsOneWay = true)]

@@ -674,13 +674,13 @@ namespace YoYoStudio.Client.ViewModel
         {
             try
             {
-                if(RoomClient.State == CommunicationState.Closed)
-                {
-                    RoomCallback = new RoomServiceCallback();
-                    RoomClient = new RoomServiceClient(RoomCallback, RoomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
-                    RoomClient.EnterRoom(RoomVM.Id, ApplicationVM.LocalCache.CurrentUserVM.GetConcretEntity<User>());
-                    RegisterEvents();
-                }
+                //if(RoomClient.State == CommunicationState.Closed)
+                //{
+                //    RoomCallback = new RoomServiceCallback();
+                //    RoomClient = new RoomServiceClient(RoomCallback, RoomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
+                //    RoomClient.EnterRoom(RoomVM.Id, ApplicationVM.LocalCache.CurrentUserVM.GetConcretEntity<User>());
+                //    RegisterEvents();
+                //}
                 RoomClient.KeepAlive();
             }
             catch (Exception ex)

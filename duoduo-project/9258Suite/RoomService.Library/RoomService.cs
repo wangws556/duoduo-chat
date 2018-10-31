@@ -710,12 +710,12 @@ namespace YoYoStudio.RoomService.Library
 
         public void VideoStateChanged(int roomId, int state)
         {
-            BroadCast(roomId, u => u.Callback.VideoStateChangedCallback(roomId,unc.User.Id, state), unc.User.Id);
+            BroadCast(roomId, u => u.Callback.VideoStateChanged(roomId,unc.User.Id, state), unc.User.Id);
         }
 
         public void AudioStateChanged(int roomId, int state)
         {
-            BroadCast(roomId, u => u.Callback.AudioStateChangedCallback(roomId, unc.User.Id, state), unc.User.Id);
+            BroadCast(roomId, u => u.Callback.AudioStateChanged(roomId, unc.User.Id, state), unc.User.Id);
         }
 
         public void AudioServiceLogin(string ip, int port)
