@@ -331,6 +331,7 @@ namespace YoYoStudio.Common
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
                 pro.StartInfo.Arguments = " " + arg1 + " -nodisp";
+                //pro.StartInfo.Arguments = " " + arg1;
                 try
                 {
                     pro.Start();

@@ -16,7 +16,9 @@ namespace YoYoStudio.Client.ViewModel
         public AudioConfigurationViewModel(AudioConfiguration config)
             : base(config)
         {
-            
+            LoopbackRecording = config.LoopbackRecording;
+            MicrophoneVolume = config.MicrophoneVolume;
+            SoundVolume = config.SoundVolume;
         }
 
         public override void Save(out bool result)
