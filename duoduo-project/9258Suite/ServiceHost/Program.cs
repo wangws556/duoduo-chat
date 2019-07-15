@@ -18,7 +18,7 @@ namespace YoYoStudio.ServiceHost
                 //System.ServiceModel.ServiceHost host = new System.ServiceModel.ServiceHost(typeof(ChatService.Library.ChatService));
                 //ushort salt = (ushort)new Random().Next();
                 ////string address = "net.tcp://localhost:9000/calculatorA";
-                //string address = "net.tcp://104.215.179.194:22222/calculatorB";
+                //string address = "net.tcp://222.189.228.201:22222/calculatorB";
                 //host.AddServiceEndpoint(typeof(ChatService.Library.IChatService), binding, address);
                 //host.Open();
                 //Console.WriteLine("Service #{0} listening on {1}.", salt, address);
