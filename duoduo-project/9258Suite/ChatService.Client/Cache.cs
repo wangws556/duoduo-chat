@@ -37,7 +37,7 @@ namespace YoYoStudio.ChatService.Client
                 , LoadTask()
             });
             base.RefreshCache(args);
-            logger.Error("Refresh chat service succeed");
+            logger.Info(nameof(RefreshCache) + " Refresh chat service succeed");
         }
 
         private Task LoadExchangeRates()

@@ -1,1 +1,1 @@
-ffmpeg\system32\ffplay.exe "%1" -nodisp
+ffmpeg\system32\ffplay.exe "%1" -nodisp -audio_buffer_size 80 -volume 100

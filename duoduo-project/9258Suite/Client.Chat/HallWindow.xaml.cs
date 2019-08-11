@@ -60,118 +60,125 @@ namespace YoYoStudio.Client.Chat
 
         protected override void ProcessMessage(Common.Notification.EnumNotificationMessage<object, ViewModel.HallWindowAction> message)
         {
-            HallWindowViewModel hallWindowVM = DataContext as HallWindowViewModel;
-            switch (message.Action)
+            try
             {
-                case HallWindowAction.ApplicationShutdown:
-                    if (webWindow != null)
-                    {
-                        CloseWebWindow(webWindow);
-                        webWindow = null;
-                    }
-                    if (roomWindow != null)
-                    {
-                        roomWindow.Close();
-                    }
-                    Close();
-                    break;
-                case HallWindowAction.CloseRoomWindow:
-                    if (roomWindow != null)
-                    {
-                        roomWindow.Close();
-                    }
-                    break;
-                case HallWindowAction.AlreadyInRoom:
-                    if (MessageBox.Show(Messages.AlreadyInRoom, Text.Warning, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                    {
+                HallWindowViewModel hallWindowVM = DataContext as HallWindowViewModel;
+                switch (message.Action)
+                {
+                    case HallWindowAction.ApplicationShutdown:
+                        if (webWindow != null)
+                        {
+                            CloseWebWindow(webWindow);
+                            webWindow = null;
+                        }
                         if (roomWindow != null)
                         {
                             roomWindow.Close();
-                            hallVM.Me.RoomWindowVM = null;
                         }
-                        int roomId = (int)message.Content;
-                        if (roomId != null)
+                        Close();
+                        break;
+                    case HallWindowAction.CloseRoomWindow:
+                        if (roomWindow != null)
                         {
-                            hallVM.EnterRoom(roomId);
+                            roomWindow.Close();
                         }
-                    }
-                    break;
-                case HallWindowAction.EnterRoomSucceeded:
-                    RoomWindowViewModel roomWindowVM = message.Content as RoomWindowViewModel;
-                    roomWindow = new RoomWindow(roomWindowVM, this) as RoomWindow;
-                    roomWindow.Closed += roomWindow_Closed;
-                    //roomWindow.StateChanged += roomWindow_StateChanged;
-                    roomWindow.Show();
-                    //Hide();
-                    //ShowWebWindow(webWindow, false);
-                    break;
-                case HallWindowAction.EnterRoomFailed:
-                    hallVM.ApplicationVM.RoomWindowVM = null;
-                    MessageBox.Show(Messages.EnterRoomFailed);
-                    break;
-                //case HallWindowAction.Register:
-                //    RegisterWindowViewModel vm = message.Content as RegisterWindowViewModel;
-                //    if (vm != null)
-                //    {
-                //        registerWindow = new RegisterWindow(vm) { Owner = this };
-                //        ShowWebWindow(webWindow, false);
-                //        registerWindow.ShowDialog();
-                //        ShowWebWindow(webWindow, true);
-                //    }
-                //    break;
-                //case HallWindowAction.RegisterUserIdNotAvailable:
-                //    ShowWebWindow(webWindow, false);
-                //    MessageBox.Show(Messages.NoRegisterUserIdAvailable);
-                //    ShowWebWindow(webWindow, true);
-                //    break;
-                //case HallWindowAction.RegisterSuccess:
-                //    if (registerWindow != null)
-                //    {
-                //        registerWindow.Close();
-                //    }
-                //    User user = message.Content as User;
-                //    if (user != null)
-                //    {
-                //        webWindow.CallJavaScript("SetLoginUser", user.Id, user.Password);
-                //    }
-                //    ShowWebWindow(webWindow, true);
-                //    break;
-                //case HallWindowAction.RegisterCancel:
-                //    if (registerWindow != null)
-                //    {
-                //        registerWindow.Close();
-                //    }
-                //    ShowWebWindow(webWindow, true);
-                //    break;
-                case HallWindowAction.OpenConfigurationWindow:
-                    hallWindowVM.ApplicationVM.ConfigurationWindowVM = new ConfigurationWindowViewModel();
-                    ConfigurationWindow configurationWindow = new ConfigurationWindow(hallWindowVM.ApplicationVM.ConfigurationWindowVM);
-                    configurationWindow.Owner = this;
-                    configurationWindow.ShowDialog();
-                    break;
-                case HallWindowAction.SwitchUser:
-                    if (MessageBox.Show(Text.SwitchUserConfirm, Text.Prompt, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                    {
-                        hallWindowVM.ApplicationVM.SwitchUser();
-                        LoginWindow loginWindow = new LoginWindow();
-                        loginWindow.Show();
-                        this.Close();
-                    }
-                    break;
-                case HallWindowAction.OpenAgentPortal:
-                    AgentPortalWindowViewModel avm = new AgentPortalWindowViewModel();
-                    avm.Initialize();
-                    AgentLoginWindow agentLoginWindow = new AgentLoginWindow(avm);
-                    agentLoginWindow.ShowInTaskbar = true;
-                    if (agentLoginWindow.ShowDialog() == true)
-                    {
-                        AgentPortalWindow agentPortalWindow = new AgentPortalWindow(avm);
-                        agentPortalWindow.ShowInTaskbar = true;
-                        agentPortalWindow.ShowDialog();
-                    }
-                    break;
-                default:
-                    break;
+                        break;
+                    case HallWindowAction.AlreadyInRoom:
+                        if (MessageBox.Show(Messages.AlreadyInRoom, Text.Warning, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        {
+                            if (roomWindow != null)
+                            {
+                                roomWindow.Close();
+                                hallVM.Me.RoomWindowVM = null;
+                            }
+                            int roomId = (int)message.Content;
+                            if (roomId != null)
+                            {
+                                hallVM.EnterRoom(roomId);
+                            }
+                        }
+                        break;
+                    case HallWindowAction.EnterRoomSucceeded:
+                        RoomWindowViewModel roomWindowVM = message.Content as RoomWindowViewModel;
+                        roomWindow = new RoomWindow(roomWindowVM, this) as RoomWindow;
+                        roomWindow.Closed += roomWindow_Closed;
+                        //roomWindow.StateChanged += roomWindow_StateChanged;
+                        roomWindow.Show();
+                        //Hide();
+                        //ShowWebWindow(webWindow, false);
+                        break;
+                    case HallWindowAction.EnterRoomFailed:
+                        hallVM.ApplicationVM.RoomWindowVM = null;
+                        MessageBox.Show(Messages.EnterRoomFailed);
+                        break;
+                    //case HallWindowAction.Register:
+                    //    RegisterWindowViewModel vm = message.Content as RegisterWindowViewModel;
+                    //    if (vm != null)
+                    //    {
+                    //        registerWindow = new RegisterWindow(vm) { Owner = this };
+                    //        ShowWebWindow(webWindow, false);
+                    //        registerWindow.ShowDialog();
+                    //        ShowWebWindow(webWindow, true);
+                    //    }
+                    //    break;
+                    //case HallWindowAction.RegisterUserIdNotAvailable:
+                    //    ShowWebWindow(webWindow, false);
+                    //    MessageBox.Show(Messages.NoRegisterUserIdAvailable);
+                    //    ShowWebWindow(webWindow, true);
+                    //    break;
+                    //case HallWindowAction.RegisterSuccess:
+                    //    if (registerWindow != null)
+                    //    {
+                    //        registerWindow.Close();
+                    //    }
+                    //    User user = message.Content as User;
+                    //    if (user != null)
+                    //    {
+                    //        webWindow.CallJavaScript("SetLoginUser", user.Id, user.Password);
+                    //    }
+                    //    ShowWebWindow(webWindow, true);
+                    //    break;
+                    //case HallWindowAction.RegisterCancel:
+                    //    if (registerWindow != null)
+                    //    {
+                    //        registerWindow.Close();
+                    //    }
+                    //    ShowWebWindow(webWindow, true);
+                    //    break;
+                    case HallWindowAction.OpenConfigurationWindow:
+                        hallWindowVM.ApplicationVM.ConfigurationWindowVM = new ConfigurationWindowViewModel();
+                        ConfigurationWindow configurationWindow = new ConfigurationWindow(hallWindowVM.ApplicationVM.ConfigurationWindowVM);
+                        configurationWindow.Owner = this;
+                        configurationWindow.ShowDialog();
+                        break;
+                    case HallWindowAction.SwitchUser:
+                        if (MessageBox.Show(Text.SwitchUserConfirm, Text.Prompt, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        {
+                            hallWindowVM.ApplicationVM.SwitchUser();
+                            LoginWindow loginWindow = new LoginWindow();
+                            loginWindow.Show();
+                            this.Close();
+                        }
+                        break;
+                    case HallWindowAction.OpenAgentPortal:
+                        AgentPortalWindowViewModel avm = new AgentPortalWindowViewModel();
+                        avm.Initialize();
+                        AgentLoginWindow agentLoginWindow = new AgentLoginWindow(avm);
+                        agentLoginWindow.ShowInTaskbar = true;
+                        if (agentLoginWindow.ShowDialog() == true)
+                        {
+                            AgentPortalWindow agentPortalWindow = new AgentPortalWindow(avm);
+                            agentPortalWindow.ShowInTaskbar = true;
+                            agentPortalWindow.ShowDialog();
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch(Exception ex)
+            {
+                hallVM.ApplicationVM.Logger.Error(nameof(ProcessMessage) + " Message: " + message.Action, ex);
             }
         }
 

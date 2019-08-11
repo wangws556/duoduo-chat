@@ -685,6 +685,7 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
+                this.ApplicationVM.Logger.Error(nameof(timer_Elapsed), ex);
             }
         }
 
@@ -715,7 +716,10 @@ namespace YoYoStudio.Client.ViewModel
                 ReleaseAudio();
             }
             
-            catch { }
+            catch (Exception ex)
+            {
+                this.ApplicationVM.Logger.Error(nameof(ReleaseUnManagedResource), ex);
+            }
             base.ReleaseUnManagedResource();
         }
 
@@ -905,7 +909,7 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-                ApplicationVM.Logger.Debug("UploadImages() in RoomWIndowViewModel error: " + ex.Message);
+                ApplicationVM.Logger.Error("UploadImages() in RoomWIndowViewModel error: " + ex.Message);
                 MessageBox.Show(ex.Message);
                 return false;
             }

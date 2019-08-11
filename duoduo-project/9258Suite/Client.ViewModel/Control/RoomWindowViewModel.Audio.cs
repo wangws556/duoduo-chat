@@ -121,7 +121,7 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-
+                this.ApplicationVM.Logger.Error(nameof(StartAudioPublish), ex);
             }
         }
 
@@ -134,7 +134,7 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-
+                this.ApplicationVM.Logger.Error(nameof(StopAudioPublish), ex);
             }
         }
 
@@ -146,7 +146,7 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-
+                this.ApplicationVM.Logger.Error(nameof(StartAudioPlay), ex);
             }
         }
 
@@ -158,7 +158,7 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-
+                this.ApplicationVM.Logger.Error(nameof(StopAudioPlay), ex);
             }
         }
 
@@ -170,6 +170,10 @@ namespace YoYoStudio.Client.ViewModel
                 try
                 {
                     recorder.Stop();                    
+                }
+                catch(Exception ex)
+                {
+                    this.ApplicationVM.Logger.Error(nameof(PauseAudioRecording), ex);
                 }
                 finally
                 {
@@ -186,6 +190,10 @@ namespace YoYoStudio.Client.ViewModel
                 try
                 {
                     recorder.Stop();
+                }
+                catch(Exception ex)
+                {
+                    this.ApplicationVM.Logger.Error(nameof(StopAudioRecording), ex);
                 }
                 finally
                 {

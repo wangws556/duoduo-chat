@@ -59,26 +59,30 @@
 		<![CDATA[
 			private function callCSharp(methodName:String, ... params):void
 			{
-				ExternalInterface.call(methodName, params);
+				if(ExternalInterface.available){
+					ExternalInterface.call(methodName, params);
+				}
 			}
 			
 			private function addExternalCallbacks():void
 			{
-				ExternalInterface.addCallback("resize",resize);
-				ExternalInterface.addCallback("connect",connect);
-				ExternalInterface.addCallback("disconnect",disconnect);
-				ExternalInterface.addCallback("publishVideo",publishVideo);
-				ExternalInterface.addCallback("publishAudio",publishAudio);
-				ExternalInterface.addCallback("resumeVideo",resumeVideo);
-				ExternalInterface.addCallback("resumeAudio",resumeAudio);
-				ExternalInterface.addCallback("pauseVideo",pauseVideo);
-				ExternalInterface.addCallback("pauseAudio",pauseAudio);
-				ExternalInterface.addCallback("scaleXDefault",scaleXDefault);
-				ExternalInterface.addCallback("scaleXMirror",scaleXMirror);
-				ExternalInterface.addCallback("getCameras",getCameras);
-				ExternalInterface.addCallback("startCamera",startCamera);
-				ExternalInterface.addCallback("closeCamera",closeCamera);
-				ExternalInterface.addCallback("connectRtmp",connectRtmp);
+				if(ExternalInterface.available){
+					ExternalInterface.addCallback("resize",resize);
+					ExternalInterface.addCallback("connect",connect);
+					ExternalInterface.addCallback("disconnect",disconnect);
+					ExternalInterface.addCallback("publishVideo",publishVideo);
+					ExternalInterface.addCallback("publishAudio",publishAudio);
+					ExternalInterface.addCallback("resumeVideo",resumeVideo);
+					ExternalInterface.addCallback("resumeAudio",resumeAudio);
+					ExternalInterface.addCallback("pauseVideo",pauseVideo);
+					ExternalInterface.addCallback("pauseAudio",pauseAudio);
+					ExternalInterface.addCallback("scaleXDefault",scaleXDefault);
+					ExternalInterface.addCallback("scaleXMirror",scaleXMirror);
+					ExternalInterface.addCallback("getCameras",getCameras);
+					ExternalInterface.addCallback("startCamera",startCamera);
+					ExternalInterface.addCallback("closeCamera",closeCamera);
+					ExternalInterface.addCallback("connectRtmp",connectRtmp);
+				}
 			}		
 			var bb:Boolean = true;
 			private function connectRtmp(rtmp:String)

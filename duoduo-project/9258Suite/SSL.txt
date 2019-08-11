@@ -16,6 +16,12 @@ makecert -n "CN=_9258RoomService" -ic c:\_9258RoomService.cer -iv C:\_9258RoomSe
 
 ffmpeg publish
 ffmpeg -r 25 -f dshow -s 640*480 -i audio="Stereo Mix (Realtek High Definition Audio)" -vcodec lib*264 -b 600k  -ab 128k -f flv rtmp://222.189.228.201:1935/live/testlive
+or
+ffmpeg -f dshow -probesize 10M -ac 1 -channel_layout mono -guess_layout_max 0 -audio_buffer_size 80 -i audio="Stereo Mix (Realtek High Definition Audio)" -f flv rtmp://222.189.228.201:1935/live/testlive
+
 
 ffmpeg play
 ffplay.exe rtmp://222.189.228.201:1935/live/testlive -nodisp
+
+
+

@@ -119,8 +119,7 @@ namespace YoYoStudio.Client.Chat
             WebClient wc = new WebClient();
             try
             {
-                wc.DownloadFile(new Uri("http://222.189.228.201:5656/Downloads/9258Update.txt"), System.IO.Path.Combine(Environment.CurrentDirectory, "9258Update.txt"));
-                //wc.DownloadFile(new Uri("http://222.189.228.201:6645/Downloads/9258Update.txt"), System.IO.Path.Combine(Environment.CurrentDirectory, "9258Update.txt"));
+                wc.DownloadFile(new Uri("http://222.189.228.201/Portal/Downloads/9258Update.txt"), System.IO.Path.Combine(Environment.CurrentDirectory, "9258Update.txt"));
                 //wc.DownloadFile(new Uri("http://www.9258.tv/Downloads/9258Update.txt"), System.IO.Path.Combine(Environment.CurrentDirectory, "9258Update.txt"));
             }
             catch (WebException we)

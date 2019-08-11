@@ -1,1 +1,1 @@
-ffmpeg\system32\ffmpeg -f dshow -i audio=%1 -b 600k  -ab 128k -f flv %2
+ffmpeg\system64\ffmpeg -f dshow -probesize 10M -ac 1 -channel_layout mono -guess_layout_max 0 -audio_buffer_size 80 -filter:a "volume=1.5" -i audio=%1 -f flv %2

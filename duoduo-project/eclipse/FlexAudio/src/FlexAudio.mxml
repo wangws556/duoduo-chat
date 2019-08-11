@@ -34,15 +34,19 @@
 			}
 			
 			private function callCSharp(methodName:String, ...params):void{
-				ExternalInterface.call(methodName,params);
+				if(ExternalInterface.available){
+					ExternalInterface.call(methodName,params);
+				}
 			}
 			
 			private function publishExternalCallbacks():void{
-				ExternalInterface.addCallback("connect",connect);
-				ExternalInterface.addCallback("connectRtmp",connectRtmp);
-				ExternalInterface.addCallback("disconnectRtmp",disconnectRtmp);
-				ExternalInterface.addCallback("playMusic",playMusic);
-				ExternalInterface.addCallback("stopPlay",stopPlay);
+				if(ExternalInterface.available){
+					ExternalInterface.addCallback("connect",connect);
+					ExternalInterface.addCallback("connectRtmp",connectRtmp);
+					ExternalInterface.addCallback("disconnectRtmp",disconnectRtmp);
+					ExternalInterface.addCallback("playMusic",playMusic);
+					ExternalInterface.addCallback("stopPlay",stopPlay);
+				}
 			}
 		
 			
