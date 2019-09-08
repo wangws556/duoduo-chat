@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace YoYoStudio.Model.Configuration
 {
@@ -50,6 +49,15 @@ namespace YoYoStudio.Model.Configuration
         public int SoundVolume { get; set; }
         public int MicrophoneVolume { get; set; }
         public bool LoopbackRecording { get; set; }
+        public string MicNameLabel { get; set; }
+        public int MicDeviceIndex { get; set; }
+        public string MicDeviceName { get; set; }
+        public ObservableCollection<string> MicDevices { get; set; }
+        public string AudioNameLabel { get; set; }
+        public int AudioDeviceIndex { get; set; }
+        public string AudioDeviceName { get; set; }
+        public ObservableCollection<string> AudioDevices { get; set; }
+        public string AudioRTMP { get; set; }
 
         public override string Name
         {
@@ -59,6 +67,8 @@ namespace YoYoStudio.Model.Configuration
         public AudioConfiguration()
         {
             LoopbackRecording = true;
+            MicNameLabel = "麦克风设备";
+            AudioNameLabel = "音频设备";
         }
     }
     [Serializable]

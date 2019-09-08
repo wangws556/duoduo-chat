@@ -58,10 +58,10 @@ namespace YoYoStudio.Client.ViewModel
 		}
 
 
-        /// <summary>
-        /// Field which backs the WelcomeMessage property
-        /// </summary>
-        public HistoryableProperty<string> welcomeMessage = new HistoryableProperty<string>(string.Empty);
+		/// <summary>
+		/// Field which backs the WelcomeMessage property
+		/// </summary>
+		public HistoryableProperty<string> welcomeMessage = new HistoryableProperty<string>(string.Empty);
 
 		/// <summary>
 		/// Gets / sets the WelcomeMessage value
@@ -74,10 +74,10 @@ namespace YoYoStudio.Client.ViewModel
 		}
 
 
-        /// <summary>
-        /// Field which backs the BusyMessage property
-        /// </summary>
-        public HistoryableProperty<string> busyMessage = new HistoryableProperty<string>(string.Empty);
+		/// <summary>
+		/// Field which backs the BusyMessage property
+		/// </summary>
+		public HistoryableProperty<string> busyMessage = new HistoryableProperty<string>(string.Empty);
 
 		/// <summary>
 		/// Gets / sets the BusyMessage value

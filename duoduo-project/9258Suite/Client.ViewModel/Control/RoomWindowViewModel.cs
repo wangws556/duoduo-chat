@@ -215,7 +215,7 @@ namespace YoYoStudio.Client.ViewModel
                             if ((FirstMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
                                 //StartAudioPlaying(FirstMicUserVM.Id);
-                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
+                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
                             }
                         }
                         if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
@@ -225,7 +225,7 @@ namespace YoYoStudio.Client.ViewModel
                             if ((SecondMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
                                 //StartAudioPlaying(SecondMicUserVM.Id);
-                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
+                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
                             }
                         }
                         if (micUsers.ContainsKey(2) && micUsers[2].MicStatus != MicStatusMessage.MicStatus_Off)
@@ -235,7 +235,7 @@ namespace YoYoStudio.Client.ViewModel
                             if ((ThirdMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
                                 //StartAudioPlaying(ThirdMicUserVM.Id);
-                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
+                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
                             }
                         }
                     }
@@ -256,7 +256,7 @@ namespace YoYoStudio.Client.ViewModel
                                     if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                                     {
                                         //StartAudioPlaying(uvm.Id);
-                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
+                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
                                     }
                                 }
                             }
@@ -278,7 +278,7 @@ namespace YoYoStudio.Client.ViewModel
                                     if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                                     {
                                         //StartAudioPlaying(uvm.Id);
-                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath);
+                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
                                     }
                                 }
                             }

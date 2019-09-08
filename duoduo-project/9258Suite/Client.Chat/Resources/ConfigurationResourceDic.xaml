@@ -183,7 +183,29 @@
     <ControlTemplate x:Key="AudioConfigurationTemplate" TargetType="ContentControl">
         <DockPanel DataContext="{Binding ConfigurationVM}">
             <CheckBox DockPanel.Dock="Top" IsEnabled="true" IsChecked="{Binding LoopbackRecording}">在麦上唱歌</CheckBox>
-            <Grid />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="{Binding MicNameLabel, Mode=OneTime}" Style="{StaticResource ConfigurationLabelStyle}" />
+                <ComboBox Grid.Row="0" Grid.Column="1"  Margin="10,2,10,2"
+                          FontSize="16"
+                          ItemsSource="{Binding MicDevices}"
+                          SelectedIndex="{Binding MicDeviceIndex}" 
+                          SelectedValue="{Binding MicDeviceName}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="{Binding AudioNameLabel, Mode=OneTime}" Style="{StaticResource ConfigurationLabelStyle}" />
+                <ComboBox Grid.Row="1" Grid.Column="1"  Margin="10,2,10,2"
+                          FontSize="16"
+                          ItemsSource="{Binding AudioDevices}"
+                          SelectedIndex="{Binding AudioDeviceIndex}" 
+                          SelectedValue="{Binding AudioDeviceName}"/>
+            </Grid>
         </DockPanel>
     </ControlTemplate>
 

@@ -154,8 +154,8 @@
     <ROW Component="YoYoStudio.Resource.dll" ComponentId="{D6D8DC6E-8B25-4291-B1ED-D9327477AFC9}" Directory_="APPDIR" Attributes="0" KeyPath="YoYoStudio.Resource.dll"/>
     <ROW Component="YoYoStudio.RoomService.Client.dll" ComponentId="{59127C92-161E-4E16-977F-03AB25440304}" Directory_="APPDIR" Attributes="0" KeyPath="YoYoStudio.RoomService.Client.dll"/>
     <ROW Component="YoYoStudio.SocketService.Music.dll" ComponentId="{7AD00131-650B-4B6C-8EFA-D5F9B220F87B}" Directory_="APPDIR" Attributes="0" KeyPath="YoYoStudio.SocketService.Music.dll"/>
-    <ROW Component="_" ComponentId="{B0544DE8-3F88-4C99-BE4D-045BF5E38462}" Directory_="__26_Dir" Attributes="0"/>
-    <ROW Component="__1" ComponentId="{ED730BAD-6094-454C-915C-A27E5683812F}" Directory_="__27_Dir" Attributes="0"/>
+    <ROW Component="_" ComponentId="{9D2202EB-5751-4B47-9DF8-E06255345BAD}" Directory_="__26_Dir" Attributes="0"/>
+    <ROW Component="__1" ComponentId="{0AC49FF7-C04F-4D99-9950-5EFE36C40912}" Directory_="__27_Dir" Attributes="0"/>
     <ROW Component="advertise.jpg" ComponentId="{511EFDAB-C535-4DDE-BFDD-8BC362C0CABB}" Directory_="Images_Dir" Attributes="0" KeyPath="advertise.jpg" Type="0"/>
     <ROW Component="audioDisabled_16.jpg" ComponentId="{B00D07F5-AFEA-40A3-AC39-C160C0EFE2B6}" Directory_="Flex_Dir" Attributes="0" KeyPath="audioDisabled_16.jpg" Type="0"/>
     <ROW Component="bmp" ComponentId="{8F37F5AA-0D59-45F1-A8FA-091F22A06BB2}" Directory_="Default_2_Dir" Attributes="0" KeyPath="bmp" Type="0"/>
