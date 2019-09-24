@@ -182,7 +182,7 @@
 
     <ControlTemplate x:Key="AudioConfigurationTemplate" TargetType="ContentControl">
         <DockPanel DataContext="{Binding ConfigurationVM}">
-            <CheckBox DockPanel.Dock="Top" IsEnabled="true" IsChecked="{Binding LoopbackRecording}">在麦上唱歌</CheckBox>
+            <!--<CheckBox DockPanel.Dock="Top" IsEnabled="true" IsChecked="{Binding LoopbackRecording}">在麦上唱歌</CheckBox>-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

@@ -94,7 +94,7 @@ body p {
 }
 
 .zt1411 {
-	color: #CCC;
+	color: orange;
     font-size:16px;
     font-weight:bold;
 }
@@ -123,14 +123,14 @@ body p {
 }
 
 .secondHeaderLinck {
-    font-weight:normal;
-    color:#39C;
-    font-size:18px;
-    height:25px;
-    min-width:90px;
-    text-align:center;
-    background-color:#F0F0F0;
-    vertical-align:middle;
+    font-weight: normal;
+    color: black;
+    font-size: 18px;
+    height: 25px;
+    min-width: 90px;
+    text-align: center;
+    background-color: white;
+    vertical-align: middle;
 }
 
 .headerLink {

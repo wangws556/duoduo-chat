@@ -353,8 +353,8 @@ namespace YoYoStudio.Client.Chat.Controls
                     if (oldS != MicStatusMessage.MicStatus_Off)
                     {
                         Utility.StopPublishAudio();
-                        playBack.Stop();
-                        spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
+                        //playBack.Stop();
+                        //spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
                         if (uvm != null)
                             DataContext = null;
                     }
@@ -412,6 +412,7 @@ namespace YoYoStudio.Client.Chat.Controls
             if (playBack == null)
             {
                 playBack = new RealTimePlayback();
+                playBack.Start();
             }
             
             if(spectrumAnalyzer != null)
@@ -447,21 +448,21 @@ namespace YoYoStudio.Client.Chat.Controls
                                         //CallFlash(FlexCommand.PublishAudio);
                                         //uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                        uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath + "/" + roomId);
+                                        //uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath + "/" + roomId);
 
                                         break;
                                     case FlexCallbackCommandNames.AV_State_Paused:
                                         CallFlash(FlexCommand.PauseAudio);
                                         //uvm.RoomWindowVM.StopAudioPublish();
                                         //uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
-                                        uvm.RoomWindowVM.StopAudioPlay();
+                                        //uvm.RoomWindowVM.StopAudioPlay();
                                         
                                         break;
                                     case FlexCallbackCommandNames.AV_State_Resumed:
                                         CallFlash(FlexCommand.ResumeAudio);
                                         //uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                        uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath+"/"+roomId);
+                                        //uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath+"/"+roomId);
                                         break;
                                     default:
                                         break;

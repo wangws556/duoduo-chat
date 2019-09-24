@@ -81,7 +81,7 @@ namespace YoYoStudio.Client.ViewModel
                 AudioDevices.Add(item.FriendlyName);
             }
             AudioDeviceName = AudioDevices[0];
-            AudioRTMP = ConfigurationManager.AppSettings["AudioRtmpPath"] + "/" + this.ApplicationVM.RoomWindowVM.RoomVM.Id;
+            AudioRTMP = ConfigurationManager.AppSettings["AudioRtmpPath"];
             base.InitializeResource();
         }
     }

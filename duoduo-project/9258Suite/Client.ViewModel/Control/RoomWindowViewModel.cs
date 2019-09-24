@@ -193,227 +193,213 @@ namespace YoYoStudio.Client.ViewModel
         {
             //Task.Factory.StartNew(() =>
             //    {
-                    lock (UserVMs)
+            lock (UserVMs)
+            {
+                var users = RoomClient.GetRoomUsers(RoomVM.Id);
+                if (users != null && users.Length > 0)
+                {
+                    foreach (var user in users)
                     {
-                        var users = RoomClient.GetRoomUsers(RoomVM.Id);
-                        if (users != null && users.Length > 0)
+                        UserEntered(user, false);
+                    }
+                }
+            }
+
+            var micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Public);
+            if (micUsers != null && micUsers.Count > 0)
+            {
+                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
+                if (micUsers.ContainsKey(0) && micUsers[0].MicStatus != MicStatusMessage.MicStatus_Off)
+                {
+                    FirstMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[0].UserId);
+                    FirstMicUserVM.OnMic(MicType.Public, 0, micUsers[0].StreamGuid, micUsers[0].MicStatus);
+                }
+                if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
+                {
+                    SecondMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[1].UserId);
+                    SecondMicUserVM.OnMic(MicType.Public, 1, micUsers[1].StreamGuid, micUsers[1].MicStatus);
+                }
+                if (micUsers.ContainsKey(2) && micUsers[2].MicStatus != MicStatusMessage.MicStatus_Off)
+                {
+                    ThirdMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[2].UserId);
+                    ThirdMicUserVM.OnMic(MicType.Public, 2, micUsers[2].StreamGuid, micUsers[2].MicStatus);
+                }
+            }
+
+
+            micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Private);
+            if (micUsers != null && micUsers.Count > 0)
+            {
+                foreach (var mic in micUsers.Values)
+                {
+                    if (mic.MicStatus != MicStatusMessage.MicStatus_Off)
+                    {
+                        var uvm = UserVMs.FirstOrDefault(u => u.Id == mic.UserId);
+                        if (uvm != null)
                         {
-                            foreach (var user in users)
+                            PrivateMicUserVMs.Add(uvm);
+                            uvm.OnMic(MicType.Private, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
+                            if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
-                                UserEntered(user, false);
+                                //StartAudioPlaying(uvm.Id);
+                                //StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
                             }
                         }
                     }
+                }
+            }
 
-                    var micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Public);
-                    if (micUsers != null && micUsers.Count > 0)
+            micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Secret);
+            if (micUsers != null && micUsers.Count > 0)
+            {
+                foreach (var mic in micUsers.Values)
+                {
+                    if (mic.MicStatus != MicStatusMessage.MicStatus_Off)
                     {
-                        if (micUsers.ContainsKey(0) && micUsers[0].MicStatus != MicStatusMessage.MicStatus_Off)
+                        var uvm = UserVMs.FirstOrDefault(u => u.Id == mic.UserId);
+                        if (uvm != null)
                         {
-                            FirstMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[0].UserId);
-                            FirstMicUserVM.OnMic(MicType.Public, 0, micUsers[0].StreamGuid, micUsers[0].MicStatus);
-                            if ((FirstMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
+                            SecretMicUserVMs.Add(uvm);
+                            uvm.OnMic(MicType.Secret, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
+                            if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
                             {
-                                //StartAudioPlaying(FirstMicUserVM.Id);
-                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
-                            }
-                        }
-                        if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
-                        {
-                            SecondMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[1].UserId);
-                            SecondMicUserVM.OnMic(MicType.Public, 1, micUsers[1].StreamGuid, micUsers[1].MicStatus);
-                            if ((SecondMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
-                            {
-                                //StartAudioPlaying(SecondMicUserVM.Id);
-                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
-                            }
-                        }
-                        if (micUsers.ContainsKey(2) && micUsers[2].MicStatus != MicStatusMessage.MicStatus_Off)
-                        {
-                            ThirdMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[2].UserId);
-                            ThirdMicUserVM.OnMic(MicType.Public, 2, micUsers[2].StreamGuid, micUsers[2].MicStatus);
-                            if ((ThirdMicUserVM.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
-                            {
-                                //StartAudioPlaying(ThirdMicUserVM.Id);
-                                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
+                                //StartAudioPlaying(uvm.Id);
+                                //StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
                             }
                         }
                     }
+                }
+            }
 
-
-                    micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Private);
-                    if (micUsers != null && micUsers.Count > 0)
+            RoomMessage msg = RoomClient.GetRoomMessage(RoomMessageType.GiftMessage);
+            if (msg != null)
+            {
+                UserViewModel sender = null;
+                UserViewModel receiver = null;
+                lock (UserVMs)
+                {
+                    sender = UserVMs.FirstOrDefault(u => u.Id == msg.SenderId);
+                    if (sender == null)
                     {
-                        foreach (var mic in micUsers.Values)
+                        sender = ApplicationVM.LocalCache.AllUserVMs[msg.SenderId];
+                        if (sender == null)
                         {
-                            if (mic.MicStatus != MicStatusMessage.MicStatus_Off)
+                            var usr = RoomClient.GetUser(msg.SenderId);
+                            if (usr != null)
                             {
-                                var uvm = UserVMs.FirstOrDefault(u => u.Id == mic.UserId);
-                                if (uvm != null)
-                                {
-                                    PrivateMicUserVMs.Add(uvm);
-                                    uvm.OnMic(MicType.Private, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
-                                    if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
-                                    {
-                                        //StartAudioPlaying(uvm.Id);
-                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Secret);
-                    if (micUsers != null && micUsers.Count > 0)
-                    {
-                        foreach (var mic in micUsers.Values)
-                        {
-                            if (mic.MicStatus != MicStatusMessage.MicStatus_Off)
-                            {
-                                var uvm = UserVMs.FirstOrDefault(u => u.Id == mic.UserId);
-                                if (uvm != null)
-                                {
-                                    SecretMicUserVMs.Add(uvm);
-                                    uvm.OnMic(MicType.Secret, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
-                                    if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
-                                    {
-                                        //StartAudioPlaying(uvm.Id);
-                                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    RoomMessage msg = RoomClient.GetRoomMessage(RoomMessageType.GiftMessage);
-                    if (msg != null)
-                    {
-                        UserViewModel sender = null;
-                        UserViewModel receiver = null;
-                        lock (UserVMs)
-                        {
-                            sender = UserVMs.FirstOrDefault(u => u.Id == msg.SenderId);
-                            if (sender == null)
-                            {
-                                sender = ApplicationVM.LocalCache.AllUserVMs[msg.SenderId];
-                                if (sender == null)
-                                {
-                                    var usr = RoomClient.GetUser(msg.SenderId);
-                                    if (usr != null)
-                                    {
-                                        sender = new UserViewModel(usr);
-                                        sender.Initialize();
-                                        ApplicationVM.LocalCache.AllUserVMs[msg.SenderId] = sender;
-                                    }
-                                }
-                                else 
-                                {
-                                    if (!sender.IsInitialized)
-                                    {
-                                        sender.Initialize();
-                                    }
-                                }
-                            }
-                            receiver = UserVMs.FirstOrDefault(u => u.Id == msg.ReceiverId);
-                            if (receiver == null)
-                            {
-                                receiver = ApplicationVM.LocalCache.AllUserVMs[msg.ReceiverId];
-                                if (receiver == null)
-                                {
-                                    var usr = RoomClient.GetUser(msg.ReceiverId);
-                                    if (usr != null)
-                                    {
-                                        receiver = new UserViewModel(usr);
-                                        receiver.Initialize();
-                                        ApplicationVM.LocalCache.AllUserVMs[msg.ReceiverId] = receiver;
-                                    }
-                                }
-                                else
-                                {
-                                    if (!receiver.IsInitialized)
-                                    {
-                                        receiver.Initialize();
-                                    }
-                                }
-                            }
-                        }
-                        GiftViewModel gift = ApplicationVM.LocalCache.AllGiftVMs.FirstOrDefault(g => g.Id == msg.ItemId);
-                        if (sender != null && receiver != null && gift != null)
-                        {
-                            if (sender.RoleVM == null)
+                                sender = new UserViewModel(usr);
                                 sender.Initialize();
-                            if (receiver.RoleVM == null)
-                                receiver.Initialize();
-                            string header = "<img style='width:25px; height:25px' title='" + sender.RoleVM.Name + "' src='" + sender.RoleVM.ImageVM.StaticImageFile + "'><u style='color:gold;margin-right:10px'><span  onclick='window.external.SelectUser(" + sender.Id + ")'" +
-                                       " oncontextmenu='window.external.SelectUser(" + sender.Id + ")'/>" + sender.NickName + "(" + sender.Id + ")" + "</span></u></img> 送给 " +
-                                       "<img style='width:25px; height:25px' title='" + receiver.RoleVM.Name + "' src='" + receiver.RoleVM.ImageVM.StaticImageFile + "'><u style='color:purple;margin-left:10px;margin-right:10px'><span onclick='window.external.SelectUser(" + receiver.Id + ")'" +
-                                       "oncontextmenu='window.external.SelectUser(" + receiver.Id + ")'/>" + receiver.NickName + "(" + receiver.Id + ")" + "</span></u></img>";
-                            string htmlmsg = string.Empty;
-                            htmlmsg += "<img style='margin-left:20px;margin-right:20px; width:60px; height:60px' src='" + gift.ImageVM.DynamicImageFile + "'/>";
-                            htmlmsg += header + msg.Count + gift.Unit + gift.Name +
-                                "<span style='color:blue'>" + msg.Time + "</span>";
-                            CallJavaScript("ScrollMessage", htmlmsg);
-                        }
-                    }
-
-                    XmlLanguage enus = XmlLanguage.GetLanguage("en-us");
-                    XmlLanguage zhcn = XmlLanguage.GetLanguage("zh-cn");
-                    string fontname = "";
-                    foreach (FontFamily fontfamily in Fonts.SystemFontFamilies)
-                    {
-                        if (fontfamily.FamilyNames.ContainsKey(zhcn))
-                        {
-                            fontfamily.FamilyNames.TryGetValue(zhcn, out fontname);
-                            FontFamilies.Insert(0, fontname);
-                        }
-                        else if (fontfamily.FamilyNames.ContainsKey(enus))
-                        {
-                            fontfamily.FamilyNames.TryGetValue(enus, out fontname);
-                            FontFamilies.Add(fontname);
-                        }
-                    }
-
-                    FontSizes.Add(14);
-                    FontSizes.Add(16);
-                    FontSizes.Add(18);
-                    FontSizes.Add(20);
-                    FontSizes.Add(22);
-                    FontSizes.Add(24);
-                    FontSizes.Add(28);
-                    FontSizes.Add(32);
-                    FontSizes.Add(36);
-
-                    CallJavaScript("InitUsers", UsersJson);
-                    CallJavaScript("InitFonts", FontFamiliesJson, FontSizesJson);
-                    CallJavaScript("InitStamp", StampImagesJson);
-                    for (int i = 0; i < MotionImagesJson.Count; i++)
-                    {
-                        CallJavaScript("InitFaceTab", MotionImagesJson[i], i == MotionImagesJson.Count - 1);
-                    }
-                    
-                    CallJavaScript("InitMoneyForHorn", ApplicationVM.LocalCache.HornMsgMoney, ApplicationVM.LocalCache.HallHornMsgMoney, ApplicationVM.LocalCache.GlobalHornMsgMoney);
-
-                    int scoreToMoney = 0;
-                    if (ApplicationVM.LocalCache.AllExchangeRateVMs.Count > 0)
-                    {
-                        try
-                        {
-                            var exchangeVM = ApplicationVM.LocalCache.AllExchangeRateVMs.OrderBy(r => r).Where(r =>
-                                Convert.ToDateTime(r.ValidTime) >= (DateTime.Now)).ToList().FirstOrDefault();
-                            if (exchangeVM != null)
-                            {
-                                scoreToMoney = exchangeVM.ScoreToMoney;
+                                ApplicationVM.LocalCache.AllUserVMs[msg.SenderId] = sender;
                             }
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            ApplicationVM.Logger.Debug("LoadAsync() error: " + ex.Message); 
+                            if (!sender.IsInitialized)
+                            {
+                                sender.Initialize();
+                            }
                         }
                     }
+                    receiver = UserVMs.FirstOrDefault(u => u.Id == msg.ReceiverId);
+                    if (receiver == null)
+                    {
+                        receiver = ApplicationVM.LocalCache.AllUserVMs[msg.ReceiverId];
+                        if (receiver == null)
+                        {
+                            var usr = RoomClient.GetUser(msg.ReceiverId);
+                            if (usr != null)
+                            {
+                                receiver = new UserViewModel(usr);
+                                receiver.Initialize();
+                                ApplicationVM.LocalCache.AllUserVMs[msg.ReceiverId] = receiver;
+                            }
+                        }
+                        else
+                        {
+                            if (!receiver.IsInitialized)
+                            {
+                                receiver.Initialize();
+                            }
+                        }
+                    }
+                }
+                GiftViewModel gift = ApplicationVM.LocalCache.AllGiftVMs.FirstOrDefault(g => g.Id == msg.ItemId);
+                if (sender != null && receiver != null && gift != null)
+                {
+                    if (sender.RoleVM == null)
+                        sender.Initialize();
+                    if (receiver.RoleVM == null)
+                        receiver.Initialize();
+                    string header = "<img style='width:25px; height:25px' title='" + sender.RoleVM.Name + "' src='" + sender.RoleVM.ImageVM.StaticImageFile + "'><u style='color:gold;margin-right:10px'><span  onclick='window.external.SelectUser(" + sender.Id + ")'" +
+                               " oncontextmenu='window.external.SelectUser(" + sender.Id + ")'/>" + sender.NickName + "(" + sender.Id + ")" + "</span></u></img> 送给 " +
+                               "<img style='width:25px; height:25px' title='" + receiver.RoleVM.Name + "' src='" + receiver.RoleVM.ImageVM.StaticImageFile + "'><u style='color:purple;margin-left:10px;margin-right:10px'><span onclick='window.external.SelectUser(" + receiver.Id + ")'" +
+                               "oncontextmenu='window.external.SelectUser(" + receiver.Id + ")'/>" + receiver.NickName + "(" + receiver.Id + ")" + "</span></u></img>";
+                    string htmlmsg = string.Empty;
+                    htmlmsg += "<img style='margin-left:20px;margin-right:20px; width:60px; height:60px' src='" + gift.ImageVM.DynamicImageFile + "'/>";
+                    htmlmsg += header + msg.Count + gift.Unit + gift.Name +
+                        "<span style='color:blue'>" + msg.Time + "</span>";
+                    CallJavaScript("ScrollMessage", htmlmsg);
+                }
+            }
 
-                    CallJavaScript("InitExchangeRate", scoreToMoney);
-                    
-                //});
+            XmlLanguage enus = XmlLanguage.GetLanguage("en-us");
+            XmlLanguage zhcn = XmlLanguage.GetLanguage("zh-cn");
+            string fontname = "";
+            foreach (FontFamily fontfamily in Fonts.SystemFontFamilies)
+            {
+                if (fontfamily.FamilyNames.ContainsKey(zhcn))
+                {
+                    fontfamily.FamilyNames.TryGetValue(zhcn, out fontname);
+                    FontFamilies.Insert(0, fontname);
+                }
+                else if (fontfamily.FamilyNames.ContainsKey(enus))
+                {
+                    fontfamily.FamilyNames.TryGetValue(enus, out fontname);
+                    FontFamilies.Add(fontname);
+                }
+            }
+
+            FontSizes.Add(14);
+            FontSizes.Add(16);
+            FontSizes.Add(18);
+            FontSizes.Add(20);
+            FontSizes.Add(22);
+            FontSizes.Add(24);
+            FontSizes.Add(28);
+            FontSizes.Add(32);
+            FontSizes.Add(36);
+
+            CallJavaScript("InitUsers", UsersJson);
+            CallJavaScript("InitFonts", FontFamiliesJson, FontSizesJson);
+            CallJavaScript("InitStamp", StampImagesJson);
+            for (int i = 0; i < MotionImagesJson.Count; i++)
+            {
+                CallJavaScript("InitFaceTab", MotionImagesJson[i], i == MotionImagesJson.Count - 1);
+            }
+
+            CallJavaScript("InitMoneyForHorn", ApplicationVM.LocalCache.HornMsgMoney, ApplicationVM.LocalCache.HallHornMsgMoney, ApplicationVM.LocalCache.GlobalHornMsgMoney);
+
+            int scoreToMoney = 0;
+            if (ApplicationVM.LocalCache.AllExchangeRateVMs.Count > 0)
+            {
+                try
+                {
+                    var exchangeVM = ApplicationVM.LocalCache.AllExchangeRateVMs.OrderBy(r => r).Where(r =>
+                        Convert.ToDateTime(r.ValidTime) >= (DateTime.Now)).ToList().FirstOrDefault();
+                    if (exchangeVM != null)
+                    {
+                        scoreToMoney = exchangeVM.ScoreToMoney;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ApplicationVM.Logger.Debug("LoadAsync() error: " + ex.Message);
+                }
+            }
+
+            CallJavaScript("InitExchangeRate", scoreToMoney);
+
+            //});
         }
 
         public void SelectUser(UserViewModel uvm)

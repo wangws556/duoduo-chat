@@ -66,7 +66,6 @@ namespace YoYoStudio.Model.Configuration
 
         public AudioConfiguration()
         {
-            LoopbackRecording = true;
             MicNameLabel = "麦克风设备";
             AudioNameLabel = "音频设备";
         }

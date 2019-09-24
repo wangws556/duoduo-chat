@@ -183,7 +183,7 @@
                                               BarCount="10" 
                                   BarHeightScaling="Sqrt"
                                   BarSpacing="2"
-                                  Visibility="Hidden"/>
+                                  />
                                   <!--Visibility="{Binding Converter={StaticResource spectrumAnalyzerVisibilityConverter}, Path=Id}"/>-->
             <Button x:Name="myButton"  Margin="2" Command="{Binding  SelectUserCommand}" 
                                 Grid.Column="1" HorizontalAlignment="Center"
