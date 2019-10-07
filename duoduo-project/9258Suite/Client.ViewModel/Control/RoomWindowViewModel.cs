@@ -208,21 +208,23 @@ namespace YoYoStudio.Client.ViewModel
             var micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Public);
             if (micUsers != null && micUsers.Count > 0)
             {
-                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id,ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                 if (micUsers.ContainsKey(0) && micUsers[0].MicStatus != MicStatusMessage.MicStatus_Off)
                 {
                     FirstMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[0].UserId);
                     FirstMicUserVM.OnMic(MicType.Public, 0, micUsers[0].StreamGuid, micUsers[0].MicStatus);
+                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id+"/"+FirstMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                 }
                 if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
                 {
                     SecondMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[1].UserId);
                     SecondMicUserVM.OnMic(MicType.Public, 1, micUsers[1].StreamGuid, micUsers[1].MicStatus);
+                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + SecondMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                 }
                 if (micUsers.ContainsKey(2) && micUsers[2].MicStatus != MicStatusMessage.MicStatus_Off)
                 {
                     ThirdMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[2].UserId);
                     ThirdMicUserVM.OnMic(MicType.Public, 2, micUsers[2].StreamGuid, micUsers[2].MicStatus);
+                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + ThirdMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                 }
             }
 

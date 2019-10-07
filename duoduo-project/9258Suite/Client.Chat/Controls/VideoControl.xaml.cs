@@ -233,7 +233,7 @@ namespace YoYoStudio.Client.Chat.Controls
                             {
                                 if (uvm.IsMe())
                                 {
-                                    uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP+ "/" + uvm.RoomWindowVM.RoomVM.Id);
+                                    uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP+ "/" + uvm.RoomWindowVM.RoomVM.Id+"/"+uvm.Id);
                                 }
                             }
                         }
@@ -363,7 +363,7 @@ namespace YoYoStudio.Client.Chat.Controls
             int oldS = (int)oldStatus;
             int newS = (int)newStatus;
             UserViewModel uvm = DataContext as UserViewModel;
-            if (oldS != newS && uvm != null)
+            if (oldS != newS && uvm != null && uvm.IsMe())
             {
                 if (newS == MicStatusMessage.MicStatus_Off)
                 {
