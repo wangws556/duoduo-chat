@@ -60,7 +60,7 @@ namespace YoYoStudio.Client.ViewModel
                                     default:
                                         break;
                                 }
-                                if(arg2.UserId != uvm.Id)
+                                if(!uvm.IsMe())
                                 {
                                     StartAudioPlay(ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + RoomVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                                 }
