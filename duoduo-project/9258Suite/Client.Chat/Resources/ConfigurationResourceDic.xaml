@@ -195,18 +195,18 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="{Binding MicNameLabel, Mode=OneTime}" Style="{StaticResource ConfigurationLabelStyle}" />
-                <ComboBox Grid.Row="0" Grid.Column="1"  Margin="10,2,10,2"
+                <ComboBox Grid.Row="0" Grid.Column="1"  Margin="10,5,10,5"
                           FontSize="16"
                           ItemsSource="{Binding MicDevices}"
                           SelectedIndex="{Binding MicDeviceIndex}" 
                           SelectedValue="{Binding MicDeviceName}"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="{Binding AudioNameLabel, Mode=OneTime}" Style="{StaticResource ConfigurationLabelStyle}" />
-                <ComboBox Grid.Row="1" Grid.Column="1"  Margin="10,2,10,2"
+                <ComboBox Grid.Row="1" Grid.Column="1"  Margin="10,5,10,5"
                           FontSize="16"
                           ItemsSource="{Binding AudioDevices}"
                           SelectedIndex="{Binding AudioDeviceIndex}" 
                           SelectedValue="{Binding AudioDeviceName}"/>
-                <CheckBox Grid.Row="2" Grid.Column="1"  IsChecked="{Binding AudioSync}">减少唱歌延迟</CheckBox>
+                <CheckBox Grid.Row="2" Grid.Column="1" Margin="10,5,10,5" IsChecked="{Binding AudioSync}">减少唱歌延迟</CheckBox>
             </Grid>
         </DockPanel>
     </ControlTemplate>
