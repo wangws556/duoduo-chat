@@ -193,15 +193,13 @@ namespace YoYoStudio.Client.ViewModel
         {
             //Task.Factory.StartNew(() =>
             //    {
-            lock (UserVMs)
+
+            var users = RoomClient.GetRoomUsers(RoomVM.Id);
+            if (users != null && users.Length > 0)
             {
-                var users = RoomClient.GetRoomUsers(RoomVM.Id);
-                if (users != null && users.Length > 0)
+                foreach (var user in users)
                 {
-                    foreach (var user in users)
-                    {
-                        UserEntered(user, false);
-                    }
+                    UserEntered(user, false);
                 }
             }
 
@@ -212,7 +210,7 @@ namespace YoYoStudio.Client.ViewModel
                 {
                     FirstMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[0].UserId);
                     FirstMicUserVM.OnMic(MicType.Public, 0, micUsers[0].StreamGuid, micUsers[0].MicStatus);
-                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id+"/"+FirstMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + FirstMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                 }
                 if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
                 {
