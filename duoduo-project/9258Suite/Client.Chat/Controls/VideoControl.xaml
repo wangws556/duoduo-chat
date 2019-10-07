@@ -16,7 +16,7 @@
         <Border x:Name="PART_VideoBorder">
             <ctls:WpfFlexControl x:Name="flex"
                                  FlashCallback="flex_FlashCallback"
-                                 MoviePath="{Binding FlexPath}" Margin="8"/>
+                                 MoviePath="{Binding FlexPath}" Margin="0"/>
         </Border>
     </DockPanel>
 </UserControl>

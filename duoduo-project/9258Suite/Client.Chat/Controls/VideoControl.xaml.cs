@@ -363,7 +363,7 @@ namespace YoYoStudio.Client.Chat.Controls
             int oldS = (int)oldStatus;
             int newS = (int)newStatus;
             UserViewModel uvm = DataContext as UserViewModel;
-            if (oldS != newS)
+            if (oldS != newS && uvm != null)
             {
                 if (newS == MicStatusMessage.MicStatus_Off)
                 {
