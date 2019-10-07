@@ -103,6 +103,10 @@ namespace YoYoStudio.Client.ViewModel
                             {
                                 StopAudioPublish();
                             }
+                            else
+                            {
+                                StopAudioPlay();
+                            }
                             updateMicImage(uvm.Id, false);
                             break;
 
