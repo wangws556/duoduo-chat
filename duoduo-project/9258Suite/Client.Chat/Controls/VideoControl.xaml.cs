@@ -220,27 +220,35 @@ namespace YoYoStudio.Client.Chat.Controls
         private void flex_FlashCallback(FlexCallbackCommand cmd, List<string> args)
         {
             UserViewModel uvm = DataContext as UserViewModel;
-            if (uvm != null && uvm.RoomWindowVM != null)
-                switch (cmd)
-                {
-                    case FlexCallbackCommand.ReportStatus:
-                        IsEnabled = true;
-                        if (args != null && args.Count == 1)
+            switch (cmd)
+            {
+                case FlexCallbackCommand.ReportStatus:
+                    IsEnabled = true;
+                    if (args != null && args.Count == 1)
+                    {
+                        if (args[0] == FlexStatusStrings.ConnectSucceed)
                         {
-                            if (args[0] == FlexStatusStrings.ConnectSucceed)
+                            RtmpConnectSuccessful();
+                            if(uvm != null && uvm.RoomWindowVM != null)
                             {
-                                RtmpConnectSuccessful();
-                            }
-                            else
-                            {
-                                //TODO Connect Red5 failed.
+                                if (uvm.IsMe())
+                                {
+                                    uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP+ "/" + uvm.RoomWindowVM.RoomVM.Id);
+                                }
                             }
                         }
-                        break;
-                    case FlexCallbackCommand.LoadComplete:
-                        IsEnabled = true;
-                        break;
-                    case FlexCallbackCommand.VideoStateChanged:
+                        else
+                        {
+                            //TODO Connect Red5 failed.
+                        }
+                    }
+                    break;
+                case FlexCallbackCommand.LoadComplete:
+                    IsEnabled = true;
+                    break;
+                case FlexCallbackCommand.VideoStateChanged:
+                    if (uvm != null && uvm.RoomWindowVM != null)
+                    {
                         int vState = 0;
                         if (uvm.IsMe() && args.Count > 0)
                         {
@@ -249,14 +257,19 @@ namespace YoYoStudio.Client.Chat.Controls
                                 uvm.RoomWindowVM.RoomClient.VideoStateChanged(uvm.RoomWindowVM.RoomVM.Id, vState);
                             }
                         }
-                        break;
-                    case FlexCallbackCommand.AudioStateChanged:
-                        int aState = 0;
-                        if (args.Count > 0)
+                    }
+
+                    break;
+                case FlexCallbackCommand.AudioStateChanged:
+                    int aState = 0;
+                    if (args.Count > 0)
+                    {
+                        if (int.TryParse(args[0], out aState))
                         {
-                            if (int.TryParse(args[0], out aState))
+                            
+                            if (uvm != null && uvm.RoomWindowVM != null)
                             {
-                                uvm.RoomWindowVM.RoomClient.AudioStateChanged(uvm.RoomWindowVM.RoomVM.Id,aState);
+                                uvm.RoomWindowVM.RoomClient.AudioStateChanged(uvm.RoomWindowVM.RoomVM.Id, aState);
                                 //SpectrumAnalyzer spectrumAnalyzer = UIHelper.FindChild<SpectrumAnalyzer>(this, "mySpectrumAnalyzer");
                                 //switch (aState)
                                 //{
@@ -307,12 +320,15 @@ namespace YoYoStudio.Client.Chat.Controls
                                 //}
                             }
                         }
+                    }
 
-                        break;
-                    case FlexCallbackCommand.TakePicture:                        
-                        break;
-                    case FlexCallbackCommand.ExtendVideo:
-                        if (!HasZoomed)
+                    break;
+                case FlexCallbackCommand.TakePicture:
+                    break;
+                case FlexCallbackCommand.ExtendVideo:
+                    if (!HasZoomed)
+                    {
+                        if (uvm != null && uvm.RoomWindowVM != null)
                         {
                             VideoWindowViewModel vm = new VideoWindowViewModel(uvm);
                             vm.Initialize();
@@ -322,8 +338,9 @@ namespace YoYoStudio.Client.Chat.Controls
                             CallFlash(FlexCommand.PauseVideo);
                             HasZoomed = true;
                         }
-                        break;
-                }
+                    }
+                    break;
+            }
             if (FlashCallback != null)
             {
                 FlashCallback(cmd, args);
@@ -359,46 +376,44 @@ namespace YoYoStudio.Client.Chat.Controls
                             DataContext = null;
                     }
                 }
-                
+
                 if (uvm != null && newS != MicStatusMessage.MicStatus_Off)
                 {
                     if (oldS == MicStatusMessage.MicStatus_Off)
                     {
                         CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
                     }
-                    else
+                    if ((newS & MicStatusMessage.MicStatus_Video) != MicStatusMessage.MicStatus_Off)
                     {
-                        if ((newS & MicStatusMessage.MicStatus_Video) != MicStatusMessage.MicStatus_Off)
+                        if ((oldS & MicStatusMessage.MicStatus_Video) == MicStatusMessage.MicStatus_Off)
                         {
-                            if ((oldS & MicStatusMessage.MicStatus_Video) == MicStatusMessage.MicStatus_Off)
+                            if (uvm.MicAction == MicAction.OnMic)
                             {
-                                if (uvm.MicAction == MicAction.OnMic)
-                                {
-                                    CallFlash(FlexCommand.PublishVideo, uvm.ApplicationVM.ProfileVM.VideoConfigurationVM.CameraIndex.ToString(),
-                                        uvm.ApplicationVM.LocalCache.VideoFps.ToString(), uvm.ApplicationVM.LocalCache.VideoQuality.ToString());
-                                }
-                                else if (uvm.MicAction == MicAction.Toggle)
-                                {
-                                    CallFlash(FlexCommand.ResumeVideo);
-                                }
+                                CallFlash(FlexCommand.PublishVideo, uvm.ApplicationVM.ProfileVM.VideoConfigurationVM.CameraIndex.ToString(),
+                                    uvm.ApplicationVM.LocalCache.VideoFps.ToString(), uvm.ApplicationVM.LocalCache.VideoQuality.ToString());
+                            }
+                            else if (uvm.MicAction == MicAction.Toggle)
+                            {
+                                CallFlash(FlexCommand.ResumeVideo);
                             }
                         }
-                        if ((newS & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
+                    }
+                    if ((newS & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
+                    {
+                        if ((oldS & MicStatusMessage.MicStatus_Audio) == MicStatusMessage.MicStatus_Off)
                         {
-                            if ((oldS & MicStatusMessage.MicStatus_Audio) == MicStatusMessage.MicStatus_Off)
+                            if (uvm.MicAction == MicAction.OnMic)
                             {
-                                if (uvm.MicAction == MicAction.OnMic)
-                                {
-                                    CallFlash(FlexCommand.PublishAudio);
-                                }
-                                else if (uvm.MicAction == MicAction.Toggle)
-                                {
-                                    CallFlash(FlexCommand.ResumeAudio);
-                                }
+                                CallFlash(FlexCommand.PublishAudio);
+                            }
+                            else if (uvm.MicAction == MicAction.Toggle)
+                            {
+                                CallFlash(FlexCommand.ResumeAudio);
                             }
                         }
                     }
                 }
+
             }
 
         }

@@ -283,7 +283,7 @@ namespace YoYoStudio.Common
                 pro.StartInfo.UseShellExecute = false;
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
-                pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b 600k -ab 128k -f flv " + arg2;
+                pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -fflags nobuffer -f flv " + arg2;
                 try
                 {
                     pro.Start();
@@ -330,7 +330,7 @@ namespace YoYoStudio.Common
                 pro.StartInfo.UseShellExecute = false;
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
-                pro.StartInfo.Arguments = " " + arg1 + " -nodisp";
+                pro.StartInfo.Arguments = " -probesize 1024 -sync ext " + arg1 + " -nodisp";
                 //pro.StartInfo.Arguments = " " + arg1;
                 try
                 {
