@@ -19,7 +19,6 @@ namespace YoYoStudio.Client.ViewModel
             AllSecureCommandVMs = new List<SecureCommandViewModel>();
 			AllRoomGroupVMs = new List<RoomGroupViewModel>();
 			AllRoomVMs = new List<RoomViewModel>();
-            AudioDeviceName = ConfigurationManager.AppSettings["AudioDeviceName"];
             AudioRtmpPath = ConfigurationManager.AppSettings["AudioRtmpPath"];
 			RoomServicePort = int.Parse(ConfigurationManager.AppSettings["RoomServicePort"]);
             RoomAudioServicePort = int.Parse(ConfigurationManager.AppSettings["RoomAudioServicePort"]);

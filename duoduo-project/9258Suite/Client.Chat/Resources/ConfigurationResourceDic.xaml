@@ -191,6 +191,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
                     <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="{Binding MicNameLabel, Mode=OneTime}" Style="{StaticResource ConfigurationLabelStyle}" />
@@ -205,6 +206,7 @@
                           ItemsSource="{Binding AudioDevices}"
                           SelectedIndex="{Binding AudioDeviceIndex}" 
                           SelectedValue="{Binding AudioDeviceName}"/>
+                <CheckBox Grid.Row="2" Grid.Column="1"  IsChecked="{Binding AudioSync}">减少唱歌延迟</CheckBox>
             </Grid>
         </DockPanel>
     </ControlTemplate>

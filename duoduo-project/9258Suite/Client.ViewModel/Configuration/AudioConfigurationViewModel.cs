@@ -22,6 +22,7 @@ namespace YoYoStudio.Client.ViewModel
     [SnippetPropertyINPC(field = "audioDeviceIndex", property = "AudioDeviceIndex", type = "int", defaultValue = "0")]
     [SnippetPropertyINPC(field = "audioDeviceName", property = "AudioDeviceName", type = "string", defaultValue = "")]
     [SnippetPropertyINPC(field = "audioRTMP", property = "AudioRTMP", type = "string", defaultValue = "")]
+    [SnippetPropertyINPC(field = "audioSync", property = "AudioSync", type = "bool", defaultValue = "false")]
     public partial class AudioConfigurationViewModel : ConfigurationViewModel
     {
         public AudioConfigurationViewModel(AudioConfiguration config)
@@ -50,6 +51,7 @@ namespace YoYoStudio.Client.ViewModel
                 config.MicDeviceIndex = MicDeviceIndex;
                 config.MicDeviceName = MicDeviceName;
                 config.AudioRTMP = AudioRTMP;
+                config.AudioSync = AudioSync;
                 base.Save(out result);
             }
         }

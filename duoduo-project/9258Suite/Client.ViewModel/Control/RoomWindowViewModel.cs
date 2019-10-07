@@ -208,7 +208,7 @@ namespace YoYoStudio.Client.ViewModel
             var micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Public);
             if (micUsers != null && micUsers.Count > 0)
             {
-                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
+                StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id,ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                 if (micUsers.ContainsKey(0) && micUsers[0].MicStatus != MicStatusMessage.MicStatus_Off)
                 {
                     FirstMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[0].UserId);

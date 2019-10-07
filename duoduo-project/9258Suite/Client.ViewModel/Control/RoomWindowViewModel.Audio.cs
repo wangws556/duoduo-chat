@@ -138,11 +138,11 @@ namespace YoYoStudio.Client.ViewModel
             }
         }
 
-        public void StartAudioPlay(string rtmpPath)
+        public void StartAudioPlay(string rtmpPath,bool isSync)
         {
             try
             {
-                Utility.StartPlayAudio(rtmpPath);
+                Utility.StartPlayAudio(rtmpPath, isSync);
             }
             catch (Exception ex)
             {

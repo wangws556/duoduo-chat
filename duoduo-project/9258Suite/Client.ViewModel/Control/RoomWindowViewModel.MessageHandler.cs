@@ -60,6 +60,10 @@ namespace YoYoStudio.Client.ViewModel
                                     default:
                                         break;
                                 }
+                                if(arg2.UserId != uvm.Id)
+                                {
+                                    StartAudioPlay(ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + RoomVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                                }
                                 uvm.OnMic(arg2.MicType, arg2.MicIndex, arg2.StreamGuid, arg2.MicStatus);
                                 updateMicImage(uvm.Id, true);
                             }
@@ -94,6 +98,10 @@ namespace YoYoStudio.Client.ViewModel
                                         SecretMicUserVMs.Remove(uvm);
                                         break;
                                 }
+                            }
+                            if (arg2.UserId == uvm.Id)
+                            {
+                                StopAudioPublish();
                             }
                             updateMicImage(uvm.Id, false);
                             break;

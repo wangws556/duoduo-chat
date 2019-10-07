@@ -58,6 +58,7 @@ namespace YoYoStudio.Model.Configuration
         public string AudioDeviceName { get; set; }
         public ObservableCollection<string> AudioDevices { get; set; }
         public string AudioRTMP { get; set; }
+        public bool AudioSync { get; set; }
 
         public override string Name
         {

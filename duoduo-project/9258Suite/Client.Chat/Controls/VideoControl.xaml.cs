@@ -233,7 +233,7 @@ namespace YoYoStudio.Client.Chat.Controls
                             {
                                 if (uvm.IsMe())
                                 {
-                                    uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP+ "/" + uvm.RoomWindowVM.RoomVM.Id);
+                                    uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP+ "/" + uvm.RoomWindowVM.RoomVM.Id);
                                 }
                             }
                         }
@@ -460,7 +460,7 @@ namespace YoYoStudio.Client.Chat.Controls
                                 switch (state)
                                 {
                                     case FlexCallbackCommandNames.AV_State_Normal:
-                                        //CallFlash(FlexCommand.PublishAudio);
+                                        CallFlash(FlexCommand.PublishAudio);
                                         //uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
                                         //uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath + "/" + roomId);

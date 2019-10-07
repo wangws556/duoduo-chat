@@ -216,6 +216,22 @@ namespace YoYoStudio.Client.ViewModel
 			get { return audioRTMP.GetValue(); }
 			set { ChangeAndNotifyHistory<string>(audioRTMP, value, () => AudioRTMP ); }
 		}
+
+
+		/// <summary>
+		/// Field which backs the AudioSync property
+		/// </summary>
+		private HistoryableProperty<bool> audioSync = new HistoryableProperty<bool>(false);
+
+		/// <summary>
+		/// Gets / sets the AudioSync value
+		/// </summary>
+		[Browsable(false)]
+		public  bool AudioSync
+		{
+			get { return audioSync.GetValue(); }
+			set { ChangeAndNotifyHistory<bool>(audioSync, value, () => AudioSync ); }
+		}
 	}
 }
 	
