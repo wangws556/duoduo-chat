@@ -105,7 +105,7 @@ namespace YoYoStudio.Client.ViewModel
                             }
                             else
                             {
-                                StopAudioPlay();
+                                //自动停止播放
                             }
                             updateMicImage(uvm.Id, false);
                             break;

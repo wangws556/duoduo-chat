@@ -229,13 +229,6 @@ namespace YoYoStudio.Client.Chat.Controls
                         if (args[0] == FlexStatusStrings.ConnectSucceed)
                         {
                             RtmpConnectSuccessful();
-                            if(uvm != null && uvm.RoomWindowVM != null)
-                            {
-                                if (uvm.IsMe())
-                                {
-                                    uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP+ "/" + uvm.RoomWindowVM.RoomVM.Id+"/"+uvm.Id);
-                                }
-                            }
                         }
                         else
                         {
@@ -270,54 +263,54 @@ namespace YoYoStudio.Client.Chat.Controls
                             if (uvm != null && uvm.RoomWindowVM != null)
                             {
                                 uvm.RoomWindowVM.RoomClient.AudioStateChanged(uvm.RoomWindowVM.RoomVM.Id, aState);
-                                //SpectrumAnalyzer spectrumAnalyzer = UIHelper.FindChild<SpectrumAnalyzer>(this, "mySpectrumAnalyzer");
-                                //switch (aState)
-                                //{
-                                //    case FlexCallbackCommandNames.AV_State_Normal:
-                                //        if (uvm.IsMe())
-                                //        {
-                                //            //uvm.RoomWindowVM.StartAudioRecording();
-                                //            uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName,uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP);
-                                //        }
-                                //        else
-                                //        {
-                                //            //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                //            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP);
-                                //        }
-                                //         playBack.Start();
-                                //        spectrumAnalyzer.Visibility = System.Windows.Visibility.Visible;
-                                //        break;
-                                //    case FlexCallbackCommandNames.AV_State_Paused:
-                                //        if (uvm.IsMe())
-                                //        {
-                                //            //uvm.RoomWindowVM.PauseAudioRecording();
-                                //            uvm.RoomWindowVM.StopAudioPublish();
-                                //        }
-                                //        else
-                                //        {
-                                //            //uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
-                                //            uvm.RoomWindowVM.StopAudioPlay();
-                                //        }
-                                //        playBack.Stop();
-                                //        spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
-                                //        break;
-                                //    case FlexCallbackCommandNames.AV_State_Resumed:
-                                //        if (uvm.IsMe())
-                                //        {
-                                //            //uvm.RoomWindowVM.StartAudioRecording();
-                                //            uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP);
-                                //        }
-                                //        else
-                                //        {
-                                //            //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                //            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP);
-                                //        }
-                                //        playBack.Start();
-                                //        spectrumAnalyzer.Visibility = System.Windows.Visibility.Visible;
-                                //        break;
-                                //    default:
-                                //        break;
-                                //}
+                                SpectrumAnalyzer spectrumAnalyzer = UIHelper.FindChild<SpectrumAnalyzer>(this, "mySpectrumAnalyzer");
+                                switch (aState)
+                                {
+                                    case FlexCallbackCommandNames.AV_State_Normal:
+                                        if (uvm.IsMe())
+                                        {
+                                            uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id);
+                                            //uvm.RoomWindowVM.StartAudioRecording();
+                                        }
+                                        else
+                                        {
+                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                                            //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                        }
+                                        playBack.Start();
+                                        spectrumAnalyzer.Visibility = System.Windows.Visibility.Visible;
+                                        break;
+                                    case FlexCallbackCommandNames.AV_State_Paused:
+                                        if (uvm.IsMe())
+                                        {
+                                            //uvm.RoomWindowVM.PauseAudioRecording();
+                                            uvm.RoomWindowVM.StopAudioPublish();
+                                        }
+                                        else
+                                        {
+                                            //uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
+                                            //自动停止播放
+                                        }
+                                        playBack.Stop();
+                                        spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
+                                        break;
+                                    case FlexCallbackCommandNames.AV_State_Resumed:
+                                        if (uvm.IsMe())
+                                        {
+                                            //uvm.RoomWindowVM.StartAudioRecording();
+                                            uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id);
+                                        }
+                                        else
+                                        {
+                                            //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
+                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                                        }
+                                        playBack.Start();
+                                        spectrumAnalyzer.Visibility = System.Windows.Visibility.Visible;
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
                     }
@@ -427,7 +420,6 @@ namespace YoYoStudio.Client.Chat.Controls
             if (playBack == null)
             {
                 playBack = new RealTimePlayback();
-                playBack.Start();
             }
             
             if(spectrumAnalyzer != null)

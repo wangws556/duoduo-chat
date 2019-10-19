@@ -332,11 +332,11 @@ namespace YoYoStudio.Common
                 pro.StartInfo.Verb = "runas";
                 if (isSync)
                 {
-                    pro.StartInfo.Arguments = " -probesize 1024 -sync ext " + arg1 + " -nodisp -autoexit";
+                    pro.StartInfo.Arguments = " -probesize 1024 -sync ext " + arg1 + " -autoexit";
                 }
                 else
                 {
-                    pro.StartInfo.Arguments = " -probesize 1024 " + arg1 + " -nodisp -autoexit";
+                    pro.StartInfo.Arguments = " -probesize 1024 " + arg1 + "  -autoexit";
                 }
                 
                 try
