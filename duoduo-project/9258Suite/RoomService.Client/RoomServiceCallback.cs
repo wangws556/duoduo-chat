@@ -10,13 +10,118 @@ namespace YoYoStudio.RoomService.Client
 {
     public class RoomServiceCallback :IRoomServiceCallback
     {
-        public event Action<int, User> UserEnteredRoomEvent;
-        public event Action<int, int> UserLeftRoomEvent;
-        public event Action<int, RoomMessage> RoomMessageReceivedEvent;
-        public event Action<int, MicStatusMessage> MicStatusMessageReceivedEvent;
-        public event Action<int, int, int, int> CommandReceivedEvent;
-        public event Action<int, int, int> VideoStateChangedEvent;
-        public event Action<int, int, int> AudioStateChangedEvent;
+        private Action<int, User> userEnteredRoomEvent;
+        public event Action<int, User> UserEnteredRoomEvent
+        {
+            add
+            {
+                if (userEnteredRoomEvent == null || !userEnteredRoomEvent.GetInvocationList().Contains(value))
+                {
+                    userEnteredRoomEvent += value;
+                }
+            }
+            remove
+            {
+                userEnteredRoomEvent -= value;
+            }
+        }
+
+        private Action<int, int> userLeftRoomEvent;
+        public event Action<int, int> UserLeftRoomEvent
+        {
+            add
+            {
+                if (userLeftRoomEvent == null || !userLeftRoomEvent.GetInvocationList().Contains(value))
+                {
+                    userLeftRoomEvent += value;
+                }
+            }
+            remove
+            {
+                userLeftRoomEvent -= value;
+            }
+        }
+
+        private Action<int, RoomMessage> roomMessageReceivedEvent;
+        public event Action<int, RoomMessage> RoomMessageReceivedEvent
+        {
+            add
+            {
+                if (roomMessageReceivedEvent == null || !roomMessageReceivedEvent.GetInvocationList().Contains(value))
+                {
+                    roomMessageReceivedEvent += value;
+                }
+            }
+            remove
+            {
+                roomMessageReceivedEvent -= value;
+            }
+        }
+
+        private Action<int, MicStatusMessage> micStatusMessageReceivedEvent;
+        public event Action<int, MicStatusMessage> MicStatusMessageReceivedEvent
+        {
+            add
+            {
+                if (micStatusMessageReceivedEvent == null || !micStatusMessageReceivedEvent.GetInvocationList().Contains(value))
+                {
+                    micStatusMessageReceivedEvent += value;
+                }
+            }
+            remove
+            {
+                micStatusMessageReceivedEvent -= value;
+            }
+        }
+
+        private Action<int, int, int, int> commandReceivedEvent;
+        public event Action<int, int, int, int> CommandReceivedEvent
+        {
+            add
+            {
+                if (commandReceivedEvent == null || !commandReceivedEvent.GetInvocationList().Contains(value))
+                {
+                    commandReceivedEvent += value;
+                }
+            }
+            remove
+            {
+                commandReceivedEvent -= value;
+            }
+        }
+
+        private Action<int, int, int> videoStateChangedEvent;
+        public event Action<int, int, int> VideoStateChangedEvent
+        {
+            add
+            {
+                if (videoStateChangedEvent == null || !videoStateChangedEvent.GetInvocationList().Contains(value))
+                {
+                    videoStateChangedEvent += value;
+                }
+            }
+            remove
+            {
+                videoStateChangedEvent -= value;
+            }
+        }
+
+        private Action<int, int, int> audioStateChangedEvent;
+        public event Action<int, int, int> AudioStateChangedEvent
+        {
+            add
+            {
+                if (audioStateChangedEvent == null || !audioStateChangedEvent.GetInvocationList().Contains(value))
+                {
+                    audioStateChangedEvent += value;
+                }
+            }
+            remove
+            {
+                audioStateChangedEvent -= value;
+            }
+        }
+
         public event Action<int, int, string> StartMusicEvent;
         public event Action<int, int> StopMusicEvent;
         public event Action<int, int,bool > TogglePauseMusicEvent;
@@ -27,60 +132,40 @@ namespace YoYoStudio.RoomService.Client
 
         public void UserEnteredRoom(int roomId, Model.Core.User user)
         {
-            if (UserEnteredRoomEvent != null)
-            {
-                UserEnteredRoomEvent(roomId, user);
-            }
+            userEnteredRoomEvent(roomId, user);
         }
 
         public void UserLeftRoom(int roomId, int userId)
         {
-            if (UserLeftRoomEvent != null)
-            {
-                UserLeftRoomEvent(roomId, userId);
-            }
+            userLeftRoomEvent(roomId, userId);
         }
 
         public void RoomMessageReceived(int roomId, Model.Chat.RoomMessage message)
         {
-            if (RoomMessageReceivedEvent != null)
-            {
-                RoomMessageReceivedEvent(roomId, message);
-            }
+            roomMessageReceivedEvent(roomId, message);
         }
 
         public void MicStatusMessageReceived(int roomId, Model.Chat.MicStatusMessage message)
         {
-            if (MicStatusMessageReceivedEvent != null)
-            {
-                MicStatusMessageReceivedEvent(roomId, message);
-            }
+            micStatusMessageReceivedEvent(roomId, message);
         }
 
 
         public void CommandMessageReceived(int roomId, int cmdId, int sourceUserId, int targetUserId)
         {
-            if (CommandReceivedEvent != null)
-            {
-                CommandReceivedEvent(roomId, cmdId, sourceUserId, targetUserId);
-            }
+            commandReceivedEvent(roomId, cmdId, sourceUserId, targetUserId);
         }
 
         public void VideoStateChanged(int roomId, int senderId, int state)
         {
-            if (VideoStateChangedEvent != null)
-            {
-                VideoStateChangedEvent(roomId, senderId, state);
-            }
+            videoStateChangedEvent(roomId, senderId, state);
         }
 
         public void AudioStateChanged(int roomId, int senderId, int state)
         {
-            if (AudioStateChangedEvent != null)
-            {
-                AudioStateChangedEvent(roomId, senderId, state);
-            }
+            audioStateChangedEvent(roomId, senderId, state);
         }
+
         public void StartMusic(int roomId, int userId, string fileName)
         {
             if (StartMusicEvent != null)
