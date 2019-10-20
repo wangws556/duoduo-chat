@@ -459,10 +459,10 @@ namespace YoYoStudio.Client.Chat.Controls
                                 switch (state)
                                 {
                                     case FlexCallbackCommandNames.AV_State_Normal:
-                                        CallFlash(FlexCommand.PublishAudio);
+                                        //CallFlash(FlexCommand.PublishAudio);
                                         //uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                        //uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath + "/" + roomId);
+                                        uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id, uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
 
                                         break;
                                     case FlexCallbackCommandNames.AV_State_Paused:
@@ -470,13 +470,14 @@ namespace YoYoStudio.Client.Chat.Controls
                                         //uvm.RoomWindowVM.StopAudioPublish();
                                         //uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
                                         //uvm.RoomWindowVM.StopAudioPlay();
-                                        
+                                        uvm.RoomWindowVM.StopAudioPlay(senderId);
                                         break;
                                     case FlexCallbackCommandNames.AV_State_Resumed:
                                         CallFlash(FlexCommand.ResumeAudio);
                                         //uvm.RoomWindowVM.StartAudioPublish(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath);
                                         //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
                                         //uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.LocalCache.AudioRtmpPath+"/"+roomId);
+                                        uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id, uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                                         break;
                                     default:
                                         break;
