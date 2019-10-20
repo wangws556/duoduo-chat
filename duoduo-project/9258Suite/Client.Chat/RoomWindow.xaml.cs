@@ -276,7 +276,7 @@ namespace YoYoStudio.Client.Chat
                 roomWindowVM.RoomClient.DownMic(roomWindowVM.RoomVM.Id, roomWindowVM.Me.MicType, roomWindowVM.Me.MicIndex);
                 roomWindowVM.Me.DownMic();
             }
-            Utility.StopPlayAudio();
+            Utility.StopPlayAudio(-1);
             //if (hallWindow != null)
             //    hallWindow.StateChanged -= hallWindow_StateChanged;
             //if (playMusicWindow != null)

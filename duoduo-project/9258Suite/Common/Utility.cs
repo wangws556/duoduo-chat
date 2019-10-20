@@ -31,7 +31,7 @@ namespace YoYoStudio.Common
         public const string  Red5MusicDirectory = @"D:\Red5\webapps\oflaDemo\streams";
 
         public static int ffmpegPublishProcessId = 0;
-        public static int ffmpegPlayProcessId = 0;
+        public static Dictionary<int,int> audioFfmpegPlayProcessIdDic  = new Dictionary<int, int>();
 
         public static string GetMD5String(string str)
         {
@@ -261,20 +261,21 @@ namespace YoYoStudio.Common
         public static void StartPublishAudio(string audioDeviceName, string rtmpPath)
         {
             // 存在的publish process
-            if (ffmpegPublishProcessId != 0)
-            {
-                try
-                {
-                    Process goDie = Process.GetProcessById(ffmpegPublishProcessId);
-                    if (goDie != null)
-                    {
-                        goDie.Kill();
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            }
+            StopPublishAudio();
+            //if (ffmpegPublishProcessId != 0)
+            //{
+            //    try
+            //    {
+            //        Process goDie = Process.GetProcessById(ffmpegPublishProcessId);
+            //        if (goDie != null)
+            //        {
+            //            goDie.Kill();
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //    }
+            //}
             using (Process pro = new Process())
             {
                 string arg1 = "\"" + audioDeviceName + "\"";
@@ -305,24 +306,25 @@ namespace YoYoStudio.Common
                 return AppDomain.CurrentDomain.BaseDirectory + "ffmpeg\\system32\\ffmpeg.exe";
         }
 
-        public static void StartPlayAudio(string rtmpPath, bool isSync)
+        public static void StartPlayAudio(string rtmpPath, int userId, bool isSync)
         {
             // 杀死已有的ffmpeg进程，不要加.exe后缀
-            if (ffmpegPlayProcessId != 0)
-            {
-                try
-                {
-                    Process goDie = Process.GetProcessById(ffmpegPlayProcessId);
-                    if (goDie != null)
-                    {
-                        goDie.Kill();
-                    }
-                }
-                catch(Exception ex)
-                {
+            StopPlayAudio(userId);
+            //if (audioFfmpegPlayProcessIdDic[userId] != 0)
+            //{
+            //    try
+            //    {
+            //        Process goDie = Process.GetProcessById(audioFfmpegPlayProcessIdDic[userId]);
+            //        if (goDie != null)
+            //        {
+            //            goDie.Kill();
+            //        }
+            //    }
+            //    catch(Exception ex)
+            //    {
 
-                }
-            }
+            //    }
+            //}
             using (Process pro = new Process())
             {
                 string arg1 = "\"" + rtmpPath + "\"";
@@ -342,7 +344,7 @@ namespace YoYoStudio.Common
                 try
                 {
                     pro.Start();
-                    ffmpegPlayProcessId = pro.Id;
+                    audioFfmpegPlayProcessIdDic[userId] = pro.Id;
                 }
                 catch (Exception ex)
                 {
@@ -381,24 +383,50 @@ namespace YoYoStudio.Common
             }
         }
 
-        public static void StopPlayAudio()
+        public static void StopPlayAudio(int userId)
         {
-            if (ffmpegPlayProcessId != 0)
+            if (userId == -1)
             {
-                AttachConsole(ffmpegPlayProcessId);
-                // 将控制台事件的处理句柄设为Zero，即当前进程不响应控制台事件
-                // 避免在向控制台发送【Ctrl C】指令时连带当前进程一起结束
-                SetConsoleCtrlHandler(IntPtr.Zero, true);
-                // 向控制台发送 【Ctrl C】结束指令
-                // ffmpeg会收到该指令停止录制
-                GenerateConsoleCtrlEvent(0, 0);
-                
-                Thread.Sleep(3000);
+                foreach (var item in audioFfmpegPlayProcessIdDic)
+                {
+                    if (item.Value != 0)
+                    {
+                        AttachConsole(item.Value);
+                        // 将控制台事件的处理句柄设为Zero，即当前进程不响应控制台事件
+                        // 避免在向控制台发送【Ctrl C】指令时连带当前进程一起结束
+                        SetConsoleCtrlHandler(IntPtr.Zero, true);
+                        // 向控制台发送 【Ctrl C】结束指令
+                        // ffmpeg会收到该指令停止录制
+                        GenerateConsoleCtrlEvent(0, 0);
 
-                // 卸载控制台事件的处理句柄，不然之后的ffmpeg调用无法正常停止
-                SetConsoleCtrlHandler(IntPtr.Zero, false);
-                // 剥离已附加的控制台
-                FreeConsole();
+                        Thread.Sleep(3000);
+
+                        // 卸载控制台事件的处理句柄，不然之后的ffmpeg调用无法正常停止
+                        SetConsoleCtrlHandler(IntPtr.Zero, false);
+                        // 剥离已附加的控制台
+                        FreeConsole();
+                    }
+                }
+            }
+            else
+            {
+                if (audioFfmpegPlayProcessIdDic[userId] != 0)
+                {
+                    AttachConsole(audioFfmpegPlayProcessIdDic[userId]);
+                    // 将控制台事件的处理句柄设为Zero，即当前进程不响应控制台事件
+                    // 避免在向控制台发送【Ctrl C】指令时连带当前进程一起结束
+                    SetConsoleCtrlHandler(IntPtr.Zero, true);
+                    // 向控制台发送 【Ctrl C】结束指令
+                    // ffmpeg会收到该指令停止录制
+                    GenerateConsoleCtrlEvent(0, 0);
+
+                    Thread.Sleep(3000);
+
+                    // 卸载控制台事件的处理句柄，不然之后的ffmpeg调用无法正常停止
+                    SetConsoleCtrlHandler(IntPtr.Zero, false);
+                    // 剥离已附加的控制台
+                    FreeConsole();
+                }
             }
         }
 

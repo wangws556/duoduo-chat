@@ -75,7 +75,7 @@ namespace YoYoStudio.Client.ViewModel
         public void StopAudioFFmpeg()
         {
             Utility.StopPublishAudio();
-            Utility.StopPlayAudio();
+            Utility.StopPlayAudio(-1);
         }
 
         public void StopAudioPlaying(int userId)
@@ -138,11 +138,11 @@ namespace YoYoStudio.Client.ViewModel
             }
         }
 
-        public void StartAudioPlay(string rtmpPath,bool isSync)
+        public void StartAudioPlay(string rtmpPath,int userId,bool isSync)
         {
             try
             {
-                Utility.StartPlayAudio(rtmpPath, isSync);
+                Utility.StartPlayAudio(rtmpPath,userId, isSync);
             }
             catch (Exception ex)
             {
@@ -150,11 +150,11 @@ namespace YoYoStudio.Client.ViewModel
             }
         }
 
-        public void StopAudioPlay()
+        public void StopAudioPlay(int userId)
         {
             try
             {
-                Utility.StopPlayAudio();
+                Utility.StopPlayAudio(userId);
             }
             catch (Exception ex)
             {

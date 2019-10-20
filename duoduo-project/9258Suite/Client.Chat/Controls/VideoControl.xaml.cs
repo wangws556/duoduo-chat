@@ -274,7 +274,7 @@ namespace YoYoStudio.Client.Chat.Controls
                                         }
                                         else
                                         {
-                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id,uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                                             //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
                                         }
                                         playBack.Start();
@@ -288,7 +288,7 @@ namespace YoYoStudio.Client.Chat.Controls
                                         }
                                         else
                                         {
-                                            //uvm.RoomWindowVM.StopAudioPlaying(uvm.Id);
+                                            uvm.RoomWindowVM.StopAudioPlay(uvm.Id);
                                             //自动停止播放
                                         }
                                         playBack.Stop();
@@ -303,7 +303,7 @@ namespace YoYoStudio.Client.Chat.Controls
                                         else
                                         {
                                             //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
-                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id,uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                                         }
                                         playBack.Start();
                                         spectrumAnalyzer.Visibility = System.Windows.Visibility.Visible;
@@ -373,7 +373,7 @@ namespace YoYoStudio.Client.Chat.Controls
 
                 }
 
-                else if (newS == MicStatusMessage.MicStatus_On)
+                else if (newS != MicStatusMessage.MicStatus_Queue)
                 {
 
                     CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
