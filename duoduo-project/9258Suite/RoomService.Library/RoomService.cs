@@ -715,6 +715,22 @@ namespace YoYoStudio.RoomService.Library
 
         public void AudioStateChanged(int roomId, int state)
         {
+            try
+            {
+                var micDic = micCache[roomId][MicType.Public];
+                foreach (var item in micDic)
+                {
+                    if (item.Value.UserId == unc.User.Id)
+                    {
+                        item.Value.MicStatus = state;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
             BroadCast(roomId, u => u.Callback.AudioStateChanged(roomId, unc.User.Id, state), unc.User.Id);
         }
 
