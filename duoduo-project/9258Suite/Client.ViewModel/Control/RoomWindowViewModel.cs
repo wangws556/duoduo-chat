@@ -210,19 +210,28 @@ namespace YoYoStudio.Client.ViewModel
                 {
                     FirstMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[0].UserId);
                     FirstMicUserVM.OnMic(MicType.Public, 0, micUsers[0].StreamGuid, micUsers[0].MicStatus);
-                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + FirstMicUserVM.Id, FirstMicUserVM.Id,ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                    if ((micUsers[0].MicStatus & MicStatusMessage.MicStatus_Audio) != 0)
+                    {
+                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + FirstMicUserVM.Id, FirstMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                    }
                 }
                 if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
                 {
                     SecondMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[1].UserId);
                     SecondMicUserVM.OnMic(MicType.Public, 1, micUsers[1].StreamGuid, micUsers[1].MicStatus);
-                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + SecondMicUserVM.Id, SecondMicUserVM.Id,ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                    if ((micUsers[1].MicStatus & MicStatusMessage.MicStatus_Audio) != 0)
+                    {
+                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + SecondMicUserVM.Id, SecondMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                    }
                 }
                 if (micUsers.ContainsKey(2) && micUsers[2].MicStatus != MicStatusMessage.MicStatus_Off)
                 {
                     ThirdMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[2].UserId);
                     ThirdMicUserVM.OnMic(MicType.Public, 2, micUsers[2].StreamGuid, micUsers[2].MicStatus);
-                    StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + ThirdMicUserVM.Id, ThirdMicUserVM.Id,ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                    if ((micUsers[2].MicStatus & MicStatusMessage.MicStatus_Audio) != 0)
+                    {
+                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + ThirdMicUserVM.Id, ThirdMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                    }
                 }
             }
 

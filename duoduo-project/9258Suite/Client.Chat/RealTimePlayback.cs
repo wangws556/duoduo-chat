@@ -147,12 +147,26 @@ namespace YoYoStudio.Client.Chat
 
         public void Start()
         {
-            this._capture.StartRecording();
+            try
+            {
+                this._capture.StartRecording();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public void Stop()
         {
-            this._capture.StopRecording();
+            try
+            {
+                this._capture.StopRecording();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public bool GetFFTData(float[] fftDataBuffer)
