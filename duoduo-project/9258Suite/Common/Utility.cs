@@ -410,7 +410,7 @@ namespace YoYoStudio.Common
             }
             else
             {
-                if (audioFfmpegPlayProcessIdDic[userId] != 0)
+                if (audioFfmpegPlayProcessIdDic.ContainsKey(userId) && audioFfmpegPlayProcessIdDic[userId] != 0)
                 {
                     AttachConsole(audioFfmpegPlayProcessIdDic[userId]);
                     // 将控制台事件的处理句柄设为Zero，即当前进程不响应控制台事件
