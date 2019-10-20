@@ -356,34 +356,40 @@ namespace YoYoStudio.Client.Chat.Controls
             int oldS = (int)oldStatus;
             int newS = (int)newStatus;
             UserViewModel uvm = DataContext as UserViewModel;
-            if (oldS != newS && uvm != null && uvm.IsMe())
+            if (oldS != newS && uvm != null)
             {
+
                 if (newS == MicStatusMessage.MicStatus_Off)
                 {
-                    if (oldS != MicStatusMessage.MicStatus_Off)
+                    if (uvm.IsMe())
                     {
                         Utility.StopPublishAudio();
-                        //playBack.Stop();
-                        //spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
-                        if (uvm != null)
-                            DataContext = null;
                     }
+
+                    playBack.Stop();
+                    spectrumAnalyzer.Visibility = System.Windows.Visibility.Hidden;
+                    if (uvm != null)
+                        DataContext = null;
+
                 }
 
-                if (uvm != null && newS != MicStatusMessage.MicStatus_Off)
+                else if (newS == MicStatusMessage.MicStatus_On)
                 {
-                    if (oldS == MicStatusMessage.MicStatus_Off)
-                    {
-                        CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
-                    }
+
+                    CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
+
                     if ((newS & MicStatusMessage.MicStatus_Video) != MicStatusMessage.MicStatus_Off)
                     {
                         if ((oldS & MicStatusMessage.MicStatus_Video) == MicStatusMessage.MicStatus_Off)
                         {
                             if (uvm.MicAction == MicAction.OnMic)
                             {
-                                CallFlash(FlexCommand.PublishVideo, uvm.ApplicationVM.ProfileVM.VideoConfigurationVM.CameraIndex.ToString(),
-                                    uvm.ApplicationVM.LocalCache.VideoFps.ToString(), uvm.ApplicationVM.LocalCache.VideoQuality.ToString());
+                                if (uvm.IsMe())
+                                {
+                                    CallFlash(FlexCommand.PublishVideo, uvm.ApplicationVM.ProfileVM.VideoConfigurationVM.CameraIndex.ToString(),
+                                        uvm.ApplicationVM.LocalCache.VideoFps.ToString(), uvm.ApplicationVM.LocalCache.VideoQuality.ToString());
+                                }
+
                             }
                             else if (uvm.MicAction == MicAction.Toggle)
                             {
@@ -406,6 +412,7 @@ namespace YoYoStudio.Client.Chat.Controls
                         }
                     }
                 }
+
 
             }
 

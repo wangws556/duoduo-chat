@@ -60,10 +60,10 @@ namespace YoYoStudio.Client.ViewModel
                                     default:
                                         break;
                                 }
-                                if(!uvm.IsMe())
-                                {
-                                    StartAudioPlay(ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + RoomVM.Id+"/" + uvm.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
-                                }
+                                //if(!uvm.IsMe())
+                                //{
+                                    //StartAudioPlay(ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + RoomVM.Id+"/" + uvm.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                                //}
                                 uvm.OnMic(arg2.MicType, arg2.MicIndex, arg2.StreamGuid, arg2.MicStatus);
                                 updateMicImage(uvm.Id, true);
                             }
