@@ -105,7 +105,7 @@ namespace YoYoStudio.Client.ViewModel
                             }
                             else
                             {
-                                //自动停止播放
+                                StopAudioPlay(uvm.Id);
                             }
                             updateMicImage(uvm.Id, false);
                             break;
@@ -275,17 +275,15 @@ namespace YoYoStudio.Client.ViewModel
         }
         private void UserLeftRoomEventHandler(int arg1, int arg2)
         {
-            lock (UserVMs)
+            UserViewModel uvm = UserVMs.FirstOrDefault(u => u.Id == arg2);
+            if (uvm != null)
             {
-                UserViewModel uvm = UserVMs.FirstOrDefault(u => u.Id == arg2);
-                if (uvm != null)
+                lock (UserVMs)
                 {
-                    lock (UserVMs)
-                    {
-                        UserVMs.Remove(uvm);
-                    }
+                    UserVMs.Remove(uvm);
                     CallJavaScript("UserLeft", uvm.Id);
                 }
+                StopAudioPlay(uvm.Id);
             }
         }
 
