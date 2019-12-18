@@ -207,7 +207,8 @@ namespace YoYoStudio.Client.Chat.Controls
                     idx.ToString(),
                     micIdx.ToString(),
                     pv ? "1" : "0",
-                    pa ? "1" : "0",
+                    //pa ? "1" : "0",
+                    "0", //disable micphone as we use ffmpeg
                     IsZoom ? "1" : "0",
                     uvm.ApplicationVM.LocalCache.VideoFps.ToString(),
                     uvm.ApplicationVM.LocalCache.VideoQuality.ToString());
@@ -263,7 +264,6 @@ namespace YoYoStudio.Client.Chat.Controls
                             if (uvm != null && uvm.RoomWindowVM != null)
                             {
                                 uvm.RoomWindowVM.RoomClient.AudioStateChanged(uvm.RoomWindowVM.RoomVM.Id, aState);
-                                SpectrumAnalyzer spectrumAnalyzer = UIHelper.FindChild<SpectrumAnalyzer>(this, "mySpectrumAnalyzer");
                                 switch (aState)
                                 {
                                     case FlexCallbackCommandNames.AV_State_Normal:

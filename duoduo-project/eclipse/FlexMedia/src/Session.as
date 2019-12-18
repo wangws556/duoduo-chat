@@ -7,6 +7,7 @@ package
 	import flash.media.H264VideoStreamSettings;
 	import flash.media.Microphone;
 	import flash.media.SoundTransform;
+	import flash.media.Video;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 
@@ -25,6 +26,7 @@ package
 		protected var cameraIndex:int = 0;
 		protected var microphoneIndex:int = 0;
 		protected var camera:Camera;
+		protected var vid:Video;
 		protected var microphone:Microphone;
 		protected var width:uint;
 		protected var height:uint;
@@ -145,6 +147,10 @@ package
 		public function Destroy()
 		{
 		}		
+		
+		public function Resize(width:uint, height:uint)
+		{
+		}
 	}
 	
 	
