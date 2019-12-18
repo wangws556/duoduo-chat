@@ -285,7 +285,7 @@ namespace YoYoStudio.Common
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
                 //pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -fflags nobuffer -y -f flv " + arg2;
-                pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -f flv " + arg2;
+                pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -acodec aac -f flv " + arg2;
                 try
                 {
                     pro.Start();

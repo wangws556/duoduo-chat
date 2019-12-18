@@ -83,9 +83,10 @@
     <ROW Directory="__23_Dir" Directory_Parent="__20_Dir" DefaultDir="泡泡兵表情" DirectoryOptions="3"/>
     <ROW Directory="__24_Dir" Directory_Parent="__20_Dir" DefaultDir="猪猪表情" DirectoryOptions="3"/>
     <ROW Directory="__25_Dir" Directory_Parent="__20_Dir" DefaultDir="猴子表情" DirectoryOptions="3"/>
-    <ROW Directory="__26_Dir" Directory_Parent="ReceiveMessageImage_Dir" DefaultDir="1" DirectoryOptions="3"/>
-    <ROW Directory="__27_Dir" Directory_Parent="ReceiveMessageImage_Dir" DefaultDir="110" DirectoryOptions="3"/>
+    <ROW Directory="__28_Dir" Directory_Parent="ReceiveMessageImage_Dir" DefaultDir="9258110" DirectoryOptions="3"/>
+    <ROW Directory="__29_Dir" Directory_Parent="ReceiveMessageImage_Dir" DefaultDir="1" DirectoryOptions="3"/>
     <ROW Directory="__2_Dir" Directory_Parent="Images_Dir" DefaultDir="11" DirectoryOptions="3"/>
+    <ROW Directory="__30_Dir" Directory_Parent="ReceiveMessageImage_Dir" DefaultDir="110" DirectoryOptions="3"/>
     <ROW Directory="__3_Dir" Directory_Parent="Images_Dir" DefaultDir="12" DirectoryOptions="3"/>
     <ROW Directory="__4_Dir" Directory_Parent="Images_Dir" DefaultDir="13" DirectoryOptions="3"/>
     <ROW Directory="__5_Dir" Directory_Parent="Images_Dir" DefaultDir="14" DirectoryOptions="3"/>
@@ -154,8 +155,9 @@
     <ROW Component="YoYoStudio.Resource.dll" ComponentId="{D6D8DC6E-8B25-4291-B1ED-D9327477AFC9}" Directory_="APPDIR" Attributes="0" KeyPath="YoYoStudio.Resource.dll"/>
     <ROW Component="YoYoStudio.RoomService.Client.dll" ComponentId="{59127C92-161E-4E16-977F-03AB25440304}" Directory_="APPDIR" Attributes="0" KeyPath="YoYoStudio.RoomService.Client.dll"/>
     <ROW Component="YoYoStudio.SocketService.Music.dll" ComponentId="{7AD00131-650B-4B6C-8EFA-D5F9B220F87B}" Directory_="APPDIR" Attributes="0" KeyPath="YoYoStudio.SocketService.Music.dll"/>
-    <ROW Component="_" ComponentId="{9D2202EB-5751-4B47-9DF8-E06255345BAD}" Directory_="__26_Dir" Attributes="0"/>
-    <ROW Component="__1" ComponentId="{0AC49FF7-C04F-4D99-9950-5EFE36C40912}" Directory_="__27_Dir" Attributes="0"/>
+    <ROW Component="_" ComponentId="{D101AC5B-4D0A-43C1-9627-F8EB4BEC0AAD}" Directory_="__29_Dir" Attributes="0"/>
+    <ROW Component="__2" ComponentId="{B9F002C4-E3E6-42A3-BCFC-F008B9B44085}" Directory_="__28_Dir" Attributes="0"/>
+    <ROW Component="__3" ComponentId="{7A2B7654-DDA6-4762-9490-35BC48560291}" Directory_="__30_Dir" Attributes="0"/>
     <ROW Component="advertise.jpg" ComponentId="{511EFDAB-C535-4DDE-BFDD-8BC362C0CABB}" Directory_="Images_Dir" Attributes="0" KeyPath="advertise.jpg" Type="0"/>
     <ROW Component="audioDisabled_16.jpg" ComponentId="{B00D07F5-AFEA-40A3-AC39-C160C0EFE2B6}" Directory_="Flex_Dir" Attributes="0" KeyPath="audioDisabled_16.jpg" Type="0"/>
     <ROW Component="bmp" ComponentId="{8F37F5AA-0D59-45F1-A8FA-091F22A06BB2}" Directory_="Default_2_Dir" Attributes="0" KeyPath="bmp" Type="0"/>
@@ -193,7 +195,7 @@
     <ROW Component="updater.exe" ComponentId="{81C48FD8-A80C-428C-AEC8-ABB771F39FEE}" Directory_="APPDIR" Attributes="0" KeyPath="updater.exe"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
-    <ROW Feature="A36DC7A_AF70_4CF0_B489_B30E0828F882" Title="Microsoft Visual C++ 2010  x86 Redistributable" Description="Microsoft Visual C++ 2010  x86 Redistributable" Display="5" Level="1" Attributes="16" Components="AI_CustomARPName AI_DisableModify AI_ExePath AxInterop.ShockwaveFlashObjects.dll CaptureScreen.dll FolderPickerLib.dll Interop.ShockwaveFlashObjects.dll Microsoft.Expression.Interactions.dll NAudio.dll NSpeex.dll Newtonsoft.Json.dll System.Windows.Interactivity.dll Update.txt WPFSoundVisualizationLib.dll WpfAnimatedGif.dll Xceed.Wpf.AvalonDock.Themes.Aero.dll Xceed.Wpf.AvalonDock.Themes.Metro.dll Xceed.Wpf.AvalonDock.Themes.VS2010.dll Xceed.Wpf.AvalonDock.dll Xceed.Wpf.AvalonDock.resources.dll Xceed.Wpf.AvalonDock.resources.dll_1 Xceed.Wpf.AvalonDock.resources.dll_2 Xceed.Wpf.AvalonDock.resources.dll_3 Xceed.Wpf.AvalonDock.resources.dll_4 Xceed.Wpf.AvalonDock.resources.dll_5 Xceed.Wpf.AvalonDock.resources.dll_6 Xceed.Wpf.AvalonDock.resources.dll_7 Xceed.Wpf.AvalonDock.resources.dll_8 Xceed.Wpf.AvalonDock.resources.dll_9 Xceed.Wpf.DataGrid.dll Xceed.Wpf.Toolkit.dll YoYoStudio.ChatService.Client.dll YoYoStudio.Client.ViewModel.dll YoYoStudio.Common.Wpf.dll YoYoStudio.Common.dll YoYoStudio.Controls.dll YoYoStudio.Media.dll YoYoStudio.Model.Json.dll YoYoStudio.Model.dll YoYoStudio.Resource.dll YoYoStudio.RoomService.Client.dll YoYoStudio.SocketService.Music.dll _ __1 advertise.jpg audioDisabled_16.jpg bmp ffmpeg.exe ffmpeg.exe_1 ffplay.exe ffplay.exe_1 ffprobe.exe ffprobe.exe_1 gif gif_1 jpg jpg_1 jpg_2 jpg_3 jpg_4 jpg_5 log4net.dll png png_1 png_10 png_11 png_12 png_13 png_14 png_2 png_3 png_4 png_5 png_6 png_7 png_8 png_9 stdole.dll updater.exe"/>
+    <ROW Feature="A36DC7A_AF70_4CF0_B489_B30E0828F882" Title="Microsoft Visual C++ 2010  x86 Redistributable" Description="Microsoft Visual C++ 2010  x86 Redistributable" Display="5" Level="1" Attributes="16" Components="AI_CustomARPName AI_DisableModify AI_ExePath AxInterop.ShockwaveFlashObjects.dll CaptureScreen.dll FolderPickerLib.dll Interop.ShockwaveFlashObjects.dll Microsoft.Expression.Interactions.dll NAudio.dll NSpeex.dll Newtonsoft.Json.dll System.Windows.Interactivity.dll Update.txt WPFSoundVisualizationLib.dll WpfAnimatedGif.dll Xceed.Wpf.AvalonDock.Themes.Aero.dll Xceed.Wpf.AvalonDock.Themes.Metro.dll Xceed.Wpf.AvalonDock.Themes.VS2010.dll Xceed.Wpf.AvalonDock.dll Xceed.Wpf.AvalonDock.resources.dll Xceed.Wpf.AvalonDock.resources.dll_1 Xceed.Wpf.AvalonDock.resources.dll_2 Xceed.Wpf.AvalonDock.resources.dll_3 Xceed.Wpf.AvalonDock.resources.dll_4 Xceed.Wpf.AvalonDock.resources.dll_5 Xceed.Wpf.AvalonDock.resources.dll_6 Xceed.Wpf.AvalonDock.resources.dll_7 Xceed.Wpf.AvalonDock.resources.dll_8 Xceed.Wpf.AvalonDock.resources.dll_9 Xceed.Wpf.DataGrid.dll Xceed.Wpf.Toolkit.dll YoYoStudio.ChatService.Client.dll YoYoStudio.Client.ViewModel.dll YoYoStudio.Common.Wpf.dll YoYoStudio.Common.dll YoYoStudio.Controls.dll YoYoStudio.Media.dll YoYoStudio.Model.Json.dll YoYoStudio.Model.dll YoYoStudio.Resource.dll YoYoStudio.RoomService.Client.dll YoYoStudio.SocketService.Music.dll _ __2 __3 advertise.jpg audioDisabled_16.jpg bmp ffmpeg.exe ffmpeg.exe_1 ffplay.exe ffplay.exe_1 ffprobe.exe ffprobe.exe_1 gif gif_1 jpg jpg_1 jpg_2 jpg_3 jpg_4 jpg_5 log4net.dll png png_1 png_10 png_11 png_12 png_13 png_14 png_2 png_3 png_4 png_5 png_6 png_7 png_8 png_9 stdole.dll updater.exe"/>
     <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="3" Level="1" Directory_="APPDIR" Attributes="16" Components="AI_CustomARPName AI_DisableModify AI_ExePath ProductInformation SHORTCUTDIR YoYoStudio.Client.Chat.exe"/>
     <ROW Feature="MicrosoftVisualC" Title="Microsoft Visual C++ 2010  x64 Redistributable" Description="Microsoft Visual C++ 2010  x64 Redistributable" Display="7" Level="1" Attributes="0" Components="AI_CustomARPName AI_DisableModify AI_ExePath"/>
     <ATTRIBUTE name="CurrentFeature" value="A36DC7A_AF70_4CF0_B489_B30E0828F882"/>
@@ -205,7 +207,7 @@
     <ROW File="Bold_Select.jpg" Component_="advertise.jpg" FileName="BOLD_S~1.JPG|Bold_Select.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Bold_Select.jpg" SelfReg="false" NextFile="Bump.gif"/>
     <ROW File="Bump.gif" Component_="advertise.jpg" FileName="Bump.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Bump.gif" SelfReg="false" NextFile="close.gif"/>
     <ROW File="CaptureScreen.dll" Component_="CaptureScreen.dll" FileName="CAPTUR~1.DLL|CaptureScreen.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\CaptureScreen.dll" SelfReg="false" NextFile="CaptureScreen.pdb"/>
-    <ROW File="CaptureScreen.pdb" Component_="CaptureScreen.dll" FileName="CAPTUR~1.PDB|CaptureScreen.pdb" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\CaptureScreen.pdb" SelfReg="false" NextFile="client.cache"/>
+    <ROW File="CaptureScreen.pdb" Component_="CaptureScreen.dll" FileName="CAPTUR~1.PDB|CaptureScreen.pdb" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\CaptureScreen.pdb" SelfReg="false" NextFile="Client.log"/>
     <ROW File="Client.log" Component_="Update.txt" FileName="Client.log" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Client.log" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.resources.dll"/>
     <ROW File="Color.jpg" Component_="advertise.jpg" FileName="Color.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Color.jpg" SelfReg="false" NextFile="cool.gif"/>
     <ROW File="Cross.png" Component_="advertise.jpg" FileName="Cross.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Cross.png" SelfReg="false" NextFile="CrossGray.png"/>
@@ -248,7 +250,6 @@
     <ROW File="Underline.jpg" Component_="advertise.jpg" FileName="UNDERL~1.JPG|Underline.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Underline.jpg" SelfReg="false" NextFile="Underline_Select.jpg"/>
     <ROW File="Underline_Select.jpg" Component_="advertise.jpg" FileName="UNDERL~2.JPG|Underline_Select.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Underline_Select.jpg" SelfReg="false" NextFile="Up.png"/>
     <ROW File="Up.png" Component_="advertise.jpg" FileName="Up.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\Up.png" SelfReg="false" NextFile="veryperfect.gif"/>
-    <ROW File="Update.txt" Component_="Update.txt" FileName="9258UP~1.TXT|9258Update.txt" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\9258Update.txt" SelfReg="false" NextFile="playerProductInstall.swf"/>
     <ROW File="VideoBG.png" Component_="audioDisabled_16.jpg" FileName="VideoBG.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Flex\VideoBG.png" SelfReg="false" NextFile="videoDisabled_16.jpg"/>
     <ROW File="WPFSoundVisualizationLib.dll" Component_="WPFSoundVisualizationLib.dll" FileName="WPFSOU~1.DLL|WPFSoundVisualizationLib.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\WPFSoundVisualizationLib.dll" SelfReg="false" NextFile="WPFSoundVisualizationLib.pdb"/>
     <ROW File="WPFSoundVisualizationLib.pdb" Component_="WPFSoundVisualizationLib.dll" FileName="WPFSOU~1.PDB|WPFSoundVisualizationLib.pdb" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\WPFSoundVisualizationLib.pdb" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.dll"/>
@@ -417,7 +418,7 @@
     <ROW File="bmp_97" Component_="bmp" FileName="1926.bmp" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Release\Client\Images\11\Default\1926.bmp" SelfReg="false" NextFile="bmp_98"/>
     <ROW File="bmp_98" Component_="bmp" FileName="1927.bmp" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Release\Client\Images\11\Default\1927.bmp" SelfReg="false" NextFile="png_121"/>
     <ROW File="bmp_99" Component_="bmp" FileName="1929.bmp" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Release\Client\Images\11\Default\1929.bmp" SelfReg="false" NextFile="png_122"/>
-    <ROW File="client.cache" Component_="Update.txt" FileName="CLIENT~1.CAC|client.cache" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\client.cache" SelfReg="false" NextFile="Client.log"/>
+    <ROW File="client.cache" Component_="Update.txt" FileName="CLIENT~1.CAC|client.cache" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\client.cache" SelfReg="false"/>
     <ROW File="close.gif" Component_="advertise.jpg" FileName="close.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\close.gif" SelfReg="false" NextFile="Color.jpg"/>
     <ROW File="cool.gif" Component_="advertise.jpg" FileName="cool.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\cool.gif" SelfReg="false" NextFile="Cross.png"/>
     <ROW File="delicious.png" Component_="advertise.jpg" FileName="DELICI~1.PNG|delicious.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\delicious.png" SelfReg="false" NextFile="deposit.gif"/>
@@ -1032,7 +1033,7 @@
     <ROW File="jpg_45" Component_="jpg_1" FileName="5711.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\13\Default\5711.jpg" SelfReg="false" NextFile="jpg_46"/>
     <ROW File="jpg_46" Component_="jpg_1" FileName="5713.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\13\Default\5713.jpg" SelfReg="false" NextFile="jpg_47"/>
     <ROW File="jpg_47" Component_="jpg_1" FileName="5715.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\13\Default\5715.jpg" SelfReg="false" NextFile="jpg_48"/>
-    <ROW File="jpg_48" Component_="jpg_2" FileName="5712.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\14\Default\5712.jpg" SelfReg="false" NextFile="Update.txt"/>
+    <ROW File="jpg_48" Component_="jpg_2" FileName="5712.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\14\Default\5712.jpg" SelfReg="false" NextFile="playerProductInstall.swf"/>
     <ROW File="jpg_5" Component_="jpg" FileName="5704.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Release\Client\Images\12\Default\5704.jpg" SelfReg="false" NextFile="jpg_6"/>
     <ROW File="jpg_6" Component_="jpg" FileName="5705.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Release\Client\Images\12\Default\5705.jpg" SelfReg="false" NextFile="jpg_7"/>
     <ROW File="jpg_7" Component_="jpg" FileName="5706.jpg" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Release\Client\Images\12\Default\5706.jpg" SelfReg="false" NextFile="jpg_8"/>
@@ -1831,7 +1832,7 @@
     <ROW File="stdole.dll" Component_="stdole.dll" FileName="stdole.dll" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\stdole.dll" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.resources.dll_8"/>
     <ROW File="stick.gif" Component_="advertise.jpg" FileName="stick.gif" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\stick.gif" SelfReg="false" NextFile="stumble.png"/>
     <ROW File="stumble.png" Component_="advertise.jpg" FileName="stumble.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\stumble.png" SelfReg="false" NextFile="switchuser.png"/>
-    <ROW File="swfobject.js" Component_="audioDisabled_16.jpg" FileName="SWFOBJ~1.JS|swfobject.js" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Flex\swfobject.js" SelfReg="false"/>
+    <ROW File="swfobject.js" Component_="audioDisabled_16.jpg" FileName="SWFOBJ~1.JS|swfobject.js" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Flex\swfobject.js" SelfReg="false" NextFile="client.cache"/>
     <ROW File="switchuser.png" Component_="advertise.jpg" FileName="SWITCH~1.PNG|switchuser.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\switchuser.png" SelfReg="false" NextFile="Temporary.jpg"/>
     <ROW File="tip.png" Component_="advertise.jpg" FileName="tip.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\tip.png" SelfReg="false" NextFile="tipN.png"/>
     <ROW File="tipN.png" Component_="advertise.jpg" FileName="tipN.png" Version="65535.65535.65535.65535" Attributes="0" SourcePath="..\..\bin\Debug\Client\Images\tipN.png" SelfReg="false" NextFile="tipP.png"/>
@@ -1919,8 +1920,9 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
     <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
-    <ROW Directory_="__26_Dir" Component_="_" ManualDelete="false"/>
-    <ROW Directory_="__27_Dir" Component_="__1" ManualDelete="false"/>
+    <ROW Directory_="__29_Dir" Component_="_" ManualDelete="false"/>
+    <ROW Directory_="__28_Dir" Component_="__2" ManualDelete="false"/>
+    <ROW Directory_="__30_Dir" Component_="__3" ManualDelete="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>

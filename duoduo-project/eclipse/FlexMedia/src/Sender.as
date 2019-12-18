@@ -27,11 +27,23 @@ package
 				if(camera != null)
 				{
 					camera.setMode(width,height,fps);
-					camera.setQuality(0,quality);
+					camera.setQuality(144000,quality);
+				}
+				else{
+					trace("No camera is installed.");
 				}
 				return camera;
 			}
 			return null;
+		}
+		
+		override public function Resize(width:uint, height:uint)
+		{
+			if(camera != null)
+			{
+				camera.setMode(width,height,quality);
+			}
+			return camera
 		}
 		
 		override public function CloseCamera()
