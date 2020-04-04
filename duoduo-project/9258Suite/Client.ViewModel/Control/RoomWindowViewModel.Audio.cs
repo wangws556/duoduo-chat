@@ -109,14 +109,14 @@ namespace YoYoStudio.Client.ViewModel
 
         }
 
-        public void StartAudioPublish(string audioDeviceName, string rtmpPath)
+        public void StartAudioPublish(string audioDeviceName, string rtmpPath, string audioArg)
         {
             //using ffmpeg publish
             try
             {
                 if (ApplicationVM.ProfileVM.AudioConfigurationVM.LoopbackRecording)
                 {
-                    Utility.StartPublishAudio(audioDeviceName, rtmpPath);
+                    Utility.StartPublishAudio(audioDeviceName, rtmpPath, audioArg);
                 }
             }
             catch (Exception ex)

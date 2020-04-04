@@ -258,7 +258,7 @@ namespace YoYoStudio.Common
                 return AppDomain.CurrentDomain.BaseDirectory + "ToFLV32.bat";
         }
 
-        public static void StartPublishAudio(string audioDeviceName, string rtmpPath)
+        public static void StartPublishAudio(string audioDeviceName, string rtmpPath, string audioArg)
         {
             // 存在的publish process
             StopPublishAudio();
@@ -285,7 +285,7 @@ namespace YoYoStudio.Common
                 pro.StartInfo.CreateNoWindow = true;
                 pro.StartInfo.Verb = "runas";
                 //pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -fflags nobuffer -y -f flv " + arg2;
-                pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -acodec aac -f flv " + arg2;
+                pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " " + audioArg + " " + arg2;
                 try
                 {
                     pro.Start();

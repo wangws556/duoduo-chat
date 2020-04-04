@@ -269,12 +269,15 @@ namespace YoYoStudio.Client.Chat.Controls
                                     case FlexCallbackCommandNames.AV_State_Normal:
                                         if (uvm.IsMe())
                                         {
-                                            uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id);
+                                            uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, 
+                                                uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id,
+                                                uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioArg);
                                             //uvm.RoomWindowVM.StartAudioRecording();
                                         }
                                         else
                                         {
-                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id,uvm.Id, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                                            uvm.RoomWindowVM.StartAudioPlay(uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id,uvm.Id, 
+                                                uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
                                             //uvm.RoomWindowVM.StartAudioPlaying(uvm.Id);
                                         }
                                         playBack.Start();
@@ -298,7 +301,9 @@ namespace YoYoStudio.Client.Chat.Controls
                                         if (uvm.IsMe())
                                         {
                                             //uvm.RoomWindowVM.StartAudioRecording();
-                                            uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id);
+                                            uvm.RoomWindowVM.StartAudioPublish(uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName, 
+                                                uvm.RoomWindowVM.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioRTMP + "/" + uvm.RoomWindowVM.RoomVM.Id + "/" + uvm.Id,
+                                                uvm.ApplicationVM.ProfileVM.AudioConfigurationVM.AudioArg);
                                         }
                                         else
                                         {

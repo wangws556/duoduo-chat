@@ -24,12 +24,12 @@ namespace YoYoStudio.Client.ViewModel
 {
 	public partial class WindowViewModel
 	{
+	
 
-
-        /// <summary>
-        /// Field which backs the Busy property
-        /// </summary>
-        public HistoryableProperty<bool> busy = new HistoryableProperty<bool>(false);
+		/// <summary>
+		/// Field which backs the Busy property
+		/// </summary>
+		public HistoryableProperty<bool> busy = new HistoryableProperty<bool>(false);
 
 		/// <summary>
 		/// Gets / sets the Busy value
@@ -58,10 +58,10 @@ namespace YoYoStudio.Client.ViewModel
 		}
 
 
-        /// <summary>
-        /// Field which backs the WelcomeMessage property
-        /// </summary>
-        public HistoryableProperty<string> welcomeMessage = new HistoryableProperty<string>(string.Empty);
+		/// <summary>
+		/// Field which backs the WelcomeMessage property
+		/// </summary>
+		public HistoryableProperty<string> welcomeMessage = new HistoryableProperty<string>(string.Empty);
 
 		/// <summary>
 		/// Gets / sets the WelcomeMessage value

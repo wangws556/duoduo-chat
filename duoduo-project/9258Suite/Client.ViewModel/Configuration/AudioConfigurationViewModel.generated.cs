@@ -77,7 +77,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the MicNameLabel property
 		/// </summary>
-		private HistoryableProperty<string> micNameLabel = new HistoryableProperty<string>(string.Empty);
+		private HistoryableProperty<string> micNameLabel = new HistoryableProperty<string>("");
 
 		/// <summary>
 		/// Gets / sets the MicNameLabel value
@@ -125,7 +125,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the MicDeviceName property
 		/// </summary>
-		private HistoryableProperty<string> micDeviceName = new HistoryableProperty<string>(string.Empty);
+		private HistoryableProperty<string> micDeviceName = new HistoryableProperty<string>("");
 
 		/// <summary>
 		/// Gets / sets the MicDeviceName value
@@ -141,7 +141,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the AudioNameLabel property
 		/// </summary>
-		private HistoryableProperty<string> audioNameLabel = new HistoryableProperty<string>(string.Empty);
+		private HistoryableProperty<string> audioNameLabel = new HistoryableProperty<string>("");
 
 		/// <summary>
 		/// Gets / sets the AudioNameLabel value
@@ -189,7 +189,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the AudioDeviceName property
 		/// </summary>
-		private HistoryableProperty<string> audioDeviceName = new HistoryableProperty<string>(string.Empty);
+		private HistoryableProperty<string> audioDeviceName = new HistoryableProperty<string>("");
 
 		/// <summary>
 		/// Gets / sets the AudioDeviceName value
@@ -205,7 +205,7 @@ namespace YoYoStudio.Client.ViewModel
 		/// <summary>
 		/// Field which backs the AudioRTMP property
 		/// </summary>
-		private HistoryableProperty<string> audioRTMP = new HistoryableProperty<string>(string.Empty);
+		private HistoryableProperty<string> audioRTMP = new HistoryableProperty<string>("");
 
 		/// <summary>
 		/// Gets / sets the AudioRTMP value
@@ -215,6 +215,22 @@ namespace YoYoStudio.Client.ViewModel
 		{
 			get { return audioRTMP.GetValue(); }
 			set { ChangeAndNotifyHistory<string>(audioRTMP, value, () => AudioRTMP ); }
+		}
+
+
+		/// <summary>
+		/// Field which backs the AudioArg property
+		/// </summary>
+		private HistoryableProperty<string> audioArg = new HistoryableProperty<string>("");
+
+		/// <summary>
+		/// Gets / sets the AudioArg value
+		/// </summary>
+		[Browsable(false)]
+		public  string AudioArg
+		{
+			get { return audioArg.GetValue(); }
+			set { ChangeAndNotifyHistory<string>(audioArg, value, () => AudioArg ); }
 		}
 
 
