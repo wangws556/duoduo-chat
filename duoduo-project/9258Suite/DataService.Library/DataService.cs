@@ -183,7 +183,15 @@ namespace YoYoStudio.DataService.Library
         [OperationBehavior]
         public void KeepAlive()
         {
-            System.Threading.Thread.Sleep(1);
+            try
+            {
+                System.Threading.Thread.Sleep(1);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(KeepAlive),ex);
+                throw new DatabaseException();
+            }
         }
 
         #region Application
@@ -196,8 +204,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<Application>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetApplications), ex);
                 throw new DatabaseException();
             }
         }
@@ -213,8 +222,9 @@ namespace YoYoStudio.DataService.Library
                 new SPParameter{Name = "cmdid",Type = System.Data.DbType.Int32, Value = cmdid}
             });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetApplicationsForCommand), ex);
                 throw new DatabaseException();
             }
 
@@ -230,8 +240,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add<Application>(application);
                 return application;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddApplication), ex);
                 throw new DatabaseException();
             }
         }
@@ -244,8 +255,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.DefineApplicationCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete<Application>(new Application { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteApplication), ex);
                 throw new DatabaseException();
             }
         }
@@ -258,8 +270,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.DefineApplicationCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update<Application>(application);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateApplication), ex);
                 throw new DatabaseException();
             }
         }
@@ -273,8 +286,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get<Application>(application);
                 return application.Loaded ? application : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetApplication), ex);
                 throw new DatabaseException();
             }
         }
@@ -285,8 +299,9 @@ namespace YoYoStudio.DataService.Library
             {
                 return modelAccesser.GetCount<Application>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetApplicationCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -308,8 +323,9 @@ namespace YoYoStudio.DataService.Library
                     modelAccesser.Delete(cmd);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -322,8 +338,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, command.Application_Id, userId, BuiltIns.DefineCommandCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update(command);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -337,8 +354,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(command);
                 return command;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -352,8 +370,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(command);
                 return command.Loaded ? command : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -365,8 +384,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<Command>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetCommands), ex);
                 throw new DatabaseException();
             }
         }
@@ -377,8 +397,9 @@ namespace YoYoStudio.DataService.Library
             {
                 return modelAccesser.GetCount<Command>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetCommandCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -394,8 +415,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<Role>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoles), ex);
                 throw new DatabaseException();
             }
         }
@@ -413,8 +435,9 @@ namespace YoYoStudio.DataService.Library
                     modelAccesser.Delete(r);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -427,8 +450,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, role.Application_Id, userId, BuiltIns.DefineRoleCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update(role);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -442,8 +466,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(role);
                 return role;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -457,8 +482,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(role);
                 return role.Loaded ? role : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -469,8 +495,9 @@ namespace YoYoStudio.DataService.Library
             {
                 return modelAccesser.GetCount<Role>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -493,7 +520,7 @@ namespace YoYoStudio.DataService.Library
                     modelAccesser.Delete(new RoleCommand { Id = id });
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new DatabaseException();
             }
@@ -507,8 +534,9 @@ namespace YoYoStudio.DataService.Library
                 CheckRoleCommand(appid, userId, roleCommand);
                 modelAccesser.Update(roleCommand);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateRoleCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -522,8 +550,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(roleCommand);
                 return roleCommand;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddRoleCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -537,8 +566,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get<RoleCommand>(rc);
                 return rc.Loaded ? rc : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -550,8 +580,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<RoleCommand>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCommands), ex);
                 throw new DatabaseException();
             }
         }
@@ -563,8 +594,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<RoleCommand>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCommandCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -578,8 +610,9 @@ namespace YoYoStudio.DataService.Library
                 new SPParameter{Direction=System.Data.ParameterDirection.Input,Name="userid",Value=uid}
             });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCommandsForUser), ex);
                 throw new DatabaseException();
             }
         }
@@ -592,8 +625,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<RoleCommandView>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCommandViews), ex);
                 throw new DatabaseException();
             }
         }
@@ -605,8 +639,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<RoleCommandView>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCommandViewCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -621,8 +656,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get<RoleCommandView>(view);
                 return view.Loaded ? view : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoleCommandView), ex);
                 throw new DatabaseException();
             }
 
@@ -636,8 +672,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return HasCommand(appid, cmdTargetAppId, userId, cmdId, targetRoleId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(HasCommand), ex);
                 throw new DatabaseException();
             }
         }
@@ -694,8 +731,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineRoomGroupCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete(new RoomGroup { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteRoomGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -708,8 +746,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineRoomGroupCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update(roomGroup);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateRoomGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -723,8 +762,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(roomGroup);
                 return roomGroup;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddRoomGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -736,8 +776,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<RoomGroup>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoomGroups), ex);
                 throw new DatabaseException();
             }
         }
@@ -751,8 +792,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(roomGroup);
                 return roomGroup.Loaded ? roomGroup : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoomGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -763,8 +805,9 @@ namespace YoYoStudio.DataService.Library
             {
                 return modelAccesser.GetCount<RoomGroup>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoomGroupCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -781,8 +824,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineRoomCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete(new Room { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteRoom), ex);
                 throw new DatabaseException();
             }
         }
@@ -796,8 +840,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Update(room);
                 return room;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateRoom), ex);
                 throw new DatabaseException();
             }
         }
@@ -811,8 +856,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(room);
                 return room;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddRoom), ex);
                 throw new DatabaseException();
             }
         }
@@ -824,8 +870,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<Room>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRooms), ex);
                 throw new DatabaseException();
             }
         }
@@ -839,8 +886,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(room);
                 return room.Loaded ? room : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoom), ex);
                 throw new DatabaseException();
             }
         }
@@ -852,8 +900,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<Room>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoomCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -870,8 +919,9 @@ namespace YoYoStudio.DataService.Library
                 new SPParameter{Direction=System.Data.ParameterDirection.Input,Name = "agentId",Value = agentId}
             });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AssignRoomsToAgent), ex);
                 throw new DatabaseException();
             }
         }
@@ -890,8 +940,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add<RoomRole>(roomRole);
                 return roomRole;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddRoomRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -906,8 +957,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(rRole);
                 return rRole.Loaded ? rRole : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoomRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -921,8 +973,9 @@ namespace YoYoStudio.DataService.Library
                 //CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineRoomCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete(new RoomRole { Room_Id = room_Id, User_Id = user_Id, Role_Id = role_Id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteRoomRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -935,8 +988,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<RoomRole>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoomRoles), ex);
                 throw new DatabaseException();
             }
         }
@@ -949,8 +1003,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<RoomRole>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetRoomRoleCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -964,8 +1019,9 @@ namespace YoYoStudio.DataService.Library
                 //CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineRoomCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update<RoomRole>(rr);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateRoomRole), ex);
                 throw new DatabaseException();
             }
         }
@@ -982,8 +1038,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.DefineUserCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete(new User { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteUser), ex);
                 throw new DatabaseException();
             }
         }
@@ -999,8 +1056,9 @@ namespace YoYoStudio.DataService.Library
                 }
                 modelAccesser.Update(user);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateUser), ex);
                 throw new DatabaseException();
             }
         }
@@ -1014,8 +1072,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(user);
                 return user;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddUser), ex);
                 throw new DatabaseException();
             }
         }
@@ -1029,8 +1088,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(user);
                 return user.Loaded ? user : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetUser), ex);
                 throw new DatabaseException();
             }
         }
@@ -1042,8 +1102,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<User>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetUsers), ex);
                 throw new DatabaseException();
             }
         }
@@ -1054,8 +1115,9 @@ namespace YoYoStudio.DataService.Library
             {
                 return modelAccesser.GetCount<User>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetUserCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1072,8 +1134,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Update<User>(user);
                 return id.ToString();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(ResetPassword), ex);
                 throw new DatabaseException();
             }
         }
@@ -1109,8 +1172,9 @@ namespace YoYoStudio.DataService.Library
 
                 return newUser;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(Register), ex);
                 throw new DatabaseException();
             }
         }
@@ -1127,8 +1191,9 @@ namespace YoYoStudio.DataService.Library
                     scope.Complete();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateUserProfileInfo), ex);
                 throw new DatabaseException();
             }
         }
@@ -1145,8 +1210,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineGiftGroupCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete(new GiftGroup { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteGiftGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -1159,8 +1225,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineGiftGroupCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update(giftGroup);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateGiftGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -1174,8 +1241,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(giftGroup);
                 return giftGroup;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddGiftGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -1189,8 +1257,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(giftGroup);
                 return giftGroup.Loaded ? giftGroup : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetGiftGroup), ex);
                 throw new DatabaseException();
             }
         }
@@ -1202,8 +1271,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<GiftGroup>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetGiftGroups), ex);
                 throw new DatabaseException();
             }
         }
@@ -1214,8 +1284,9 @@ namespace YoYoStudio.DataService.Library
             {
                 return modelAccesser.GetCount<GiftGroup>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetGiftGroupCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1232,8 +1303,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineGiftCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete(new Gift { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteGift), ex);
                 throw new DatabaseException();
             }
         }
@@ -1246,8 +1318,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineGiftCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update(gift);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateGift), ex);
                 throw new DatabaseException();
             }
         }
@@ -1261,8 +1334,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(gift);
                 return gift;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddGift), ex);
                 throw new DatabaseException();
             }
         }
@@ -1276,8 +1350,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get(gift);
                 return gift.Loaded ? gift : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetGift), ex);
                 throw new DatabaseException();
             }
         }
@@ -1289,8 +1364,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<Gift>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetGifts), ex);
                 throw new DatabaseException();
             }
         }
@@ -1302,8 +1378,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<Gift>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetGiftCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1319,8 +1396,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 modelAccesser.Delete<Image>(new Image { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteImage), ex);
                 throw new DatabaseException();
             }
         }
@@ -1338,8 +1416,9 @@ namespace YoYoStudio.DataService.Library
                 }
                 modelAccesser.Update<Image>(image);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateImage), ex);
                 throw new DatabaseException();
             }
         }
@@ -1351,8 +1430,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 modelAccesser.Add<Image>(image);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddImage), ex);
                 throw new DatabaseException();
             }
         }
@@ -1366,8 +1446,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get<Image>(image);
                 return image.Loaded ? image : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetImage), ex);
                 throw new DatabaseException();
             }
         }
@@ -1382,8 +1463,9 @@ namespace YoYoStudio.DataService.Library
                 imgs.ForEach(i => result.Add(i.RemoveBody()));
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetImages), ex);
                 throw new DatabaseException();
             }
         }
@@ -1395,8 +1477,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return  modelAccesser.GetAll<Image>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetImagesWithBody), ex);
                 throw new DatabaseException(); 
             }
         }
@@ -1408,8 +1491,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<Image>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetImageCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1426,8 +1510,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<BlockType>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockTypes), ex);
                 throw new DatabaseException();
             }
         }
@@ -1439,8 +1524,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<BlockType>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockTypeCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1455,8 +1541,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get<BlockType>(t);
                 return t.Loaded ? t : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockType), ex);
                 throw new DatabaseException();
             }
         }
@@ -1471,8 +1558,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(blockType);
                 return blockType;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddBlockType), ex);
                 throw new DatabaseException();
             }
         }
@@ -1486,8 +1574,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.BlockTypeCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete(new BlockType { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteBlockType), ex);
                 throw new DatabaseException();
             }
         }
@@ -1501,8 +1590,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.BlockTypeCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update(blockType);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateBlockType), ex);
                 throw new DatabaseException();
             }
         }
@@ -1519,8 +1609,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<ExchangeRate>(condition, "[ValidTime] ASC", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetAllExchangeRate), ex);
                 throw new DatabaseException();
             }
         }
@@ -1532,8 +1623,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<ExchangeRate>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetExchangeRateCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1547,8 +1639,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(eRate);
                 return eRate;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddExchangeRate), ex);
                 throw new DatabaseException();
             }
         }
@@ -1566,8 +1659,9 @@ namespace YoYoStudio.DataService.Library
                     modelAccesser.Delete(rate);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteExchangeRate), ex);
                 throw new DatabaseException();
             }
         }
@@ -1580,8 +1674,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, eRate.Application_Id, userId, BuiltIns.DefineExchangeRateCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update(eRate);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateExchangeRate), ex);
                 throw new DatabaseException();
             }
         }
@@ -1598,8 +1693,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<BlockList>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockLists), ex);
                 throw new DatabaseException();
             }
         }
@@ -1611,8 +1707,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<BlockList>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockListCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1627,8 +1724,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get<BlockList>(list);
                 return list.Loaded ? list : null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockList), ex);
                 throw new DatabaseException();
             }
         }
@@ -1675,8 +1773,9 @@ namespace YoYoStudio.DataService.Library
 
                 return blockL;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddBlockList), ex);
                 throw new DatabaseException();
             }
         }
@@ -1707,8 +1806,9 @@ namespace YoYoStudio.DataService.Library
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteBlockList), ex);
                 throw new DatabaseException();
             }
         }
@@ -1737,8 +1837,9 @@ namespace YoYoStudio.DataService.Library
                     scope.Complete();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateBlockList), ex);
                 throw new DatabaseException();
             }
         }
@@ -1750,8 +1851,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<BlockHistory>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockHistory), ex);
                 throw new DatabaseException();
             }
         }
@@ -1763,8 +1865,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<BlockHistory>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetBlockHistoryCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1797,8 +1900,9 @@ namespace YoYoStudio.DataService.Library
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddUserIdLists), ex);
                 throw new DatabaseException();
             }
         }
@@ -1820,6 +1924,7 @@ namespace YoYoStudio.DataService.Library
             }
             catch (Exception ex)
             {
+                logger.Error(nameof(GetUserIdLists), ex);
                 throw new DatabaseException();
             }
         }
@@ -1838,8 +1943,9 @@ namespace YoYoStudio.DataService.Library
                 }
                 return modelAccesser.GetCount<UserIdList>(con);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetUserIdListCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -1851,8 +1957,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 modelAccesser.Update<UserIdList>(idlist);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateUserIdList), ex);
                 throw new DatabaseException();
             }
         }
@@ -1866,8 +1973,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add(idlist);
                 return idlist;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddUserIdList), ex);
                 throw new DatabaseException();
             }
         }
@@ -1880,8 +1988,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, userIdAppid, userId, BuiltIns.DefineUserIdCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete<UserIdList>(new UserIdList { Application_Id = userIdAppid, User_Id = userid });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteUserIdList), ex);
                 throw new DatabaseException();
             }
         }
@@ -1899,27 +2008,36 @@ namespace YoYoStudio.DataService.Library
                 new SPParameter{Name="agent",Type= System.Data.DbType.Int32,Value=agent}
             });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AssignAgentUserIds), ex);
                 throw new DatabaseException();
             }
         }
         [OperationBehavior]
         public int GetNextAvailableUserId(int appid, int userId, string token, int userIdAppid, int roleId)
         {
-            lock (userIdLock)
+            try
             {
-                string con = "[IsUsed] = 0 AND [Role_Id] = " + roleId + " AND [User_Id] <> " + currentUserId;
-                if (userIdAppid != BuiltIns.AllApplication.Id)
+                lock (userIdLock)
                 {
-                    con += "AND ([Application_Id] = " + userIdAppid + " OR [Application_Id] = " + BuiltIns.AllApplication.Id + ")";
+                    string con = "[IsUsed] = 0 AND [Role_Id] = " + roleId + " AND [User_Id] <> " + currentUserId;
+                    if (userIdAppid != BuiltIns.AllApplication.Id)
+                    {
+                        con += "AND ([Application_Id] = " + userIdAppid + " OR [Application_Id] = " + BuiltIns.AllApplication.Id + ")";
+                    }
+                    var userIds = GetUserIdLists(appid, userId, token, userIdAppid, con, 1, 1);
+                    if (userIds != null && userIds.Count > 0)
+                    {
+                        currentUserId = userIds[0].User_Id;
+                    }
+                    return currentUserId;
                 }
-                var userIds = GetUserIdLists(appid, userId, token, userIdAppid, con, 1, 1);
-                if (userIds != null && userIds.Count > 0)
-                {
-                    currentUserId = userIds[0].User_Id;
-                }
-                return currentUserId;
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(GetNextAvailableUserId), ex);
+                throw new DatabaseException();
             }
         }
 
@@ -1948,8 +2066,9 @@ namespace YoYoStudio.DataService.Library
                     return info;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetUserInfo), ex);
                 throw new DatabaseException();
             }
             return null;
@@ -1964,8 +2083,9 @@ namespace YoYoStudio.DataService.Library
                 UserApplicationInfo info = new UserApplicationInfo { Application_Id = userInfoAppid, User_Id = id };
                 modelAccesser.Delete<UserApplicationInfo>(info);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteUserInfo), ex);
                 throw new DatabaseException();
             }
         }
@@ -1979,8 +2099,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add<UserApplicationInfo>(info);
                 return info;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddUserInfo), ex);
                 throw new DatabaseException();
             }
         }
@@ -2024,8 +2145,9 @@ namespace YoYoStudio.DataService.Library
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(UpdateUserInfo), ex);
                 throw new DatabaseException();
             }
         }
@@ -2037,8 +2159,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<UserApplicationInfo>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetUserInfos), ex);
                 throw new DatabaseException();
             }
         }
@@ -2050,8 +2173,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<UserApplicationInfo>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetUserInfoCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -2077,8 +2201,9 @@ namespace YoYoStudio.DataService.Library
                     scope.Complete();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(ScoreDeposit), ex);
                 throw new DatabaseException();
             }
         }
@@ -2110,8 +2235,9 @@ namespace YoYoStudio.DataService.Library
                     scope.Complete();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(ScoreExchange), ex);
                 throw new DatabaseException();
             }
         }
@@ -2150,7 +2276,11 @@ namespace YoYoStudio.DataService.Library
                     return true;
                 }
             }
-            catch { return false; }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(Deposit), ex);
+                throw new DatabaseException();
+            }
         }
 
         #endregion
@@ -2168,8 +2298,9 @@ namespace YoYoStudio.DataService.Library
                     CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.QueryExchangeCommand.Id, BuiltIns.AllRole.Id);
                 return modelAccesser.GetAll<ExchangeHistory>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetExchangeHistories), ex);
                 throw new DatabaseException();
             }
         }
@@ -2185,8 +2316,9 @@ namespace YoYoStudio.DataService.Library
                     CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.QueryExchangeCommand.Id, BuiltIns.AllRole.Id);
                 return modelAccesser.GetCount<ExchangeHistory>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetExchangeHistoryCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -2200,8 +2332,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.QueryDepositCommand.Id, BuiltIns.AllRole.Id);
                 return modelAccesser.GetAll<DepositHistory>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetDepositHistories), ex);
                 throw new DatabaseException();
             }
         }
@@ -2215,8 +2348,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.QueryDepositCommand.Id, BuiltIns.AllRole.Id);
                 return modelAccesser.GetCount<DepositHistory>(condition);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetDepositHistoryCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -2229,8 +2363,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.QueryDepositCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete<DepositHistory>(new DepositHistory { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteDepositHistory), ex);
                 throw new DatabaseException();
             }
         }
@@ -2243,8 +2378,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.QueryExchangeCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete<ExchangeHistory>(new ExchangeHistory { Id = id });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(DeleteExchangeHistory), ex);
                 throw new DatabaseException();
             }
         }
@@ -2276,8 +2412,9 @@ namespace YoYoStudio.DataService.Library
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(CancelExchangeCache), ex);
                 throw new DatabaseException();
             }
         }
@@ -2291,8 +2428,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns.AllApplication.Id, userId, BuiltIns.SettlementCommand.Id, BuiltIns.AllRole.Id);
                 return modelAccesser.GetAll<ExchangeHistory>(condition, "", start, count);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(GetExchangeHistoryForSettlement), ex);
                 throw new DatabaseException();
             }
         }
@@ -2306,8 +2444,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, history.Application_Id, userId, BuiltIns.SettlementCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Update<ExchangeHistory>(history);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(SettlementExchange), ex);
                 throw new DatabaseException();
             }
         }
@@ -2331,8 +2470,9 @@ namespace YoYoStudio.DataService.Library
                 }
                 return history;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(nameof(AddExchangeHistory), ex);
                 throw new DatabaseException();
             }
         }
@@ -2360,8 +2500,9 @@ namespace YoYoStudio.DataService.Library
                         scope.Complete();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    logger.Error(nameof(SettleExchangeCache), ex);
                     throw new DatabaseException();
                 }
             }
@@ -2390,8 +2531,9 @@ namespace YoYoStudio.DataService.Library
                         scope.Complete();
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    logger.Error(nameof(ConfirmExchangeCache), ex);
                     throw new DatabaseException();
                 }
             }
@@ -2453,8 +2595,9 @@ namespace YoYoStudio.DataService.Library
                 CheckCommand(appid, BuiltIns._9258ChatApplication.Id, userId, BuiltIns.DefineRoomCommand.Id, BuiltIns.AllRole.Id);
                 modelAccesser.Delete<RoomConfig>(new RoomConfig { Id = id });
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(nameof(DeleteRoomConfig), ex);
                 throw new DatabaseException();
             }
         }
@@ -2468,8 +2611,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Update<RoomConfig>(config);
                 return config;
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(nameof(UpdateRoomConfig), ex);
                 throw new DatabaseException();
             }
         }
@@ -2483,8 +2627,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Add<RoomConfig>(config);
                 return config;
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(nameof(AddRoomConfig), ex);
                 throw new DatabaseException();
             }
         }
@@ -2498,8 +2643,9 @@ namespace YoYoStudio.DataService.Library
                 modelAccesser.Get<RoomConfig>(config);
                 return config.Loaded ? config : null;
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(nameof(GetRoomConfig), ex);
                 throw new DatabaseException();
             }
         }
@@ -2511,8 +2657,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetAll<RoomConfig>(condition, "", start, count);
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(nameof(GetRoomConfigs), ex);
                 throw new DatabaseException();
             }
         }
@@ -2524,8 +2671,9 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 return modelAccesser.GetCount<RoomConfig>(condition);
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(nameof(GetRoomConfigCount), ex);
                 throw new DatabaseException();
             }
         }
@@ -2551,7 +2699,11 @@ namespace YoYoStudio.DataService.Library
                 }
                 return result;
             }
-            catch { return new List<MusicInfo>(); }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(GetMusics), ex);
+                throw new DatabaseException();
+            }
 
         }
 
@@ -2567,7 +2719,11 @@ namespace YoYoStudio.DataService.Library
                 }
                 Utility.DeleteMusicsOnRed5Locally(fileNames);
             }
-            catch { }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(DeleteMusics), ex);
+                throw new DatabaseException();
+            }
         }
 
         public void UploadMusics(int appid, int userId, string token, List<Byte[]> toUpload)
@@ -2577,7 +2733,11 @@ namespace YoYoStudio.DataService.Library
                 CheckToken(appid, userId, token);
                 Utility.UploadFileOnRed5Locally(toUpload);
             }
-            catch { }
+            catch (Exception ex)
+            {
+                logger.Error(nameof(UploadMusics), ex);
+                throw new DatabaseException();
+            }
         }
 
         #endregion

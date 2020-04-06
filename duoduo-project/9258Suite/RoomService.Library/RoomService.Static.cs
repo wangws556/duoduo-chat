@@ -113,7 +113,7 @@ namespace YoYoStudio.RoomService.Library
             }
             catch (Exception ex)
             {
-                logger.Error("Update room online user count failed: " + ex.Message);
+                logger.Error(nameof(timer_Elapsed),ex);
             }
             finally
             {

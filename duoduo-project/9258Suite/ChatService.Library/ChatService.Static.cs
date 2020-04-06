@@ -30,27 +30,40 @@ namespace YoYoStudio.ChatService.Library
 
 		public static void Initialize()
 		{
-            
-			dataServiceClient = new DSClient(ApplicationId);
-			serviceToken = dataServiceClient.Login(BuiltIns._9258Administrator.Id, BuiltIns._9258Administrator.Password);
-			cache = new DataServiceCache(ApplicationId);
-			cache.RefreshCache(BuiltIns._9258Administrator.Id, serviceToken);
-            cache.BuildRelationship();
-            timer.Interval = TimeSpan.FromMinutes(1).TotalMilliseconds;
-            timer.Elapsed += timer_Elapsed;
-            timer.Start();
-            if (File.Exists(cacheVersionFile))
-            {                
-                var lines = File.ReadLines(cacheVersionFile);
-                cacheVersion = long.Parse(lines.ElementAt(0)) + 1;
+            try
+            {
+                dataServiceClient = new DSClient(ApplicationId);
+                serviceToken = dataServiceClient.Login(BuiltIns._9258Administrator.Id, BuiltIns._9258Administrator.Password);
+                cache = new DataServiceCache(ApplicationId);
+                cache.RefreshCache(BuiltIns._9258Administrator.Id, serviceToken);
+                cache.BuildRelationship();
+                timer.Interval = TimeSpan.FromMinutes(1).TotalMilliseconds;
+                timer.Elapsed += timer_Elapsed;
+                timer.Start();
+                if (File.Exists(cacheVersionFile))
+                {
+                    var lines = File.ReadLines(cacheVersionFile);
+                    cacheVersion = long.Parse(lines.ElementAt(0)) + 1;
+                }
+                File.Delete(cacheVersionFile);
+                File.WriteAllText(cacheVersionFile, cacheVersion.ToString());
             }
-            File.Delete(cacheVersionFile);
-            File.WriteAllText(cacheVersionFile, cacheVersion.ToString());
+            catch(Exception ex)
+            {
+                logger.Error(nameof(Initialize), ex);
+            }
 		}
 
         static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            serviceToken = dataServiceClient.Login(BuiltIns._9258Administrator.Id, BuiltIns._9258Administrator.Password);
+            try
+            {
+                serviceToken = dataServiceClient.Login(BuiltIns._9258Administrator.Id, BuiltIns._9258Administrator.Password);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(timer_Elapsed), ex);
+            }
         }		
 	}
 }

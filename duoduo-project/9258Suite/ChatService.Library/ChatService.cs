@@ -223,8 +223,9 @@ namespace YoYoStudio.ChatService.Library
                     userNC.UserInfo.Money = 0;
                 userNC.UserInfo.Money += moneyToGet;
             }
-            catch
+            catch(Exception ex)
             {
+                logger.Error(nameof(ScoreExchange), ex);
                 return false;
             }
             return true;
@@ -233,132 +234,202 @@ namespace YoYoStudio.ChatService.Library
         [OperationBehavior]
         public bool AgentLogin(int userId, int agent, string password, string agentPassword = "")
         {
-            string token = dataServiceClient.AgentLogin(userId, agent, password, agentPassword);
-            return string.IsNullOrEmpty(token) ? false : true;
+            bool result = false;
+            try
+            {
+                string token = dataServiceClient.AgentLogin(userId, agent, password, agentPassword);
+                result = string.IsNullOrEmpty(token) ? false : true;
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(AgentLogin), ex);
+            }
+            return result;
         }
 
 		[OperationBehavior]
 		public User Login(int userId, string password, string macAddress)
 		{
-            string token = string.Empty;
-            logger.Debug("Enter Login : UserId - " + userId);
-            if (userId == BuiltIns._9258Administrator.Id)
+            User usr = null;
+            try
             {
-                if (Utility.GetMD5String(password) == BuiltIns._9258Administrator.Password)
+                string token = string.Empty;
+                logger.Debug("Enter Login : UserId - " + userId);
+                if (userId == BuiltIns._9258Administrator.Id)
                 {
-                    token = serviceToken;
-                    logger.Debug("9258 Admin Login");
-                }
-                else
-                {
-                    logger.Debug("9258 Admin Login Failed");
-                    return null;
-                }
-            }
-            if (string.IsNullOrEmpty(token) && userId != BuiltIns._9258Administrator.Id)
-            {
-                token = dataServiceClient.Login(userId, password);
-                logger.Debug("Normal Login");
-            }
-			if (!string.IsNullOrEmpty(token))
-			{
-                logger.Debug("Normal Login Succeed");
-                bool relogin = false;
-                if (userCache.ContainsKey(userId))
-                {
-                    logger.Debug("Relogin");
-                    relogin = true;
-                    try
+                    if (Utility.GetMD5String(password) == BuiltIns._9258Administrator.Password)
                     {
+                        token = serviceToken;
+                        logger.Debug("9258 Admin Login");
+                    }
+                    else
+                    {
+                        logger.Debug("9258 Admin Login Failed");
+                        return null;
+                    }
+                }
+                if (string.IsNullOrEmpty(token) && userId != BuiltIns._9258Administrator.Id)
+                {
+                    token = dataServiceClient.Login(userId, password);
+                    logger.Debug("Normal Login");
+                }
+                if (!string.IsNullOrEmpty(token))
+                {
+                    logger.Debug("Normal Login Succeed");
+                    bool relogin = false;
+                    if (userCache.ContainsKey(userId))
+                    {
+                        logger.Debug("Relogin");
+                        relogin = true;
                         var u = userCache[userId];
                         userCache.Remove(userId);
-						userCache[userId].ServiceInstance.Dispose();
-                        u.Callback.UserRelogin();                        
+                        userCache[userId].ServiceInstance.Dispose();
+                        u.Callback.UserRelogin();
                     }
-                    catch { }
-                }
-				OperationContext.Current.Channel.Faulted += Channel_Faulted;
-				OperationContext.Current.Channel.Closing += Channel_Closing;
-				User usr = dataServiceClient.GetUser(userId, token, userId);
-				var info = dataServiceClient.GetUserInfo(BuiltIns._9258Administrator.Id, serviceToken, userId, ApplicationId);
-                if (usr != null && info != null)
-                {
-                    logger.Debug("Normal Login Exit");
-                    unc = new UserNCallback
+                    OperationContext.Current.Channel.Faulted += Channel_Faulted;
+                    OperationContext.Current.Channel.Closing += Channel_Closing;
+                    usr = dataServiceClient.GetUser(userId, token, userId);
+                    var info = dataServiceClient.GetUserInfo(BuiltIns._9258Administrator.Id, serviceToken, userId, ApplicationId);
+                    if (usr != null && info != null)
                     {
-                        User = usr,
-                        Callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>(),
-                        PublicIpAddress = GetClientRemoteEndPoint().Address,
-                        MacAddress = macAddress,
-                        DataServiceToken = token,
-                        UserInfo = info,
-                        CommandIds = new SafeList<int>(),
-                        ServiceInstance = this
-                    };
-                    userCache.Add(userId, unc);
+                        logger.Debug("Normal Login Exit");
+                        unc = new UserNCallback
+                        {
+                            User = usr,
+                            Callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>(),
+                            PublicIpAddress = GetClientRemoteEndPoint().Address,
+                            MacAddress = macAddress,
+                            DataServiceToken = token,
+                            UserInfo = info,
+                            CommandIds = new SafeList<int>(),
+                            ServiceInstance = this
+                        };
+                        userCache.Add(userId, unc);
 
-                    if (!relogin)
-                    {
-                        BroadCast(u => u.Callback.UserLoggedIn(unc.User), unc.User.Id);
+                        if (!relogin)
+                        {
+                            BroadCast(u => u.Callback.UserLoggedIn(unc.User), unc.User.Id);
+                        }
                     }
-                    return usr;
                 }
-			}
-            logger.Debug("Normal Login return Null");
-			return null;
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(Login), ex);
+            }
+			return usr;
 		}
 
 		[OperationBehavior]
 		public User Register(int userId,string account, string password, int gender)
 		{
-            return dataServiceClient.Register(userId, account, password, gender);            
-		}
+            User usr = null;
+            try
+            {
+                usr = dataServiceClient.Register(userId, account, password, gender);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(Register), ex);
+            }
+            return usr;
+        }
 
         [OperationBehavior]
         public bool UpdateUser(User user)
         {
-            if (unc.User.Id == user.Id)
+            bool result = false;
+            try
             {
-                unc.User = user;
-                dataServiceClient.UpdateUser(unc.User.Id, unc.DataServiceToken, user);
+                if (unc.User.Id == user.Id)
+                {
+                    unc.User = user;
+                    dataServiceClient.UpdateUser(unc.User.Id, unc.DataServiceToken, user);
+                    result = true;
+                }
             }
-            return true;
+            catch(Exception ex)
+            {
+                logger.Error(nameof(UpdateUser), ex);
+            }
+            return result;
         }
         [OperationBehavior]
         public bool UpdateUserHeaderImange(Image theImage)
         {
-            dataServiceClient.UpdateImage(unc.User.Id, unc.DataServiceToken, theImage);
-            return true;
+            bool result = false;
+            try
+            {
+                dataServiceClient.UpdateImage(unc.User.Id, unc.DataServiceToken, theImage);
+                result = true;
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(UpdateUserHeaderImange), ex);
+            }
+            return result;
         }
 
 		[OperationBehavior]
 		public int GetOnlineUserCount()
 		{
-			return userCache.Count;
-		}
+            int result = 0;
+            try
+            {
+                result = userCache.Count;
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(GetOnlineUserCount), ex);
+            }
+            return result;
+        }
+			
 		[OperationBehavior]
 		public void LogOff()
 		{
 			if (unc != null)
 			{
-                LogOff(unc);
+                try
+                {
+                    LogOff(unc);
+                }
+                catch(Exception ex)
+                {
+                    logger.Error(nameof(LogOff), ex);
+                }
 			}
             if (rnc != null)
             {
-                LogOff(rnc);
+                try
+                {
+                    LogOff(rnc);
+                }
+                catch(Exception ex)
+                {
+                    logger.Error(nameof(LogOff), ex);
+                }
             }
 		}
 		[OperationBehavior]
 		public void KeepAlive()
 		{
-            dataServiceClient.KeepAlive();
+            try
+            {
+                dataServiceClient.KeepAlive();
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(KeepAlive), ex);
+            }
 		}
         [OperationBehavior]
         public bool RoomLogin()
         {
-            string publicIp = GetClientRemoteEndPoint().Address;
+            bool result = false;
             try
             {
+                string publicIp = GetClientRemoteEndPoint().Address;
                 if (roomCache.ContainsKey(publicIp))
                 {
                     var r = roomCache[publicIp];
@@ -366,18 +437,23 @@ namespace YoYoStudio.ChatService.Library
                     roomCache[publicIp].Callback.RoomRelogin();
                     roomCache[publicIp].ServiceInstance.Dispose();
                 }
+
+                OperationContext.Current.Channel.Faulted += RoomChannel_Faulted;
+                OperationContext.Current.Channel.Closing += RoomChannel_Closing;
+                rnc = new RoomNCallback
+                {
+                    Callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>(),
+                    PublicIpAddress = publicIp,
+                    ServiceInstance = this
+                };
+                roomCache.Add(publicIp, rnc);
+                result = true;
             }
-            catch { }
-            OperationContext.Current.Channel.Faulted += RoomChannel_Faulted;
-            OperationContext.Current.Channel.Closing += RoomChannel_Closing;
-            rnc = new RoomNCallback
+            catch (Exception ex)
             {
-                Callback = OperationContext.Current.GetCallbackChannel<IChatServiceCallback>(),
-                PublicIpAddress = publicIp,
-                ServiceInstance = this
-            };
-            roomCache.Add(publicIp, rnc);
-            return true;
+                logger.Error(nameof(RoomLogin), ex);
+            }
+            return result;
         }
 
 		[OperationBehavior]
@@ -442,23 +518,41 @@ namespace YoYoStudio.ChatService.Library
         [OperationBehavior]
         public int GetNextAvailableUserId(int roleId)
         {
-            return dataServiceClient.GetNextAvailableUserId(BuiltIns._9258Administrator.Id, serviceToken, BuiltIns._9258ChatApplication.Id, BuiltIns.RegisterUserRole.Id);
+            int result;
+            try
+            {
+                result = dataServiceClient.GetNextAvailableUserId(BuiltIns._9258Administrator.Id, serviceToken, BuiltIns._9258ChatApplication.Id, BuiltIns.RegisterUserRole.Id);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(GetNextAvailableUserId), ex);
+                throw;
+            }
+            return result;
         }
         [OperationBehavior]
         public Image GetImage(int imgId)
         {
-            var img = dataServiceClient.GetImage(BuiltIns._9258Administrator.Id, serviceToken, imgId);
-            lock (cache.Images)
+            Image img = null;
+            try
             {
-                cache.Images.Add(new ImageWithoutBody()
+                img = dataServiceClient.GetImage(BuiltIns._9258Administrator.Id, serviceToken, imgId);
+                lock (cache.Images)
                 {
-                    Id = img.Id,
-                    Ext = img.Ext,
-                    ImageGroup = img.ImageGroup,
-                    ImageType_Id = img.ImageType_Id,
-                    IsBuiltIn = img.IsBuiltIn,
-                    Name = img.Name
-                });
+                    cache.Images.Add(new ImageWithoutBody()
+                    {
+                        Id = img.Id,
+                        Ext = img.Ext,
+                        ImageGroup = img.ImageGroup,
+                        ImageType_Id = img.ImageType_Id,
+                        IsBuiltIn = img.IsBuiltIn,
+                        Name = img.Name
+                    });
+                }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(GetImage), ex);
             }
             return img;
         }
@@ -477,16 +571,17 @@ namespace YoYoStudio.ChatService.Library
         public MessageResult SendHornMessage(int roomId, int senderId, int cmdId)
         {
             MessageResult result = MessageResult.Succeed;
-            var sender = userCache[senderId];
-            if (!cache.HasCommand(roomId, cmdId, senderId, sender.UserInfo.Role_Id, -1))
+            try
             {
-                result = MessageResult.NotEnoughPrivilege;
-            }
-            else
-            {
-                var cmd = cache.Commands.FirstOrDefault(c => c.Id == cmdId);
-                try
+                var sender = userCache[senderId];
+                if (!cache.HasCommand(roomId, cmdId, senderId, sender.UserInfo.Role_Id, -1))
                 {
+                    result = MessageResult.NotEnoughPrivilege;
+                }
+                else
+                {
+                    var cmd = cache.Commands.FirstOrDefault(c => c.Id == cmdId);
+
                     if (!sender.UserInfo.Money.HasValue || sender.UserInfo.Money < cmd.Money)
                         result = MessageResult.NotEnoughMoney;
                     else
@@ -496,10 +591,11 @@ namespace YoYoStudio.ChatService.Library
                         dataServiceClient.UpdateUserInfo(senderId, usr.DataServiceToken, sender.UserInfo);
                     }
                 }
-                catch
-                {
-                    result = MessageResult.UnkownError;
-                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(nameof(SendHornMessage), ex);
+                result = MessageResult.UnkownError;
             }
             return result;
         }
@@ -508,74 +604,85 @@ namespace YoYoStudio.ChatService.Library
 		public SendGiftResult SendGift(int roomId, int senderId, int receiverId, int giftId, int count)
 		{
 			SendGiftResult result = SendGiftResult.Succeed;
-			var sender = userCache[senderId];
-			var receiver = userCache[receiverId];
-			if (!cache.HasCommand(roomId, Applications._9258App.FrontendCommands.SendGiftCommandId,senderId, sender.UserInfo.Role_Id,-1))
-			{
-				result = SendGiftResult.CannotSendGift;
-			}
-			else if (!cache.HasCommand(roomId, Applications._9258App.FrontendCommands.ReceiveGiftCommandId,receiverId,receiver.UserInfo.Role_Id,-1))
-			{
-				result = SendGiftResult.CannotReceiveGift;
-			}
-			else
-			{
-				var gift = cache.Gifts.FirstOrDefault(g => g.Id == giftId);
-				try
-				{
+            try
+            {
+                var sender = userCache[senderId];
+                var receiver = userCache[receiverId];
+                if (!cache.HasCommand(roomId, Applications._9258App.FrontendCommands.SendGiftCommandId, senderId, sender.UserInfo.Role_Id, -1))
+                {
+                    result = SendGiftResult.CannotSendGift;
+                }
+                else if (!cache.HasCommand(roomId, Applications._9258App.FrontendCommands.ReceiveGiftCommandId, receiverId, receiver.UserInfo.Role_Id, -1))
+                {
+                    result = SendGiftResult.CannotReceiveGift;
+                }
+                else
+                {
+                    var gift = cache.Gifts.FirstOrDefault(g => g.Id == giftId);
+
                     if (!sender.UserInfo.Money.HasValue || sender.UserInfo.Money < gift.Price * count)
-					{
-						result = SendGiftResult.NotEnoughMoney;
-					}
-					else
-					{
-						sender.UserInfo.Money -= gift.Price * count;
-						var usr = userCache[senderId];
-						dataServiceClient.UpdateUserInfo(senderId, usr.DataServiceToken, sender.UserInfo);
+                    {
+                        result = SendGiftResult.NotEnoughMoney;
+                    }
+                    else
+                    {
+                        sender.UserInfo.Money -= gift.Price * count;
+                        var usr = userCache[senderId];
+                        dataServiceClient.UpdateUserInfo(senderId, usr.DataServiceToken, sender.UserInfo);
 
                         if (!receiver.UserInfo.Score.HasValue)
                             receiver.UserInfo.Score = 0;
                         receiver.UserInfo.Score += gift.Score * count;
                         usr = userCache[receiverId];
                         dataServiceClient.UpdateUserInfo(receiverId, usr.DataServiceToken, receiver.UserInfo);
-					}
-				}
-				catch
-				{
-					result = SendGiftResult.UnkownError;
-				}
-			}
-			return result;
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(SendGift), ex);
+                result = SendGiftResult.UnkownError;
+            }
+            return result;
 		}
         
         [OperationBehavior]
         public bool ExecuteCommand(int roomId, int cmdId, int sourceUserId, int targetUserId)
         {
-            UserNCallback sourceUesr = null;
-            UserNCallback targetUser = null;
-            if (userCache.ContainsKey(sourceUserId))
+            bool result = false;
+            try
             {
-                sourceUesr = userCache[sourceUserId];
-            }
-            if (userCache.ContainsKey(targetUserId))
-            {
-                targetUser = userCache[targetUserId];
-            }
-            if (sourceUesr == null)
-            {
-                LogOff(sourceUserId);
-            }
-            else if (targetUser == null)
-            {
-                LogOff(targetUserId);
-            }
-            else
-            {
-                if (cache.HasCommand(roomId, cmdId, sourceUserId, sourceUesr.UserInfo.Role_Id, targetUser.UserInfo.Role_Id))
+                UserNCallback sourceUesr = null;
+                UserNCallback targetUser = null;
+                if (userCache.ContainsKey(sourceUserId))
                 {
-                    DoCommand(roomId, cmdId, sourceUesr, targetUserId);
-                    return true;
+                    sourceUesr = userCache[sourceUserId];
                 }
+                if (userCache.ContainsKey(targetUserId))
+                {
+                    targetUser = userCache[targetUserId];
+                }
+                if (sourceUesr == null)
+                {
+                    LogOff(sourceUserId);
+                }
+                else if (targetUser == null)
+                {
+                    LogOff(targetUserId);
+                }
+                else
+                {
+                    if (cache.HasCommand(roomId, cmdId, sourceUserId, sourceUesr.UserInfo.Role_Id, targetUser.UserInfo.Role_Id))
+                    {
+                        DoCommand(roomId, cmdId, sourceUesr, targetUserId);
+                        result = true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(ExecuteCommand), ex);
             }
             return false;
         }
@@ -623,9 +730,16 @@ namespace YoYoStudio.ChatService.Library
 		{
             lock (roomUserCountCache)
             {
-                foreach (var pair in roomUsersCount)
+                try
                 {
-                    roomUserCountCache[pair.Key] = pair.Value;
+                    foreach (var pair in roomUsersCount)
+                    {
+                        roomUserCountCache[pair.Key] = pair.Value;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    logger.Error(nameof(UpdateRoomOnlineUserCount), ex);
                 }
             }
 		}

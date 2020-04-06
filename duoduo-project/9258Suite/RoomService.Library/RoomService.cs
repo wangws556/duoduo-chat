@@ -72,32 +72,46 @@ namespace YoYoStudio.RoomService.Library
 
         void Channel_Faulted(object sender, EventArgs e)
         {
-            LeaveRoom();
-            Dispose();
+            try
+            {
+                LeaveRoom();
+                Dispose();
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(Channel_Faulted), ex);
+            }
         }
 
         private void LeaveRoom(int roomId, int userId)
         {
-            if (userCache[roomId].ContainsKey(userId))
+            try
             {
-                userCache[roomId].Remove(userId);
-            }
-            if (musicCache.ContainsKey(roomId))
-            {
-                if (musicCache[roomId].PlayerId == userId)
-                    DownPlayMusic(roomId);
-            }
-            for (int i = (int)MicType.None + 1; i < (int)MicType.Max; i++)
-            {
-                var micType = (MicType)i;
-                var mics = micCache[roomId][micType].Values;
-                var mic = mics.FirstOrDefault(m => m.UserId == userId);
-                if (mic != null)
+                if (userCache[roomId].ContainsKey(userId))
                 {
-                    mic.Reset();
+                    userCache[roomId].Remove(userId);
                 }
+                if (musicCache.ContainsKey(roomId))
+                {
+                    if (musicCache[roomId].PlayerId == userId)
+                        DownPlayMusic(roomId);
+                }
+                for (int i = (int)MicType.None + 1; i < (int)MicType.Max; i++)
+                {
+                    var micType = (MicType)i;
+                    var mics = micCache[roomId][micType].Values;
+                    var mic = mics.FirstOrDefault(m => m.UserId == userId);
+                    if (mic != null)
+                    {
+                        mic.Reset();
+                    }
+                }
+                BroadCast(roomId, (u) => u.Callback.UserLeftRoom(roomId, userId), userId);
             }
-			BroadCast(roomId, (u) => u.Callback.UserLeftRoom(roomId,userId), userId);
+            catch(Exception ex)
+            {
+                logger.Error(nameof(LeaveRoom), ex);
+            }
         }
 
         private void LeaveRoom()
@@ -142,7 +156,7 @@ namespace YoYoStudio.RoomService.Library
                     }
                     catch(Exception ex)
                     {
-
+                        logger.Error(nameof(BroadCastHornMsg), ex);
                     }
                 });
         }
@@ -171,8 +185,9 @@ namespace YoYoStudio.RoomService.Library
                                     {
                                         act(u);
                                     }
-                                    catch
+                                    catch(Exception ex)
                                     {
+                                        logger.Error(nameof(act), ex);
                                         LeaveRoom(roomId, u.User.Id);
                                     }
                                 }
@@ -181,7 +196,7 @@ namespace YoYoStudio.RoomService.Library
                     }
                     catch(Exception ex)
                     {
-
+                        logger.Error(nameof(BroadCast), ex);
                     }
                 });
         }
@@ -192,7 +207,14 @@ namespace YoYoStudio.RoomService.Library
 
         public void KeepAlive()
         {
-            client.KeepAlive();
+            try
+            {
+                client.KeepAlive();
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(KeepAlive), ex);
+            }
         }
 
         public bool EnterRoom(int roomId, User user)
@@ -209,7 +231,7 @@ namespace YoYoStudio.RoomService.Library
                 }
                 catch(Exception ex)
                 {
-                    logger.Error("RoomServer enter room failed: " + ex.Message);
+                    logger.Error(nameof(EnterRoom),ex);
                     return false;
                 }
                 return true;
@@ -219,6 +241,7 @@ namespace YoYoStudio.RoomService.Library
 
         public bool ExecuteCommand(int roomId, int cmdId, int targetUserId)
         {
+            bool result = false;
             if (userCache[roomId].ContainsKey(targetUserId))
             {
                 var other = userCache[roomId][targetUserId];
@@ -239,13 +262,12 @@ namespace YoYoStudio.RoomService.Library
                                 {
                                     other.Callback.CommandMessageReceived(roomId, cmdId, unc.User.Id, targetUserId);
                                 }
-                                return true;
+                                result = true;
                             }
                         }
                         catch(Exception ex)
                         {
-                            logger.Error($"RoomServer room {roomId} execute command {roomId} targetUserId {targetUserId} failed: {ex.Message}");
-                            throw;
+                            logger.Error($"RoomServer room {roomId} execute command {roomId} targetUserId {targetUserId} failed: ",ex);
                         }
                         finally
                         {
@@ -258,7 +280,7 @@ namespace YoYoStudio.RoomService.Library
             {
                 LeaveRoom(roomId, targetUserId);
             }
-            return false;
+            return result;
         }
 
         public void LeaveRoom(int roomId)
@@ -275,7 +297,7 @@ namespace YoYoStudio.RoomService.Library
             return 0;
         }
 
-        public Model.Core.User GetUser(int userId)
+        public User GetUser(int userId)
         {
             foreach (var roomUsers in userCache)
             {
@@ -286,9 +308,18 @@ namespace YoYoStudio.RoomService.Library
             return null;
         }
 
-        public List<Model.Core.User> GetRoomUsers(int roomId)
+        public List<User> GetRoomUsers(int roomId)
         {
-            return userCache[roomId].Values.Select(u => u.User).ToList();
+            List<User> resultList = new List<User>();
+            try
+            {
+                resultList = userCache[roomId].Values.Select(u => u.User).ToList();
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(GetRoomUsers), ex);
+            }
+            return resultList;
         }
 
         public void SendRoomMessage(int roomId, RoomMessage message)
@@ -434,101 +465,129 @@ namespace YoYoStudio.RoomService.Library
 
         public void OnMic(int roomId, MicType micType, int suggestedIndex = -1)
         {
-            MicStatusMessage msg = null;
-            int index = GetAvailableMicStatus(roomId, micType, unc.User.Id, suggestedIndex, out msg);
-            if (msg != null)
+            try
             {
-                msg.UserId = unc.User.Id;
-                msg.MicAction = MicAction.OnMic;
-                msg.MicType = micType;
-                if (msg.MicStatus != MicStatusMessage.MicStatus_Queue)
+                MicStatusMessage msg = null;
+                int index = GetAvailableMicStatus(roomId, micType, unc.User.Id, suggestedIndex, out msg);
+                if (msg != null)
                 {
-                    if (index >= 0)
+                    msg.UserId = unc.User.Id;
+                    msg.MicAction = MicAction.OnMic;
+                    msg.MicType = micType;
+                    if (msg.MicStatus != MicStatusMessage.MicStatus_Queue)
                     {
-                        msg.MicIndex = index;
-                        msg.StreamGuid = Guid.NewGuid().ToString();
-                        msg.MicStatus = MicStatusMessage.MicStatus_Video;
+                        if (index >= 0)
+                        {
+                            msg.MicIndex = index;
+                            msg.StreamGuid = Guid.NewGuid().ToString();
+                            msg.MicStatus = MicStatusMessage.MicStatus_Video;
+                        }
                     }
+                    unc.Callback.MicStatusMessageReceived(roomId, msg);
+                    BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
                 }
-                unc.Callback.MicStatusMessageReceived(roomId, msg);
-                BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(OnMic), ex);
             }
         }
 
         public void DownMic(int roomId, MicType micType, int index)
         {
-            var mics = micCache[roomId][micType];
-            if (index < 0)
+            try
             {
-                var usr = mics.Values.FirstOrDefault(u => u.UserId == unc.User.Id);
-                if (usr != null)
+                var mics = micCache[roomId][micType];
+                if (index < 0)
                 {
-                    index = usr.MicIndex;
+                    var usr = mics.Values.FirstOrDefault(u => u.UserId == unc.User.Id);
+                    if (usr != null)
+                    {
+                        index = usr.MicIndex;
+                    }
+                }
+                if (index >= 0)
+                {
+                    if (mics[index].UserId == unc.User.Id)
+                    {
+                        mics[index].Reset();
+                        var msg = new MicStatusMessage
+                        {
+                            MicAction = Model.Chat.MicAction.DownMic,
+                            MicIndex = index,
+                            MicStatus = MicStatusMessage.MicStatus_Off,
+                            MicType = micType,
+                            UserId = unc.User.Id
+                        };
+                        BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
+                    }
                 }
             }
-            if (index >= 0)
+            catch(Exception ex)
             {
-                if (mics[index].UserId == unc.User.Id)
-                {
-                    mics[index].Reset();
-                    var msg = new MicStatusMessage
-                    {
-                        MicAction = Model.Chat.MicAction.DownMic,
-                        MicIndex = index,
-                        MicStatus = MicStatusMessage.MicStatus_Off,
-                        MicType = micType,
-                        UserId = unc.User.Id
-                    };
-                    BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
-                }
+                logger.Error(nameof(DownMic), ex);
             }
         }
 
         public void ToggleVideo(int roomId, MicType micType)
         {
-            var micS = GetUserMicStatus(roomId, unc.User.Id, micType);
-            if (micS != null && micS.MicStatus != MicStatusMessage.MicStatus_Off)
+            try
             {
-                if ((micS.MicStatus & MicStatusMessage.MicStatus_Video) > 0)
+                var micS = GetUserMicStatus(roomId, unc.User.Id, micType);
+                if (micS != null && micS.MicStatus != MicStatusMessage.MicStatus_Off)
                 {
-                    micS.MicStatus = micS.MicStatus & (~MicStatusMessage.MicStatus_Video);
+                    if ((micS.MicStatus & MicStatusMessage.MicStatus_Video) > 0)
+                    {
+                        micS.MicStatus = micS.MicStatus & (~MicStatusMessage.MicStatus_Video);
+                    }
+                    else
+                    {
+                        micS.MicStatus = micS.MicStatus | MicStatusMessage.MicStatus_Video;
+                    }
+                    var msg = new MicStatusMessage
+                    {
+                        MicAction = Model.Chat.MicAction.Toggle,
+                        MicStatus = micS.MicStatus,
+                        UserId = unc.User.Id
+                    };
+                    BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
                 }
-                else
-                {
-                    micS.MicStatus = micS.MicStatus | MicStatusMessage.MicStatus_Video;
-                }
-                var msg = new MicStatusMessage
-                {
-                    MicAction = Model.Chat.MicAction.Toggle,
-                    MicStatus = micS.MicStatus,
-                    UserId = unc.User.Id
-                };
-                BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(ToggleVideo), ex);
             }
         }
 
         public void ToggleAudio(int roomId, MicType micType)
         {
-            var micS = GetUserMicStatus(roomId, unc.User.Id, micType);
-            if (micS != null && micS.MicStatus != MicStatusMessage.MicStatus_Off)
+            try
             {
-                if ((micS.MicStatus & MicStatusMessage.MicStatus_Audio) > 0)
+                var micS = GetUserMicStatus(roomId, unc.User.Id, micType);
+                if (micS != null && micS.MicStatus != MicStatusMessage.MicStatus_Off)
                 {
-                    micS.MicStatus = micS.MicStatus & (~MicStatusMessage.MicStatus_Audio);
-                }
-                else
-                {
-                    micS.MicStatus = micS.MicStatus | MicStatusMessage.MicStatus_Audio;
-                }
+                    if ((micS.MicStatus & MicStatusMessage.MicStatus_Audio) > 0)
+                    {
+                        micS.MicStatus = micS.MicStatus & (~MicStatusMessage.MicStatus_Audio);
+                    }
+                    else
+                    {
+                        micS.MicStatus = micS.MicStatus | MicStatusMessage.MicStatus_Audio;
+                    }
 
-                var msg = new MicStatusMessage
-                {
-                    MicAction = Model.Chat.MicAction.Toggle,
-                    MicStatus = micS.MicStatus,
-                    UserId = unc.User.Id
-                };
+                    var msg = new MicStatusMessage
+                    {
+                        MicAction = Model.Chat.MicAction.Toggle,
+                        MicStatus = micS.MicStatus,
+                        UserId = unc.User.Id
+                    };
 
-                BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
+                    BroadCast(roomId, (u) => u.Callback.MicStatusMessageReceived(roomId, msg), unc.User.Id);
+                }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(ToggleAudio), ex);
             }
         }
 
@@ -540,15 +599,22 @@ namespace YoYoStudio.RoomService.Library
         public Dictionary<int, MicStatusMessage> GetMicUsers(int roomId, MicType micType)
         {
             Dictionary<int, MicStatusMessage> result = new Dictionary<int, MicStatusMessage>();
-            //lock (micCacheLocker[roomId])
+            try
             {
-                foreach (var pair in micCache[roomId][micType])
+                //lock (micCacheLocker[roomId])
                 {
-                    if (pair.Value.MicStatus != MicStatusMessage.MicStatus_Off && pair.Value.UserId >0)
+                    foreach (var pair in micCache[roomId][micType])
                     {
-                        result.Add(pair.Key, pair.Value);
+                        if (pair.Value.MicStatus != MicStatusMessage.MicStatus_Off && pair.Value.UserId > 0)
+                        {
+                            result.Add(pair.Key, pair.Value);
+                        }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(GetMicUsers), ex);
             }
             return result;
         }
@@ -564,8 +630,9 @@ namespace YoYoStudio.RoomService.Library
 
         public bool ScoreExchange(int userId, int scoreToExchange, int moneyToGet)
         {
+            bool result = false;
             if (!unc.UserInfo.Score.HasValue || unc.UserInfo.Score < scoreToExchange)
-                return false;
+                return result;
             ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
             try
             {
@@ -575,19 +642,15 @@ namespace YoYoStudio.RoomService.Library
                     if (!unc.UserInfo.Money.HasValue)
                         unc.UserInfo.Money = 0;
                     unc.UserInfo.Money += moneyToGet;
-                    return true;
+                    result = true;
                 }
             }
             catch(Exception ex)
             {
-                logger.Error($"ScoreExchange failed: {ex.Message}");
-                throw;
+                logger.Error(nameof(ScoreExchange),ex);
             }
-            finally
-            {
-                client.Close();
-            }
-            return false;
+           
+            return result;
         }
 
 		public void SendGift(int roomId, int receiverId, int giftId, int count)
@@ -607,37 +670,26 @@ namespace YoYoStudio.RoomService.Library
 				var gift = cache.Gifts.FirstOrDefault(g => g.Id == giftId);
 				try
 				{
-					if (!unc.UserInfo.Money.HasValue || unc.UserInfo.Money < gift.Price * count)
-					{
-						result = SendGiftResult.NotEnoughMoney;
-					}
-					else
-					{
+                    if (!unc.UserInfo.Money.HasValue || unc.UserInfo.Money < gift.Price * count)
+                    {
+                        result = SendGiftResult.NotEnoughMoney;
+                    }
+                    else
+                    {
                         ChatServiceClient client = new ChatServiceClient(new ChatServiceCallback());
-                        try
+                        result = client.SendGift(roomId, unc.User.Id, receiverId, giftId, count);
+                        if (result == SendGiftResult.Succeed)
                         {
-                            result = client.SendGift(roomId, unc.User.Id, receiverId, giftId, count);
-                        }
-                        catch(Exception ex)
-                        {
-                            logger.Error($"SendGift failed: {ex.Message}");
-                            throw;
-                        }
-                        finally
-                        {
-                            client.Close();
-                        }
-						if (result == SendGiftResult.Succeed)
-						{
-							unc.UserInfo.Money -= gift.Price * count;
+                            unc.UserInfo.Money -= gift.Price * count;
                             if (!receiver.UserInfo.Score.HasValue)
                                 receiver.UserInfo.Score = 0;
                             receiver.UserInfo.Score += gift.Score * count;
-						}
-					}
+                        }
+                    }
 				}
-				catch
+				catch(Exception ex)
 				{
+                    logger.Error(nameof(SendGift), ex);
 					result = SendGiftResult.UnkownError;
 				}
 			}
@@ -725,13 +777,12 @@ namespace YoYoStudio.RoomService.Library
                         item.Value.MicStatus = state;
                     }
                 }
+                BroadCast(roomId, u => u.Callback.AudioStateChanged(roomId, unc.User.Id, state), unc.User.Id);
             }
             catch(Exception ex)
             {
-
+                logger.Error(nameof(AudioStateChanged), ex);
             }
-            
-            BroadCast(roomId, u => u.Callback.AudioStateChanged(roomId, unc.User.Id, state), unc.User.Id);
         }
 
         public void AudioServiceLogin(string ip, int port)
@@ -827,30 +878,44 @@ namespace YoYoStudio.RoomService.Library
 
         public void RequestMusicStatus(int roomId, int userId)
         {
-            if (musicCache.ContainsKey(roomId))
+            try
             {
-                UserNCallback callBack = userCache[roomId][musicCache[roomId].PlayerId];
-                if (callBack != null) 
+                if (musicCache.ContainsKey(roomId))
                 {
-                    callBack.Callback.ReportMusicStatus(roomId, userId);
+                    UserNCallback callBack = userCache[roomId][musicCache[roomId].PlayerId];
+                    if (callBack != null)
+                    {
+                        callBack.Callback.ReportMusicStatus(roomId, userId);
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(RequestMusicStatus), ex);
             }
         }
 
         public void UpadateMusicStatus(int roomId, int userId, MusicStatus status,  int targetUserId)
         {
-            if (musicCache.ContainsKey(roomId))
-            { 
-                if(musicCache[roomId].PlayerId == userId)
+            try
+            {
+                if (musicCache.ContainsKey(roomId))
                 {
-                    musicCache[roomId] = status;
+                    if (musicCache[roomId].PlayerId == userId)
+                    {
+                        musicCache[roomId] = status;
 
+                    }
+                    UserNCallback callBack = userCache[roomId][targetUserId];
+                    if (callBack != null)
+                    {
+                        callBack.Callback.UpdateMusicStatus(roomId, status);
+                    }
                 }
-                UserNCallback callBack = userCache[roomId][targetUserId];
-                if (callBack != null)
-                {
-                    callBack.Callback.UpdateMusicStatus(roomId, status);
-                }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(nameof(UpadateMusicStatus), ex);
             }
         }
 
