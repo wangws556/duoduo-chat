@@ -28,6 +28,12 @@ namespace YoYoStudio.ChatService.Library
         private const string cacheVersionFile = "Cache.Ver";
         private static Timer timer = new Timer();
 
+        static ChatService()
+        {
+            log4net.Config.XmlConfigurator.Configure();
+            logger.Info("ChatService log initialized.");
+        }
+
 		public static void Initialize()
 		{
             try

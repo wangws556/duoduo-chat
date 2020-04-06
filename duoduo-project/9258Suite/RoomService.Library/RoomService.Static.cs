@@ -87,6 +87,12 @@ namespace YoYoStudio.RoomService.Library
             }
         }
 
+        static RoomService()
+        {
+            log4net.Config.XmlConfigurator.Configure();
+            logger.Info("RoomService log initialized.");
+        }
+
         static void InitMicCache(int roomId, MicType micType, int count)
         {
             if (count > 0)
