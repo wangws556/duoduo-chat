@@ -15,10 +15,11 @@ namespace YoYoStudio.Common.Rtmp.Audio
         private StreamProcessPublishModel processPublishModel;
         private int frameDroppedCount;
         private int warningTimes;
-        private Action<string> publishExitAction;
+        private Action<int,string> publishExitAction;
         private Action<string,int> publishErrorAction;
         
         private int publishProcessId;
+        private int publisherId;
        
 
         public StreamProcessPublish(StreamProcessPublishModel publishModel)
@@ -34,8 +35,9 @@ namespace YoYoStudio.Common.Rtmp.Audio
             warningTimes = 0;
         }
 
-        public bool Publish(int publisherId,Action<string> exitAction, Action<string,int> errorAction)
+        public bool Publish(int publisherId,Action<int,string> exitAction, Action<string,int> errorAction)
         {
+            this.publisherId = publisherId;
             publishErrorAction = errorAction;
             publishExitAction = exitAction;
             KillProcess(publishProcessId);
@@ -82,7 +84,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
         {
             string msg = nameof(Pro_Publish_Exited) + $"Room: {processPublishModel.RoomId} publish exits: " + e.ToString();
             LogHelperRtmp.ErrorLogger.Error(msg);
-            publishExitAction(msg);
+            publishExitAction(publisherId, msg);
         }
 
         private void Pro_Publish_ErrorDataReceived(object sender, DataReceivedEventArgs e)
@@ -107,7 +109,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
                 else if(msg.Contains("Conversion failed!"))
                 {
                     LogHelperRtmp.ErrorLogger.Error(msg);
-                    publishExitAction(msg);
+                    publishExitAction(publisherId, msg);
                     frameDroppedCount = 0;
                     warningTimes = 0;
                 }
@@ -126,7 +128,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
                     else if(warningTimes >= 5)
                     {
                         StopPublish();
-                        publishExitAction(msg);
+                        publishExitAction(publisherId, msg);
                         frameDroppedCount = 0;
                         warningTimes = 0;
                     }

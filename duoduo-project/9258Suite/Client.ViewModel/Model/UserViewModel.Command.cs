@@ -60,6 +60,7 @@ namespace YoYoStudio.Client.ViewModel
                 if (publishRes)
                 {
                     AudioStatus = (int)AudioStatusType.On;
+                    RoomWindowVM.RoomClient.PublishAudio(RoomWindowVM.RoomVM.Id, Id, MicType.Public, AudioStatusType.On);
                 }
             }
         }
@@ -79,6 +80,7 @@ namespace YoYoStudio.Client.ViewModel
                 if (stopRes)
                 {
                     AudioStatus = (int)AudioStatusType.Off;
+                    RoomWindowVM.RoomClient.PublishAudio(RoomWindowVM.RoomVM.Id, Id, MicType.Public, AudioStatusType.Off);
                 }
             }
         }

@@ -177,10 +177,12 @@ namespace YoYoStudio.Client.ViewModel
             Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.PublishWarning, message));
         }
 
-        public void PublishExitAction(string message)
+        public void PublishExitAction(int publisherId, string message)
         {
             LogHelper.ErrorLogger.Error(nameof(PublishExitAction) + message);
-            
+            RoomClient.PublishAudio(RoomVM.Id, publisherId, MicType.Public, AudioStatusType.Off);
+            Thread.Sleep(2000);
+            RoomClient.PublishAudio(RoomVM.Id, publisherId, MicType.Public, AudioStatusType.On);
         }
 
         #endregion

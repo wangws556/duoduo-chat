@@ -21,16 +21,19 @@ namespace YoYoStudio.Client.ViewModel
                 var uvm = UserVMs.FirstOrDefault(u => u.Id == arg2.UserId);
                 if(uvm != null)
                 {
-                    switch (arg2.AudioStatus)
+                    if (!uvm.IsMe())
                     {
-                        case AudioStatusType.Off:
-                            StopPlay();
-                            break;
-                        case AudioStatusType.On:
-                            StartAudioPlay(uvm.Id);
-                            break;
-                        default:
-                            break;
+                        switch (arg2.AudioStatus)
+                        {
+                            case AudioStatusType.Off:
+                                StopPlay();
+                                break;
+                            case AudioStatusType.On:
+                                StartAudioPlay(uvm.Id);
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
