@@ -73,9 +73,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
@@ -96,7 +100,17 @@
     <Compile Include="Extensions\ArrayExtensions.cs" />
     <Compile Include="Extensions\ReflectionExtension.cs" />
     <Compile Include="IPersistable.cs" />
+    <Compile Include="log4net.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>log4net.config</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="LogHelper.cs" />
     <Compile Include="Net\UdpPacket.cs" />
+    <Compile Include="Rtmp\Audio\StreamProcess.cs" />
+    <Compile Include="Rtmp\Audio\StreamProcessPlay.cs" />
+    <Compile Include="Rtmp\Audio\StreamProcessPublish.cs" />
     <Compile Include="ValidationRule\PasswordRule.cs" />
     <Compile Include="ValidationRule\LetterAndNumberRule.cs" />
     <Compile Include="Notification\EnumNotificationMessage.cs" />
@@ -126,6 +140,14 @@
       <Project>{4eafbf82-c495-43e7-b5d7-fb1d978b42ea}</Project>
       <Name>Resource</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>log4net.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,8 +21,10 @@ namespace YoYoStudio.Client.ViewModel
     [SnippetPropertyINPC(field = "audioDevices", property = "AudioDevices", type = "ObservableCollection<string>", defaultValue = "new ObservableCollection<string>()")]
     [SnippetPropertyINPC(field = "audioDeviceIndex", property = "AudioDeviceIndex", type = "int", defaultValue = "0")]
     [SnippetPropertyINPC(field = "audioDeviceName", property = "AudioDeviceName", type = "string", defaultValue = "")]
-    [SnippetPropertyINPC(field = "audioRTMP", property = "AudioRTMP", type = "string", defaultValue = "")]
-    [SnippetPropertyINPC(field = "audioArg", property = "AudioArg", type = "string", defaultValue = "")]
+    [SnippetPropertyINPC(field = "audioSampleLabel", property = "AudioSampleLabel", type = "string", defaultValue = "")]
+    [SnippetPropertyINPC(field = "audioSamples", property = "AudioSamples", type = "ObservableCollection<string>", defaultValue = "new ObservableCollection<string>()")]
+    [SnippetPropertyINPC(field = "audioSampleIndex", property = "AudioSampleIndex", type = "int", defaultValue = "0")]
+    [SnippetPropertyINPC(field = "audioSample", property = "AudioSample", type = "string", defaultValue = "")]
     [SnippetPropertyINPC(field = "audioSync", property = "AudioSync", type = "bool", defaultValue = "false")]
     public partial class AudioConfigurationViewModel : ConfigurationViewModel
     {
@@ -34,6 +36,15 @@ namespace YoYoStudio.Client.ViewModel
             SoundVolume = config.SoundVolume;
             MicNameLabel = config.MicNameLabel;
             AudioNameLabel = config.AudioNameLabel;
+            AudioSampleLabel = config.AudioSampleLabel;
+            AudioSamples = config.AudioSamples;
+            AudioSampleIndex = config.AudioSampleIndex;
+            AudioSample = config.AudioSample;
+            AudioDevices = config.AudioDevices;
+            AudioDeviceIndex = config.AudioDeviceIndex;
+            AudioDeviceName = config.AudioDeviceName;
+            AudioSync = config.AudioSync;
+            LoopbackRecording = config.LoopbackRecording;
         }
 
         public override void Save(out bool result)
@@ -48,11 +59,14 @@ namespace YoYoStudio.Client.ViewModel
                 config.AudioDeviceIndex = AudioDeviceIndex;
                 config.AudioDevices = AudioDevices;
                 config.AudioDeviceName = AudioDeviceName;
+                config.AudioSampleIndex = AudioSampleIndex;
+                config.AudioSamples = AudioSamples;
+                config.AudioSample = AudioSample;
                 config.MicDevices = MicDevices;
                 config.MicDeviceIndex = MicDeviceIndex;
                 config.MicDeviceName = MicDeviceName;
-                config.AudioRTMP = AudioRTMP;
                 config.AudioSync = AudioSync;
+                config.LoopbackRecording = LoopbackRecording;
                 base.Save(out result);
             }
         }
@@ -62,7 +76,15 @@ namespace YoYoStudio.Client.ViewModel
             var config = GetConcreteConfiguration<AudioConfiguration>();
             loopbackRecording.SetValue(config.LoopbackRecording);
             soundVolume.SetValue(config.SoundVolume);
+            micDeviceIndex.SetValue(config.MicDeviceIndex);
+            micDeviceName.SetValue(config.MicDeviceName);
+            audioDeviceIndex.SetValue(config.AudioDeviceIndex);
+            audioDeviceName.SetValue(config.AudioDeviceName);
+            audioSampleIndex.SetValue(config.AudioSampleIndex);
+            audioSample.SetValue(config.AudioSample);
             microphoneVolume.SetValue(config.MicrophoneVolume);
+            audioSync.SetValue(config.AudioSync);
+            loopbackRecording.SetValue(config.LoopbackRecording);
             base.Reset();
         }
 
@@ -83,9 +105,16 @@ namespace YoYoStudio.Client.ViewModel
             {
                 AudioDevices.Add(item.FriendlyName);
             }
-            AudioDeviceName = AudioDevices[0];
-            AudioArg = ConfigurationManager.AppSettings["AudioArg"];
-            AudioRTMP = ConfigurationManager.AppSettings["AudioRtmpPath"];
+            if (string.IsNullOrWhiteSpace(AudioDeviceName))
+            {
+                AudioDeviceName = AudioDevices[0];
+            }
+            AudioSamples = new ObservableCollection<string> { "22050", "44100" };
+            if (string.IsNullOrWhiteSpace(AudioSample))
+            {
+                AudioSample = "22050";
+            }
+            LoopbackRecording = true;
             base.InitializeResource();
         }
     }

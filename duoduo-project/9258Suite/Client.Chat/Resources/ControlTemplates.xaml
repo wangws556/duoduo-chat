@@ -7,7 +7,8 @@
                     xmlns:gif="http://wpfanimatedgif.codeplex.com"
                     xmlns:vm="clr-namespace:YoYoStudio.Client.ViewModel;assembly=YoYoStudio.Client.ViewModel"
                     xmlns:svl="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
-                    xmlns:res="clr-namespace:YoYoStudio.Resource;assembly=YoYoStudio.Resource">
+                    xmlns:res="clr-namespace:YoYoStudio.Resource;assembly=YoYoStudio.Resource"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity">
     <ControlTemplate x:Key="LoginWindowTemplate" TargetType="Window">
         <Border x:Name="loginWindowBorder">
             <Border.Effect>
@@ -174,25 +175,45 @@
     <ControlTemplate x:Key="VideoControlBottomTemplate" TargetType="{x:Type ContentControl}">
         <Grid Margin="5,0,10,0" Background="#deebff">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
+            <CheckBox Grid.Column="0" Content="音乐" Style="{StaticResource OrangeSwitchStyle}" 
+                      Height="25" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked" >
+                        <i:InvokeCommandAction Command="{Binding DataContext.UserVM.PublishAudioCommand,
+                RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Unchecked" >
+                        <i:InvokeCommandAction Command="{Binding DataContext.UserVM.StopPublishAudioCommand,
+                RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </CheckBox>
             <svl:SpectrumAnalyzer x:Name="mySpectrumAnalyzer"
-                                              Grid.Column="0"
+                                              Grid.Column="1"
                                               BarCount="10" 
                                   BarHeightScaling="Sqrt"
-                                  BarSpacing="2"
-                                  />
-                                  <!--Visibility="{Binding Converter={StaticResource spectrumAnalyzerVisibilityConverter}, Path=Id}"/>-->
+                                  BarSpacing="2">
+                <Control.Visibility>
+                    <MultiBinding Converter="{StaticResource spectrumAnalyzerVisibilityConverter}">
+                        <Binding Path="MicStatus" />
+                        <Binding Path="AudioStatus"/>
+                    </MultiBinding>
+                </Control.Visibility>
+            </svl:SpectrumAnalyzer> 
+                                 
             <Button x:Name="myButton"  Margin="2" Command="{Binding  SelectUserCommand}" 
-                                Grid.Column="1" HorizontalAlignment="Center"
+                                Grid.Column="2" HorizontalAlignment="Center"
                                 Content="{Binding NickName}"
                                 BorderThickness="0" 
                                 Foreground="Blue"
                                 Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
             </Button>
-            <Label HorizontalAlignment="Center" Grid.Column="2" Content="粉:" Width="60" Height="25" Background="Yellow"/>
+            <Label HorizontalAlignment="Center" Grid.Column="3" Content="粉:" Width="60" Height="25" Background="Yellow"/>
         </Grid>
     </ControlTemplate>
 

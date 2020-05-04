@@ -124,7 +124,7 @@ namespace YoYoStudio.Client.Chat
             }
             catch (WebException we)
             {
-                hallVM.ApplicationVM.Logger.Debug("9258Update.txt doens't exist, " + we.Message);
+                LogHelper.ErrorLogger.Error("9258Update.txt doens't exist, " + we);
                 return;
             }
             List<string> texts = File.ReadLines(System.IO.Path.Combine(Environment.CurrentDirectory, "9258Update.txt")).ToList();
@@ -325,19 +325,19 @@ namespace YoYoStudio.Client.Chat
             }
             catch (TimeoutException exception)
             {
-                hallVM.ApplicationVM.Logger.Debug("Login fail: " + exception.Message);
+                LogHelper.ErrorLogger.Error("Login fail: " + exception);
                 usr = null;
                 MessageBox.Show("登录超时", Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (FaultException exception)
             {
-                hallVM.ApplicationVM.Logger.Debug("Login fail: " + exception.Message);
+                LogHelper.ErrorLogger.Error("Login fail: " + exception);
                 usr = null;
                 MessageBox.Show("登录失败", Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (CommunicationException exception)
             {
-                hallVM.ApplicationVM.Logger.Debug("Login fail: " + exception.Message);
+                LogHelper.ErrorLogger.Error("Login fail: " + exception);
                 usr = null;
                 MessageBox.Show("登录失败", Text.Error, MessageBoxButton.OK, MessageBoxImage.Error);
             }

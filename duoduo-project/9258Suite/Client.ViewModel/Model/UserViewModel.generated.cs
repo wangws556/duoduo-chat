@@ -123,6 +123,22 @@ namespace YoYoStudio.Client.ViewModel
 
 
 		/// <summary>
+		/// Field which backs the AudioStatus property
+		/// </summary>
+		private HistoryableProperty<int> audioStatus = new HistoryableProperty<int>(0);
+
+		/// <summary>
+		/// Gets / sets the AudioStatus value
+		/// </summary>
+		[Browsable(false)]
+		public  int AudioStatus
+		{
+			get { return audioStatus.GetValue(); }
+			set { ChangeAndNotifyHistory<int>(audioStatus, value, () => AudioStatus ); }
+		}
+
+
+		/// <summary>
 		/// Field which backs the StreamGuid property
 		/// </summary>
 		private HistoryableProperty<string> streamGuid = new HistoryableProperty<string>(string.Empty);

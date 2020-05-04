@@ -25,6 +25,7 @@ using System.ComponentModel;
 using System.Windows.Markup;
 using Microsoft.Win32;
 using System.ServiceModel;
+using YoYoStudio.Common.Rtmp.Audio;
 
 namespace YoYoStudio.Client.ViewModel
 {
@@ -56,6 +57,9 @@ namespace YoYoStudio.Client.ViewModel
         public VideoWindowViewModel FirstVideoWindowVM { get; private set; }
         public VideoWindowViewModel SecondVideoWindowVM { get; private set; }
         public VideoWindowViewModel ThirdVideoWindowVM { get; private set; }
+
+        public StreamProcessPublish AudioPublishVM { get; set; }
+        public StreamProcessPlay AudioPlayVM { get; set; }
 
         public UserViewModel FirstMicUserVM
         {
@@ -137,15 +141,15 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch(TimeoutException exception)
             {
-                ApplicationVM.Logger.Debug("Enter room fail: " + exception.Message);
+                LogHelper.ErrorLogger.Error("Enter room fail: " + exception);
             }
             catch(FaultException exception)
             {
-                ApplicationVM.Logger.Debug("Enter room fail: " + exception.Message);
+                LogHelper.ErrorLogger.Error("Enter room fail: " + exception);
             }
             catch(CommunicationException exception)
             {
-                ApplicationVM.Logger.Debug("Enter room fail: " + exception.Message);
+                LogHelper.ErrorLogger.Error("Enter room fail: " + exception);
             }
         }
 
@@ -206,31 +210,43 @@ namespace YoYoStudio.Client.ViewModel
             var micUsers = RoomClient.GetMicUsers(RoomVM.Id, MicType.Public);
             if (micUsers != null && micUsers.Count > 0)
             {
-                if (micUsers.ContainsKey(0) && micUsers[0].MicStatus != MicStatusMessage.MicStatus_Off)
+                if (micUsers.ContainsKey(0) && micUsers[0].MicStatus >= (int)MicStatusMessage.MicStatus_On)
                 {
                     FirstMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[0].UserId);
                     FirstMicUserVM.OnMic(MicType.Public, 0, micUsers[0].StreamGuid, micUsers[0].MicStatus);
-                    if ((micUsers[0].MicStatus & MicStatusMessage.MicStatus_Audio) != 0)
+                    if (micUsers[0].AudioStatus == AudioStatusType.On)
                     {
-                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + FirstMicUserVM.Id, FirstMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                        StartAudioPlay(micUsers[0].UserId);
+                    }
+                    else
+                    {
+                        StopPlay();
                     }
                 }
-                if (micUsers.ContainsKey(1) && micUsers[1].MicStatus != MicStatusMessage.MicStatus_Off)
+                if (micUsers.ContainsKey(1) && micUsers[1].MicStatus >= (int)MicStatusMessage.MicStatus_On)
                 {
                     SecondMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[1].UserId);
                     SecondMicUserVM.OnMic(MicType.Public, 1, micUsers[1].StreamGuid, micUsers[1].MicStatus);
-                    if ((micUsers[1].MicStatus & MicStatusMessage.MicStatus_Audio) != 0)
+                    if (micUsers[1].AudioStatus == AudioStatusType.On)
                     {
-                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + SecondMicUserVM.Id, SecondMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                        StartAudioPlay(micUsers[1].UserId);
+                    }
+                    else
+                    {
+                        StopPlay();
                     }
                 }
-                if (micUsers.ContainsKey(2) && micUsers[2].MicStatus != MicStatusMessage.MicStatus_Off)
+                if (micUsers.ContainsKey(2) && micUsers[2].MicStatus >= (int)MicStatusMessage.MicStatus_On)
                 {
                     ThirdMicUserVM = UserVMs.FirstOrDefault(u => u.Id == micUsers[2].UserId);
                     ThirdMicUserVM.OnMic(MicType.Public, 2, micUsers[2].StreamGuid, micUsers[2].MicStatus);
-                    if ((micUsers[2].MicStatus & MicStatusMessage.MicStatus_Audio) != 0)
+                    if (micUsers[2].AudioStatus == AudioStatusType.On)
                     {
-                        StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id + "/" + ThirdMicUserVM.Id, ThirdMicUserVM.Id, ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync);
+                        StartAudioPlay(micUsers[2].UserId);
+                    }
+                    else
+                    {
+                        StopPlay();
                     }
                 }
             }
@@ -248,11 +264,6 @@ namespace YoYoStudio.Client.ViewModel
                         {
                             PrivateMicUserVMs.Add(uvm);
                             uvm.OnMic(MicType.Private, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
-                            if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
-                            {
-                                //StartAudioPlaying(uvm.Id);
-                                //StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
-                            }
                         }
                     }
                 }
@@ -270,11 +281,6 @@ namespace YoYoStudio.Client.ViewModel
                         {
                             SecretMicUserVMs.Add(uvm);
                             uvm.OnMic(MicType.Secret, mic.MicIndex, mic.StreamGuid, mic.MicStatus);
-                            if ((uvm.MicStatus & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
-                            {
-                                //StartAudioPlaying(uvm.Id);
-                                //StartAudioPlay(ApplicationVM.LocalCache.AudioRtmpPath + "/" + RoomVM.Id);
-                            }
                         }
                     }
                 }
@@ -402,7 +408,7 @@ namespace YoYoStudio.Client.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    ApplicationVM.Logger.Debug("LoadAsync() error: " + ex.Message);
+                    LogHelper.ErrorLogger.Error("LoadAsync() error: " + ex);
                 }
             }
 
@@ -446,6 +452,22 @@ namespace YoYoStudio.Client.ViewModel
             FirstVideoWindowVM = new VideoWindowViewModel();
             SecondVideoWindowVM = new VideoWindowViewModel();
             ThirdVideoWindowVM = new VideoWindowViewModel();
+
+            StreamProcessPublishModel publishModel = new StreamProcessPublishModel()
+            {
+                RoomId = RoomVM.Id,
+                AudioDeviceName = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName,
+                AudioSample = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSample
+            };
+            AudioPublishVM = new StreamProcessPublish(publishModel);
+            StreamProcessPlayModel playModel = new StreamProcessPlayModel()
+            {
+                RoomId = RoomVM.Id,
+                AudioDeviceName = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName,
+                AudioSample = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSample,
+                AudioSync = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSync
+            };
+            AudioPlayVM = new StreamProcessPlay(playModel);
         }
 
         public void SendHornMsg(string message)
@@ -680,7 +702,15 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-                this.ApplicationVM.Logger.Error(nameof(timer_Elapsed), ex);
+                LogHelper.ErrorLogger.Error(nameof(timer_Elapsed), ex);
+                if (RoomClient.State == CommunicationState.Faulted)
+                {
+                    RoomClient = new RoomServiceClient(RoomCallback, RoomVM.ServiceIp, ApplicationVM.LocalCache.RoomServicePort);
+                    RoomClient.InnerChannel.Closed += InnerChannel_Closed;
+                    RoomClient.InnerDuplexChannel.Closed += InnerDuplexChannel_Closed;
+                    RoomClient.InnerChannel.Closing += InnerChannel_Closing;
+                    RoomClient.InnerDuplexChannel.Closing += InnerDuplexChannel_Closing;
+                }
             }
         }
 
@@ -713,7 +743,7 @@ namespace YoYoStudio.Client.ViewModel
             
             catch (Exception ex)
             {
-                this.ApplicationVM.Logger.Error(nameof(ReleaseUnManagedResource), ex);
+                LogHelper.ErrorLogger.Error(nameof(ReleaseUnManagedResource), ex);
             }
             base.ReleaseUnManagedResource();
         }
@@ -724,6 +754,7 @@ namespace YoYoStudio.Client.ViewModel
             RoomCallback.UserLeftRoomEvent += UserLeftRoomEventHandler;
             RoomCallback.RoomMessageReceivedEvent += RoomMessageReceivedEventHandler;
             RoomCallback.MicStatusMessageReceivedEvent += MicStatusMessageReceivedEventHandler;
+            RoomCallback.AudioPublishStatusMessageReceivedEvent += AudioPublishStatusMessageReceivedEventHandler;
             RoomCallback.CommandReceivedEvent += CommandReceivedEventHandler;
 
             SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
@@ -738,6 +769,7 @@ namespace YoYoStudio.Client.ViewModel
             RoomCallback.UserLeftRoomEvent -= UserLeftRoomEventHandler;
             RoomCallback.RoomMessageReceivedEvent -= RoomMessageReceivedEventHandler;
             RoomCallback.MicStatusMessageReceivedEvent -= MicStatusMessageReceivedEventHandler;
+            RoomCallback.AudioPublishStatusMessageReceivedEvent -= AudioPublishStatusMessageReceivedEventHandler;
             RoomCallback.CommandReceivedEvent -= CommandReceivedEventHandler;
 
             SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
@@ -904,7 +936,7 @@ namespace YoYoStudio.Client.ViewModel
             }
             catch (Exception ex)
             {
-                ApplicationVM.Logger.Error("UploadImages() in RoomWIndowViewModel error: " + ex.Message);
+                LogHelper.ErrorLogger.Error("UploadImages() in RoomWIndowViewModel error: " + ex);
                 MessageBox.Show(ex.Message);
                 return false;
             }

@@ -28,23 +28,23 @@ namespace Client.Chat
                 CheckAdministrator(e);
                 if(IsUpgrading())
                 {
-                    YoYoStudio.Client.Chat.Helper.Logger.Info("Application is upgrading " + DateTime.Now.ToLongTimeString());
+                    LogHelper.InfoLogger.Info("Application is upgrading " + DateTime.Now.ToLongTimeString());
                     MessageBox.Show("升级程序正在运行，请升级成功后再运行程序。");
                     Environment.Exit(0);
                 }
-                YoYoStudio.Client.Chat.Helper.Logger.Info("Application Started : " + DateTime.Now.ToLongTimeString());
+                LogHelper.InfoLogger.Info("Application Started");
                 AllWebPages.Initialize();
             }
             catch (Exception ex)
             {
-                YoYoStudio.Client.Chat.Helper.Logger.Error("OnStartup", ex);
+                LogHelper.ErrorLogger.Error("OnStartup", ex);
             }
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             Singleton<ApplicationViewModel>.Instance.Dispose();
-            YoYoStudio.Client.Chat.Helper.Logger.Info("Application Shutdown : " + DateTime.Now.ToLongTimeString());
+            LogHelper.InfoLogger.Info("Application Shutdown" );
             base.OnExit(e);
         }
 
@@ -75,7 +75,7 @@ namespace Client.Chat
                 }
                 catch (Exception ex)
                 {
-                    YoYoStudio.Client.Chat.Helper.Logger.Info("Application satrt failed due to: " + ex.Message + DateTime.Now.ToLongTimeString());
+                    LogHelper.ErrorLogger.Error("Application satrt failed: " + ex);
                 }
 
                 // Shut down the current process

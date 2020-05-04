@@ -29,6 +29,8 @@ namespace YoYoStudio.RoomService.Library
         [OperationContract(IsInitiating = false, IsOneWay = true)]
         void DownMic(int roomId, MicType micType, int index);
         [OperationContract(IsInitiating = false, IsOneWay = true)]
+        void PublishAudio(int roomId, int userId, MicType micType, AudioStatusType status);
+        [OperationContract(IsInitiating = false, IsOneWay = true)]
         void ToggleAudio(int roomId, MicType micType);
         [OperationContract(IsInitiating = false, IsOneWay = true)]
         void ToggleVideo(int roomId, MicType micType);
@@ -92,6 +94,8 @@ namespace YoYoStudio.RoomService.Library
         void RoomMessageReceived(int roomId, RoomMessage message);
         [OperationContract(IsOneWay = true)]
         void MicStatusMessageReceived(int roomId, MicStatusMessage message);
+        [OperationContract(IsOneWay = true)]
+        void AudioPublishStatusMessageReceived(int roomId, MicStatusMessage message);
         [OperationContract(IsOneWay = true)]
         void CommandMessageReceived(int roomId, int cmdId, int sourceUserId, int targetUserId);
         [OperationContract(IsOneWay = true)]

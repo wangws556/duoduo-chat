@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using YoYoStudio.Common;
 using YoYoStudio.Common.Net;
+using YoYoStudio.Common.Notification;
 using YoYoStudio.Media.NAudio;
 using YoYoStudio.Model.Chat;
 
@@ -72,12 +73,6 @@ namespace YoYoStudio.Client.ViewModel
             soundPlayers.Clear();
         }
 
-        public void StopAudioFFmpeg()
-        {
-            Utility.StopPublishAudio();
-            Utility.StopPlayAudio(-1);
-        }
-
         public void StopAudioPlaying(int userId)
         {
             if (soundPlayers.ContainsKey(userId))
@@ -109,58 +104,86 @@ namespace YoYoStudio.Client.ViewModel
 
         }
 
-        public void StartAudioPublish(string audioDeviceName, string rtmpPath, string audioArg)
+        #region ffmpeg audio publish/play
+        public bool StartAudioPublish(int publisherId)
         {
+            bool result = false;
             //using ffmpeg publish
             try
             {
                 if (ApplicationVM.ProfileVM.AudioConfigurationVM.LoopbackRecording)
                 {
-                    Utility.StartPublishAudio(audioDeviceName, rtmpPath, audioArg);
+                    result = AudioPublishVM.Publish(publisherId, PublishExitAction, PublishErrorAction);
                 }
             }
             catch (Exception ex)
             {
-                this.ApplicationVM.Logger.Error(nameof(StartAudioPublish), ex);
+                LogHelper.ErrorLogger.Error(nameof(StartAudioPublish), ex);
             }
+            return result;
         }
 
-        public void StopAudioPublish()
-        {
-            //using ffmpeg publish
-            try
-            {
-                Utility.StopPublishAudio();
-            }
-            catch (Exception ex)
-            {
-                this.ApplicationVM.Logger.Error(nameof(StopAudioPublish), ex);
-            }
-        }
-
-        public void StartAudioPlay(string rtmpPath,int userId,bool isSync)
+        public void StartAudioPlay(int userId)
         {
             try
             {
-                Utility.StartPlayAudio(rtmpPath,userId, isSync);
+                AudioPlayVM.Play(userId, PlayExitAction,PlayErrorAction);
             }
             catch (Exception ex)
             {
-                this.ApplicationVM.Logger.Error(nameof(StartAudioPlay), ex);
+                LogHelper.ErrorLogger.Error(nameof(StartAudioPlay), ex);
             }
         }
 
-        public void StopAudioPlay(int userId)
+        public bool StopPublish()
         {
+            bool stopRes = false;
             try
             {
-                Utility.StopPlayAudio(userId);
+                stopRes = AudioPublishVM.StopPublish();
             }
             catch (Exception ex)
             {
-                this.ApplicationVM.Logger.Error(nameof(StopAudioPlay), ex);
+                LogHelper.ErrorLogger.Error(nameof(StopPublish), ex);
+            }
+            return stopRes;
+        }
+
+        public void StopPlay()
+        {
+            try
+            {
+                AudioPlayVM.StopPlay();
+            }
+            catch (Exception ex)
+            {
+                LogHelper.ErrorLogger.Error(nameof(StopPlay), ex);
             }
         }
+
+        public void PlayErrorAction(string message)
+        {
+
+        }
+
+        public void PlayExitAction(string message)
+        {
+
+        }
+
+        public void PublishErrorAction(string message,int warningTimes)
+        {
+            LogHelper.ErrorLogger.Error(nameof(PublishExitAction) + message);
+            Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.PublishWarning, message));
+        }
+
+        public void PublishExitAction(string message)
+        {
+            LogHelper.ErrorLogger.Error(nameof(PublishExitAction) + message);
+            
+        }
+
+        #endregion
 
         public void PauseAudioRecording()
         {
@@ -173,7 +196,7 @@ namespace YoYoStudio.Client.ViewModel
                 }
                 catch(Exception ex)
                 {
-                    this.ApplicationVM.Logger.Error(nameof(PauseAudioRecording), ex);
+                    LogHelper.ErrorLogger.Error(nameof(PauseAudioRecording), ex);
                 }
                 finally
                 {
@@ -193,7 +216,7 @@ namespace YoYoStudio.Client.ViewModel
                 }
                 catch(Exception ex)
                 {
-                    this.ApplicationVM.Logger.Error(nameof(StopAudioRecording), ex);
+                    LogHelper.ErrorLogger.Error(nameof(StopAudioRecording), ex);
                 }
                 finally
                 {
@@ -216,7 +239,8 @@ namespace YoYoStudio.Client.ViewModel
             StopAudioRecording();
             StopAllAudioPlaying();
             DisconnectAudio();
-            StopAudioFFmpeg();
+            AudioPublishVM.StopPublish();
+            AudioPlayVM.StopPlay();
         }
 
         private void DisconnectAudio()

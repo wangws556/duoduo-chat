@@ -17,6 +17,7 @@ namespace YoYoStudio.Client.ViewModel
     [SnippetPropertyINPC(field = "micStatus", property = "MicStatus", type = "int", defaultValue = "0")]
     [SnippetPropertyINPC(field ="musicStatus", property = "MusicStatus", type = "int", defaultValue = "0")]
     [SnippetPropertyINPC(field = "micType", property = "MicType", type = "MicType", defaultValue = "MicType.None")]
+    [SnippetPropertyINPC(field = "audioStatus", property = "AudioStatus", type = "int", defaultValue = "0")]
     [SnippetPropertyINPC(field = "streamGuid", property = "StreamGuid", type = "string", defaultValue = "string.Empty")]
     [SnippetPropertyINPC(field = "name", property = "Name", type = "string", defaultValue = "string.Empty")]
     [SnippetPropertyINPC(field = "email", property = "Email", type = "string", defaultValue = "string.Empty")]

@@ -529,6 +529,25 @@ namespace YoYoStudio.RoomService.Library
             }
         }
 
+        public void PublishAudio(int roomId, int userId, MicType micType, AudioStatusType status)
+        {
+            try
+            {
+                MicStatusMessage msg = GetUserMicStatus(roomId, userId, (MicType)(micType));
+                if(msg != null)
+                {
+                    msg.AudioStatus = status;
+                    unc.Callback.AudioPublishStatusMessageReceived(roomId, msg);
+                    BroadCast(roomId, (u) => u.Callback.AudioPublishStatusMessageReceived(roomId, msg), unc.User.Id);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logger.Error(nameof(PublishAudio), ex);
+            }
+        }
+
         public void ToggleVideo(int roomId, MicType micType)
         {
             try

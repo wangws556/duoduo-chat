@@ -5,6 +5,7 @@ using System.Text;
 using YoYoStudio.Common.Notification;
 using YoYoStudio.Common.Wpf.ViewModel;
 using YoYoStudio.Model;
+using YoYoStudio.Model.Chat;
 
 namespace YoYoStudio.Client.ViewModel
 {
@@ -47,6 +48,48 @@ namespace YoYoStudio.Client.ViewModel
 
         #endregion
 
+        #region PublishAudioCommand
+
+        public SecureCommand PublishAudioCommand { get; set; }
+
+        private void PublishAudioCommandExecute(SecureCommandArgs args)
+        {
+            if (CanPublishAudioCommandExecute(args))
+            {
+                bool publishRes = this.RoomWindowVM.StartAudioPublish(this.Id);
+                if (publishRes)
+                {
+                    AudioStatus = (int)AudioStatusType.On;
+                }
+            }
+        }
+
+        private bool CanPublishAudioCommandExecute(SecureCommandArgs args)
+        {
+            return IsMe();
+        }
+
+        public SecureCommand StopPublishAudioCommand { get; set; }
+
+        private void StopPublishAudioCommandExecute(SecureCommandArgs args)
+        {
+            if (CanStopPublishAudioCommandExecute(args))
+            {
+                bool stopRes = this.RoomWindowVM.StopPublish();
+                if (stopRes)
+                {
+                    AudioStatus = (int)AudioStatusType.Off;
+                }
+            }
+        }
+
+        private bool CanStopPublishAudioCommandExecute(SecureCommandArgs args)
+        {
+            return IsMe();
+        }
+
+        #endregion
+
         #region AgentPoralCommand
 
         public SecureCommand AgentPortalCommand { get; set; }
@@ -67,6 +110,8 @@ namespace YoYoStudio.Client.ViewModel
         {
             OpenConfigurationCommand = new SecureCommand(OpenConfigurationCommandExecute, CanOpenConfigurationCommandExecute);
             SelectUserCommand = new SecureCommand(SelectUserCommandExecute, CanSelectUserCommandExecute);
+            PublishAudioCommand = new SecureCommand(PublishAudioCommandExecute, CanPublishAudioCommandExecute);
+            StopPublishAudioCommand = new SecureCommand(StopPublishAudioCommandExecute, CanStopPublishAudioCommandExecute);
             AgentPortalCommand = new SecureCommand(AgentPortalCommandExecute, CanAgentPortalCommandExecute);
             base.InitializeCommand();
         }

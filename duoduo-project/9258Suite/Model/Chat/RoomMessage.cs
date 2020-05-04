@@ -107,18 +107,28 @@ namespace YoYoStudio.Model.Chat
         Security
     }
 
+    public enum AudioStatusType
+    {
+        Off = 0,
+        On
+    }
+
     [Serializable]
     [DataContract]
     public class MicStatusMessage : Message
     {
         public const int MicStatus_Off = 0;
         //MicQueue
+        //1
         public const int MicStatus_Queue = 1;
         //On Mic, but both Video and Audio are off
+        //2
         public const int MicStatus_On = MicStatus_Queue << 1;
         //Video is on, Audio is off
+        //4
         public const int MicStatus_Video = MicStatus_On << 1;
         //Audio is on, Video is off
+        //8
         public const int MicStatus_Audio = MicStatus_Video << 1;
         //Both Video and Audio are on
         public const int MicStatus_VideoAudio = MicStatus_Video | MicStatus_Audio;
@@ -129,6 +139,8 @@ namespace YoYoStudio.Model.Chat
         public int MicStatus { get; set; }
         [DataMember]
         public int MicIndex { get; set; }
+        [DataMember]
+        public AudioStatusType AudioStatus { get; set; }
         [DataMember]
         public string StreamGuid { get; set; }
         [DataMember]
@@ -148,6 +160,7 @@ namespace YoYoStudio.Model.Chat
                 UserId = -1;
                 MicAction = Chat.MicAction.None;
                 MicType = Chat.MicType.None;
+                AudioStatus = AudioStatusType.Off;
             }
         }
     }

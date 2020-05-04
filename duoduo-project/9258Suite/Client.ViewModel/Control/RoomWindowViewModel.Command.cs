@@ -93,7 +93,7 @@ namespace YoYoStudio.Client.ViewModel
                 }
                 if (vm != null)
                 {
-                    Messenger.Default.Send<EnumNotificationMessage<object, RoomWindowAction>>(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.ShowConfigWindow, vm));
+                    Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.ShowConfigWindow, vm));
                 }
             }
         }
@@ -104,7 +104,7 @@ namespace YoYoStudio.Client.ViewModel
         private void PlayMusicCommandExecute(SecureCommandArgs args)
         {
             bool canPlay = RoomClient.OnPlayMusic(RoomVM.Id, Me.Id);
-            Messenger.Default.Send<EnumNotificationMessage<object, RoomWindowAction>>(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.PlayMusic,canPlay));
+            Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.PlayMusic,canPlay));
         }
         private bool CanPlayMusicCommandExecute(SecureCommandArgs args)
         {
@@ -114,7 +114,7 @@ namespace YoYoStudio.Client.ViewModel
         public SecureCommand ManageMusicCommand { get; set; }
         private void ManageMusicCommandExecute(SecureCommandArgs args)
         {
-            Messenger.Default.Send<EnumNotificationMessage<object, RoomWindowAction>>(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.ManageMusic));
+            Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.ManageMusic));
         }
         private bool CanManageMusicCommandExecute(SecureCommandArgs args)
         {
@@ -132,7 +132,7 @@ namespace YoYoStudio.Client.ViewModel
         public SecureCommand RecordCommand { get; set; }
         private void RecordCommandExecute(SecureCommandArgs args)
         {
-            Messenger.Default.Send<EnumNotificationMessage<object, RoomWindowAction>>(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.RecordAudio));
+            Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.RecordAudio));
         }
         public SecureCommand PlayCommand { get; set; }
         private void PlayCommandExecute(SecureCommandArgs args)

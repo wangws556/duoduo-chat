@@ -35,8 +35,9 @@ namespace YoYoStudio.RoomService.Client
 
 		[System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/DownMic")]
 		void DownMic(int roomId, YoYoStudio.Model.Chat.MicType micType, int index);
-
-		[System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/ToggleAudio")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/PublishAudio")]
+        void PublishAudio(int roomId, int userId, MicType micType, AudioStatusType status);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/ToggleAudio")]
 		void ToggleAudio(int roomId, YoYoStudio.Model.Chat.MicType micType);
 
 		[System.ServiceModel.OperationContractAttribute(IsOneWay = true, IsInitiating = false, Action = "http://tempuri.org/IRoomService/ToggleVideo")]
@@ -115,7 +116,10 @@ namespace YoYoStudio.RoomService.Client
 
 		[System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://tempuri.org/IRoomService/MicStatusMessageReceived")]
 		void MicStatusMessageReceived(int roomId, YoYoStudio.Model.Chat.MicStatusMessage message);
-        
+
+        [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://tempuri.org/IRoomService/AudioPublishStatusMessageReceived")]
+        void AudioPublishStatusMessageReceived(int roomId, YoYoStudio.Model.Chat.MicStatusMessage message);
+
         [System.ServiceModel.OperationContractAttribute(IsOneWay = true, Action = "http://tempuri.org/IRoomService/CommandMessageReceived")]
         void CommandMessageReceived(int roomId, int cmdId, int sourceUserId, int targetUserId);
 
@@ -216,7 +220,12 @@ namespace YoYoStudio.RoomService.Client
 			base.Channel.DownMic(roomId, micType, index);
 		}
 
-		public void ToggleAudio(int roomId, YoYoStudio.Model.Chat.MicType micType)
+        public void PublishAudio(int roomId, int userId, MicType micType, AudioStatusType status)
+        {
+            base.Channel.PublishAudio(roomId, userId, micType, status);
+        }
+
+        public void ToggleAudio(int roomId, YoYoStudio.Model.Chat.MicType micType)
 		{
 			base.Channel.ToggleAudio(roomId, micType);
 		}

@@ -32,7 +32,6 @@ namespace YoYoStudio.Client.ViewModel
 		public LocalCache LocalCache { get; private set; }
         public ProfileViewModel ProfileVM { get; private set; }
         public string ApplicationName { get; private set; }
-        public ILog Logger { get; private set; }
         public int ApplicationId { get; private set; }
         public string OnMicImageUrl { get; private set; }
         public string DownMicImageUrl { get; private set; }
@@ -47,7 +46,6 @@ namespace YoYoStudio.Client.ViewModel
         private ApplicationViewModel()
         {
             ChatClient = new ChatServiceClient(callback);
-            Logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             log4net.Config.XmlConfigurator.Configure();
             ApplicationId = BuiltIns._9258ChatApplication.Id;
 			Root = Environment.CurrentDirectory;

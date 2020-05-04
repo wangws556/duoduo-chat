@@ -235,7 +235,7 @@ namespace YoYoStudio.Client.ViewModel
                             }
                             catch(Exception e)
                             {
-                                ApplicationVM.Logger.Debug("Wirte Image to local failed." + e.Message);
+                                LogHelper.ErrorLogger.Error("Wirte Image to local failed." + e);
                             }
                         }
                     }

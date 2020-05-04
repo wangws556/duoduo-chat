@@ -74,6 +74,22 @@ namespace YoYoStudio.RoomService.Client
             }
         }
 
+        private Action<int, MicStatusMessage> audioPublishStatusMessageReceivedEvent;
+        public event Action<int, MicStatusMessage> AudioPublishStatusMessageReceivedEvent
+        {
+            add
+            {
+                if (audioPublishStatusMessageReceivedEvent == null || !audioPublishStatusMessageReceivedEvent.GetInvocationList().Contains(value))
+                {
+                    audioPublishStatusMessageReceivedEvent += value;
+                }
+            }
+            remove
+            {
+                audioPublishStatusMessageReceivedEvent -= value;
+            }
+        }
+
         private Action<int, int, int, int> commandReceivedEvent;
         public event Action<int, int, int, int> CommandReceivedEvent
         {
@@ -150,6 +166,10 @@ namespace YoYoStudio.RoomService.Client
             micStatusMessageReceivedEvent(roomId, message);
         }
 
+        public void AudioPublishStatusMessageReceived(int roomId, MicStatusMessage message)
+        {
+            audioPublishStatusMessageReceivedEvent(roomId, message);
+        }
 
         public void CommandMessageReceived(int roomId, int cmdId, int sourceUserId, int targetUserId)
         {

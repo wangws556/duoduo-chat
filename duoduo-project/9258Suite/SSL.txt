@@ -18,10 +18,13 @@ ffmpeg publish
 ffmpeg -r 25 -f dshow -s 640*480 -i audio="Stereo Mix (Realtek High Definition Audio)" -vcodec lib*264 -b 600k  -ab 128k -f flv rtmp://222.189.228.201:1935/live/testlive
 or
 ffmpeg -f dshow -probesize 10M -ac 1 -channel_layout mono -guess_layout_max 0 -audio_buffer_size 80 -i audio="Stereo Mix (Realtek High Definition Audio)" -f flv rtmp://222.189.228.201:1935/live/testlive
-
+or
+ffmpeg -re -f dshow -i audio="virtual-audio-capturer" -ar 22050 -f flv rtmp://222.189.228.201:1935/live/testlive
 
 ffmpeg play
 ffplay.exe rtmp://222.189.228.201:1935/live/testlive -nodisp
+or
+ffplay.exe -probesize 1024 -sync ext rtmp://222.189.228.201:1935/live/testlive -nodisp
 
 ffmpeg -list_devices true -f dshow -i dummy
 

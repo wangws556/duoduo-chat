@@ -59,6 +59,10 @@ namespace YoYoStudio.Model.Configuration
         public ObservableCollection<string> AudioDevices { get; set; }
         public string AudioRTMP { get; set; }
         public bool AudioSync { get; set; }
+        public ObservableCollection<string> AudioSamples { get; set; }
+        public string AudioSampleLabel { get; set; }
+        public int AudioSampleIndex { get; set; }
+        public string AudioSample { get; set; }
 
         public override string Name
         {
@@ -69,6 +73,7 @@ namespace YoYoStudio.Model.Configuration
         {
             MicNameLabel = "麦克风设备";
             AudioNameLabel = "音频设备";
+            AudioSampleLabel = "音频码率设置（建议默认，高码率需要更高的带宽）";
         }
     }
     [Serializable]

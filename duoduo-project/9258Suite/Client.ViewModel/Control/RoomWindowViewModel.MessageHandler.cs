@@ -14,6 +14,27 @@ namespace YoYoStudio.Client.ViewModel
 {
     public partial class RoomWindowViewModel
     {
+        private void AudioPublishStatusMessageReceivedEventHandler(int arg1, MicStatusMessage arg2)
+        {
+            if(arg1 == RoomVM.Id)
+            {
+                var uvm = UserVMs.FirstOrDefault(u => u.Id == arg2.UserId);
+                if(uvm != null)
+                {
+                    switch (arg2.AudioStatus)
+                    {
+                        case AudioStatusType.Off:
+                            StopPlay();
+                            break;
+                        case AudioStatusType.On:
+                            StartAudioPlay(uvm.Id);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
         private void MicStatusMessageReceivedEventHandler(int arg1, MicStatusMessage arg2)
         {
             if (arg1 == RoomVM.Id)
@@ -101,11 +122,11 @@ namespace YoYoStudio.Client.ViewModel
                             }
                             if (uvm.IsMe())
                             {
-                                StopAudioPublish();
+                                AudioPublishVM.StopPublish();
                             }
                             else
                             {
-                                StopAudioPlay(uvm.Id);
+                                AudioPlayVM.StopPlay();
                             }
                             updateMicImage(uvm.Id, false);
                             break;
@@ -283,7 +304,7 @@ namespace YoYoStudio.Client.ViewModel
                     UserVMs.Remove(uvm);
                     CallJavaScript("UserLeft", uvm.Id);
                 }
-                StopAudioPlay(uvm.Id);
+                AudioPlayVM.StopPlay();
             }
         }
 

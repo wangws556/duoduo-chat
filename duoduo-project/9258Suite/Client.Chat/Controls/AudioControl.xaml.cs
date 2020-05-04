@@ -63,7 +63,7 @@ namespace YoYoStudio.Client.Chat.Controls
                             //the connection has been setup with Red5
                             if (vm != null)
                             {
-                                vm.RoomWindowVM.RoomCallback.MicStatusMessageReceivedEvent += AudioRoomCallback_MicStatusMessageReceivedEvent; ;
+                                vm.RoomWindowVM.RoomCallback.MicStatusMessageReceivedEvent += AudioRoomCallback_MicStatusMessageReceivedEvent;
                             }
                         }
                     }

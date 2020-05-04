@@ -203,34 +203,66 @@ namespace YoYoStudio.Client.ViewModel
 
 
 		/// <summary>
-		/// Field which backs the AudioRTMP property
+		/// Field which backs the AudioSampleLabel property
 		/// </summary>
-		private HistoryableProperty<string> audioRTMP = new HistoryableProperty<string>("");
+		private HistoryableProperty<string> audioSampleLabel = new HistoryableProperty<string>("");
 
 		/// <summary>
-		/// Gets / sets the AudioRTMP value
+		/// Gets / sets the AudioSampleLabel value
 		/// </summary>
 		[Browsable(false)]
-		public  string AudioRTMP
+		public  string AudioSampleLabel
 		{
-			get { return audioRTMP.GetValue(); }
-			set { ChangeAndNotifyHistory<string>(audioRTMP, value, () => AudioRTMP ); }
+			get { return audioSampleLabel.GetValue(); }
+			set { ChangeAndNotifyHistory<string>(audioSampleLabel, value, () => AudioSampleLabel ); }
 		}
 
 
 		/// <summary>
-		/// Field which backs the AudioArg property
+		/// Field which backs the AudioSamples property
 		/// </summary>
-		private HistoryableProperty<string> audioArg = new HistoryableProperty<string>("");
+		private HistoryableProperty<ObservableCollection<string>> audioSamples = new HistoryableProperty<ObservableCollection<string>>(new ObservableCollection<string>());
 
 		/// <summary>
-		/// Gets / sets the AudioArg value
+		/// Gets / sets the AudioSamples value
 		/// </summary>
 		[Browsable(false)]
-		public  string AudioArg
+		public  ObservableCollection<string> AudioSamples
 		{
-			get { return audioArg.GetValue(); }
-			set { ChangeAndNotifyHistory<string>(audioArg, value, () => AudioArg ); }
+			get { return audioSamples.GetValue(); }
+			set { ChangeAndNotifyHistory<ObservableCollection<string>>(audioSamples, value, () => AudioSamples ); }
+		}
+
+
+		/// <summary>
+		/// Field which backs the AudioSampleIndex property
+		/// </summary>
+		private HistoryableProperty<int> audioSampleIndex = new HistoryableProperty<int>(0);
+
+		/// <summary>
+		/// Gets / sets the AudioSampleIndex value
+		/// </summary>
+		[Browsable(false)]
+		public  int AudioSampleIndex
+		{
+			get { return audioSampleIndex.GetValue(); }
+			set { ChangeAndNotifyHistory<int>(audioSampleIndex, value, () => AudioSampleIndex ); }
+		}
+
+
+		/// <summary>
+		/// Field which backs the AudioSample property
+		/// </summary>
+		private HistoryableProperty<string> audioSample = new HistoryableProperty<string>("");
+
+		/// <summary>
+		/// Gets / sets the AudioSample value
+		/// </summary>
+		[Browsable(false)]
+		public  string AudioSample
+		{
+			get { return audioSample.GetValue(); }
+			set { ChangeAndNotifyHistory<string>(audioSample, value, () => AudioSample ); }
 		}
 
 

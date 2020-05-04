@@ -73,7 +73,7 @@ namespace YoYoStudio.Client.ViewModel
                     }
                     catch (Exception exception)
                     {
-                        Logger.Debug("UpdateOnlineUserCount failed: " + exception.Message);
+                        LogHelper.ErrorLogger.Error("UpdateOnlineUserCount failed: " + exception);
                         if(ChatClient.State == CommunicationState.Faulted)
                         {
                             //ChatClient.Close();
@@ -143,7 +143,7 @@ namespace YoYoStudio.Client.ViewModel
                 }
                 catch (Exception e)
                 {
-                    Logger.Debug("Wirte Image to local failed." + e.Message);
+                    LogHelper.ErrorLogger.Error("Wirte Image to local failed." + e);
                 }
             }
             

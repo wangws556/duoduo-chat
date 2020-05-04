@@ -45,9 +45,8 @@ namespace YoYoStudio.Client.Chat
             }
             catch (Exception ex)
             {
-                Helper.Logger.Error("Constructor of HallWindow", ex);
+                LogHelper.ErrorLogger.Error("Constructor of HallWindow", ex);
             }
-            Helper.MainWindow = this;
         }
 
         void HallWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -178,7 +177,7 @@ namespace YoYoStudio.Client.Chat
             }
             catch(Exception ex)
             {
-                hallVM.ApplicationVM.Logger.Error(nameof(ProcessMessage) + " Message: " + message.Action, ex);
+                LogHelper.ErrorLogger.Error(nameof(ProcessMessage) + " Message: " + message.Action, ex);
             }
         }
 
@@ -222,7 +221,7 @@ namespace YoYoStudio.Client.Chat
             }
             catch (Exception ex)
             {
-                Helper.Logger.Error("EssentialWindow_Loaded", ex);
+                LogHelper.ErrorLogger.Error("EssentialWindow_Loaded", ex);
             }
 
             //Point p = PART_Web.TransformToAncestor(this).Transform(new Point(0, 0));

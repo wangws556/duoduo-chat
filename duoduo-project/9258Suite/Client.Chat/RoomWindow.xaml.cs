@@ -230,6 +230,12 @@ namespace YoYoStudio.Client.Chat
                         vm.StartAudioRecording(dialog.FileName);
                     }
                     break;
+                case RoomWindowAction.PublishWarning:
+                    System.Windows.MessageBox.Show("网络不稳定，可能导致房间收听者卡顿，建议先关闭在麦上唱歌再开始", "警告", MessageBoxButton.OK);
+                    break;
+                case RoomWindowAction.PublishExit:
+                    System.Windows.MessageBox.Show("在麦上唱歌程序异常退出，请关闭在麦上唱歌再开始", "错误", MessageBoxButton.OK);
+                    break;
                 default:
                     break;
             }
@@ -276,15 +282,7 @@ namespace YoYoStudio.Client.Chat
                 roomWindowVM.RoomClient.DownMic(roomWindowVM.RoomVM.Id, roomWindowVM.Me.MicType, roomWindowVM.Me.MicIndex);
                 roomWindowVM.Me.DownMic();
             }
-            Utility.StopPlayAudio(-1);
-            //if (hallWindow != null)
-            //    hallWindow.StateChanged -= hallWindow_StateChanged;
-            //if (playMusicWindow != null)
-            //{
-            //    //playMusicWindow.StateChanged -= playMusicWindow_StateChanged;
-            //    playMusicWindow.Closed -= playMusicWindow_Closed;
-            //    playMusicWindow.Close();
-            //}
+            roomWindowVM.AudioPlayVM.StopPlay();
             base.OnClosing(e);
         }
 

@@ -13,6 +13,7 @@ using NAudio.Dsp;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using NAudio.CoreAudioApi;
+using YoYoStudio.Common;
 
 namespace YoYoStudio.Client.Chat
 {
@@ -153,7 +154,7 @@ namespace YoYoStudio.Client.Chat
             }
             catch(Exception ex)
             {
-
+                LogHelper.ErrorLogger.Error(nameof(Start), ex);
             }
         }
 
@@ -165,7 +166,7 @@ namespace YoYoStudio.Client.Chat
             }
             catch(Exception ex)
             {
-
+                LogHelper.ErrorLogger.Error(nameof(Stop), ex);
             }
         }
 
@@ -232,12 +233,14 @@ namespace YoYoStudio.Client.Chat
                     catch (Exception ex)
                     {
                         //Do something with exception when an audio endpoint could not be muted
+                        LogHelper.ErrorLogger.Error(nameof(GetVol), ex);
                         System.Diagnostics.Debug.Print(dev.FriendlyName + " could not be muted");
                     }
                 }
             }
             catch (Exception ex)
             {
+                LogHelper.ErrorLogger.Error(nameof(GetVol), ex);
                 //When something happend that prevent us to iterate through the devices
                 System.Diagnostics.Debug.Print("Could not enumerate devices due to an excepion: " + ex.Message);
             }

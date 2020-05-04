@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Xml;
+using YoYoStudio.Common;
 
 namespace YoYoStudio.Controls.Winform
 {
@@ -107,11 +108,12 @@ namespace YoYoStudio.Controls.Winform
         
         private string[] CallFlash(string cmdName, params string[] args)
         {
+            string request = string.Empty;
             try
             {
                 if (!string.IsNullOrEmpty(cmdName))
                 {
-                    string request = "<invoke name=\"" + cmdName + "\" returntype=\"xml\">";
+                    request = "<invoke name=\"" + cmdName + "\" returntype=\"xml\">";
                     request += "<arguments>";
                     for (int i = 0; i < args.Length; i++)
                     {
@@ -134,7 +136,7 @@ namespace YoYoStudio.Controls.Winform
             }
             catch (Exception e)
             {
-                
+                LogHelper.ErrorLogger.Error(nameof(CallFlash) + $"Flex Command: {cmdName}; args: {request}.", e);
             }
             return null;
         }        

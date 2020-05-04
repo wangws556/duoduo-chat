@@ -35,8 +35,9 @@
         ShowConfigWindow,
         RecordAudio,
         PlayMusic,
-       
-        ManageMusic
+        ManageMusic,
+        PublishWarning,
+        PublishExit
     }
 
     public enum PlayMusicWindowAction
