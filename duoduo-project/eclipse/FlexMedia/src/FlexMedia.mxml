@@ -59,8 +59,14 @@
 		<![CDATA[
 			private function callCSharp(methodName:String, ... params):void
 			{
-				if(ExternalInterface.available){
-					ExternalInterface.call(methodName, params);
+				try
+				{
+					if(ExternalInterface.available){
+						ExternalInterface.call(methodName, params);
+					}
+				}
+				catch(e:Error){
+					
 				}
 			}
 			
@@ -445,7 +451,13 @@
 			
 			protected function application1_applicationCompleteHandler(event:FlexEvent):void
 			{
-				callCSharp("loadComplete");
+				//callCSharp("loadComplete");
+				
+				connectRtmp("rtmp://222.189.228.201/oflaDemo");
+				
+				//publishVideo(0);
+				
+				connect("6d41c3ce-b51e-4565-81c5-9d026481f44c","0",0,0,"1","0","0",12,75);
 			}
 			
 			protected function appInit(event:FlexEvent):void
@@ -499,6 +511,10 @@
 							headerPanel.visible = true;
 						}
 					}
+				}
+				else{
+					//连接断开，如果headerPanel是显示的状态，将其隐藏
+					headerPanel.visible = false;
 				}
 			}
 			

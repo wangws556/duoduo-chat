@@ -173,6 +173,7 @@
     <Compile Include="SampleAggregator.cs" />
     <Compile Include="TemplateSelector\AgentPortalTemplateSelector.cs" />
     <Compile Include="UIHelper.cs" />
+    <Compile Include="ValueConverters\AudioControlVisibilityConverter.cs" />
     <Compile Include="ValueConverters\BoolToHighlightedConverter.cs" />
     <Compile Include="ValueConverters\FlexPathConverter.cs" />
     <Compile Include="ValueConverters\MicLabelConverter.cs" />

@@ -12,4 +12,5 @@
     <con:SingleHighlightedConverter x:Key="singleHighlightedConverter"/>
     <con:BoolToVisibleAndCollapsedConverter x:Key="boolToVisibleAndCollapsedConverter"/>
     <con:SpectrumAnalyzerVisibilityConverter x:Key="spectrumAnalyzerVisibilityConverter"/>
+    <con:AudioControlVisibilityConverter x:Key="audioControlVisibilityConverter"/>
 </ResourceDictionary>

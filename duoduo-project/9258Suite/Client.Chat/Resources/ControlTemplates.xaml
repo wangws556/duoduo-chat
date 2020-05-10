@@ -181,7 +181,8 @@
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
             <CheckBox Grid.Column="0" Content="音乐" Style="{StaticResource OrangeSwitchStyle}" 
-                      Height="25" >
+                      Height="25" 
+                      Visibility="{Binding Converter={StaticResource audioControlVisibilityConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window},Path=DataContext.UserVM}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Checked" >
                         <i:InvokeCommandAction Command="{Binding DataContext.UserVM.PublishAudioCommand,
