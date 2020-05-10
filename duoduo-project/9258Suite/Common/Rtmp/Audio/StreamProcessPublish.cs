@@ -6,13 +6,9 @@ using System.Text;
 
 namespace YoYoStudio.Common.Rtmp.Audio
 {
-    public class StreamProcessPublishModel: StreamProcessModel
-    {
-    }
 
     public class StreamProcessPublish:StreamProcess
     {
-        private StreamProcessPublishModel processPublishModel;
         private int frameDroppedCount;
         private int warningTimes;
         private Action<int,string> publishExitAction;
@@ -22,15 +18,9 @@ namespace YoYoStudio.Common.Rtmp.Audio
         private int publisherId;
        
 
-        public StreamProcessPublish(StreamProcessPublishModel publishModel)
-            :base(new StreamProcessModel()
-            {
-                RoomId = publishModel.RoomId,
-                AudioDeviceName = publishModel.AudioDeviceName,
-                AudioSample = publishModel.AudioSample,
-            })
+        public StreamProcessPublish(StreamProcessModel publishModel)
+            :base(publishModel)
         {
-            processPublishModel = publishModel;
             frameDroppedCount = 0;
             warningTimes = 0;
         }
@@ -45,8 +35,8 @@ namespace YoYoStudio.Common.Rtmp.Audio
             using (Process pro = new Process())
             {
                 string publishMD5Code = Utility.GetMD5String(publisherId.ToString());
-                string publishRtmpPath = audioRtmpBase + "/" + processPublishModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
-                string arg1 = "\"" + processPublishModel.AudioDeviceName + "\"";
+                string publishRtmpPath = audioRtmpBase + "/" + StreamProcessModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
+                string arg1 = "\"" + StreamProcessModel.AudioDeviceName + "\"";
                 string arg2 = "\"" + publishRtmpPath + "\"";
                 pro.StartInfo.FileName = GetPublishAudioBat();
                 pro.StartInfo.UseShellExecute = false;
@@ -57,7 +47,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
                 pro.StartInfo.RedirectStandardError = true;
                 pro.ErrorDataReceived += Pro_Publish_ErrorDataReceived;
                 //pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -fflags nobuffer -y -f flv " + arg2;
-                pro.StartInfo.Arguments = " -re -f dshow -i audio=" + arg1 + " -ar " + processPublishModel.AudioSample + " -f flv " + arg2;
+                pro.StartInfo.Arguments = " -re -f dshow -i audio=" + arg1 + " -ar " + StreamProcessModel.AudioSample + " -f flv " + arg2;
                 try
                 {
                     pro.Start();
@@ -82,7 +72,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
 
         private void Pro_Publish_Exited(object sender, EventArgs e)
         {
-            string msg = nameof(Pro_Publish_Exited) + $"Room: {processPublishModel.RoomId} publish exits: " + e.ToString();
+            string msg = nameof(Pro_Publish_Exited) + $"Room: {StreamProcessModel.RoomId} publish exits: " + e.ToString();
             LogHelperRtmp.ErrorLogger.Error(msg);
             publishExitAction(publisherId, msg);
         }
@@ -91,7 +81,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
         {
             if (e != null && e.Data != null)
             {
-                string msg = nameof(Pro_Publish_ErrorDataReceived) + $"Room: {processPublishModel.RoomId} publish: " + e.Data.ToString();
+                string msg = nameof(Pro_Publish_ErrorDataReceived) + $"Room: {StreamProcessModel.RoomId} publish: " + e.Data.ToString();
                 if (msg.Contains("size=") && msg.Contains("time=") && msg.Contains("bitrate=") && msg.Contains("speed="))
                 {
                     return;

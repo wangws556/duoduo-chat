@@ -26,10 +26,10 @@ namespace YoYoStudio.Client.ViewModel
                         switch (arg2.AudioStatus)
                         {
                             case AudioStatusType.Off:
-                                StopPlay();
+                                uvm.RoomWindowVM.StopPlay();
                                 break;
                             case AudioStatusType.On:
-                                StartAudioPlay(uvm.Id);
+                                uvm.RoomWindowVM.StartAudioPlay(uvm.Id);
                                 break;
                             default:
                                 break;

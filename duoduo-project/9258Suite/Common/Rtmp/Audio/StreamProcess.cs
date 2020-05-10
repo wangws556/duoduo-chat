@@ -10,12 +10,14 @@ namespace YoYoStudio.Common.Rtmp.Audio
         public int RoomId { get; set; }
         public string AudioDeviceName { get; set; }
         public string AudioSample { get; set; }
+
+        public bool AudioSync { get; set; }
     }
 
     public class StreamProcess
     {
-        protected StreamProcessModel streamProcessModel;
-        protected string audioRtmpBase = @"rtmp://222.189.228.201:1935/live";
+        public StreamProcessModel StreamProcessModel { get; set; }
+        public string audioRtmpBase = @"rtmp://222.189.228.201:1935/live";
 
         #region dllimport method
 
@@ -32,7 +34,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
 
         public StreamProcess(StreamProcessModel processModel)
         {
-            streamProcessModel = processModel;
+            StreamProcessModel = processModel;
         }
 
         protected int KillProcess(int processId)

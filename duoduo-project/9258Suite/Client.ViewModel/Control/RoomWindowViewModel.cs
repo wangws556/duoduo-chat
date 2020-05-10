@@ -453,14 +453,14 @@ namespace YoYoStudio.Client.ViewModel
             SecondVideoWindowVM = new VideoWindowViewModel();
             ThirdVideoWindowVM = new VideoWindowViewModel();
 
-            StreamProcessPublishModel publishModel = new StreamProcessPublishModel()
+            StreamProcessModel publishModel = new StreamProcessModel()
             {
                 RoomId = RoomVM.Id,
                 AudioDeviceName = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName,
                 AudioSample = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioSample
             };
             AudioPublishVM = new StreamProcessPublish(publishModel);
-            StreamProcessPlayModel playModel = new StreamProcessPlayModel()
+            StreamProcessModel playModel = new StreamProcessModel()
             {
                 RoomId = RoomVM.Id,
                 AudioDeviceName = ApplicationVM.ProfileVM.AudioConfigurationVM.AudioDeviceName,

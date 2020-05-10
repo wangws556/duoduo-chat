@@ -6,25 +6,15 @@ using System.Text;
 
 namespace YoYoStudio.Common.Rtmp.Audio
 {
-    public class StreamProcessPlayModel: StreamProcessModel
-    {
-        public bool AudioSync { get; set; }
-    }
     public class StreamProcessPlay:StreamProcess
     {
-        private StreamProcessPlayModel streamProcessPlayModel;
         private Action<string> playExitAction;
         private Action<string> playErrorAction;
         private int playProcessId;
 
-        public StreamProcessPlay(StreamProcessPlayModel streamProcessPlayModel)
-            : base(new StreamProcessModel() {
-                RoomId = streamProcessPlayModel.RoomId,
-                AudioDeviceName = streamProcessPlayModel.AudioDeviceName,
-                AudioSample = streamProcessPlayModel.AudioSample
-            })
+        public StreamProcessPlay(StreamProcessModel streamProcessModel)
+            : base(streamProcessModel)
         {
-            streamProcessPlayModel = streamProcessPlayModel;
         }
 
         public bool Play(int publisherId, Action<string> exitAction, Action<string> errorAction)
@@ -38,7 +28,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
             using (Process pro = new Process())
             {
                 string publishMD5Code = Utility.GetMD5String(publisherId.ToString());
-                string publishRtmpPath = audioRtmpBase + "/" + streamProcessPlayModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
+                string publishRtmpPath = audioRtmpBase + "/" + StreamProcessModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
                 string arg1 = "\"" + publishRtmpPath + "\"";
                 pro.StartInfo.FileName = GetPlayAudioBat();
                 pro.StartInfo.UseShellExecute = false;
@@ -48,7 +38,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
                 pro.Exited += Pro_Play_Exited;
                 pro.StartInfo.RedirectStandardError = true;
                 pro.ErrorDataReceived += Pro_Play_ErrorDataReceived;
-                if (streamProcessPlayModel.AudioSync)
+                if (StreamProcessModel.AudioSync)
                 {
                     pro.StartInfo.Arguments = " -sync ext " + arg1 + " -nodisp -autoexit";
                 }
@@ -81,14 +71,14 @@ namespace YoYoStudio.Common.Rtmp.Audio
 
         private void Pro_Play_Exited(object sender, EventArgs e)
         {
-            string msg = nameof(Pro_Play_Exited) + $"Room: {streamProcessPlayModel.RoomId} play exits: " + e.ToString();
+            string msg = nameof(Pro_Play_Exited) + $"Room: {StreamProcessModel.RoomId} play exits: " + e.ToString();
             LogHelper.ErrorLogger.Error(msg);
             playExitAction(msg);
         }
 
         private void Pro_Play_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            string msg = nameof(Pro_Play_Exited) + $"Room: {streamProcessPlayModel.RoomId} play error: " + e.ToString();
+            string msg = nameof(Pro_Play_Exited) + $"Room: {StreamProcessModel.RoomId} play error: " + e.ToString();
             LogHelper.ErrorLogger.Error(msg);
             playErrorAction(msg);
         }
