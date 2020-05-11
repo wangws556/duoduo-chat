@@ -84,10 +84,6 @@ namespace YoYoStudio.Common.Rtmp.Audio
         {
             string msg = nameof(Pro_Play_ErrorDataReceived) + $" Room: {ProcessModel.RoomId} play error: " + e.ToString();
             LogHelper.ErrorLogger.Error(msg);
-            playErrorAction(msg);
-
-            StopPlay();
-            Play(ProcessModel.PublisherId, playExitAction, playErrorAction);
         }
     }
 }
