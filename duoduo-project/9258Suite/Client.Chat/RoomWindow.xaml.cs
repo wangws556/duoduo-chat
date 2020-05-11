@@ -236,6 +236,12 @@ namespace YoYoStudio.Client.Chat
                 case RoomWindowAction.PublishExit:
                     System.Windows.MessageBox.Show("在麦上唱歌程序异常退出，请关闭在麦上唱歌再开始", "错误", MessageBoxButton.OK);
                     break;
+                case RoomWindowAction.PlayError:
+                    //System.Windows.MessageBox.Show("音乐播放程序异常退出", "错误", MessageBoxButton.OK);
+                    break;
+                case RoomWindowAction.PlayExit:
+                    //System.Windows.MessageBox.Show("音乐播放程序报错", "错误", MessageBoxButton.OK);
+                    break;
                 default:
                     break;
             }

@@ -35,8 +35,8 @@ namespace YoYoStudio.Common.Rtmp.Audio
             using (Process pro = new Process())
             {
                 string publishMD5Code = Utility.GetMD5String(publisherId.ToString());
-                string publishRtmpPath = audioRtmpBase + "/" + StreamProcessModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
-                string arg1 = "\"" + StreamProcessModel.AudioDeviceName + "\"";
+                string publishRtmpPath = audioRtmpBase + "/" + ProcessModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
+                string arg1 = "\"" + ProcessModel.AudioDeviceName + "\"";
                 string arg2 = "\"" + publishRtmpPath + "\"";
                 pro.StartInfo.FileName = GetPublishAudioBat();
                 pro.StartInfo.UseShellExecute = false;
@@ -47,7 +47,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
                 pro.StartInfo.RedirectStandardError = true;
                 pro.ErrorDataReceived += Pro_Publish_ErrorDataReceived;
                 //pro.StartInfo.Arguments = "-f dshow -i audio=" + arg1 + " -b:a 64k -fflags nobuffer -y -f flv " + arg2;
-                pro.StartInfo.Arguments = " -re -f dshow -i audio=" + arg1 + " -ar " + StreamProcessModel.AudioSample + " -f flv " + arg2;
+                pro.StartInfo.Arguments = " -re -f dshow -i audio=" + arg1 + " -ar " + ProcessModel.AudioSample + " -f flv " + arg2;
                 try
                 {
                     pro.Start();
@@ -72,7 +72,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
 
         private void Pro_Publish_Exited(object sender, EventArgs e)
         {
-            string msg = nameof(Pro_Publish_Exited) + $"Room: {StreamProcessModel.RoomId} publish exits: " + e.ToString();
+            string msg = nameof(Pro_Publish_Exited) + $"Room: {ProcessModel.RoomId} publish exits: " + e.ToString();
             LogHelperRtmp.ErrorLogger.Error(msg);
             publishExitAction(publisherId, msg);
         }
@@ -81,7 +81,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
         {
             if (e != null && e.Data != null)
             {
-                string msg = nameof(Pro_Publish_ErrorDataReceived) + $"Room: {StreamProcessModel.RoomId} publish: " + e.Data.ToString();
+                string msg = nameof(Pro_Publish_ErrorDataReceived) + $"Room: {ProcessModel.RoomId} publish: " + e.Data.ToString();
                 if (msg.Contains("size=") && msg.Contains("time=") && msg.Contains("bitrate=") && msg.Contains("speed="))
                 {
                     return;

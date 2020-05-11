@@ -37,7 +37,9 @@
         PlayMusic,
         ManageMusic,
         PublishWarning,
-        PublishExit
+        PublishExit,
+        PlayError,
+        PlayExit
     }
 
     public enum PlayMusicWindowAction

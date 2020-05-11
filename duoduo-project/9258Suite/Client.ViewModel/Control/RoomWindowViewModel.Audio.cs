@@ -163,12 +163,14 @@ namespace YoYoStudio.Client.ViewModel
 
         public void PlayErrorAction(string message)
         {
-
+            LogHelper.ErrorLogger.Error(nameof(PlayErrorAction) + message);
+            Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.PlayError, message));
         }
 
         public void PlayExitAction(string message)
         {
-
+            LogHelper.ErrorLogger.Error(nameof(PlayExitAction) + message);
+            Messenger.Default.Send(new EnumNotificationMessage<object, RoomWindowAction>(RoomWindowAction.PlayExit, message));
         }
 
         public void PublishErrorAction(string message,int warningTimes)

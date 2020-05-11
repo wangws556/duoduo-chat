@@ -21,6 +21,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
         {
             playExitAction = exitAction;
             playErrorAction = errorAction;
+            ProcessModel.PublisherId = publisherId;
 
             // 杀死已有的ffmpeg进程，不要加.exe后缀
             KillProcess(playProcessId);
@@ -28,7 +29,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
             using (Process pro = new Process())
             {
                 string publishMD5Code = Utility.GetMD5String(publisherId.ToString());
-                string publishRtmpPath = audioRtmpBase + "/" + StreamProcessModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
+                string publishRtmpPath = audioRtmpBase + "/" + ProcessModel.RoomId + "/" + publisherId + "/" + publishMD5Code;
                 string arg1 = "\"" + publishRtmpPath + "\"";
                 pro.StartInfo.FileName = GetPlayAudioBat();
                 pro.StartInfo.UseShellExecute = false;
@@ -38,7 +39,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
                 pro.Exited += Pro_Play_Exited;
                 pro.StartInfo.RedirectStandardError = true;
                 pro.ErrorDataReceived += Pro_Play_ErrorDataReceived;
-                if (StreamProcessModel.AudioSync)
+                if (ProcessModel.AudioSync)
                 {
                     pro.StartInfo.Arguments = " -sync ext " + arg1 + " -nodisp -autoexit";
                 }
@@ -71,16 +72,22 @@ namespace YoYoStudio.Common.Rtmp.Audio
 
         private void Pro_Play_Exited(object sender, EventArgs e)
         {
-            string msg = nameof(Pro_Play_Exited) + $"Room: {StreamProcessModel.RoomId} play exits: " + e.ToString();
+            string msg = nameof(Pro_Play_Exited) + $" Room: {ProcessModel.RoomId} play exits: " + e.ToString();
             LogHelper.ErrorLogger.Error(msg);
             playExitAction(msg);
+
+            StopPlay();
+            Play(ProcessModel.PublisherId, playExitAction, playErrorAction);
         }
 
         private void Pro_Play_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            string msg = nameof(Pro_Play_Exited) + $"Room: {StreamProcessModel.RoomId} play error: " + e.ToString();
+            string msg = nameof(Pro_Play_ErrorDataReceived) + $" Room: {ProcessModel.RoomId} play error: " + e.ToString();
             LogHelper.ErrorLogger.Error(msg);
             playErrorAction(msg);
+
+            StopPlay();
+            Play(ProcessModel.PublisherId, playExitAction, playErrorAction);
         }
     }
 }
