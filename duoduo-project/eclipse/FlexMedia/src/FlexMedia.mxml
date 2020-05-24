@@ -229,24 +229,24 @@
 						{
 							if(isPublish)
 							{
-								callCSharp("flashLogger","starting publish video...");
+								callCSharp("flashLogger","Connect and starting publish video...");
 								var cam = session.PublishVideo(idx,vWidth, vHeight,f,q);
 								if(cam != null)
 								{
 									video = new Video(cam.width,cam.height);
 									video.attachCamera(cam);
-									callCSharp("flashLogger","started publish video");
+									callCSharp("flashLogger","Connect and started publish video");
 								}
 							}
 							else
 							{
-								callCSharp("flashLogger","starting connect video...");
+								callCSharp("flashLogger","Connect and starting connect video...");
 								var stream = session.PublishVideo(idx,vWidth, vHeight,f,q);
 								if(stream != null)
 								{
 									video = new Video(stream.width,stream.height);
 									video.attachNetStream(stream);
-									callCSharp("flashLogger","started connect video");
+									callCSharp("flashLogger","Connect and started connect video");
 								}
 							}
 							videoDisplay.addChild(video);
@@ -255,10 +255,10 @@
 						}
 						if(pA == "1")
 						{
-							callCSharp("flashLogger","starting audio...");
+							callCSharp("flashLogger","Connect and starting audio...");
 							session.PublishAudio(int(micIdx));
 							AudioEnabled(true);
-							callCSharp("flashLogger","started audio");
+							callCSharp("flashLogger","Connect and started audio");
 						}
 					}
 				}

@@ -46,7 +46,13 @@ package
 					camera.setMode(width,height,quality);
 				}
 				else{
-					callCSharp("flashLogger","Resize camera null");
+					camera = Camera.getCamera(String(cameraIndex));
+					if(camera != null){
+						camera.setMode(width,height,fps);
+					}
+					else{
+						callCSharp("flashLogger","Resize get camera is null");
+					}
 				}
 			}
 			catch(e:Error){
