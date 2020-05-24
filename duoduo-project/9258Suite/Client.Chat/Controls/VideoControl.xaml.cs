@@ -235,6 +235,10 @@ namespace YoYoStudio.Client.Chat.Controls
                         {
                             CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
                         }
+                        else if (args[0] == FlexStatusStrings.ConnectClosed)
+                        {
+                            CallFlash(FlexCommand.Disconnect);
+                        }
                     }
                     break;
                 case FlexCallbackCommand.LoadComplete:
@@ -355,7 +359,10 @@ namespace YoYoStudio.Client.Chat.Controls
                                     CallFlash(FlexCommand.PublishVideo, uvm.ApplicationVM.ProfileVM.VideoConfigurationVM.CameraIndex.ToString(),
                                         uvm.ApplicationVM.LocalCache.VideoFps.ToString(), uvm.ApplicationVM.LocalCache.VideoQuality.ToString());
                                 }
-
+                                else
+                                {
+                                    CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
+                                }
                             }
                             else if (uvm.MicAction == MicAction.Toggle)
                             {

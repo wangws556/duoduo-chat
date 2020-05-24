@@ -199,6 +199,7 @@ namespace YoYoStudio.Controls.Winform
     {
         public const string ConnectSucceed = "NetConnection.Connect.Success";
         public const string NotConnected = "NotConnected";
+        public const string ConnectClosed = "NetConnection.Connect.Closed";
         public const string MusicPlaying = "Playing";
         public const string MusicPaused = "Paused";
         public const string MusicUnPaused = "UnPaused";

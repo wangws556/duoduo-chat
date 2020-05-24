@@ -133,6 +133,7 @@ namespace YoYoStudio.Client.ViewModel
             StreamGuid = string.Empty;
             MicAction = Model.Chat.MicAction.None;
             MicStatus = MicStatusMessage.MicStatus_Off;
+            AudioStatus = (int)AudioStatusType.Off;
         }
 
         
