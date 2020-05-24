@@ -230,6 +230,7 @@ namespace YoYoStudio.Client.Chat.Controls
                         if (args[0] == FlexStatusStrings.ConnectSucceed)
                         {
                             RtmpConnectSuccessful();
+                            CallFlash(FlexCommand.Resize, new string[] { Width.ToString(), Height.ToString() });
                         }
                         else if(args[0] == FlexStatusStrings.NotConnected)
                         {
@@ -243,6 +244,7 @@ namespace YoYoStudio.Client.Chat.Controls
                     break;
                 case FlexCallbackCommand.LoadComplete:
                     IsEnabled = true;
+                    CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
                     break;
                 case FlexCallbackCommand.VideoStateChanged:
                     if (uvm != null && uvm.RoomWindowVM != null)

@@ -132,7 +132,7 @@ namespace YoYoStudio.Client.Chat
                         Topmost = true;
                         break;
                     case YoYoStudio.Controls.Winform.FlexCallbackCommand.LoadComplete:
-                        vc.CallFlash(YoYoStudio.Controls.Winform.FlexCommand.ConnectRTMP, vm.UserVM.RoomWindowVM.RoomVM.RtmpUrl);
+                        
                         break;
                     default:
                         break;
