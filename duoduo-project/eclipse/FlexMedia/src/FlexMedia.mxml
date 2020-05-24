@@ -155,7 +155,7 @@
 			{
 		       try
 			   {
-				   callCSharp("flashLogger","resize width: " + w + "; height: " + h);
+				   
 					width = uint(w);;
 					height = uint(h);	
 					vWidth = width;
@@ -165,15 +165,22 @@
 					{
 						videoDisplay.removeChild(video);
 						video = new Video(vWidth,vHeight);
-						video.attachCamera(cam);
+						if(isPublish){
+							callCSharp("flashLogger","Sender resize width: " + w + "; height: " + h);
+							video.attachCamera(cam);
+						}
+						else{
+							callCSharp("flashLogger","Receiver resize width: " + w + "; height: " + h);
+							video.attachNetStream(cam);
+						}
 						videoDisplay.addChild(video);
 					}
 					else{
-						callCSharp("flashLogger","resize camera is null");
+						callCSharp("flashLogger","resize camera/netstream is null");
 					}
 			   }
 			   catch(e:Error){
-				   callCSharp("flashLogger","resize error: " + e.message);
+				   callCSharp("flashLogger","resize/netstream error: " + e.message);
 			   }
 				
 			}
