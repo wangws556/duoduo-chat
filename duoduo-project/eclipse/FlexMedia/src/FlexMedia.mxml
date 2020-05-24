@@ -173,7 +173,7 @@
 					}
 			   }
 			   catch(e:Error){
-				   callCSharp("flashLogger","resize error: " + e.getStackTrace());
+				   callCSharp("flashLogger","resize error: " + e.message);
 			   }
 				
 			}
@@ -244,7 +244,7 @@
 								var stream = session.PublishVideo(idx,vWidth, vHeight,f,q);
 								if(stream != null)
 								{
-									video = new Video(stream.width,stream.height);
+									video = new Video(vWidth,vHeight);
 									video.attachNetStream(stream);
 									callCSharp("flashLogger","Connect and started connect video");
 								}
