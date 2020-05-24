@@ -288,6 +288,9 @@ namespace YoYoStudio.Client.Chat
                 roomWindowVM.RoomClient.DownMic(roomWindowVM.RoomVM.Id, roomWindowVM.Me.MicType, roomWindowVM.Me.MicIndex);
                 roomWindowVM.Me.DownMic();
             }
+            roomWindowVM.FirstMicUserVM = null;
+            roomWindowVM.SecondMicUserVM = null;
+            roomWindowVM.ThirdMicUserVM = null;
             roomWindowVM.AudioPlayVM.StopPlay();
             base.OnClosing(e);
         }
