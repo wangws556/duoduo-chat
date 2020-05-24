@@ -191,7 +191,8 @@ namespace YoYoStudio.Controls.Winform
         SetVolume,
         PlayMusic,
         TogglePauseMusic,
-        StopMusic
+        StopMusic,
+        FlashLogger
     }
 
     public class FlexStatusStrings
@@ -227,6 +228,7 @@ namespace YoYoStudio.Controls.Winform
         public const string PlayMusic = "playMusic";
         public const string TogglePauseMusic = "togglePauseMusic";
         public const string StopMusic = "stopPlay";
+        public const string FlashLogger = "flashLogger";
 
         public static FlexCallbackCommand GetCommand(string commandName)
         {
@@ -262,6 +264,8 @@ namespace YoYoStudio.Controls.Winform
                     return FlexCallbackCommand.TogglePauseMusic;
                 case StopMusic:
                     return FlexCallbackCommand.StopMusic;
+                case FlashLogger:
+                    return FlexCallbackCommand.FlashLogger;
 
             }
             return FlexCallbackCommand.None;

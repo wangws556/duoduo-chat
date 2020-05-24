@@ -56,7 +56,7 @@ namespace YoYoStudio.Common.Rtmp.Audio
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.ErrorLogger.Error(nameof(Play), ex);
+                    LogHelperRtmp.ErrorLogger.Error(nameof(Play), ex);
                     return false;
                 }
 
@@ -73,17 +73,16 @@ namespace YoYoStudio.Common.Rtmp.Audio
         private void Pro_Play_Exited(object sender, EventArgs e)
         {
             string msg = nameof(Pro_Play_Exited) + $" Room: {ProcessModel.RoomId} play exits: " + e.ToString();
-            LogHelper.ErrorLogger.Error(msg);
+            LogHelperRtmp.ErrorLogger.Error(nameof(Pro_Play_Exited) + e.ToString());
             playExitAction(msg);
 
-            StopPlay();
             Play(ProcessModel.PublisherId, playExitAction, playErrorAction);
         }
 
         private void Pro_Play_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
             string msg = nameof(Pro_Play_ErrorDataReceived) + $" Room: {ProcessModel.RoomId} play error: " + e.ToString();
-            LogHelper.ErrorLogger.Error(msg);
+            LogHelperRtmp.ErrorLogger.Error(msg);
         }
     }
 }

@@ -207,8 +207,8 @@ namespace YoYoStudio.Client.Chat.Controls
                     idx.ToString(),
                     micIdx.ToString(),
                     pv ? "1" : "0",
-                    //pa ? "1" : "0",
-                    "0", //disable micphone as we use ffmpeg
+                    pa ? "1" : "0",
+                    //"0", //disable micphone as we use ffmpeg
                     IsZoom ? "1" : "0",
                     uvm.ApplicationVM.LocalCache.VideoFps.ToString(),
                     uvm.ApplicationVM.LocalCache.VideoQuality.ToString());
@@ -231,9 +231,9 @@ namespace YoYoStudio.Client.Chat.Controls
                         {
                             RtmpConnectSuccessful();
                         }
-                        else
+                        else if(args[0] == FlexStatusStrings.NotConnected)
                         {
-                            //TODO Connect Red5 failed.
+                            CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
                         }
                     }
                     break;
@@ -300,6 +300,13 @@ namespace YoYoStudio.Client.Chat.Controls
                         }
                     }
                     break;
+                case FlexCallbackCommand.FlashLogger:
+                    if(args.Count > 0)
+                    {
+                        LogHelperRtmp.InfoLogger.Info(args[0]);
+                    }
+                    break;
+
             }
             if (FlashCallback != null)
             {
@@ -335,7 +342,7 @@ namespace YoYoStudio.Client.Chat.Controls
 
                 else if (newS != MicStatusMessage.MicStatus_Queue)
                 {
-                    CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
+                    //CallFlash(FlexCommand.ConnectRTMP, uvm.RoomWindowVM.RoomVM.RtmpUrl);
 
                     if ((newS & MicStatusMessage.MicStatus_Video) != MicStatusMessage.MicStatus_Off)
                     {
@@ -356,20 +363,20 @@ namespace YoYoStudio.Client.Chat.Controls
                             }
                         }
                     }
-                    if ((newS & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
-                    {
-                        if ((oldS & MicStatusMessage.MicStatus_Audio) == MicStatusMessage.MicStatus_Off)
-                        {
-                            if (uvm.MicAction == MicAction.OnMic)
-                            {
-                                CallFlash(FlexCommand.PublishAudio);
-                            }
-                            else if (uvm.MicAction == MicAction.Toggle)
-                            {
-                                CallFlash(FlexCommand.ResumeAudio);
-                            }
-                        }
-                    }
+                    //if ((newS & MicStatusMessage.MicStatus_Audio) != MicStatusMessage.MicStatus_Off)
+                    //{
+                    //    if ((oldS & MicStatusMessage.MicStatus_Audio) == MicStatusMessage.MicStatus_Off)
+                    //    {
+                    //        if (uvm.MicAction == MicAction.OnMic)
+                    //        {
+                    //            CallFlash(FlexCommand.PublishAudio);
+                    //        }
+                    //        else if (uvm.MicAction == MicAction.Toggle)
+                    //        {
+                    //            CallFlash(FlexCommand.ResumeAudio);
+                    //        }
+                    //    }
+                    //}
                 }
 
 
@@ -411,32 +418,32 @@ namespace YoYoStudio.Client.Chat.Controls
 
         private void AudioStateChangedEventHandler(int roomId, int senderId, int state)
         {
-            Dispatcher.BeginInvoke((Action)(() =>
-                {
-                    UserViewModel uvm = DataContext as UserViewModel;
-                    if (uvm != null && !uvm.IsMe())
-                    {
-                        if (roomId == uvm.RoomWindowVM.RoomVM.Id && uvm.Id == senderId)
-                        {
-                            if (uvm.MicStatus != MicStatusMessage.MicStatus_Off)
-                            {
-                                switch (state)
-                                {
-                                    case FlexCallbackCommandNames.AV_State_Normal:
-                                        break;
-                                    case FlexCallbackCommandNames.AV_State_Paused:
-                                        uvm.RoomWindowVM.StopPlay();
-                                        break;
-                                    case FlexCallbackCommandNames.AV_State_Resumed:
-                                        CallFlash(FlexCommand.ResumeAudio);
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                        }
-                    }
-                }));
+            //Dispatcher.BeginInvoke((Action)(() =>
+            //    {
+            //        UserViewModel uvm = DataContext as UserViewModel;
+            //        if (uvm != null && !uvm.IsMe())
+            //        {
+            //            if (roomId == uvm.RoomWindowVM.RoomVM.Id && uvm.Id == senderId)
+            //            {
+            //                if (uvm.MicStatus != MicStatusMessage.MicStatus_Off)
+            //                {
+            //                    switch (state)
+            //                    {
+            //                        case FlexCallbackCommandNames.AV_State_Normal:
+            //                            break;
+            //                        case FlexCallbackCommandNames.AV_State_Paused:
+            //                            uvm.RoomWindowVM.StopPlay();
+            //                            break;
+            //                        case FlexCallbackCommandNames.AV_State_Resumed:
+            //                            CallFlash(FlexCommand.ResumeAudio);
+            //                            break;
+            //                        default:
+            //                            break;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }));
         }
 
         private void VideoStateChangedEventHandler(int roomId, int senderId, int state)

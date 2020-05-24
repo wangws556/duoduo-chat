@@ -80,9 +80,9 @@ namespace YoYoStudio.Controls.Winform
 			FlexCallbackCommand cmd = FlexCallbackCommandNames.GetCommand(commandName);
 			if (cmd == FlexCallbackCommand.LoadComplete)
 			{
-				CallFlash(FlexCommand.Resize, new string[] { Width.ToString(), Height.ToString() });
-				Resize += FlexControl_Resize;
-			}
+                CallFlash(FlexCommand.Resize, new string[] { Width.ToString(), Height.ToString() });
+                Resize += FlexControl_Resize;
+            }
 			if (FlashCallback != null)
 			{
 				FlashCallback(cmd, args);

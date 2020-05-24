@@ -1,6 +1,5 @@
 package
 {
-	
 	import flash.media.Camera;
 	import flash.media.H264Level;
 	import flash.media.H264Profile;
@@ -10,8 +9,7 @@ package
 	import flash.media.Video;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
-
-	
+	import flash.external.ExternalInterface;
 	
 	public class Session
 	{
@@ -33,9 +31,23 @@ package
 		protected var fps:uint;
 		protected var quality:uint;
 		
+		
 		public function Session()
 		{
 			
+		}
+		
+		public function callCSharp(methodName:String, ... params):void
+		{
+			try
+			{
+				if(ExternalInterface.available){
+					ExternalInterface.call(methodName, params);
+				}
+			}
+			catch(e:Error){
+				
+			}
 		}
 		
 		public function Initialize(connection:NetConnection, session:String, camIndex:int, micIndex:int)
@@ -108,6 +120,8 @@ package
 		
 		public function ToggleAudio()
 		{
+			callCSharp("flashLogger","ToggleAudio");
+			callCSharp("flashLogger","Audio state before is: " + audioState.State.toString());
 			if(audioState.State == SessionState.None )
 			{
 				PublishAudio(microphoneIndex);
@@ -120,6 +134,7 @@ package
 			{
 				PauseAudio();
 			}
+			callCSharp("flashLogger","Audio state after is: " + audioState.State.toString());
 		}
 		public function StartMicrophone(idx:int,silence:uint = 0, gain:uint = 50, rate:uint = 8, volume:Number = 1)
 		{

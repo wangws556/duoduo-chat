@@ -9,10 +9,10 @@ package
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 	import flash.media.SoundCodec;
+
 	
 	public class Sender extends Session
 	{
-		
 		override public function StartCamera(idx:int,w:int, h:int, f:uint, q:uint)
 		{
 			cameraIndex = idx;
@@ -30,7 +30,7 @@ package
 					camera.setQuality(144000,quality);
 				}
 				else{
-					trace("No camera is installed.");
+					callCSharp("flashLogger","No camera is installed.");
 				}
 				return camera;
 			}
@@ -39,10 +39,20 @@ package
 		
 		override public function Resize(width:uint, height:uint)
 		{
-			if(camera != null)
+			try
 			{
-				camera.setMode(width,height,quality);
+				if(camera != null)
+				{
+					camera.setMode(width,height,quality);
+				}
+				else{
+					callCSharp("flashLogger","Resize camera null");
+				}
 			}
+			catch(e:Error){
+				callCSharp("flashLogger","Resize error: " + e.getStackTrace());
+			}
+			
 			return camera
 		}
 		
@@ -158,31 +168,42 @@ package
 		{
 			if(initialized)
 			{
+				callCSharp("flashLogger","Starting publish audio...");
 				if(audioState.State == SessionState.None)
 				{
 					StartMicrophone(idx,silence,gain,rate,volume);
 				}
 				netStream.attachAudio(microphone);
 				audioState.State = SessionState.Normal;
-			}				
+				callCSharp("flashLogger","Started publish audio...");
+			}		
+			else{
+				callCSharp("flashLogger","cannot publish audio");
+			}
 		}
 		
 		override public function PauseAudio()
 		{
 			if(initialized)
 			{
+				callCSharp("flashLogger","Starting pause audio...");
 				if(audioState.State == SessionState.Normal ||
 					audioState.State == SessionState.Resumed)
 				{
 					netStream.attachAudio(null);
 					audioState.State = SessionState.Paused;
 				}
+				callCSharp("flashLogger","Started pause audio");
+			}
+			else{
+				callCSharp("flashLogger","Not initialzied, cannot publish audio");
 			}
 		}
 		override public function ResumeAudio()
 		{
 			if(initialized)
 			{
+				callCSharp("flashLogger","Starting resume audio...");
 				if(audioState.State = SessionState.Paused)
 				{
 					netStream.attachAudio(microphone);
@@ -192,6 +213,10 @@ package
 				{
 					PublishAudio(microphoneIndex);
 				}
+				callCSharp("flashLogger","Started resume audio");
+			}
+			else{
+				callCSharp("flashLogger","Not initialzied, cannot resume audio");
 			}
 		}
 		

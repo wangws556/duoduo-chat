@@ -93,6 +93,7 @@
 			var bb:Boolean = true;
 			private function connectRtmp(rtmp:String)
 			{
+				callCSharp("flashLogger","connectRtmp: "+rtmp);
 				rtmpServerUri = rtmp;
 				netConnection = new NetConnection();
 				netConnection.addEventListener( NetStatusEvent.NET_STATUS, netStatus );
@@ -152,8 +153,9 @@
 			
 			private function resize(w:String,h:String):void
 			{
-				if(video != null)
-				{
+		       try
+			   {
+				   callCSharp("flashLogger","resize width: " + w + "; height: " + h);
 					width = uint(w);;
 					height = uint(h);	
 					vWidth = width;
@@ -166,7 +168,14 @@
 						video.attachCamera(cam);
 						videoDisplay.addChild(video);
 					}
-				}
+					else{
+						callCSharp("flashLogger","resize camera is null");
+					}
+			   }
+			   catch(e:Error){
+				   callCSharp("flashLogger","resize error: " + e.getStackTrace());
+			   }
+				
 			}
 			
 			private function disconnect():void
@@ -220,20 +229,24 @@
 						{
 							if(isPublish)
 							{
+								callCSharp("flashLogger","starting publish video...");
 								var cam = session.PublishVideo(idx,vWidth, vHeight,f,q);
 								if(cam != null)
 								{
 									video = new Video(cam.width,cam.height);
 									video.attachCamera(cam);
+									callCSharp("flashLogger","started publish video");
 								}
 							}
 							else
 							{
+								callCSharp("flashLogger","starting connect video...");
 								var stream = session.PublishVideo(idx,vWidth, vHeight,f,q);
 								if(stream != null)
 								{
 									video = new Video(stream.width,stream.height);
 									video.attachNetStream(stream);
+									callCSharp("flashLogger","started connect video");
 								}
 							}
 							videoDisplay.addChild(video);
@@ -242,13 +255,16 @@
 						}
 						if(pA == "1")
 						{
+							callCSharp("flashLogger","starting audio...");
 							session.PublishAudio(int(micIdx));
 							AudioEnabled(true);
+							callCSharp("flashLogger","started audio");
 						}
 					}
 				}
 				catch(e:Error){
 					result += e.message;
+					callCSharp("flashLogger",e.getStackTrace());
 				}
 				return result;
 			}
@@ -341,6 +357,7 @@
 			{
 				if(netConnection == null || !netConnection.connected)
 				{
+					trace("NotConnected");
 					callCSharp("reportStatus","NotConnected");
 					return false;
 				}
@@ -382,10 +399,12 @@
 			{
 				if(enable)
 				{
+					callCSharp("flashLogger","AudioEnabled: true");
 					audioButton.setStyle("icon", audioEnabledImage);
 				}
 				else
 				{
+					callCSharp("flashLogger","AudioEnabled: false");
 					audioButton.setStyle("icon", audioDisabledImage);
 				}
 			}
@@ -451,13 +470,8 @@
 			
 			protected function application1_applicationCompleteHandler(event:FlexEvent):void
 			{
-				//callCSharp("loadComplete");
+				callCSharp("loadComplete");
 				
-				connectRtmp("rtmp://222.189.228.201/oflaDemo");
-				
-				//publishVideo(0);
-				
-				connect("6d41c3ce-b51e-4565-81c5-9d026481f44c","0",0,0,"1","0","0",12,75);
 			}
 			
 			protected function appInit(event:FlexEvent):void
@@ -571,26 +585,23 @@
 			{
 				if(checkConnection())
 				{
-					//session.ToggleAudio();
+					callCSharp("flashLogger","toggleMicHandler");
+					session.ToggleAudio();
 					if(session.audioState.State == SessionState.None)
 					{
-						session.audioState.State = SessionState.Normal;
-						AudioEnabled(true);
+						AudioEnabled(false);
 					}
 					else if (session.audioState.State == SessionState.Paused)
 					{
-						session.audioState.State = SessionState.Resumed;
-						AudioEnabled(true);
+						AudioEnabled(false);
 					}
 					else if(session.audioState.State == SessionState.Normal)
 					{
-						session.audioState.State = SessionState.Paused;
-						AudioEnabled(false);
+						AudioEnabled(true);
 					}
 					else if(session.audioState.State == SessionState.Resumed)
 					{
-						session.audioState.State = SessionState.Paused;
-						AudioEnabled(false);
+						AudioEnabled(true);
 					}
 					callCSharp("audioStateChanged",session.audioState.State);
 				}
