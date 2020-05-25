@@ -23,15 +23,7 @@ package
 		}
 		
 		override public function Resize(width:uint, height:uint)
-		{
-			try
-			{
-				callCSharp("flashLogger","Receiver Resize");
-			}
-			catch(e:Error){
-				callCSharp("flashLogger","Receiver Resize error: " + e.message);
-			}
-			
+		{	
 			return netStream
 		}
 		
